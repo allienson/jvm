@@ -1,8 +1,21 @@
-#include "./includes/instrucao.h"
-#include "./includes/frame.h"
-#include "./includes/carregador.h"
-#include "./includes/area_metodos.h"
-#include "./includes/metodo.h"
+//
+//  main.c
+//  Java Virtual Machine - Software Basico 2017-1
+//
+//  Created on 26/05/17.
+//  Copyright © 2017 GrupoSB. All rights reserved.
+//
+//  Allisson Barros         12/0055619
+//  Daniel Luz              13/0007714
+//  Luiz Fernando Vieira    13/0013757
+//  Mariana Pannunzio       12/0018276
+//  Mateus Denucci          12/0053080
+
+#include "instrucao.h"
+#include "frame.h"
+#include "carregador.h"
+#include "area_metodos.h"
+#include "metodo.h"
 
 #include <stdio.h>
 #include <math.h>
@@ -32,23 +45,23 @@ void atualizaPc(){
   }
 }
 
-int obtemUtfEq(cp_info* cp, int pos_pool) {
+int obtemUtfEq(CpInfo* cp, int posPool) {
     int tag;
-    tag = cp[pos_pool].tag;
+    tag = cp[posPool].tag;
 
     if (tag == CONSTANT_Utf8) {
-        return pos_pool;
+        return posPool;
     }
 
     switch(tag) {
         case CONSTANT_Class:
-            return obtem_utf_eq(cp, cp[pos_pool].info.Class.name_index - 1);
+            return obtem_utf_eq(cp, cp[posPool].info.Class.nameIndex - 1);
         case CONSTANT_String:
-            return obtem_utf_eq(cp, cp[pos_pool].info.String.string_index - 1);
+            return obtem_utf_eq(cp, cp[posPool].info.String.stringIndex - 1);
         case CONSTANT_Integer:
-            return obtem_utf_eq(cp, cp[pos_pool].info.String.string_index - 1);
+            return obtem_utf_eq(cp, cp[posPool].info.String.stringIndex - 1);
         case CONSTANT_Float:
-            return obtem_utf_eq(cp, cp[pos_pool].info.String.string_index - 1);
+            return obtem_utf_eq(cp, cp[posPool].info.String.stringIndex - 1);
     }
 }
 

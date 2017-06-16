@@ -48,7 +48,8 @@ int main(int argc, char* argv[]) {
         return 0;
     }
 
-    
+	  empilhaMetodo(metodoMain, mainClass);
+    executaFrameCorrente();
 
     free(nomeArquivo);
     return 0;

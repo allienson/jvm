@@ -1,11 +1,21 @@
+//
+//  main.c
+//  Java Virtual Machine - Software Basico 2017-1
+//
+//  Created on 26/05/17.
+//  Copyright © 2017 GrupoSB. All rights reserved.
+//
+//  Allisson Barros         12/0055619
+//  Daniel Luz              13/0007714
+//  Luiz Fernando Vieira    13/0013757
+//  Mariana Pannunzio       12/0018276
+//  Mateus Denucci          12/0053080
+
 #ifndef FRAME_H
 #define FRAME_H
 
 #include <stdint.h>
 #include "leitor.h"
-
-void criaFrame(CpInfo* cp, ClassFile* classe, CodeAttribute* code);
-void desalocaFrame();
 
 typedef struct PilhaOp {
     int depth;
@@ -24,35 +34,26 @@ typedef struct Frame {
   PilhaOp* pilhaOp;
 } Frame;
 
-struct StackFrame {
+typedef struct StackFrame {
 	Frame* refFrame;
 	struct StackFrame* next;
-};
+} StackFrame;
 
-typedef struct Array{
+typedef struct Vector {
 	int32_t referencia;
 	int32_t tamanho;
 	int8_t tipo;
-} vector;
+} Vector ;
 
-struct Frame* frameCorrente;
-
-Vector* arrayVetores;
-
-int32_t qtdArrays;
-int32_t retorno;
-int32_t retAlta,retBaixa;
-int8_t flagRet;
-
-void push(int32_t valor);
 int32_t popOp();
 
+void criaFrame(CpInfo*, ClassFile*, CodeAttribute*);
+void desalocaFrame();
+void push(int32_t);
 void dumpStack();
 void dumpFields();
 void pushFrame(CpInfo*, ClassFile*, CodeAttribute*, struct StackFrame*);
 void popFrame();
-void mostraProfundidade(int i);
-
-static struct StackFrame* topo = NULL;
+void mostraProfundidade(int);
 
 #endif

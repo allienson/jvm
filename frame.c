@@ -1,18 +1,43 @@
+//
+//  main.c
+//  Java Virtual Machine - Software Basico 2017-1
+//
+//  Created on 26/05/17.
+//  Copyright © 2017 GrupoSB. All rights reserved.
+//
+//  Allisson Barros         12/0055619
+//  Daniel Luz              13/0007714
+//  Luiz Fernando Vieira    13/0013757
+//  Mariana Pannunzio       12/0018276
+//  Mateus Denucci          12/0053080
+
 #include "frame.h"
 
-decodificador dec[NUM_INSTRUCAO];
+Decodificador dec[NUM_INSTRUCAO];
+
+struct Frame* frameCorrente;
+
+Vector* arrayVetores;
+
+int32_t qtdArrays;
+int32_t retorno;
+int32_t retAlta;
+int32_t retBaixa;
+int8_t flagRet;
+
+static struct StackFrame* topo = NULL;
 
 void criaFrame(CpInfo* cp, ClassFile* classe, CodeAttribute* code){
-	struct stackFrame* sf = NULL;
-	sf = (struct stackFrame*) calloc(sizeof(struct stackFrame),1);
+	struct StackFrame* sf = NULL;
+	sf = (struct StackFrame*) calloc(sizeof(struct StackFrame),1);
 
 	if(sf == NULL) {
 		printf("Problema na alocação do frame\n");
 	}
 
-	sf->refFrame = (struct frame*) calloc(sizeof(struct frame),1);
+	sf->refFrame = (struct Frame*) calloc(sizeof(struct Frame),1);
 
-	pushFrame(cp,classe,code,sf);
+	pushFrame(cp, classe, code, sf);
 }
 
 void pushFrame(CpInfo* cp, ClassFile* classe, CodeAttribute* code, struct StackFrame* sf){
@@ -27,7 +52,7 @@ void pushFrame(CpInfo* cp, ClassFile* classe, CodeAttribute* code, struct StackF
 	topo->refFrame->codeLength = code->codeLength;
 	topo->refFrame->code = code->code;
 	topo->refFrame->fields = calloc(sizeof(uint32_t), topo->refFrame->maxLocals);
-  topo->refFrame->pilhaOp = calloc(1, sizeof(pilha_op));
+  topo->refFrame->pilhaOp = calloc(1, sizeof(PilhaOp));
   topo->refFrame->pilhaOp->operandos = calloc(topo->refFrame->maxStack, sizeof(uint32_t));
   topo->refFrame->pilhaOp->depth = 0;
 

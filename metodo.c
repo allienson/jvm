@@ -16,7 +16,11 @@
 #include "instrucao.h"
 #include "areaMetodos.h"
 
-extern struct frame* frameCorrente;
+#include <stdlib.h>
+
+extern struct Frame* frameCorrente;
+
+AreaMetodos areaMet;
 
 uint32_t numObjetos = 0;
 
@@ -27,7 +31,7 @@ MethodInfo* buscaMetodoMain() {
 	uint8_t* nome;
 	uint8_t* desc;
 
-	main = buscaClasseIndice(1);
+	main = buscaClassPorIndice(1);
 
 	for(int i = 0; i < main->methodsCount; i++) {
 		nome = main->constantPool[(main->methods[i].nameIndex -1)].info.Utf8.bytes;
@@ -60,8 +64,8 @@ void executaFrameCorrente() {
 	desalocaFrame();
 }
 
-objeto* criaObjeto(classFile* classe) {
-	objeto* objeto;
+Objeto* criaObjeto(ClassFile* classe) {
+	Objeto* objeto;
 
 	if(numObjetos == 0) {
 		heap = calloc(128,sizeof(struct objeto*));
@@ -80,55 +84,58 @@ objeto* criaObjeto(classFile* classe) {
 	return objeto;
 }
 
-MethodInfo* buscaMetodo(classFile* indiceClasse, classFile* searchClasse, uint16_t indice){
-	char* name = retornaNome(indiceClasse, indiceClasse->constant_pool[indice-1].info.NameAndType.name_index);
-	char* desc = retornaNome(indiceClasse, indiceClasse->constant_pool[indice-1].info.NameAndType.descriptor_index);
+MethodInfo* buscaMetodo(ClassFile* indiceClasse, ClassFile* searchClasse, uint16_t indice){
+	char* name = retornaNome(indiceClasse, indiceClasse->constantPool[indice-1].info.NameAndType.nameIndex);
+	char* desc = retornaNome(indiceClasse, indiceClasse->constantPool[indice-1].info.NameAndType.descriptorIndex);
 	char* searchName;
 	char* searchDesc;
-	for(int i = 0; i < searchClasse->methods_count; i++) {
-    searchName = searchClasse->constant_pool[(searchClasse->methods[i].name_index-1)].info.Utf8.bytes;
-		searchDesc = searchClasse->constant_pool[(searchClasse->methods[i].descriptor_index-1)].info.Utf8.bytes;
+	for(int i = 0; i < searchClasse->methodsCount; i++) {
+    searchName = searchClasse->constantPool[(searchClasse->methods[i].nameIndex-1)].info.Utf8.bytes;
+		searchDesc = searchClasse->constantPool[(searchClasse->methods[i].descriptorIndex-1)].info.Utf8.bytes;
 		if((strcmp(name,searchName) == 0) && (strcmp(desc,searchDesc) == 0)) {
 			return(searchClasse->methods + i);
 		}
 	}
+  return NULL;
 }
 
 int32_t buscaCampo(char* className, char* name, char* desc){
-	classFile* classe = retornaClasseNome(className);
+	ClassFile* classe = retornaClasseNome(className);
 	uint8_t* searchName;
 	uint8_t* searchDesc;
 
-	for(int i = 0; i < classe->fields_count; i++) {
-		searchName = classe->constant_pool[(classe->fields[i].name_index-1)].info.Utf8.bytes;
-		searchDesc = classe->constant_pool[(classe->fields[i].descriptor_index-1)].info.Utf8.bytes;
+	for(int i = 0; i < classe->fieldsCount; i++) {
+		searchName = classe->constantPool[(classe->fields[i].nameIndex-1)].info.Utf8.bytes;
+		searchDesc = classe->constantPool[(classe->fields[i].descriptorIndex-1)].info.Utf8.bytes;
 		if ((strcmp(name, searchName) == 0) && (strcmp(desc, searchDesc) == 0)) {
 			return i;
 		}
 	}
 }
 
-classFile* retornaClasseNome(char* nomeClasse) {
-	for (int i = 0; i < area_met.num_classes; i++) {
-		if (strcmp(nomeClasse, retornaNomeClasse(area_met.array_classes[i])) == 0)
-			return area_met.array_classes[i];
+ClassFile* retornaClasseNome(char* nomeClasse) {
+	for (int i = 0; i < areaMet.numClasses; i++) {
+		if (strcmp(nomeClasse, retornaNomeClasse(areaMet.arrayClasses[i])) == 0)
+			return areaMet.arrayClasses[i];
 	}
 	return NULL;
 }
 
-int32_t retornaNumeroParametros(classFile* classe, method_info* metodo) {
+int32_t retornaNumeroParametros(ClassFile* classe, MethodInfo* metodo) {
 	int32_t numeroParametros = 0;
 	uint16_t length;
 	uint8_t* bytes;
 
-	bytes = classe->constant_pool[(metodo->descriptor_index-1)].info.Utf8.bytes;
-	length = classe->constant_pool[(metodo->descriptor_index-1)].info.Utf8.length;
+	bytes = classe->constantPool[(metodo->descriptorIndex-1)].info.Utf8.bytes;
+	length = classe->constantPool[(metodo->descriptorIndex-1)].info.Utf8.length;
 
 	int i = 0;
 	while(i < length) {
-        if(bytes[i] == ')')
+    if(bytes[i] == ')') {
 			break;
-		if(bytes[i] == 'L') {
+		}
+
+    if(bytes[i] == 'L') {
 			while(bytes[i] != ';') {
 				i++;
 			}
@@ -138,6 +145,7 @@ int32_t retornaNumeroParametros(classFile* classe, method_info* metodo) {
 		} else if((bytes[i] == 'D')||(bytes[i] == 'J')) {
 			numeroParametros+=2;
 		}
+
 		i++;
 	}
 	return numeroParametros;

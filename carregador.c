@@ -81,7 +81,7 @@ char* retornaNomeClass(ClassFile* classe){
 	return retorno;
 }
 
-ClassFile* buscaClassPorIndice(int indice){
+ClassFile* buscaClassPorIndice(int indice) {
 	return indice >= areaMetodos.numClasses ? NULL : areaMetodos.arrayClasses[indice];
 }
 
