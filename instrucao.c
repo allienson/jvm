@@ -1060,54 +1060,37 @@ void dstore_3() {
 void astore_0() {
     int32_t indice;
     int32_t valor;
-
     indice = 0;
-
     valor = popOp();
-
     frameCorrente->fields[indice] = valor;
-
     atualizaPc();
 }
 
 void astore_1() {
     int32_t indice;
     int32_t valor;
-
     indice = 1;
-
     valor = popOp();
     frameCorrente->fields[indice] = valor;
-
     atualizaPc();
-
 }
 
 void astore_2() {
     int32_t indice;
     int32_t valor;
-
     indice = 2;
-
     valor = popOp();
     frameCorrente->fields[indice] = valor;
-
     atualizaPc();
-
 }
 
 void astore_3() {
     int32_t indice;
     int32_t valor;
-
     indice = 3;
-
     valor = popOp();
-
     frameCorrente->fields[indice] = valor;
-
     atualizaPc();
-
 }
 
 void iastore() {
@@ -1117,22 +1100,17 @@ void iastore() {
 	indice = popOp();
 	ref = (int32_t*)popOp();
 	ref[indice] = valor;
-
 	atualizaPc();
 }
 
 void lastore() {
 	static int16_t countPos = 0;
 	int32_t alta,baixa;
-
 	baixa = popOp();
 	alta = popOp();
-
 	int32_t indice = popOp();
-
 	int32_t* referencia;
 	referencia = (int32_t*) popOp();
-
 	referencia[countPos + indice] = baixa;
 	referencia[countPos + indice + 1] = alta;
 	countPos += 2;
@@ -1148,7 +1126,6 @@ void fastore() {
 	indice = popOp();
 	ref = (int32_t*)popOp();
 	ref[indice] = valor;
-
 	atualizaPc();
 }
 
@@ -1177,7 +1154,6 @@ void aastore() {
 	indice = popOp();
 	ref = (int32_t*)popOp();
 	ref[indice] = valor;
-
 	atualizaPc();
 }
 
@@ -1188,7 +1164,6 @@ void bastore() {
 	indice = popOp();
 	ref = (int32_t*)popOp();
 	ref[indice] = (int8_t)valor;
-
 	atualizaPc();
 }
 
@@ -1199,7 +1174,6 @@ void castore() {
 	indice = popOp();
 	ref = (int32_t*)popOp();
 	ref[indice] = (int16_t)valor;
-
 	atualizaPc();
 }
 
@@ -1210,20 +1184,17 @@ void sastore() {
 	indice = popOp();
 	ref = (int32_t*)popOp();
 	ref[indice] = (int16_t)valor;
-
 	atualizaPc();
 }
 
 void pop() {
 	popOp();
-
 	atualizaPc();
 }
 
 void pop2() {
 	popOp();
 	popOp();
-
 	atualizaPc();
 }
 
@@ -1241,104 +1212,72 @@ void dup_x1() {
 	int32_t aux1, aux2;
 
 	aux1 = popOp();
-
 	aux2 = popOp();
 
 	push(aux1);
-
 	push(aux2);
-
 	push(aux1);
 
 	atualizaPc();
 }
 
 void dup_x2() {
-
-
 	int32_t aux1, aux2, aux3;
-
 	aux1 = popOp();
-
 	aux2 = popOp();
-
 	aux3 = popOp();
-
 	push(aux1);
 	push(aux3);
 	push(aux2);
 	push(aux1);
-
 	atualizaPc();
 }
 
 void dup2() {
-
 	int32_t aux1, aux2, aux3;
-
 	aux1 = popOp();
-
 	aux2 = popOp();
-
 	push(aux2);
 	push(aux1);
 	push(aux2);
 	push(aux1);
-
 	atualizaPc();
 }
 
 void dup2_x1() {
-
 	int32_t aux1, aux2, aux3;
-
 	aux1 = popOp();
-
 	aux2 = popOp();
-
 	aux3 = popOp();
-
 	push(aux2);
 	push(aux1);
 	push(aux3);
 	push(aux2);
 	push(aux1);
-
 	atualizaPc();
-
 }
 
 void dup2_x2() {
-
 	int32_t aux1, aux2, aux3, aux4;
-
 	aux1 = popOp();
-
 	aux2 = popOp();
-
 	aux3 = popOp();
-
 	aux4 = popOp();
-
 	push(aux2);
 	push(aux1);
 	push(aux4);
 	push(aux3);
 	push(aux2);
 	push(aux1);
-
 	atualizaPc();
 }
 
 void swap() {
 	int32_t val1,val2;
-
 	val1 = popOp();
 	val2 = popOp();
-
 	push(val1);
 	push(val2);
-
 	atualizaPc();
 }
 
@@ -1346,18 +1285,14 @@ void iadd() {
 	int32_t v1,v2;
 	v2 = popOp();
 	v1 = popOp();
-
 	push(v1+v2);
-
 	atualizaPc();
 }
 
 void ladd() {
 	int32_t baixa,alta;
-
 	baixa = popOp();
 	alta = popOp();
-
 
 	int64_t lVal = alta;
 	lVal <<= 32;
@@ -1371,7 +1306,6 @@ void ladd() {
 	lVal1 = lVal1 + baixa;
 
 	int64_t resultado = lVal1 + lVal;
-
 
 	alta = resultado >> 32;
 	baixa = resultado & 0xffffffff;
@@ -1444,9 +1378,7 @@ void isub() {
 	int32_t v1,v2;
 	v2 = popOp();
 	v1 = popOp();
-
 	push(v1-v2);
-
 	atualizaPc();
 }
 
@@ -1474,7 +1406,6 @@ void lsub() {
 
 	push(alta);
 	push(baixa);
-
 	atualizaPc();
 }
 
@@ -1493,7 +1424,6 @@ void fsub() {
 	memcpy(&retPilha, &resultado, sizeof(int32_t));
 
 	push(retPilha);
-
 	atualizaPc();
 }
 
@@ -1531,21 +1461,17 @@ void dsub() {
 
 	push(alta);
 	push(baixa);
-
 	atualizaPc();
 }
 
 void imul() {
 	int32_t v1 = popOp();
 	int32_t v2 = popOp();
-
 	push((int32_t)(v1 * v2));
-
 	atualizaPc();
 }
 
 void lmul() {
-
 	int32_t baixa,alta;
 
 	baixa = popOp();
@@ -1569,7 +1495,6 @@ void lmul() {
 
 	push(alta);
 	push(baixa);
-
 	atualizaPc();
 }
 
@@ -1588,7 +1513,6 @@ void fmul() {
 	memcpy(&retPilha, &resultado, sizeof(int32_t));
 
 	push(retPilha);
-
 	atualizaPc();
 }
 
@@ -1626,16 +1550,13 @@ void dmul() {
 
 	push(alta);
 	push(baixa);
-
 	atualizaPc();
 }
 
 void idiv() {
 	int32_t v2 = popOp();
 	int32_t v1 = popOp();
-
 	push((int32_t)(v1 / v2));
-
 	atualizaPc();
 }
 
@@ -1663,7 +1584,6 @@ void ins_ldiv() {
 
 	push(alta);
 	push(baixa);
-
 	atualizaPc();
 }
 
@@ -1682,7 +1602,6 @@ void fdiv() {
 	memcpy(&retPilha, &resultado, sizeof(int32_t));
 
 	push(retPilha);
-
 	atualizaPc();
 }
 
@@ -1719,16 +1638,13 @@ void ddiv() {
 
 	push(alta);
 	push(baixa);
-
 	atualizaPc();
 }
 
 void irem() {
 	int32_t v2 = popOp();
 	int32_t v1 = popOp();
-
 	push((int32_t)(v1 % v2));
-
 	atualizaPc();
 }
 
@@ -1756,7 +1672,6 @@ void lrem() {
 
 	push(alta);
 	push(baixa);
-
 	atualizaPc();
 }
 
@@ -1775,7 +1690,6 @@ void frem() {
 	memcpy(&retPilha, &resultado, sizeof(int32_t));
 
 	push(retPilha);
-
 	atualizaPc();
 }
 
@@ -1812,16 +1726,13 @@ void _drem() {
 
 	push(alta);
 	push(baixa);
-
 	atualizaPc();
 }
 
 void ineg() {
 	int32_t retPilha = popOp();
 	int32_t aux = -retPilha;
-
 	push(aux);
-
 	atualizaPc();
 }
 
@@ -1842,30 +1753,22 @@ void lneg() {
 
 	push(alta);
 	push(baixa);
-
 	atualizaPc();
-    foi_lneg = true;
+  foi_lneg = true;
 }
 
 void fneg() {
 	float fVal;
 	int32_t retPilha = popOp();
-
 	memcpy(&fVal,&retPilha,sizeof(float));
-
 	fVal = - fVal;
-
 	memcpy(&retPilha,&fVal,sizeof(int32_t));
-
 	push(retPilha);
-
 	atualizaPc();
 }
 
 void dneg() {
-
 	int32_t baixa,alta;
-
 	baixa = popOp();
 	alta = popOp();
 
@@ -1885,23 +1788,19 @@ void dneg() {
 
 	push(alta);
 	push(baixa);
-
 	atualizaPc();
 }
 
 void ishl() {
 	int32_t shift = popOp();
 	shift = shift & 0x1f;
-
 	int32_t sVal = popOp();
 	sVal = sVal << shift;
 	push(sVal);
-
 	atualizaPc();
 }
 
 void lshl() {
-
 	int32_t shift = popOp();
 	shift = shift & 0x3f;
 
@@ -1920,7 +1819,6 @@ void lshl() {
 
 	push(alta);
 	push(baixa);
-
 	atualizaPc();
 }
 
@@ -1942,9 +1840,7 @@ void ishr() {
 }
 
 void lshr() {
-
-    int32_t v2 = popOp();
-
+  int32_t v2 = popOp();
 	int32_t baixa,alta;
 	baixa = popOp();
 	alta = popOp();
@@ -1952,24 +1848,21 @@ void lshr() {
 	lVal <<= 32;
 	lVal = lVal + baixa;
 
-    lVal = lVal << v2;
+  lVal = lVal << v2;
 
 	alta = lVal >> 32;
 	baixa = lVal & 0xffffffff;
 	push(alta);
 	push(baixa);
-
 	atualizaPc();
 }
 
 void iushr() {
 	int32_t shift = popOp();
 	shift = shift & 0x1f;
-
 	int32_t sVal = popOp();
 	sVal = sVal >> shift;
 	push(sVal);
-
 	atualizaPc();
 }
 
@@ -1998,13 +1891,9 @@ void lushr() {
 
 void iand() {
 	int32_t pop1 = popOp();
-
 	int32_t pop2 = popOp();
-
 	int32_t aux = pop1 & pop2;
-
 	push(aux);
-
 	frameCorrente->pc++;
 }
 
@@ -2032,19 +1921,14 @@ void land() {
 
 	push(alta);
 	push(baixa);
-
 	atualizaPc();
 }
 
 void ior() {
 	int32_t pop1 = popOp();
-
 	int32_t pop2 = popOp();
-
 	int32_t aux = pop1 | pop2;
-
 	push(aux);
-
 	frameCorrente->pc++;
 }
 
@@ -2081,13 +1965,9 @@ void lor() {
 
 void ixor() {
 	int32_t pop1 = popOp();
-
 	int32_t pop2 = popOp();
-
 	int32_t aux = pop1 ^ pop2;
-
 	push(aux);
-
 	frameCorrente->pc++;
 }
 
@@ -2115,40 +1995,30 @@ void lxor() {
 
 	push(alta);
 	push(baixa);
-
 	atualizaPc();
 }
 
 void iinc() {
 	int8_t field = frameCorrente->code[frameCorrente->pc + 1];
-
 	int32_t value = frameCorrente->fields[field];
-
 	int8_t constant = frameCorrente->code[frameCorrente->pc + 2];
-
 	int8_t sumVal = (int8_t) value;
 	sumVal = sumVal + constant;
-
 	frameCorrente->fields[field] = (int32_t) sumVal;
-
 	atualizaPc();
 }
 
 void i2l() {
-    char* tipo = "L";
-    tipoGlobal = tipo;
-    int32_t alta, baixa;
-
-    int32_t val = popOp();
-
-    int64_t long_num = (int64_t) val;
+  char* tipo = "L";
+  tipoGlobal = tipo;
+  int32_t alta, baixa;
+  int32_t val = popOp();
+  int64_t long_num = (int64_t) val;
 	alta = long_num >> 32;
 	baixa = long_num & 0xffffffff;
-
-    push(alta);
-    push(baixa);
-
-    atualizaPc();
+  push(alta);
+  push(baixa);
+  atualizaPc();
 }
 
 void i2f() {
