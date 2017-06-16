@@ -45,6 +45,11 @@ typedef struct Vector {
 	int8_t tipo;
 } Vector ;
 
+int32_t retorno;
+int32_t retAlta;
+int32_t retBaixa;
+int8_t flagRet;
+
 int32_t popOp();
 
 void criaFrame(CpInfo*, ClassFile*, CodeAttribute*);

@@ -20,10 +20,6 @@ struct Frame* frameCorrente;
 Vector* arrayVetores;
 
 int32_t qtdArrays;
-int32_t retorno;
-int32_t retAlta;
-int32_t retBaixa;
-int8_t flagRet;
 
 static struct StackFrame* topo = NULL;
 

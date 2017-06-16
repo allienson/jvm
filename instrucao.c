@@ -14,7 +14,7 @@
 #include "instrucao.h"
 #include "frame.h"
 #include "carregador.h"
-#include "area_metodos.h"
+#include "areaMetodos.h"
 #include "metodo.h"
 
 #include <stdio.h>
@@ -27,18 +27,17 @@
 #define POS_BAIXA 1
 #define POS_ALTA 0
 
-vector* arrayVetores = NULL;
+Vector* arrayVetores = NULL;
 
 int32_t qtdArrays = 0;
 
-extern struct frame* frameCorrente;
+extern struct Frame* frameCorrente;
 
 int naoEmpilhaFlag = 0;
 
 Decodificador dec[NUM_INSTRUCAO];
 
 void atualizaPc() {
-
 	inicializaDecodificador(dec);
 	int numBytes = dec[frameCorrente->code[frameCorrente->pc]].bytes;
 
@@ -68,7 +67,6 @@ int obtemUtfEq(CpInfo* cp, int posPool) {
 }
 
 void newInstrucoes() {
-
 	instrucao[0] = nop;
 	instrucao[1] = aconst_null;
 	instrucao[2] = iconst_m1;
@@ -500,19 +498,19 @@ void ldc() {
 
     indice = frameCorrente->code[frameCorrente->pc + 1];
 
-    if (frameCorrente->constant_pool[indice - 1].tag == CONSTANT_Float || \
-        frameCorrente->constant_pool[indice - 1].tag == CONSTANT_Integer) {
-        
-        if (frameCorrente->constant_pool[indice - 1].tag == CONSTANT_Float) {
-            push(frameCorrente->constant_pool[indice - 1].info.Float.bytes);
+    if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_Float || \
+        frameCorrente->constantPool[indice - 1].tag == CONSTANT_Integer) {
+
+        if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_Float) {
+            push(frameCorrente->constantPool[indice - 1].info.Float.bytes);
         } else {
-            push(frameCorrente->constant_pool[indice - 1].info.Integer.bytes);
+            push(frameCorrente->constantPool[indice - 1].info.Integer.bytes);
         }
-    } else if (frameCorrente->constant_pool[indice - 1].tag == CONSTANT_String) {
+    } else if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_String) {
         uint32_t indice_utf;
-        indice_utf = obtemUtfEq(frameCorrente->constant_pool, indice-1);
+        indice_utf = obtemUtfEq(frameCorrente->constantPool, indice-1);
         push(indice_utf);
-    } else if (frameCorrente->constant_pool[indice - 1].tag == CONSTANT_String) {
+    } else if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_String) {
         printf("a implementar\n");
         exit(1);
     } else {
@@ -530,18 +528,18 @@ void ldc_w() {
 
     indice = (frameCorrente->code[frameCorrente->pc + 1] << 8 + frameCorrente->code[frameCorrente->pc + 2]);
 
-    if (frameCorrente->constant_pool[indice - 1].tag == CONSTANT_Float || \
-            frameCorrente->constant_pool[indice - 1].tag == CONSTANT_Integer) {
-        if (frameCorrente->constant_pool[indice - 1].tag == CONSTANT_Float) {
-            push(frameCorrente->constant_pool[indice - 1].info.Float.bytes);
+    if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_Float || \
+            frameCorrente->constantPool[indice - 1].tag == CONSTANT_Integer) {
+        if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_Float) {
+            push(frameCorrente->constantPool[indice - 1].info.Float.bytes);
         } else {
-            push(frameCorrente->constant_pool[indice - 1].info.Integer.bytes);
+            push(frameCorrente->constantPool[indice - 1].info.Integer.bytes);
         }
-    } else if (frameCorrente->constant_pool[indice - 1].tag == CONSTANT_String) {
+    } else if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_String) {
         uint32_t indice_utf;
-        indice_utf = obtemUtfEq(frameCorrente->constant_pool, indice-1);
+        indice_utf = obtemUtfEq(frameCorrente->constantPool, indice-1);
         push(indice_utf);
-    } else if (frameCorrente->constant_pool[indice - 1].tag == CONSTANT_String) {
+    } else if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_String) {
     } else {
         printf("erro na instrucao ldc\n");
         exit(1);
@@ -555,18 +553,18 @@ void ldc2_w() {
 
 	uint8_t indice = frameCorrente->code[frameCorrente->pc + 2];
 
-	uint8_t tag = (frameCorrente->constant_pool[indice-1]).tag;
+	uint8_t tag = (frameCorrente->constantPool[indice-1]).tag;
 
 	if(tag == 5) {
-		uint32_t alta = frameCorrente->constant_pool[indice-1].info.Long.high_bytes;
-		uint32_t baixa = frameCorrente->constant_pool[indice-1].info.Long.low_bytes;
+		uint32_t alta = frameCorrente->constantPool[indice-1].info.Long.highBytes;
+		uint32_t baixa = frameCorrente->constantPool[indice-1].info.Long.lowBytes;
 		push(alta);
 		push(baixa);
 	}
 
 	if(tag == 6) {
-		uint32_t alta = frameCorrente->constant_pool[indice-1].info.Double.high_bytes;
-		uint32_t baixa = frameCorrente->constant_pool[indice-1].info.Double.low_bytes;
+		uint32_t alta = frameCorrente->constantPool[indice-1].info.Double.highBytes;
+		uint32_t baixa = frameCorrente->constantPool[indice-1].info.Double.lowBytes;
 		push(alta);
 		push(baixa);
 	}
@@ -3045,7 +3043,7 @@ void if_icmpge() {
 
 	if(retPilha2 >= retPilha1) {
 		frameCorrente->pc += offset;
-	} else { 
+	} else {
 		frameCorrente->pc += 3;
 	}
 }
@@ -3295,10 +3293,9 @@ void lookupswitch() {
     frameCorrente->pc = pc_novo;
 }
 void ireturn() {
-    retorno = pop_op();
+  retorno = popOp();
 	flagRet = 1;
-
-    frameCorrente->pc = frameCorrente->code_length + 1;
+  frameCorrente->pc = frameCorrente->codeLength + 1;
 }
 
 void lreturn() {
@@ -3312,14 +3309,13 @@ void lreturn() {
 	retAlta = alta;
 	retBaixa = baixa;
 
-    frameCorrente->pc = frameCorrente->code_length + 1;
+  frameCorrente->pc = frameCorrente->codeLength + 1;
 }
 
 void freturn() {
 	retorno = pop_op();
 	flagRet = 1;
-
-    frameCorrente->pc = frameCorrente->code_length + 1;
+  frameCorrente->pc = frameCorrente->codeLength + 1;
 }
 
 void dreturn() {
@@ -3333,14 +3329,14 @@ void dreturn() {
 	retAlta = alta;
 	retBaixa = baixa;
 
-    frameCorrente->pc = frameCorrente->code_length + 1;
+  frameCorrente->pc = frameCorrente->codeLength + 1;
 }
 
 void areturn() {
 	retorno = pop_op();
 	flagRet = 1;
 
-    frameCorrente->pc = frameCorrente->code_length + 1;
+    frameCorrente->pc = frameCorrente->codeLength + 1;
 }
 
 void ins_return() {
@@ -3351,9 +3347,7 @@ void ins_return() {
 }
 
 void getstatic() {
-
-    frameCorrente->pilha_op->depth += 1;
-
+  frameCorrente->pilhaOp->depth += 1;
 	atualizaPc();
 }
 
@@ -3363,15 +3357,11 @@ void putstatic() {
 
 void getfield() {
 	uint32_t indice = frameCorrente->code[frameCorrente->pc + 2];
-
-	int32_t indiceClasse = frameCorrente->constant_pool[indice-1].info.Fieldref.class_index;
-
-	char* nomeClasse = retornaNome(frameCorrente->classe, frameCorrente->constant_pool[indiceClasse-1].info.Class.name_index);
-
-	uint16_t nomeTipoIndice = frameCorrente->constant_pool[indice-1].info.Fieldref.name_and_type_index;
-
-	char* nome = retornaNome(frameCorrente->classe, frameCorrente->constant_pool[nomeTipoIndice-1].info.NameAndType.name_index);
-	char* tipo = retornaNome(frameCorrente->classe, frameCorrente->constant_pool[nomeTipoIndice-1].info.NameAndType.descriptor_index);
+	int32_t indiceClasse = frameCorrente->constantPool[indice-1].info.Fieldref.classIndex;
+	char* nomeClasse = retornaNome(frameCorrente->classe, frameCorrente->constantPool[indiceClasse-1].info.Class.nameIndex);
+	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Fieldref.nameAndTypeIndex;
+	char* nome = retornaNome(frameCorrente->classe, frameCorrente->constantPool[nomeTipoIndice-1].info.NameAndType.nameIndex);
+	char* tipo = retornaNome(frameCorrente->classe, frameCorrente->constantPool[nomeTipoIndice-1].info.NameAndType.descriptorIndex);
 	tipoGlobal = tipo;
 
  	if((strcmp(tipo, "Ljava/util/Scanner;") == 0)) {
@@ -3379,12 +3369,10 @@ void getfield() {
 		return;
  	}
 
- 	objeto* obj = (objeto*) pop_op();
+ 	Objeto* obj = (Objeto*) pop_op();
 
- 	int32_t indiceField = buscaCampo(nomeClasse,nome,tipo);
-
-
- 	uint32_t indiceNome = frameCorrente->classe->fields[indiceField].name_index;
+ 	int32_t indiceField = buscaCampo(nomeClasse, nome, tipo);
+ 	uint32_t indiceNome = frameCorrente->classe->fields[indiceField].nameIndex;
 
  	if(tipo[0] == 'J' || tipo[0] == 'D') {
  		int32_t i;
@@ -3403,32 +3391,26 @@ void getfield() {
 	 	uint32_t val = obj->campos[i];
 
 	 	push(val);
-
 		atualizaPc();
 	}
 }
 
 void putfield() {
 	uint32_t indice = frameCorrente->code[frameCorrente->pc + 2];
-
-	int32_t indiceClasse = frameCorrente->constant_pool[indice-1].info.Fieldref.class_index;
-
-	char* nomeClasse = retornaNome(frameCorrente->classe, frameCorrente->constant_pool[indiceClasse-1].info.Class.name_index);
-
-	uint16_t nomeTipoIndice = frameCorrente->constant_pool[indice-1].info.Fieldref.name_and_type_index;
-
-	char* nome = retornaNome(frameCorrente->classe, frameCorrente->constant_pool[nomeTipoIndice-1].info.NameAndType.name_index);
-	char* tipo = retornaNome(frameCorrente->classe, frameCorrente->constant_pool[nomeTipoIndice-1].info.NameAndType.descriptor_index);
-
- 	int32_t indiceField = buscaCampo(nomeClasse,nome,tipo);
-
- 	uint32_t indiceNome = frameCorrente->classe->fields[indiceField].name_index;
+	int32_t indiceClasse = frameCorrente->constantPool[indice-1].info.Fieldref.classIndex;
+	char* nomeClasse = retornaNome(frameCorrente->classe, frameCorrente->constantPool[indiceClasse-1].info.Class.nameIndex);
+	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Fieldref.nameAndTypeIndex;
+	char* nome = retornaNome(frameCorrente->classe, frameCorrente->constantPool[nomeTipoIndice-1].info.NameAndType.nameIndex);
+	char* tipo = retornaNome(frameCorrente->classe, frameCorrente->constantPool[nomeTipoIndice-1].info.NameAndType.descriptorIndex);
+ 	int32_t indiceField = buscaCampo(nomeClasse, nome, tipo);
+ 	uint32_t indiceNome = frameCorrente->classe->fields[indiceField].nameIndex;
 
  	if(tipo[0] == 'J' || tipo[0] == 'D') {
- 		int32_t alta,baixa;
- 		int32_t val1 = pop_op();
- 		int32_t val2 = pop_op();
- 		objeto* obj = (objeto*)pop_op();
+ 		int32_t alta;
+    int32_t baixa;
+ 		int32_t val1 = popOp();
+ 		int32_t val2 = popOp();
+ 		Objeto* obj = (Objeto*)popOp();
 
 
 		int64_t dVal = val2;
@@ -3450,7 +3432,7 @@ void putfield() {
 		obj->campos[i+1] = alta;
  	} else {
 	 	int32_t val = pop_op();
-	 	objeto* obj = (objeto*)pop_op();
+	 	Objeto* obj = (Objeto*)pop_op();
 	 	int i;
 	 	for(i = 0; obj->indiceCampos[i] != indiceNome; i++);
 		obj->campos[i] = val;
@@ -3915,7 +3897,7 @@ void newarray() {
 	if(tipoArray == 5) {
 		tamanhoBytes = 2;
 	}
-	if(tipoArray == 9) { 
+	if(tipoArray == 9) {
 		tamanhoBytes = 2;
 	}
 
