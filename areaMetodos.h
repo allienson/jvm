@@ -16,44 +16,26 @@
 
 #include "leitor.h"
 
-// maximo numero de variaveis um objeto pode ter
 #define MAX_VAR 256
 
-// um campo que o objeto pode armazenar
 union var {
     int inteiro;
-    char caractere; 
-    float pFlutuante; 
-}; 
+    char caractere;
+    float pFlutuante;
+};
 
-/** 
- * struct para a area de metodos
- * 
- */
 typedef struct AreaMetodos {
-    // array de classfiles, contem as classes ja carregadas
-    ClassFile** arrayClasses; 
+    ClassFile** arrayClasses;
+    int numClasses;
+} AreaMetodos;
 
-    // numero de classes carregadas em memoria 
-    int numClasses;  
-
-    // cada classe tem uma referencia ao heap, precisamos entao de uma array de referencias ao heap 
-    //heap** heap;
-
-} AreaMetodos; 
-
-/** 
- * struct que representa um objeto. Usada na instrução new.
- * 
- */
-typedef struct Objeto{
+typedef struct Objeto {
     ClassFile* classe;
     struct objeto* superClasse;
     uint32_t* campos;
     uint32_t* indiceCampos;
 } Objeto;
 
-//Array de referencias para objetos.
 Objeto** heap;
 
-#endif 
+#endif

@@ -17,15 +17,11 @@
 #include "leitor.h"
 #include "areaMetodos.h"
 
-//Area de metodos.
-extern AreaMetodos areaMet; 
-
-// funcoes usadas no carregador 
-int32_t carregaObjectClass();
-int32_t carregaMemClass(char* );
-char* retornaNomeClass(ClassFile* );
-ClassFile* buscaClassPorIndice(int );
-char * retornaNome(ClassFile* cf, uint16_t indiceNome);
-
+void carregaMemClass(char*);
+int isClasseCarregada();
+void carregaClasse();
+char* retornaNomeClass(ClassFile*);
+ClassFile* buscaClassPorIndice(int);
+char * retornaNome(ClassFile*, uint16_t);
 
 #endif
