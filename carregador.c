@@ -22,7 +22,7 @@
 AreaMetodos areaMetodos;
 
 int primeira = FALSE;
-
+//
 void carregaMemClass(char* nomeClass) {
   if(!isClasseCarregada(nomeClass)) {
     areaMetodos.numClasses++;
