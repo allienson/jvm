@@ -18,24 +18,19 @@
 
 #include "exibidor.h"
 #include "carregador.h"
-//#include "metodo.h"
-
-//deletar
+#include "metodo.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 
 #define TAMANHO_ARQUIVO 100
 
+MethodInfo* metodoMain;
 char* nomeArquivo;
 
 int main(int argc, char* argv[]) {
     nomeArquivo = calloc(TAMANHO_ARQUIVO, sizeof(argv[1]));
 
-    // Cria uma estrutura de execucao para chamar o Main da primeira classe carregada
-    MethodInfo* Main;
-
-    // Verificacao para passagem de argumentos por linha de comando
     if (argc < 2) {
     	printf("\n\nInforme o caminho completo do arquivo \".class\" que contem o metodo main:\n");
     	scanf("%s", nomeArquivo);
@@ -44,23 +39,15 @@ int main(int argc, char* argv[]) {
     	strcpy(nomeArquivo, argv[1]);
     }
 
-    // Carrega a classe java.lang.Object
-    carregaObjectClass("java/lang/Object");
-
-    // Carrega a classe que o usuario informou
-    exit(0);
     carregaMemClass(nomeArquivo);
     ClassFile* mainClass = buscaClassPorIndice(1);
 
-    // Acha o Main da classe carregada para comecar a execucao
-    //Main = buscaMetodoMain();
+    metodoMain = buscaMetodoMain();
 
     if (Main == NULL) {
         printf("O arquivo \".class\" informado nao possui metodo Main!");
         return 0;
     }
-
-    //printaClassFile(classFile);
 
     free(nomeArquivo);
     return 0;
