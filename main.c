@@ -16,7 +16,6 @@
 //  a leitura, executa a funcao de apresentacao das
 //  estruturas lidas e formatadas.
 
-#include "exibidor.h"
 #include "carregador.h"
 #include "metodo.h"
 
@@ -48,6 +47,8 @@ int main(int argc, char* argv[]) {
         printf("O arquivo \".class\" informado nao possui metodo Main!");
         return 0;
     }
+
+    
 
     free(nomeArquivo);
     return 0;

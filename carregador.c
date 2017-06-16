@@ -23,18 +23,18 @@ AreaMetodos areaMetodos;
 
 int primeira = FALSE;
 
-void carregaMemClass(char* nomeClass){
-  if(!isClasseCarregada()) {
+void carregaMemClass(char* nomeClass) {
+  if(!isClasseCarregada(nomeClass)) {
     areaMetodos.numClasses++;
     ClassFile** arrayClassesAux = NULL;
-    arrayClassesAux = (ClassFile**) realloc(areaMetodos.arrayClasses, (aux*sizeof(ClassFile*)));
+    arrayClassesAux = (ClassFile**) realloc(areaMetodos.arrayClasses, (areaMetodos.numClasses*sizeof(ClassFile*)));
     areaMetodos.arrayClasses = (ClassFile**) calloc(1, sizeof(ClassFile*));
     areaMetodos.arrayClasses = arrayClassesAux;
-    carregaClasse();
+    carregaClasse(nomeClass);
   }
 }
 
-int isClasseCarregada() {
+int isClasseCarregada(char* nomeClass) {
   if (primeira == FALSE) {
       areaMetodos.numClasses = 0;
       primeira = TRUE;
@@ -49,7 +49,7 @@ int isClasseCarregada() {
   return FALSE;
 }
 
-void carregaClasse() {
+void carregaClasse(char* nomeClass) {
   char* destino = malloc(strlen(nomeClass) + 10);
 
   if (strstr(nomeClass,".class") != NULL) {

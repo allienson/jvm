@@ -17,7 +17,7 @@
 #include "carregador.h"
 
 MethodInfo* buscaMetodoMain();
-void empilhaMetodo(MethodInfo* , ClassFile*);
+void empilhaMetodo(MethodInfo*, ClassFile*);
 void executaFrameCorrente();
 Objeto* criaObjeto(ClassFile*);
 MethodInfo* buscaMetodo(ClassFile*, ClassFile*, uint16_t);
