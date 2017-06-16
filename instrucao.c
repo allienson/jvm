@@ -272,287 +272,219 @@ void nop() {
 }
 
 void aconst_null() {
-    push((int32_t)NULL_REF);
-
+  push((int32_t)NULL_REF);
 	frameCorrente->pc++;
 }
 
 void iconst_m1() {
-    char* tipo = "I";
-    tipoGlobal = tipo;
-
-    push(-1);
-
-    frameCorrente->pc++;
+  char* tipo = "I";
+  tipoGlobal = tipo;
+  push(-1);
+  frameCorrente->pc++;
 }
 
 void iconst_0() {
-    char* tipo = "I";
-    tipoGlobal = tipo;
-
+  char* tipo = "I";
+  tipoGlobal = tipo;
 	push((int32_t) 0);
-
 	atualizaPc();
 }
 
 void iconst_1() {
-    char* tipo = "I";
-    tipoGlobal = tipo;
-
-    push(1);
-
-    frameCorrente->pc++;
+  char* tipo = "I";
+  tipoGlobal = tipo;
+  push(1);
+  frameCorrente->pc++;
 }
 
 void iconst_2() {
-    char* tipo = "I";
-    tipoGlobal = tipo;
-
-    push(2);
-
-    frameCorrente->pc++;
+  char* tipo = "I";
+  tipoGlobal = tipo;
+  push(2);
+  frameCorrente->pc++;
 }
 
 void iconst_3() {
-    char* tipo = "I";
-    tipoGlobal = tipo;
-
-    push(3);
-    frameCorrente->pc++;
+  char* tipo = "I";
+  tipoGlobal = tipo;
+  push(3);
+  frameCorrente->pc++;
 }
 
 void iconst_4() {
-    char* tipo = "I";
-    tipoGlobal = tipo;
-
-    push(4);
-
-    frameCorrente->pc++;
+  char* tipo = "I";
+  tipoGlobal = tipo;
+  push(4);
+  frameCorrente->pc++;
 }
 
 void iconst_5() {
-    char* tipo = "I";
-    tipoGlobal = tipo;
-
-    push(5);
-
-    frameCorrente->pc++;
+  char* tipo = "I";
+  tipoGlobal = tipo;
+  push(5);
+  frameCorrente->pc++;
 }
 
 void lconst_0() {
-    char* tipo = "L";
-    tipoGlobal = tipo;
-
-
-    int64_t long0 = 0;
-    int32_t parte_alta;
-    int32_t parte_baixa;
-
-	parte_alta = long0 >> 32;
-	parte_baixa = long0 & 0xffffffff;
-
-    push(parte_alta);
-
-    push(parte_baixa);
-
-    frameCorrente->pc++;
+  char* tipo = "L";
+  tipoGlobal = tipo;
+  int64_t long0 = 0;
+  int32_t parte_alta;
+  int32_t parte_baixa;
+  parte_alta = long0 >> 32;
+  parte_baixa = long0 & 0xffffffff;
+  push(parte_alta);
+  push(parte_baixa);
+  frameCorrente->pc++;
 }
 
 void lconst_1() {
-    char* tipo = "L";
-    tipoGlobal = tipo;
-
-    int64_t long1 = 1;
-    int32_t parte_alta;
-    int32_t parte_baixa;
-
+  char* tipo = "L";
+  tipoGlobal = tipo;
+  int64_t long1 = 1;
+  int32_t parte_alta;
+  int32_t parte_baixa;
 	parte_alta = long1 >> 32;
 	parte_baixa = long1 & 0xffffffff;
-
-    push(parte_alta);
-
-    push(parte_baixa);
-
-    frameCorrente->pc++;
+  push(parte_alta);
+  push(parte_baixa);
+  frameCorrente->pc++;
 }
 
 void fconst_0() {
-    char* tipo = "F";
-    tipoGlobal = tipo;
-
-
-	int32_t* valPilha;
-
-	float valF = 0.0;
-
-	valPilha = (int32_t*) malloc(sizeof(int32_t));
-
-	memcpy(valPilha, &valF, sizeof(int32_t));
-
-	push(*valPilha);
-
+  char* tipo = "F";
+  tipoGlobal = tipo;
+  int32_t* valPilha;
+  float valF = 0.0;
+  valPilha = (int32_t*) malloc(sizeof(int32_t));
+  memcpy(valPilha, &valF, sizeof(int32_t));
+  push(*valPilha);
 	atualizaPc();
 }
 
 void fconst_1() {
-    char* tipo = "F";
-    tipoGlobal = tipo;
-
+  char* tipo = "F";
+  tipoGlobal = tipo;
 	int32_t* valPilha;
-
 	float valF = 1.0;
-
 	valPilha = (int32_t*) malloc(sizeof(int32_t));
-
 	memcpy(valPilha, &valF, sizeof(int32_t));
-
 	push(*valPilha);
-
 	atualizaPc();
 }
 
 void fconst_2() {
-    char* tipo = "F";
-    tipoGlobal = tipo;
-
+  char* tipo = "F";
+  tipoGlobal = tipo;
 	int32_t* valPilha;
-
 	float valF = 2.0;
-
 	valPilha = (int32_t*) malloc(sizeof(int32_t));
-
 	memcpy(valPilha, &valF, sizeof(int32_t));
-
 	push(*valPilha);
-
 	atualizaPc();
 }
 
 void dconst_0() {
-    char* tipo = "D";
-    tipoGlobal = tipo;
-
-    double double0 = 0.0;
-    int64_t temp;
-    int32_t parte_alta;
-    int32_t parte_baixa;
-
+  char* tipo = "D";
+  tipoGlobal = tipo;
+  double double0 = 0.0;
+  int64_t temp;
+  int32_t parte_alta;
+  int32_t parte_baixa;
 	memcpy(&temp, &double0, sizeof(int64_t));
-
 	parte_alta = temp >> 32;
 	parte_baixa = temp & 0xffffffff;
-
-    push(parte_alta);
-    push(parte_baixa);
-
-    frameCorrente->pc++;
+  push(parte_alta);
+  push(parte_baixa);
+  frameCorrente->pc++;
 }
 
 void dconst_1() {
-    char* tipo = "D";
-    tipoGlobal = tipo;
-
-    double double1 = 1.0;
-    int64_t temp;
-    int32_t parte_alta;
-    int32_t parte_baixa;
-
+  char* tipo = "D";
+  tipoGlobal = tipo;
+  double double1 = 1.0;
+  int64_t temp;
+  int32_t parte_alta;
+  int32_t parte_baixa;
 	memcpy(&temp, &double1, sizeof(int64_t));
-
 	parte_alta = temp >> 32;
 	parte_baixa = temp & 0xffffffff;
-
-    push(parte_alta);
-    push(parte_baixa);
-
-    frameCorrente->pc++;
+  push(parte_alta);
+  push(parte_baixa);
+  frameCorrente->pc++;
 }
 
 void bipush() {
 	int8_t argumento = (int8_t) frameCorrente->code[frameCorrente->pc + 1];
-
 	push((int32_t)argumento);
-
 	atualizaPc();
 }
 
 void sipush() {
-    int32_t byte1, byte2;
-    int32_t valor;
-    int16_t short_temp;
-
+  int32_t byte1, byte2;
+  int32_t valor;
+  int16_t short_temp;
 	byte1 = frameCorrente->code[(frameCorrente->pc + 1)];
-
 	byte2 = frameCorrente->code[(frameCorrente->pc + 2)];
-
-    short_temp = (byte1 << 8) + byte2;
-    valor = (int32_t) short_temp;
-
-    push(valor);
-    atualizaPc();
+  short_temp = (byte1 << 8) + byte2;
+  valor = (int32_t) short_temp;
+  push(valor);
+  atualizaPc();
 }
 
 void ldc() {
-    uint32_t indice;
-    tipoGlobal = NULL;
-
-    indice = frameCorrente->code[frameCorrente->pc + 1];
-
-    if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_Float || \
-        frameCorrente->constantPool[indice - 1].tag == CONSTANT_Integer) {
-
-        if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_Float) {
-            push(frameCorrente->constantPool[indice - 1].info.Float.bytes);
-        } else {
-            push(frameCorrente->constantPool[indice - 1].info.Integer.bytes);
-        }
-    } else if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_String) {
-        uint32_t indice_utf;
-        indice_utf = obtemUtfEq(frameCorrente->constantPool, indice-1);
-        push(indice_utf);
-    } else if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_String) {
-        printf("a implementar\n");
-        exit(1);
-    } else {
-        printf("erro na instrucao ldc\n");
-        exit(1);
-    }
-    atualizaPc();
+  uint32_t indice;
+  tipoGlobal = NULL;
+  indice = frameCorrente->code[frameCorrente->pc + 1];
+  if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_Float || \
+      frameCorrente->constantPool[indice - 1].tag == CONSTANT_Integer) {
+      if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_Float) {
+          push(frameCorrente->constantPool[indice - 1].info.Float.bytes);
+      } else {
+          push(frameCorrente->constantPool[indice - 1].info.Integer.bytes);
+      }
+  } else if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_String) {
+      uint32_t indice_utf;
+      indice_utf = obtemUtfEq(frameCorrente->constantPool, indice-1);
+      push(indice_utf);
+  } else if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_String) {
+      printf("a implementar\n");
+      exit(1);
+  } else {
+      printf("erro na instrucao ldc\n");
+      exit(1);
+  }
+  atualizaPc();
 }
 
 void ldc_w() {
-    uint32_t indice;
-
+  uint32_t indice;
 	inicializaDecodificador(dec);
 	int numBytes = dec[frameCorrente->code[frameCorrente->pc]].bytes;
-
-    indice = (frameCorrente->code[frameCorrente->pc + 1] << 8 + frameCorrente->code[frameCorrente->pc + 2]);
-
-    if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_Float || \
-            frameCorrente->constantPool[indice - 1].tag == CONSTANT_Integer) {
-        if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_Float) {
-            push(frameCorrente->constantPool[indice - 1].info.Float.bytes);
-        } else {
-            push(frameCorrente->constantPool[indice - 1].info.Integer.bytes);
-        }
-    } else if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_String) {
-        uint32_t indice_utf;
-        indice_utf = obtemUtfEq(frameCorrente->constantPool, indice-1);
-        push(indice_utf);
-    } else if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_String) {
-    } else {
-        printf("erro na instrucao ldc\n");
-        exit(1);
-    }
+  indice = (frameCorrente->code[frameCorrente->pc + 1] << 8 + frameCorrente->code[frameCorrente->pc + 2]);
+  if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_Float || \
+          frameCorrente->constantPool[indice - 1].tag == CONSTANT_Integer) {
+      if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_Float) {
+          push(frameCorrente->constantPool[indice - 1].info.Float.bytes);
+      } else {
+          push(frameCorrente->constantPool[indice - 1].info.Integer.bytes);
+      }
+  } else if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_String) {
+      uint32_t indice_utf;
+      indice_utf = obtemUtfEq(frameCorrente->constantPool, indice-1);
+      push(indice_utf);
+  } else if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_String) {
+  } else {
+      printf("erro na instrucao ldc\n");
+      exit(1);
+  }
 	for(int8_t i = 0; i < numBytes + 1; i++) {
 		frameCorrente->pc++;
 	}
 }
 
 void ldc2_w() {
-
 	uint8_t indice = frameCorrente->code[frameCorrente->pc + 2];
-
 	uint8_t tag = (frameCorrente->constantPool[indice-1]).tag;
 
 	if(tag == 5) {
@@ -570,355 +502,240 @@ void ldc2_w() {
 	}
 
 	atualizaPc();
-    foi_lneg = false;
-
+  foi_lneg = false;
 }
 
 void iload() {
-
-    char* tipo = "I";
-    tipoGlobal = tipo;
-
+  char* tipo = "I";
+  tipoGlobal = tipo;
 	int32_t argumento = (int32_t) frameCorrente->code[frameCorrente->pc + 1];
 	int32_t aux = frameCorrente->fields[argumento];
 	push(aux);
-
 	atualizaPc();
-
 }
 
 void lload() {
 	char* tipo = "L";
-    tipoGlobal = tipo;
-
-    int32_t indice;
-    int32_t parte_alta, parte_baixa;
-
-    indice = frameCorrente->code[frameCorrente->pc + 1];
-
-    parte_alta = frameCorrente->fields[indice + POS_ALTA];
-    push(parte_alta);
-
-    parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
-    push(parte_baixa);
-
-    atualizaPc();
-
+  tipoGlobal = tipo;
+  int32_t indice;
+  int32_t parte_alta, parte_baixa;
+  indice = frameCorrente->code[frameCorrente->pc + 1];
+  parte_alta = frameCorrente->fields[indice + POS_ALTA];
+  push(parte_alta);
+  parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
+  push(parte_baixa);
+  atualizaPc();
 }
 
 void fload() {
-
 	char* tipo = "F";
-    tipoGlobal = tipo;
-
-    int32_t indice, valor;
-
-    indice = frameCorrente->code[frameCorrente->pc + 1];
-
-    valor = frameCorrente->fields[indice];
-    push(valor);
-
-    atualizaPc();
+  tipoGlobal = tipo;
+  int32_t indice, valor;
+  indice = frameCorrente->code[frameCorrente->pc + 1];
+  valor = frameCorrente->fields[indice];
+  push(valor);
+  atualizaPc();
 }
 
 void dload() {
-
-    int32_t indice;
-    int32_t parte_alta, parte_baixa;
-    char* tipo = "D";
-    tipoGlobal = tipo;
-
-    indice = frameCorrente->code[frameCorrente->pc + 1];
-
-    parte_alta = frameCorrente->fields[indice + POS_ALTA];
-    push(parte_alta);
-
-    parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
-    push(parte_baixa);
-
-    atualizaPc();
+  int32_t indice;
+  int32_t parte_alta, parte_baixa;
+  char* tipo = "D";
+  tipoGlobal = tipo;
+  indice = frameCorrente->code[frameCorrente->pc + 1];
+  parte_alta = frameCorrente->fields[indice + POS_ALTA];
+  push(parte_alta);
+  parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
+  push(parte_baixa);
+  atualizaPc();
 }
 
 void aload() {
-
     int32_t indice, valor;
-
     indice = frameCorrente->code[frameCorrente->pc + 1];
-
     valor = frameCorrente->fields[indice];
     push(valor);
-
     atualizaPc();
-
 }
 
 void iload_0() {
-
 	char* tipo = "I";
-    tipoGlobal = tipo;
-
-    int32_t valor;
-
-    valor = frameCorrente->fields[0];
-
-    push(valor);
-
+  tipoGlobal = tipo;
+  int32_t valor;
+  valor = frameCorrente->fields[0];
+  push(valor);
 	atualizaPc();
 }
 
 void iload_1() {
 	char* tipo = "I";
-    tipoGlobal = tipo;
-
-    int32_t valor;
-
-    valor = frameCorrente->fields[1];
-
-    push(valor);
-    atualizaPc();
+  tipoGlobal = tipo;
+  int32_t valor;
+  valor = frameCorrente->fields[1];
+  push(valor);
+  atualizaPc();
 }
 
 void iload_2() {
-
 	char* tipo = "I";
-    tipoGlobal = tipo;
-
-    int32_t valor;
-
-    valor = frameCorrente->fields[2];
-
-    push(valor);
-
-    atualizaPc();
+  tipoGlobal = tipo;
+  int32_t valor;
+  valor = frameCorrente->fields[2];
+  push(valor);
+  atualizaPc();
 }
 
 void iload_3() {
-
-    int32_t valor;
-    char* tipo = "I";
-    tipoGlobal = tipo;
-
-    valor = frameCorrente->fields[3];
-
-    push(valor);
-
-    atualizaPc();
-
+  int32_t valor;
+  char* tipo = "I";
+  tipoGlobal = tipo;
+  valor = frameCorrente->fields[3];
+  push(valor);
+  atualizaPc();
 }
 
 void lload_0() {
-
 	char* tipo = "L";
-    tipoGlobal = tipo;
-
-    int32_t indice;
-    int32_t parte_alta, parte_baixa;
-
-    indice = 0;
-
-    parte_alta = frameCorrente->fields[indice + POS_ALTA];
-    push(parte_alta);
-
-    parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
-    push(parte_baixa);
-
+  tipoGlobal = tipo;
+  int32_t indice;
+  int32_t parte_alta, parte_baixa;
+  indice = 0;
+  parte_alta = frameCorrente->fields[indice + POS_ALTA];
+  push(parte_alta);
+  parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
+  push(parte_baixa);
 	atualizaPc();
-
 }
 
 void lload_1() {
-    int32_t indice;
-    int32_t parte_alta, parte_baixa;
-
-    char* tipo = "L";
-    tipoGlobal = tipo;
-
-    indice = 1;
-
-    parte_alta = frameCorrente->fields[indice + POS_ALTA];
-    push(parte_alta);
-
-    parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
-    push(parte_baixa);
-
-    atualizaPc();
-
+  int32_t indice;
+  int32_t parte_alta, parte_baixa;
+  char* tipo = "L";
+  tipoGlobal = tipo;
+  indice = 1;
+  parte_alta = frameCorrente->fields[indice + POS_ALTA];
+  push(parte_alta);
+  parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
+  push(parte_baixa);
+  atualizaPc();
 }
 
 void lload_2() {
-
 	char* tipo = "L";
-    tipoGlobal = tipo;
-
-    int32_t indice;
-    int32_t parte_alta, parte_baixa;
-
-    indice = 2;
-
-    parte_alta = frameCorrente->fields[indice + POS_ALTA];
-    push(parte_alta);
-
-    parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
-    push(parte_baixa);
-
-    atualizaPc();
-
+  tipoGlobal = tipo;
+  int32_t indice;
+  int32_t parte_alta, parte_baixa;
+  indice = 2;
+  parte_alta = frameCorrente->fields[indice + POS_ALTA];
+  push(parte_alta);
+  parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
+  push(parte_baixa);
+  atualizaPc();
 }
 
 void lload_3() {
-
 	char* tipo = "L";
-    tipoGlobal = tipo;
-
-    int32_t indice;
-    int32_t parte_alta, parte_baixa;
-
-    indice = 3;
-
-    parte_alta = frameCorrente->fields[indice + POS_ALTA];
-    push(parte_alta);
-
-    parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
-    push(parte_baixa);
-
-    atualizaPc();
-
+  tipoGlobal = tipo;
+  int32_t indice;
+  int32_t parte_alta, parte_baixa;
+  indice = 3;
+  parte_alta = frameCorrente->fields[indice + POS_ALTA];
+  push(parte_alta);
+  parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
+  push(parte_baixa);
+  atualizaPc();
 }
 
 void fload_0() {
-
 	char* tipo = "F";
-    tipoGlobal = tipo;
-
-    int32_t indice, valor;
-
-    indice = 0;
-
-    valor = frameCorrente->fields[indice];
-    push(valor);
-
-   atualizaPc();
+  tipoGlobal = tipo;
+  int32_t indice, valor;
+  indice = 0;
+  valor = frameCorrente->fields[indice];
+  push(valor);
+ atualizaPc();
 }
 
 void fload_1() {
-
 	char* tipo = "F";
-    tipoGlobal = tipo;
-
-    int32_t indice, valor;
-
-    indice = 1;
-
-    valor = frameCorrente->fields[indice];
-    push(valor);
-
-    atualizaPc();
+  tipoGlobal = tipo;
+  int32_t indice, valor;
+  indice = 1;
+  valor = frameCorrente->fields[indice];
+  push(valor);
+  atualizaPc();
 }
 
 void fload_2() {
-
 	char* tipo = "F";
-    tipoGlobal = tipo;
-
-    int32_t indice, valor;
-
-    indice = 2;
-
-    valor = frameCorrente->fields[indice];
-    push(valor);
-
-    atualizaPc();
+  tipoGlobal = tipo;
+  int32_t indice, valor;
+  indice = 2;
+  valor = frameCorrente->fields[indice];
+  push(valor);
+  atualizaPc();
 }
 
 void fload_3() {
-
 	char* tipo = "F";
-    tipoGlobal = tipo;
-
-    int32_t indice, valor;
-
-    indice = 3;
-
-    valor = frameCorrente->fields[indice];
-    push(valor);
-
-    atualizaPc();
-
+  tipoGlobal = tipo;
+  int32_t indice, valor;
+  indice = 3;
+  valor = frameCorrente->fields[indice];
+  push(valor);
+  atualizaPc();
 }
 
 void dload_0() {
-
 	char* tipo = "D";
-    tipoGlobal = tipo;
-
-    int32_t indice;
-    int32_t parte_alta, parte_baixa;
-
-    indice = 0;
-
-    parte_alta = frameCorrente->fields[indice + POS_ALTA];
-    push(parte_alta);
-
-    parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
-    push(parte_baixa);
-
-    atualizaPc();
-
+  tipoGlobal = tipo;
+  int32_t indice;
+  int32_t parte_alta, parte_baixa;
+  indice = 0;
+  parte_alta = frameCorrente->fields[indice + POS_ALTA];
+  push(parte_alta);
+  parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
+  push(parte_baixa);
+  atualizaPc();
 }
 
 void dload_1() {
-    int32_t indice;
-    int32_t parte_alta, parte_baixa;
-
-    char* tipo = "D";
-    tipoGlobal = tipo;
-
-    indice = 1;
-
-    parte_alta = frameCorrente->fields[indice + POS_ALTA];
-    push(parte_alta);
-
-    parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
-    push(parte_baixa);
-
-    atualizaPc();
-
+  int32_t indice;
+  int32_t parte_alta, parte_baixa;
+  char* tipo = "D";
+  tipoGlobal = tipo;
+  indice = 1;
+  parte_alta = frameCorrente->fields[indice + POS_ALTA];
+  push(parte_alta);
+  parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
+  push(parte_baixa);
+  atualizaPc();
 }
 
 void dload_2() {
-    int32_t indice;
-    int32_t parte_alta, parte_baixa;
-    char* tipo = "D";
-    tipoGlobal = tipo;
-
-    indice = 2;
-
-    parte_alta = frameCorrente->fields[indice + POS_ALTA];
-    push(parte_alta);
-
-    parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
-    push(parte_baixa);
-
-    atualizaPc();
-
+  int32_t indice;
+  int32_t parte_alta, parte_baixa;
+  char* tipo = "D";
+  tipoGlobal = tipo;
+  indice = 2;
+  parte_alta = frameCorrente->fields[indice + POS_ALTA];
+  push(parte_alta);
+  parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
+  push(parte_baixa);
+  atualizaPc();
 }
 
 void dload_3() {
-    int32_t indice;
-    int32_t parte_alta, parte_baixa;
-
-    char* tipo = "D";
-    tipoGlobal = tipo;
-
-    indice = 3;
-
-    parte_alta = frameCorrente->fields[indice + POS_ALTA];
-    push(parte_alta);
-
-    parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
-    push(parte_baixa);
-
-    atualizaPc();
+  int32_t indice;
+  int32_t parte_alta, parte_baixa;
+  char* tipo = "D";
+  tipoGlobal = tipo;
+  indice = 3;
+  parte_alta = frameCorrente->fields[indice + POS_ALTA];
+  push(parte_alta);
+  parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
+  push(parte_baixa);
+  atualizaPc();
 }
 
 void aload_0() {
@@ -927,36 +744,27 @@ void aload_0() {
 }
 
 void aload_1() {
-    int32_t indice, valor;
-
-    indice = 1;
-
-    valor = frameCorrente->fields[indice];
-    push(valor);
-    atualizaPc();
+  int32_t indice, valor;
+  indice = 1;
+  valor = frameCorrente->fields[indice];
+  push(valor);
+  atualizaPc();
 }
 
 void aload_2() {
-    int32_t indice, valor;
-
-    indice = 2;
-
-    valor = frameCorrente->fields[indice];
-    push(valor);
-
-   atualizaPc();
+  int32_t indice, valor;
+  indice = 2;
+  valor = frameCorrente->fields[indice];
+  push(valor);
+  atualizaPc();
 }
 
 void aload_3() {
-    int32_t indice, valor;
-
-    indice = 3;
-
-    valor = frameCorrente->fields[indice];
-    push(valor);
-
-    atualizaPc();
-
+  int32_t indice, valor;
+  indice = 3;
+  valor = frameCorrente->fields[indice];
+  push(valor);
+  atualizaPc();
 }
 
 void iaload() {
@@ -964,18 +772,16 @@ void iaload() {
 	int32_t indice = popOp();
 	referencia = (int32_t*)popOp();
 	push(referencia[indice]);
-
 	atualizaPc();
 }
 
 void laload() {
 	static int16_t countPos = 0;
 	char* tipo = "L";
-    tipoGlobal = tipo;
+  tipoGlobal = tipo;
 	int32_t indice = popOp();
 	int32_t* referencia;
 	referencia = (int32_t*)popOp();
-
 	push(referencia[countPos + indice+1]);
 	push(referencia[countPos + indice]);
 	countPos += 2;
@@ -984,25 +790,23 @@ void laload() {
 
 void faload() {
 	char* tipo = "F";
-    tipoGlobal = tipo;
+  tipoGlobal = tipo;
 	int32_t* referencia;
 	int32_t indice = popOp();
 	referencia = (int32_t*)popOp();
 	int32_t valPilha;
 	memcpy(&valPilha, &((float *)referencia)[indice], sizeof(int32_t));
 	push(valPilha);
-
 	atualizaPc();
 }
 
 void daload() {
 	static int16_t countPos = 0;
 	char* tipo = "D";
-    tipoGlobal = tipo;
+  tipoGlobal = tipo;
 	int32_t indice = popOp();
 	int32_t* referencia;
 	referencia = (int32_t*)popOp();
-
 	push(referencia[countPos + indice+1]);
 	push(referencia[countPos + indice]);
 	countPos += 2;
@@ -1014,7 +818,6 @@ void aaload() {
 	int32_t indice = popOp();
 	referencia = (int32_t*)popOp();
 	push(referencia[indice]);
-
 	atualizaPc();
 }
 
@@ -1024,7 +827,6 @@ void baload() {
 	referencia = (int32_t*)popOp();
 	int8_t* binary = (int8_t*)referencia[indice];
 	push((int32_t)binary);
-
 	atualizaPc();
 }
 
@@ -1036,7 +838,6 @@ void caload() {
 	referencia = (int32_t*)popOp();
 	int16_t* binary = (int16_t*)referencia[indice];
 	push((int32_t)binary);
-
 	atualizaPc();
 }
 
@@ -1046,320 +847,214 @@ void saload() {
 	referencia = (int32_t*)popOp();
 	int16_t* binary = (int16_t*)referencia[indice];
 	push((int32_t)binary);
-
 	atualizaPc();
 }
 
-/*** STORES ***/
-
 void istore() {
-
-    int32_t indice;
-    int32_t valor;
-
-    indice = frameCorrente->code[frameCorrente->pc + 1];
-
-    valor = popOp();
-
-    frameCorrente->fields[indice] = valor;
-
-    atualizaPc();
+  int32_t indice;
+  int32_t valor;
+  indice = frameCorrente->code[frameCorrente->pc + 1];
+  valor = popOp();
+  frameCorrente->fields[indice] = valor;
+  atualizaPc();
 }
 
 void lstore() {
-
-    int32_t indice;
-    int32_t parte_alta, parte_baixa;
-
-    indice = frameCorrente->code[frameCorrente->pc + 1];
-
-    parte_baixa = popOp();
-
-    parte_alta = popOp();
-
-    frameCorrente->fields[indice + POS_ALTA] = parte_alta;
-    frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
-
-    atualizaPc();
+  int32_t indice;
+  int32_t parte_alta, parte_baixa;
+  indice = frameCorrente->code[frameCorrente->pc + 1];
+  parte_baixa = popOp();
+  parte_alta = popOp();
+  frameCorrente->fields[indice + POS_ALTA] = parte_alta;
+  frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
+  atualizaPc();
 }
 
 void fstore() {
-
-    int32_t indice;
-    int32_t valor;
-
-    indice = frameCorrente->code[frameCorrente->pc + 1];
-
-    valor = popOp();
-
-    frameCorrente->fields[indice] = valor;
-
-    atualizaPc();
+  int32_t indice;
+  int32_t valor;
+  indice = frameCorrente->code[frameCorrente->pc + 1];
+  valor = popOp();
+  frameCorrente->fields[indice] = valor;
+  atualizaPc();
 }
 
 void dstore() {
-    int32_t indice;
-    int32_t parte_alta, parte_baixa;
-
-    indice = frameCorrente->code[frameCorrente->pc + 1];
-
-    parte_baixa = popOp();
-
-    parte_alta = popOp();
-
-    frameCorrente->fields[indice + POS_ALTA] = parte_alta;
-    frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
-
-    atualizaPc();
+  int32_t indice;
+  int32_t parte_alta, parte_baixa;
+  indice = frameCorrente->code[frameCorrente->pc + 1];
+  parte_baixa = popOp();
+  parte_alta = popOp();
+  frameCorrente->fields[indice + POS_ALTA] = parte_alta;
+  frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
+  atualizaPc();
 }
 
 void astore() {
-
-    int32_t indice;
-    int32_t valor;
-
-    indice = frameCorrente->code[frameCorrente->pc + 1];
-
-    valor = popOp();
-
-    frameCorrente->fields[indice] = valor;
-
-    atualizaPc();
+  int32_t indice;
+  int32_t valor;
+  indice = frameCorrente->code[frameCorrente->pc + 1];
+  valor = popOp();
+  frameCorrente->fields[indice] = valor;
+  atualizaPc();
 }
 
 void istore_0() {
-
-    int32_t indice;
-    int32_t valor;
-
-    indice = 0;
-
-    valor = popOp();
-
-    frameCorrente->fields[indice] = valor;
-
-    atualizaPc();
+  int32_t indice;
+  int32_t valor;
+  indice = 0;
+  valor = popOp();
+  frameCorrente->fields[indice] = valor;
+  atualizaPc();
 }
 
 void istore_1() {
-    uint32_t valor;
-
-    valor = popOp();
-
-    frameCorrente->fields[1] = valor;
-
-    atualizaPc();
+  uint32_t valor;
+  valor = popOp();
+  frameCorrente->fields[1] = valor;
+  atualizaPc();
 }
 
 void istore_2() {
-    int32_t indice;
-    int32_t valor;
-
-    indice = 2;
-
-    valor = popOp();
-
-    frameCorrente->fields[indice] = valor;
-
-    atualizaPc();
+  int32_t indice;
+  int32_t valor;
+  indice = 2;
+  valor = popOp();
+  frameCorrente->fields[indice] = valor;
+  atualizaPc();
 }
 
 void istore_3() {
-    int32_t indice;
-    int32_t valor;
-
-    indice = 3;
-
-    valor = popOp();
-
-    frameCorrente->fields[indice] = valor;
-
-    atualizaPc();
+  int32_t indice;
+  int32_t valor;
+  indice = 3;
+  valor = popOp();
+  frameCorrente->fields[indice] = valor;
+  atualizaPc();
 }
 
 void lstore_0() {
-
-    int32_t indice;
-    int32_t parte_alta, parte_baixa;
-
-    indice = 0;
-
-    parte_baixa = popOp();
-
-    parte_alta = popOp();
-
-    frameCorrente->fields[indice + POS_ALTA] = parte_alta;
-    frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
-
-    atualizaPc();
+  int32_t indice;
+  int32_t parte_alta, parte_baixa;
+  indice = 0;
+  parte_baixa = popOp();
+  parte_alta = popOp();
+  frameCorrente->fields[indice + POS_ALTA] = parte_alta;
+  frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
+  atualizaPc();
 }
 
 void lstore_1() {
-    int32_t indice;
-    int32_t parte_alta, parte_baixa;
-
-    indice = 1;
-
-    parte_baixa = popOp();
-
-    parte_alta = popOp();
-
-    frameCorrente->fields[indice + POS_ALTA] = parte_alta;
-    frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
-
-    atualizaPc();
+  int32_t indice;
+  int32_t parte_alta, parte_baixa;
+  indice = 1;
+  parte_baixa = popOp();
+  parte_alta = popOp();
+  frameCorrente->fields[indice + POS_ALTA] = parte_alta;
+  frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
+  atualizaPc();
 }
 
 void lstore_2() {
-    int32_t indice;
-    int32_t parte_alta, parte_baixa;
-
-    indice = 2;
-
-    parte_baixa = popOp();
-
-    parte_alta = popOp();
-
-    frameCorrente->fields[indice + POS_ALTA] = parte_alta;
-    frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
-
-    atualizaPc();
+  int32_t indice;
+  int32_t parte_alta, parte_baixa;
+  indice = 2;
+  parte_baixa = popOp();
+  parte_alta = popOp();
+  frameCorrente->fields[indice + POS_ALTA] = parte_alta;
+  frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
+  atualizaPc();
 }
 
 void lstore_3() {
-    int32_t indice;
-    int32_t parte_alta, parte_baixa;
-
-    indice = 3;
-
-    parte_baixa = popOp();
-
-    parte_alta = popOp();
-
-    frameCorrente->fields[indice + POS_ALTA] = parte_alta;
-    frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
-
-    atualizaPc();
+  int32_t indice;
+  int32_t parte_alta, parte_baixa;
+  indice = 3;
+  parte_baixa = popOp();
+  parte_alta = popOp();
+  frameCorrente->fields[indice + POS_ALTA] = parte_alta;
+  frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
+  atualizaPc();
 }
 
 void fstore_0() {
-    int32_t indice;
-    int32_t valor;
-
-    indice = 0;
-
-    valor = popOp();
-
-    frameCorrente->fields[indice] = valor;
-
-    atualizaPc();
-
+  int32_t indice;
+  int32_t valor;
+  indice = 0;
+  valor = popOp();
+  frameCorrente->fields[indice] = valor;
+  atualizaPc();
 }
 
 void fstore_1() {
-    int32_t indice;
-    int32_t valor;
-
-    indice = 1;
-
-    valor = popOp();
-
-    frameCorrente->fields[indice] = valor;
-
-    atualizaPc();
+  int32_t indice;
+  int32_t valor;
+  indice = 1;
+  valor = popOp();
+  frameCorrente->fields[indice] = valor;
+  atualizaPc();
 }
 
 void fstore_2() {
-    int32_t indice;
-    int32_t valor;
-
-    indice = 2;
-
-    valor = popOp();
-
-    frameCorrente->fields[indice] = valor;
-
-    atualizaPc();
-
+  int32_t indice;
+  int32_t valor;
+  indice = 2;
+  valor = popOp();
+  frameCorrente->fields[indice] = valor;
+  atualizaPc();
 }
 
 void fstore_3() {
-    int32_t indice;
-    int32_t valor;
-
-    indice = 3;
-
-    valor = popOp();
-
-    frameCorrente->fields[indice] = valor;
-
-    atualizaPc();
-
+  int32_t indice;
+  int32_t valor;
+  indice = 3;
+  valor = popOp();
+  frameCorrente->fields[indice] = valor;
+  atualizaPc();
 }
 
 void dstore_0() {
-    int32_t indice;
-    int32_t parte_alta, parte_baixa;
-
-    indice = 0;
-
-    parte_baixa = popOp();
-
-    parte_alta = popOp();
-
-    frameCorrente->fields[indice + POS_ALTA] = parte_alta;
-    frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
-
-    atualizaPc();
+  int32_t indice;
+  int32_t parte_alta, parte_baixa;
+  indice = 0;
+  parte_baixa = popOp();
+  parte_alta = popOp();
+  frameCorrente->fields[indice + POS_ALTA] = parte_alta;
+  frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
+  atualizaPc();
 }
 
 void dstore_1() {
-    int32_t indice;
-    int32_t parte_alta, parte_baixa;
-
-    indice = 1;
-
-    parte_baixa = popOp();
-
-    parte_alta = popOp();
-
-    frameCorrente->fields[indice + POS_ALTA] = parte_alta;
-    frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
-
-    atualizaPc();
+  int32_t indice;
+  int32_t parte_alta, parte_baixa;
+  indice = 1;
+  parte_baixa = popOp();
+  parte_alta = popOp();
+  frameCorrente->fields[indice + POS_ALTA] = parte_alta;
+  frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
+  atualizaPc();
 }
 
 void dstore_2() {
-    int32_t indice;
-    int32_t parte_alta, parte_baixa;
-
-    indice = 2;
-
-    parte_baixa = popOp();
-
-    parte_alta = popOp();
-
-    frameCorrente->fields[indice + POS_ALTA] = parte_alta;
-    frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
-
-    atualizaPc();
-
+  int32_t indice;
+  int32_t parte_alta, parte_baixa;
+  indice = 2;
+  parte_baixa = popOp();
+  parte_alta = popOp();
+  frameCorrente->fields[indice + POS_ALTA] = parte_alta;
+  frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
+  atualizaPc();
 }
 
 void dstore_3() {
-    int32_t indice;
-    int32_t parte_alta, parte_baixa;
-
-    indice = 3;
-
-    parte_baixa = popOp();
-
-    parte_alta = popOp();
-
-    frameCorrente->fields[indice + POS_ALTA] = parte_alta;
-    frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
-
-    atualizaPc();
+  int32_t indice;
+  int32_t parte_alta, parte_baixa;
+  indice = 3;
+  parte_baixa = popOp();
+  parte_alta = popOp();
+  frameCorrente->fields[indice + POS_ALTA] = parte_alta;
+  frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
+  atualizaPc();
 }
 
 void astore_0() {
@@ -3589,7 +3284,7 @@ void invokevirtual() {
     	return;
     }
 
-        foi_lneg = false;
+    foi_lneg = false;
 		atualizaPc();
 		return;
 	}
@@ -3604,7 +3299,6 @@ void invokevirtual() {
 	}
 
 	int32_t numeroParametros = retornaNumeroParametros(classe,metodoInvocado);
-
 	uint32_t* fields = calloc(sizeof(uint32_t),numeroParametros + 1);
 
 	for(int32_t i = 0; i <= numeroParametros; i++) {
@@ -3628,41 +3322,31 @@ void invokespecial() {
 	MethodInfo* metodoInvocado;
 
 	uint32_t indice = frameCorrente->code[frameCorrente->pc + 2];
-
 	uint32_t indiceClasse = (frameCorrente->constantPool[indice-1]).info.Methodref.classIndex;
 
 	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constantPool[indiceClasse-1]).info.Class.nameIndex);
 
     if(strcmp("java/lang/Object",nomeClasse) == 0) {
-
 		carregaMemClass(nomeClasse);
-
 		atualizaPc();
 		return;
 	}
 
 	if(strcmp("java/lang/StringBuffer",nomeClasse) == 0) {
-
 		atualizaPc();
 		return;
 	}
 
 	if(strcmp("java/util/Scanner",nomeClasse) == 0) {
-
 		atualizaPc();
 		return;
 	}
 
 	int32_t indexClasse = carregaMemClass(nomeClasse);
-
 	ClassFile* classe = buscaClasseIndice(indexClasse);
-
 	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Methodref.nameAndTypeIndex;
-
 	metodoInvocado = buscaMetodo(frameCorrente->classe,classe,nomeTipoIndice);
-
 	int32_t numeroParametros = retornaNumeroParametros(classe,metodoInvocado);
-
 	uint32_t* fields = calloc(sizeof(uint32_t),numeroParametros + 1);
 
 	for(int32_t i = 0; i <= numeroParametros; i++) {
@@ -3676,7 +3360,6 @@ void invokespecial() {
 	}
 
 	executaFrameCorrente();
-
 	atualizaPc();
 }
 
@@ -3830,8 +3513,8 @@ void ins_new() {
 	uint32_t indice;
 	int32_t aux;
 	char* nomeClasse;
-	ClassFile* classe;
 	Objeto* Objeto;
+	ClassFile* classe;
 
 	indice = frameCorrente->code[2+(frameCorrente->pc)];
 
