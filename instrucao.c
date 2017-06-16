@@ -2022,60 +2022,45 @@ void i2l() {
 }
 
 void i2f() {
-    char* tipo = "F";
-    tipoGlobal = tipo;
-
+  char* tipo = "F";
+  tipoGlobal = tipo;
 	int32_t val = (int32_t) popOp();
-
 	float valF = (float) val;
-
 	int32_t valPilha;
 	memcpy(&valPilha, &valF, sizeof(int32_t));
-
 	push(valPilha);
-
 	atualizaPc();
 }
 
 void i2d() {
-    char* tipo = "D";
-    tipoGlobal = tipo;
-
+  char* tipo = "D";
+  tipoGlobal = tipo;
 	int32_t retPilha = popOp();
-
 	double dVal = (double) retPilha;
-
 	int64_t pilhaVal;
 	memcpy(&pilhaVal, &dVal, sizeof(int64_t));
-
 	int32_t alta;
 	int32_t baixa;
-
 	alta = pilhaVal >> 32;
-
 	baixa = pilhaVal & 0xffffffff;
-
 	push(alta);
 	push(baixa);
-
 	atualizaPc();
 }
 
 void l2i() {
-    char* tipo = "I";
-    tipoGlobal = tipo;
+  char* tipo = "I";
+  tipoGlobal = tipo;
 	int32_t alta,baixa;
-
 	baixa = popOp();
 	alta = popOp();
-
 	push(baixa);
 	atualizaPc();
 }
 
 void l2f() {
-    char* tipo = "F";
-    tipoGlobal = tipo;
+  char* tipo = "F";
+  tipoGlobal = tipo;
 
 	int32_t baixa,alta;
 	baixa = popOp();
@@ -2086,19 +2071,18 @@ void l2f() {
 	lVal = lVal | baixa;
 
 	float fVal;
-    fVal = (float) lVal;
+  fVal = (float) lVal;
 
 	int32_t valPilha;
 	memcpy(&valPilha, &fVal, sizeof(int32_t));
 
 	push(valPilha);
-
 	atualizaPc();
 }
 
 void l2d() {
-    char* tipo = "D";
-    tipoGlobal = tipo;
+  char* tipo = "D";
+  tipoGlobal = tipo;
 
 	int32_t baixa,alta;
 	baixa = popOp();
@@ -2119,16 +2103,13 @@ void l2d() {
 
 	push(alta);
 	push(baixa);
-
 	atualizaPc();
 }
 
 void f2i() {
-    char* tipo = "I";
-    tipoGlobal = tipo;
-
+  char* tipo = "I";
+  tipoGlobal = tipo;
 	int32_t retPilha = popOp();
-
 	float fVal;
 	memcpy(&fVal, &retPilha, sizeof(int32_t));
 	push((int32_t)fVal);
@@ -2136,8 +2117,8 @@ void f2i() {
 }
 
 void f2l() {
-    char* tipo = "L";
-    tipoGlobal = tipo;
+  char* tipo = "L";
+  tipoGlobal = tipo;
 
 	int32_t retPilha = popOp();
 	float fVal;
@@ -2149,18 +2130,16 @@ void f2l() {
 	int32_t baixa;
 
 	alta = lVal >> 32;
-
 	baixa = lVal & 0xffffffff;
 
 	push(alta);
 	push(baixa);
-
 	atualizaPc();
 }
 
 void f2d() {
-    char* tipo = "D";
-    tipoGlobal = tipo;
+  char* tipo = "D";
+  tipoGlobal = tipo;
 
 	int32_t retPilha = popOp();
 	float fVal;
@@ -2180,13 +2159,12 @@ void f2d() {
 
 	push(alta);
 	push(baixa);
-
 	atualizaPc();
 }
 
 void d2i() {
-    char* tipo = "I";
-    tipoGlobal = tipo;
+  char* tipo = "I";
+  tipoGlobal = tipo;
 
 	int32_t baixa,alta;
 	baixa = popOp();
@@ -2204,8 +2182,8 @@ void d2i() {
 }
 
 void d2l() {
-    char* tipo = "L";
-    tipoGlobal = tipo;
+  char* tipo = "L";
+  tipoGlobal = tipo;
 
 	int32_t baixa,alta;
 	baixa = popOp();
@@ -2218,18 +2196,18 @@ void d2l() {
 	double v1;
 	memcpy(&v1, &dVal, sizeof(double));
 
-    int64_t long_num = (int64_t) v1;
+  int64_t long_num = (int64_t) v1;
 	alta = long_num >> 32;
 	baixa = long_num & 0xffffffff;
 
-    push(alta);
-    push(baixa);
+  push(alta);
+  push(baixa);
 	atualizaPc();
 }
 
 void d2f() {
-    char* tipo = "F";
-    tipoGlobal = tipo;
+  char* tipo = "F";
+  tipoGlobal = tipo;
 
 	int32_t alta,baixa;
 	baixa = popOp();
@@ -2248,7 +2226,6 @@ void d2f() {
 	memcpy(&pilhaVal,&fVal,sizeof(float));
 
 	push(pilhaVal);
-
 	atualizaPc();
 }
 
@@ -2260,9 +2237,8 @@ void i2b() {
 }
 
 void i2c() {
-    char* tipo = "C";
-    tipoGlobal = tipo;
-
+  char* tipo = "C";
+  tipoGlobal = tipo;
 	int32_t valPilha = popOp();
 	int16_t cVal = (int16_t) valPilha;
 	push((int32_t) cVal);

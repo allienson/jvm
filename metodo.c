@@ -37,8 +37,8 @@ MethodInfo* buscaMetodoMain() {
 		nome = main->constantPool[(main->methods[i].nameIndex -1)].info.Utf8.bytes;
 		desc = main->constantPool[(main->methods[i].descriptorIndex - 1)].info.Utf8.bytes;
 
-		if(strcmp("main",(char *)nome) == 0) {
-			if(strcmp("([Ljava/lang/String;)V",(char *)desc) == 0) {
+		if(strcmp("main",(char*)nome) == 0) {
+			if(strcmp("([Ljava/lang/String;)V",(char*)desc) == 0) {
 				return &(main->methods[i]);
 			}
 		}
@@ -50,7 +50,7 @@ MethodInfo* buscaMetodoMain() {
 
 void empilhaMetodo(MethodInfo* metodo, ClassFile* classe) {
 	newInstrucoes();
-	criaFrame(classe->constantPool,classe,metodo->cdAtrb);
+	criaFrame(classe->constantPool, classe, metodo->cdAtrb);
 }
 
 void executaFrameCorrente() {

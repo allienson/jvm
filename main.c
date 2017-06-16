@@ -39,7 +39,7 @@ int main(int argc, char* argv[]) {
     }
 
     carregaMemClass(nomeArquivo);
-    ClassFile* mainClass = buscaClassPorIndice(1);
+    ClassFile* classeMain = buscaClassPorIndice(1);
 
     metodoMain = buscaMetodoMain();
 
@@ -48,7 +48,7 @@ int main(int argc, char* argv[]) {
         return 0;
     }
 
-	  empilhaMetodo(metodoMain, mainClass);
+	  empilhaMetodo(metodoMain, classeMain);
     executaFrameCorrente();
 
     free(nomeArquivo);
