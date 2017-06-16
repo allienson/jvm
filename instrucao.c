@@ -3412,7 +3412,6 @@ void putfield() {
  		int32_t val2 = popOp();
  		Objeto* obj = (Objeto*)popOp();
 
-
 		int64_t dVal = val2;
 		dVal <<= 32;
 		dVal = dVal + val1;
@@ -3431,8 +3430,8 @@ void putfield() {
 		obj->campos[i] = baixa;
 		obj->campos[i+1] = alta;
  	} else {
-	 	int32_t val = pop_op();
-	 	Objeto* obj = (Objeto*)pop_op();
+	 	int32_t val = popOp();
+	 	Objeto* obj = (Objeto*)popOp();
 	 	int i;
 	 	for(i = 0; obj->indiceCampos[i] != indiceNome; i++);
 		obj->campos[i] = val;
@@ -3442,42 +3441,43 @@ void putfield() {
 }
 
 void invokevirtual() {
-	method_info* metodoInvocado;
-    char* nomeClasse;
-    char* nomeMetodo;
-    char* descricaoMetodo;
-    uint16_t nomeMetodoAux, descricaoMetodoAux,nomeTipoAux,stringAux;
-    int32_t resultado,resultado2, resultado_string;
-    int32_t classeIndice;
-    uint8_t* string = NULL;
-    static int8_t flagAppend = 0;
+	MethodInfo* metodoInvocado;
+  char* nomeClasse;
+  char* nomeMetodo;
+  char* descricaoMetodo;
+  uint16_t nomeMetodoAux;
+  uint16_t descricaoMetodoAux;
+  uint16_t nomeTipoAux;
+  uint16_t stringAux;
+  int32_t resultado;
+  int32_t resultado2;
+  int32_t resultado_string;
+  int32_t classeIndice;
+  uint8_t* string = NULL;
+  static int8_t flagAppend = 0;
 
-    uint32_t pcAux = frameCorrente->code[frameCorrente->pc + 2];
+  uint32_t pcAux = frameCorrente->code[frameCorrente->pc + 2];
 
-    classeIndice = frameCorrente->constant_pool[pcAux - 1].info.Methodref.class_index;
+  classeIndice = frameCorrente->constantPool[pcAux - 1].info.Methodref.classIndex;
+  nomeClasse = retornaNome(frameCorrente->classe, frameCorrente->constantPool[classeIndice - 1].info.Class.nameIndex);
+  nomeTipoAux = frameCorrente->constantPool[pcAux - 1].info.Methodref.nameAndTypeIndex;
+  nomeMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.nameIndex;
 
-    nomeClasse = retornaNome(frameCorrente->classe, frameCorrente->constant_pool[classeIndice - 1].info.Class.name_index);
-    nomeTipoAux = frameCorrente->constant_pool[pcAux - 1].info.Methodref.name_and_type_index;
+	descricaoMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.descriptorIndex;
+  nomeMetodo = retornaNome(frameCorrente->classe, nomeMetodoAux);
+  descricaoMetodo = retornaNome(frameCorrente->classe, descricaoMetodoAux);
 
-    nomeMetodoAux = frameCorrente->constant_pool[nomeTipoAux - 1].info.NameAndType.name_index;
-
-	descricaoMetodoAux = frameCorrente->constant_pool[nomeTipoAux - 1].info.NameAndType.descriptor_index;
-
-    nomeMetodo = retornaNome(frameCorrente->classe, nomeMetodoAux);
-
-    descricaoMetodo = retornaNome(frameCorrente->classe, descricaoMetodoAux);
-
-    if((strcmp(nomeClasse, "java/lang/StringBuffer") == 0) && (strcmp(nomeMetodo,"append") == 0)) {
-			flagAppend++;
-		    foi_lneg = false;
-			atualizaPc();
-			return;
+  if((strcmp(nomeClasse, "java/lang/StringBuffer") == 0) && (strcmp(nomeMetodo,"append") == 0)) {
+		flagAppend++;
+	  foi_lneg = false;
+		atualizaPc();
+		return;
 	}
 
 	if((strcmp(nomeClasse, "java/lang/StringBuffer") == 0) && (strcmp(nomeMetodo,"toString") == 0)) {
-		    foi_lneg = false;
-			atualizaPc();
-			return;
+		foi_lneg = false;
+		atualizaPc();
+		return;
 	}
 
 	if((strcmp(nomeClasse, "java/util/Scanner") == 0) && (strcmp(nomeMetodo,"next") == 0)) {
@@ -3490,108 +3490,108 @@ void invokevirtual() {
 	}
 
 	if((strcmp(nomeClasse, "java/io/PrintStream") == 0) && (strcmp(nomeMetodo,"println") == 0)) {
-        if (strcmp(descricaoMetodo, "()V") == 0) {
-            printf("\n");
-        } else if (flagAppend == 0) {
-            resultado = pop_op();
-            if (tipoGlobal == NULL) {
-                string = frameCorrente->constant_pool[resultado].info.Utf8.bytes;
+    if (strcmp(descricaoMetodo, "()V") == 0) {
+        printf("\n");
+    } else if (flagAppend == 0) {
+        resultado = pop_op();
+        if (tipoGlobal == NULL) {
+            string = frameCorrente->constantPool[resultado].info.Utf8.bytes;
+        }
+
+        if (string != NULL) {
+            printf("%s\n",string);
+        } else if(strcmp(tipoGlobal, "Z") == 0) {
+            if(resultado) {
+            	printf("TRUE\n");
+            } else {
+            	printf("FALSE\n");
             }
+        } else if(strcmp(tipoGlobal, "F") == 0) {
+            float valDesemp;
+            memcpy(&valDesemp, &resultado, sizeof(float));
+            printf("%f\n",valDesemp);
+        } else if(strcmp(tipoGlobal, "D") == 0) {
+            resultado2 = pop_op();
+            double resultado_double;
+            int64_t temp;
+
+            temp = resultado2;
+            temp <<= 32;
+            temp += resultado;
+            memcpy(&resultado_double, &temp, sizeof(int64_t));
+            printf("%f\n", resultado_double);
+        } else if(strcmp(tipoGlobal, "L") == 0) {
+            resultado2 = pop_op();
+            int64_t long_num;
+            long long result;
+
+            long_num= resultado2;
+            long_num <<= 32;
+            long_num |= resultado;
+
+            memcpy(&result, &long_num, sizeof(long));
+            foi_lneg = false;
+            if (!foi_lneg) {
+                printf("%" PRId64 "\n", long_num);
+            } else {
+                printf("%" PRId64 "\n", result);
+            }
+        } else if (strcmp(tipoGlobal, "I") == 0) {
+            printf("%d\n", resultado);
+        } else if (strcmp(tipoGlobal, "C") == 0) {
+            printf("%c\n", resultado);
+        } else {
+            printf("erro no invoke_virtual, tipoGlobal ainda nao setado");
+            exit(1);
+        }
+    } else if (flagAppend == 2) {
+        if(strcmp(tipoGlobal, "F") == 0) {
+            resultado = pop_op();
+            resultado_string = pop_op();
+
+            string = frameCorrente->constantPool[resultado_string].info.Utf8.bytes;
+            if (string != NULL) {
+                printf("%s",string);
+            }
+            float valDesemp;
+            memcpy(&valDesemp,&resultado, sizeof(float));
+            printf("%f\n",valDesemp);
+        } else if(strcmp(tipoGlobal, "I") == 0) {
+            resultado = pop_op();
+            resultado_string = pop_op();
+
+            string = frameCorrente->constantPool[resultado_string].info.Utf8.bytes;
+            if (string != NULL) {
+                printf("%s",string);
+            }
+            printf("%d\n", resultado);
+        } else if(strcmp(tipoGlobal, "D") == 0) {
+            resultado = pop_op();
+            resultado2 = pop_op();
+            resultado_string = pop_op();
+
+            double resultado_double;
+            int64_t temp;
+
+            temp = resultado2;
+            temp <<= 32;
+            temp += resultado;
 
             if (string != NULL) {
-                printf("%s\n",string);
-            } else if(strcmp(tipoGlobal, "Z") == 0) {
-                if(resultado) {
-                	printf("TRUE\n");
-                } else {
-                	printf("FALSE\n");
-                }
-            } else if(strcmp(tipoGlobal, "F") == 0) {
-                float valDesemp;
-                memcpy(&valDesemp, &resultado, sizeof(float));
-                printf("%f\n",valDesemp);
-            } else if(strcmp(tipoGlobal, "D") == 0) {
-                resultado2 = pop_op();
-                double resultado_double;
-                int64_t temp;
-
-                temp = resultado2;
-                temp <<= 32;
-                temp += resultado;
-                memcpy(&resultado_double, &temp, sizeof(int64_t));
-                printf("%f\n", resultado_double);
-            } else if(strcmp(tipoGlobal, "L") == 0) {
-                resultado2 = pop_op();
-                int64_t long_num;
-                long long result;
-
-                long_num= resultado2;
-                long_num <<= 32;
-                long_num |= resultado;
-
-                memcpy(&result, &long_num, sizeof(long));
-                foi_lneg = false;
-                if (!foi_lneg) {
-                    printf("%" PRId64 "\n", long_num);
-                } else {
-                    printf("%" PRId64 "\n", result);
-                }
-            } else if (strcmp(tipoGlobal, "I") == 0) {
-                printf("%d\n", resultado);
-            } else if (strcmp(tipoGlobal, "C") == 0) {
-                printf("%c\n", resultado);
-            } else {
-                printf("erro no invoke_virtual, tipoGlobal ainda nao setado");
-                exit(1);
-            }
-        } else if (flagAppend == 2) {
-            if(strcmp(tipoGlobal, "F") == 0) {
-                resultado = pop_op();
-                resultado_string = pop_op();
-
-                string = frameCorrente->constant_pool[resultado_string].info.Utf8.bytes;
-                if (string != NULL) {
-                    printf("%s",string);
-                }
-                float valDesemp;
-                memcpy(&valDesemp,&resultado, sizeof(float));
-                printf("%f\n",valDesemp);
-            } else if(strcmp(tipoGlobal, "I") == 0) {
-                resultado = pop_op();
-                resultado_string = pop_op();
-
-                string = frameCorrente->constant_pool[resultado_string].info.Utf8.bytes;
-                if (string != NULL) {
-                    printf("%s",string);
-                }
-                printf("%d\n", resultado);
-            } else if(strcmp(tipoGlobal, "D") == 0) {
-                resultado = pop_op();
-                resultado2 = pop_op();
-                resultado_string = pop_op();
-
-                double resultado_double;
-                int64_t temp;
-
-                temp = resultado2;
-                temp <<= 32;
-                temp += resultado;
-
-                if (string != NULL) {
-                    printf("%s",string);
-                }
-
-                memcpy(&resultado_double, &temp, sizeof(int64_t));
-                printf("%lf\n", resultado_double);
-            } else {
-                printf("tipoGlobal ainda nao reconhecido");
-                exit(1);
+                printf("%s",string);
             }
 
-            flagAppend = 0;
+            memcpy(&resultado_double, &temp, sizeof(int64_t));
+            printf("%lf\n", resultado_double);
         } else {
-        	return;
+            printf("tipoGlobal ainda nao reconhecido");
+            exit(1);
         }
+
+        flagAppend = 0;
+    } else {
+    	return;
+    }
 
         foi_lneg = false;
 		atualizaPc();
@@ -3633,9 +3633,9 @@ void invokespecial() {
 
 	uint32_t indice = frameCorrente->code[frameCorrente->pc + 2];
 
-	uint32_t indiceClasse = (frameCorrente->constant_pool[indice-1]).info.Methodref.class_index;
+	uint32_t indiceClasse = (frameCorrente->constantPool[indice-1]).info.Methodref.class_index;
 
-	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constant_pool[indiceClasse-1]).info.Class.name_index);
+	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constantPool[indiceClasse-1]).info.Class.name_index);
 
     if(strcmp("java/lang/Object",nomeClasse) == 0) {
 
@@ -3661,7 +3661,7 @@ void invokespecial() {
 
 	classFile* classe = buscaClasseIndice(indexClasse);
 
-	uint16_t nomeTipoIndice = frameCorrente->constant_pool[indice-1].info.Methodref.name_and_type_index;
+	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Methodref.name_and_type_index;
 
 	metodoInvocado = buscaMetodo(frameCorrente->classe,classe,nomeTipoIndice);
 
@@ -3694,15 +3694,15 @@ void invokestatic() {
 
 	uint32_t indice = frameCorrente->code[frameCorrente->pc + 2];
 
-	uint32_t indiceClasse = (frameCorrente->constant_pool[indice-1]).info.Methodref.class_index;
+	uint32_t indiceClasse = (frameCorrente->constantPool[indice-1]).info.Methodref.class_index;
 
-	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constant_pool[indiceClasse-1]).info.Class.name_index);
+	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constantPool[indiceClasse-1]).info.Class.name_index);
 
-	nomeTipoAux = frameCorrente->constant_pool[indice - 1].info.Methodref.name_and_type_index;
+	nomeTipoAux = frameCorrente->constantPool[indice - 1].info.Methodref.name_and_type_index;
 
-    nomeMetodoAux = frameCorrente->constant_pool[nomeTipoAux - 1].info.NameAndType.name_index;
+    nomeMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.name_index;
 
-	descricaoMetodoAux = frameCorrente->constant_pool[nomeTipoAux - 1].info.NameAndType.descriptor_index;
+	descricaoMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.descriptor_index;
 
 
     nomeMetodo = retornaNome(frameCorrente->classe, nomeMetodoAux);
@@ -3759,7 +3759,7 @@ void invokestatic() {
 
 	classFile* classe = buscaClasseIndice(indexClasse);
 
-	uint16_t nomeTipoIndice = frameCorrente->constant_pool[indice-1].info.Methodref.name_and_type_index;
+	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Methodref.name_and_type_index;
 
 	metodoInvocado = buscaMetodo(frameCorrente->classe,classe,nomeTipoIndice);
 
@@ -3790,15 +3790,15 @@ void invokeinterface() {
 
 	uint32_t indice = frameCorrente->code[frameCorrente->pc + 2];
 
-	uint32_t indiceClasse = (frameCorrente->constant_pool[indice-1]).info.Methodref.class_index;
+	uint32_t indiceClasse = (frameCorrente->constantPool[indice-1]).info.Methodref.class_index;
 
-	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constant_pool[indiceClasse-1]).info.Class.name_index);
+	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constantPool[indiceClasse-1]).info.Class.name_index);
 
-	nomeTipoAux = frameCorrente->constant_pool[indice - 1].info.Methodref.name_and_type_index;
+	nomeTipoAux = frameCorrente->constantPool[indice - 1].info.Methodref.name_and_type_index;
 
-    nomeMetodoAux = frameCorrente->constant_pool[nomeTipoAux - 1].info.NameAndType.name_index;
+    nomeMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.name_index;
 
-	descricaoMetodoAux = frameCorrente->constant_pool[nomeTipoAux - 1].info.NameAndType.descriptor_index;
+	descricaoMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.descriptor_index;
 
     nomeMetodo = retornaNome(frameCorrente->classe, nomeMetodoAux);
 
@@ -3808,7 +3808,7 @@ void invokeinterface() {
 
 	classFile* classe = buscaClasseIndice(indexClasse);
 
-	uint16_t nomeTipoIndice = frameCorrente->constant_pool[indice-1].info.Methodref.name_and_type_index;
+	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Methodref.name_and_type_index;
 
 	metodoInvocado = buscaMetodo(frameCorrente->classe,classe,nomeTipoIndice);
 
@@ -3839,7 +3839,7 @@ void ins_new() {
 
 	indice = frameCorrente->code[2+(frameCorrente->pc)];
 
-	nomeClasse = retornaNome(frameCorrente->classe, frameCorrente->constant_pool[indice-1].info.Class.name_index);
+	nomeClasse = retornaNome(frameCorrente->classe, frameCorrente->constantPool[indice-1].info.Class.name_index);
 
 	if(strcmp("java/util/Scanner",nomeClasse) == 0) {
 		naoEmpilhaFlag = 1;

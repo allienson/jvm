@@ -15,17 +15,16 @@
 
 Decodificador dec[NUM_INSTRUCAO];
 
-struct Frame* frameCorrente;
-
+Frame* frameCorrente;
 Vector* arrayVetores;
 
 int32_t qtdArrays;
 
-static struct StackFrame* topo = NULL;
+static StackFrame* topo = NULL;
 
 void criaFrame(CpInfo* cp, ClassFile* classe, CodeAttribute* code){
-	struct StackFrame* sf = NULL;
-	sf = (struct StackFrame*) calloc(sizeof(struct StackFrame),1);
+	StackFrame* sf = NULL;
+	sf = (StackFrame*) calloc(sizeof(StackFrame),1);
 
 	if(sf == NULL) {
 		printf("Problema na alocação do frame\n");

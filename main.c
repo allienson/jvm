@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
 
     metodoMain = buscaMetodoMain();
 
-    if (Main == NULL) {
+    if (metodoMain == NULL) {
         printf("O arquivo \".class\" informado nao possui metodo Main!");
         return 0;
     }
