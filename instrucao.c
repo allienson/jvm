@@ -3197,7 +3197,7 @@ void invokevirtual() {
             memcpy(&valDesemp, &resultado, sizeof(float));
             printf("%f\n",valDesemp);
         } else if(strcmp(tipoGlobal, "D") == 0) {
-            resultado2 = pop_op();
+            resultado2 = popOp();
             double resultado_double;
             int64_t temp;
 
@@ -3381,7 +3381,7 @@ void invokestatic() {
 
     nomeMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.nameIndex;
 
-	descricaoMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.descriptor_index;
+	descricaoMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.descriptorIndex;
 
 
     nomeMetodo = retornaNome(frameCorrente->classe, nomeMetodoAux);
@@ -3477,7 +3477,7 @@ void invokeinterface() {
 
     nomeMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.nameIndex;
 
-	descricaoMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.descriptor_index;
+	descricaoMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.descriptorIndex;
 
     nomeMetodo = retornaNome(frameCorrente->classe, nomeMetodoAux);
 
@@ -3589,7 +3589,7 @@ void newarray() {
 	int32_t* vetor = calloc(tamanhoBytes,tamanhoArray);
 
 	qtdArrays++;
-	arrayVetores = realloc (arrayVetores, sizeof(struct array)*qtdArrays);
+	arrayVetores = realloc (arrayVetores, sizeof(struct Vector)*qtdArrays);
 	arrayVetores[qtdArrays-1].tamanho = tamanhoArray;
 	arrayVetores[qtdArrays-1].referencia = (int32_t)vetor;
 	arrayVetores[qtdArrays-1].tipo = tipoArray;
@@ -3636,7 +3636,7 @@ void anewarray() {
 	int32_t* vetor = calloc(tamanhoBytes,tamanhoArray);
 
 	qtdArrays++;
-	arrayVetores = realloc (arrayVetores, sizeof(struct array)*qtdArrays);
+	arrayVetores = realloc (arrayVetores, sizeof(struct Vector)*qtdArrays);
 	arrayVetores[qtdArrays-1].tamanho = tamanhoArray;
 	arrayVetores[qtdArrays-1].referencia = (int32_t)vetor;
 	arrayVetores[qtdArrays-1].tipo = tipoArray;
@@ -3778,7 +3778,7 @@ void goto_w() {
 	frameCorrente->pc += deslocamento;
 }
 
-void jsr_w() {
+void jsr_w(){
 	int32_t deslocamento,offset1,offset2,offset3,offset4;
 
 	push(frameCorrente->code[frameCorrente->pc + 5]);
@@ -3794,4 +3794,5 @@ void jsr_w() {
 	deslocamento |= (offset4 & 0xFF);
 
 	frameCorrente->pc += deslocamento;
+}
 }
