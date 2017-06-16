@@ -3594,8 +3594,8 @@ void invokevirtual() {
 		return;
 	}
 
-	classeIndice = carregaMemClasse(nomeClasse);
-	classFile* classe = buscaClasseIndice(classeIndice);
+	classeIndice = carregaMemClass(nomeClasse);
+	ClassFile* classe = buscaClasseIndice(classeIndice);
 
 	metodoInvocado = buscaMetodo(frameCorrente->classe,classe,nomeTipoAux);
 	if(metodoInvocado == NULL) {
@@ -3625,17 +3625,17 @@ void invokevirtual() {
 }
 
 void invokespecial() {
-	method_info* metodoInvocado;
+	MethodInfo* metodoInvocado;
 
 	uint32_t indice = frameCorrente->code[frameCorrente->pc + 2];
 
-	uint32_t indiceClasse = (frameCorrente->constantPool[indice-1]).info.Methodref.class_index;
+	uint32_t indiceClasse = (frameCorrente->constantPool[indice-1]).info.Methodref.classIndex;
 
-	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constantPool[indiceClasse-1]).info.Class.name_index);
+	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constantPool[indiceClasse-1]).info.Class.nameIndex);
 
     if(strcmp("java/lang/Object",nomeClasse) == 0) {
 
-		carregaMemClasse(nomeClasse);
+		carregaMemClass(nomeClasse);
 
 		atualizaPc();
 		return;
@@ -3653,11 +3653,11 @@ void invokespecial() {
 		return;
 	}
 
-	int32_t indexClasse = carregaMemClasse(nomeClasse);
+	int32_t indexClasse = carregaMemClass(nomeClasse);
 
-	classFile* classe = buscaClasseIndice(indexClasse);
+	ClassFile* classe = buscaClasseIndice(indexClasse);
 
-	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Methodref.name_and_type_index;
+	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Methodref.nameAndTypeIndex;
 
 	metodoInvocado = buscaMetodo(frameCorrente->classe,classe,nomeTipoIndice);
 
@@ -3682,7 +3682,7 @@ void invokespecial() {
 
 void invokestatic() {
 
-	method_info* metodoInvocado;
+	MethodInfo* metodoInvocado;
 
     char* nomeMetodo;
     char* descricaoMetodo;
@@ -3690,13 +3690,13 @@ void invokestatic() {
 
 	uint32_t indice = frameCorrente->code[frameCorrente->pc + 2];
 
-	uint32_t indiceClasse = (frameCorrente->constantPool[indice-1]).info.Methodref.class_index;
+	uint32_t indiceClasse = (frameCorrente->constantPool[indice-1]).info.Methodref.classIndex;
 
-	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constantPool[indiceClasse-1]).info.Class.name_index);
+	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constantPool[indiceClasse-1]).info.Class.nameIndex);
 
-	nomeTipoAux = frameCorrente->constantPool[indice - 1].info.Methodref.name_and_type_index;
+	nomeTipoAux = frameCorrente->constantPool[indice - 1].info.Methodref.nameAndTypeIndex;
 
-    nomeMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.name_index;
+    nomeMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.nameIndex;
 
 	descricaoMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.descriptor_index;
 
@@ -3751,11 +3751,11 @@ void invokestatic() {
 		}
 	}
 
-	int32_t indexClasse = carregaMemClasse(nomeClasse);
+	int32_t indexClasse = carregaMemClass(nomeClasse);
 
-	classFile* classe = buscaClasseIndice(indexClasse);
+	ClassFile* classe = buscaClasseIndice(indexClasse);
 
-	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Methodref.name_and_type_index;
+	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Methodref.nameAndTypeIndex;
 
 	metodoInvocado = buscaMetodo(frameCorrente->classe,classe,nomeTipoIndice);
 
@@ -3778,7 +3778,7 @@ void invokestatic() {
 }
 
 void invokeinterface() {
-	method_info* metodoInvocado;
+	MethodInfo* metodoInvocado;
 
     char* nomeMetodo;
     char* descricaoMetodo;
@@ -3786,13 +3786,13 @@ void invokeinterface() {
 
 	uint32_t indice = frameCorrente->code[frameCorrente->pc + 2];
 
-	uint32_t indiceClasse = (frameCorrente->constantPool[indice-1]).info.Methodref.class_index;
+	uint32_t indiceClasse = (frameCorrente->constantPool[indice-1]).info.Methodref.classIndex;
 
-	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constantPool[indiceClasse-1]).info.Class.name_index);
+	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constantPool[indiceClasse-1]).info.Class.nameIndex);
 
-	nomeTipoAux = frameCorrente->constantPool[indice - 1].info.Methodref.name_and_type_index;
+	nomeTipoAux = frameCorrente->constantPool[indice - 1].info.Methodref.nameAndTypeIndex;
 
-    nomeMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.name_index;
+    nomeMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.nameIndex;
 
 	descricaoMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.descriptor_index;
 
@@ -3800,11 +3800,11 @@ void invokeinterface() {
 
     descricaoMetodo = retornaNome(frameCorrente->classe, descricaoMetodoAux);
 
-	int32_t indexClasse = carregaMemClasse(nomeClasse);
+	int32_t indexClasse = carregaMemClass(nomeClasse);
 
-	classFile* classe = buscaClasseIndice(indexClasse);
+	ClassFile* classe = buscaClasseIndice(indexClasse);
 
-	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Methodref.name_and_type_index;
+	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Methodref.nameAndTypeIndex;
 
 	metodoInvocado = buscaMetodo(frameCorrente->classe,classe,nomeTipoIndice);
 
@@ -3830,16 +3830,15 @@ void ins_new() {
 	uint32_t indice;
 	int32_t aux;
 	char* nomeClasse;
-	classFile* classe;
-	objeto* objeto;
+	ClassFile* classe;
+	Objeto* Objeto;
 
 	indice = frameCorrente->code[2+(frameCorrente->pc)];
 
-	nomeClasse = retornaNome(frameCorrente->classe, frameCorrente->constantPool[indice-1].info.Class.name_index);
+	nomeClasse = retornaNome(frameCorrente->classe, frameCorrente->constantPool[indice-1].info.Class.nameIndex);
 
 	if(strcmp("java/util/Scanner",nomeClasse) == 0) {
 		naoEmpilhaFlag = 1;
-
 		atualizaPc();
 		return;
 	}
@@ -3851,17 +3850,17 @@ void ins_new() {
 		return;
 	}
 
-	aux = carregaMemClasse(nomeClasse);
+	aux = carregaMemClass(nomeClasse);
 
 	classe = buscaClasseIndice(aux);
 
-	objeto = criaObjeto(classe);
+	Objeto = criaObjeto(classe);
 
-	if(objeto == NULL) {
+	if(Objeto == NULL) {
 		printf("Objeto não foi corretamente alocado\n");
 	}
 
-	push((int32_t) objeto);
+	push((int32_t) Objeto);
 	atualizaPc();
 }
 
@@ -3989,13 +3988,13 @@ void checkcast() {
 
 	indice = (offset1 << 8) | offset2;
 
-	objeto* objeto = (struct objeto*) popOp();
+	Objeto* Objeto = (struct Objeto*) popOp();
 
-	if(objeto == NULL) {
+	if(Objeto == NULL) {
 		printf("Objeto nulo!\n");
 	}
 
-	char* nomeClasse = retornaNomeClasse(objeto->classe);
+	char* nomeClasse = retornaNomeClasse(Objeto->classe);
 
 	char* nomeIndice = retornaNome(frameCorrente->classe,indice);
 
@@ -4003,7 +4002,7 @@ void checkcast() {
 		printf("Objeto é do tipo: %s\n",nomeIndice);
 	}
 
-	push((int32_t)objeto);
+	push((int32_t)Objeto);
 	atualizaPc();
 }
 
@@ -4016,14 +4015,14 @@ void instanceof() {
 
 	indice = (offset1 << 8) | offset2;
 
-	objeto* objeto = (struct objeto*) popOp();
+	Objeto* Objeto = (struct Objeto*) popOp();
 
-	if(objeto == NULL) {
+	if(Objeto == NULL) {
 		printf("Objeto nulo!\n");
 		push(0);
 	}
 
-	char* nomeClasse = retornaNomeClasse(objeto->classe);
+	char* nomeClasse = retornaNomeClasse(Objeto->classe);
 
 	char* nomeIndice = retornaNome(frameCorrente->classe,indice);
 
