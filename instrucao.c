@@ -961,8 +961,8 @@ void aload_3() {
 
 void iaload() {
 	int32_t* referencia;
-	int32_t indice = pop_op();
-	referencia = (int32_t*)pop_op();
+	int32_t indice = popOp();
+	referencia = (int32_t*)popOp();
 	push(referencia[indice]);
 
 	atualizaPc();
@@ -972,9 +972,9 @@ void laload() {
 	static int16_t countPos = 0;
 	char* tipo = "L";
     tipoGlobal = tipo;
-	int32_t indice = pop_op();
+	int32_t indice = popOp();
 	int32_t* referencia;
-	referencia = (int32_t*)pop_op();
+	referencia = (int32_t*)popOp();
 
 	push(referencia[countPos + indice+1]);
 	push(referencia[countPos + indice]);
@@ -986,8 +986,8 @@ void faload() {
 	char* tipo = "F";
     tipoGlobal = tipo;
 	int32_t* referencia;
-	int32_t indice = pop_op();
-	referencia = (int32_t*)pop_op();
+	int32_t indice = popOp();
+	referencia = (int32_t*)popOp();
 	int32_t valPilha;
 	memcpy(&valPilha, &((float *)referencia)[indice], sizeof(int32_t));
 	push(valPilha);
@@ -999,9 +999,9 @@ void daload() {
 	static int16_t countPos = 0;
 	char* tipo = "D";
     tipoGlobal = tipo;
-	int32_t indice = pop_op();
+	int32_t indice = popOp();
 	int32_t* referencia;
-	referencia = (int32_t*)pop_op();
+	referencia = (int32_t*)popOp();
 
 	push(referencia[countPos + indice+1]);
 	push(referencia[countPos + indice]);
@@ -1011,8 +1011,8 @@ void daload() {
 
 void aaload() {
 	int32_t* referencia;
-	int32_t indice = pop_op();
-	referencia = (int32_t*)pop_op();
+	int32_t indice = popOp();
+	referencia = (int32_t*)popOp();
 	push(referencia[indice]);
 
 	atualizaPc();
@@ -1020,8 +1020,8 @@ void aaload() {
 
 void baload() {
 	int32_t* referencia;
-	int32_t indice = pop_op();
-	referencia = (int32_t*)pop_op();
+	int32_t indice = popOp();
+	referencia = (int32_t*)popOp();
 	int8_t* binary = (int8_t*)referencia[indice];
 	push((int32_t)binary);
 
@@ -1032,8 +1032,8 @@ void caload() {
 	char* tipo = "C";
     tipoGlobal = tipo;
 	int32_t* referencia;
-	int32_t indice = pop_op();
-	referencia = (int32_t*)pop_op();
+	int32_t indice = popOp();
+	referencia = (int32_t*)popOp();
 	int16_t* binary = (int16_t*)referencia[indice];
 	push((int32_t)binary);
 
@@ -1042,8 +1042,8 @@ void caload() {
 
 void saload() {
 	int32_t* referencia;
-	int32_t indice = pop_op();
-	referencia = (int32_t*)pop_op();
+	int32_t indice = popOp();
+	referencia = (int32_t*)popOp();
 	int16_t* binary = (int16_t*)referencia[indice];
 	push((int32_t)binary);
 
@@ -1059,7 +1059,7 @@ void istore() {
 
     indice = frameCorrente->code[frameCorrente->pc + 1];
 
-    valor = pop_op();
+    valor = popOp();
 
     frameCorrente->fields[indice] = valor;
 
@@ -1073,9 +1073,9 @@ void lstore() {
 
     indice = frameCorrente->code[frameCorrente->pc + 1];
 
-    parte_baixa = pop_op();
+    parte_baixa = popOp();
 
-    parte_alta = pop_op();
+    parte_alta = popOp();
 
     frameCorrente->fields[indice + POS_ALTA] = parte_alta;
     frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
@@ -1090,7 +1090,7 @@ void fstore() {
 
     indice = frameCorrente->code[frameCorrente->pc + 1];
 
-    valor = pop_op();
+    valor = popOp();
 
     frameCorrente->fields[indice] = valor;
 
@@ -1103,9 +1103,9 @@ void dstore() {
 
     indice = frameCorrente->code[frameCorrente->pc + 1];
 
-    parte_baixa = pop_op();
+    parte_baixa = popOp();
 
-    parte_alta = pop_op();
+    parte_alta = popOp();
 
     frameCorrente->fields[indice + POS_ALTA] = parte_alta;
     frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
@@ -1120,7 +1120,7 @@ void astore() {
 
     indice = frameCorrente->code[frameCorrente->pc + 1];
 
-    valor = pop_op();
+    valor = popOp();
 
     frameCorrente->fields[indice] = valor;
 
@@ -1134,7 +1134,7 @@ void istore_0() {
 
     indice = 0;
 
-    valor = pop_op();
+    valor = popOp();
 
     frameCorrente->fields[indice] = valor;
 
@@ -1144,7 +1144,7 @@ void istore_0() {
 void istore_1() {
     uint32_t valor;
 
-    valor = pop_op();
+    valor = popOp();
 
     frameCorrente->fields[1] = valor;
 
@@ -1157,7 +1157,7 @@ void istore_2() {
 
     indice = 2;
 
-    valor = pop_op();
+    valor = popOp();
 
     frameCorrente->fields[indice] = valor;
 
@@ -1170,7 +1170,7 @@ void istore_3() {
 
     indice = 3;
 
-    valor = pop_op();
+    valor = popOp();
 
     frameCorrente->fields[indice] = valor;
 
@@ -1184,9 +1184,9 @@ void lstore_0() {
 
     indice = 0;
 
-    parte_baixa = pop_op();
+    parte_baixa = popOp();
 
-    parte_alta = pop_op();
+    parte_alta = popOp();
 
     frameCorrente->fields[indice + POS_ALTA] = parte_alta;
     frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
@@ -1200,9 +1200,9 @@ void lstore_1() {
 
     indice = 1;
 
-    parte_baixa = pop_op();
+    parte_baixa = popOp();
 
-    parte_alta = pop_op();
+    parte_alta = popOp();
 
     frameCorrente->fields[indice + POS_ALTA] = parte_alta;
     frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
@@ -1216,9 +1216,9 @@ void lstore_2() {
 
     indice = 2;
 
-    parte_baixa = pop_op();
+    parte_baixa = popOp();
 
-    parte_alta = pop_op();
+    parte_alta = popOp();
 
     frameCorrente->fields[indice + POS_ALTA] = parte_alta;
     frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
@@ -1232,9 +1232,9 @@ void lstore_3() {
 
     indice = 3;
 
-    parte_baixa = pop_op();
+    parte_baixa = popOp();
 
-    parte_alta = pop_op();
+    parte_alta = popOp();
 
     frameCorrente->fields[indice + POS_ALTA] = parte_alta;
     frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
@@ -1248,7 +1248,7 @@ void fstore_0() {
 
     indice = 0;
 
-    valor = pop_op();
+    valor = popOp();
 
     frameCorrente->fields[indice] = valor;
 
@@ -1262,7 +1262,7 @@ void fstore_1() {
 
     indice = 1;
 
-    valor = pop_op();
+    valor = popOp();
 
     frameCorrente->fields[indice] = valor;
 
@@ -1275,7 +1275,7 @@ void fstore_2() {
 
     indice = 2;
 
-    valor = pop_op();
+    valor = popOp();
 
     frameCorrente->fields[indice] = valor;
 
@@ -1289,7 +1289,7 @@ void fstore_3() {
 
     indice = 3;
 
-    valor = pop_op();
+    valor = popOp();
 
     frameCorrente->fields[indice] = valor;
 
@@ -1303,9 +1303,9 @@ void dstore_0() {
 
     indice = 0;
 
-    parte_baixa = pop_op();
+    parte_baixa = popOp();
 
-    parte_alta = pop_op();
+    parte_alta = popOp();
 
     frameCorrente->fields[indice + POS_ALTA] = parte_alta;
     frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
@@ -1319,9 +1319,9 @@ void dstore_1() {
 
     indice = 1;
 
-    parte_baixa = pop_op();
+    parte_baixa = popOp();
 
-    parte_alta = pop_op();
+    parte_alta = popOp();
 
     frameCorrente->fields[indice + POS_ALTA] = parte_alta;
     frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
@@ -1335,9 +1335,9 @@ void dstore_2() {
 
     indice = 2;
 
-    parte_baixa = pop_op();
+    parte_baixa = popOp();
 
-    parte_alta = pop_op();
+    parte_alta = popOp();
 
     frameCorrente->fields[indice + POS_ALTA] = parte_alta;
     frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
@@ -1352,9 +1352,9 @@ void dstore_3() {
 
     indice = 3;
 
-    parte_baixa = pop_op();
+    parte_baixa = popOp();
 
-    parte_alta = pop_op();
+    parte_alta = popOp();
 
     frameCorrente->fields[indice + POS_ALTA] = parte_alta;
     frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
@@ -1368,7 +1368,7 @@ void astore_0() {
 
     indice = 0;
 
-    valor = pop_op();
+    valor = popOp();
 
     frameCorrente->fields[indice] = valor;
 
@@ -1381,7 +1381,7 @@ void astore_1() {
 
     indice = 1;
 
-    valor = pop_op();
+    valor = popOp();
     frameCorrente->fields[indice] = valor;
 
     atualizaPc();
@@ -1394,7 +1394,7 @@ void astore_2() {
 
     indice = 2;
 
-    valor = pop_op();
+    valor = popOp();
     frameCorrente->fields[indice] = valor;
 
     atualizaPc();
@@ -1407,7 +1407,7 @@ void astore_3() {
 
     indice = 3;
 
-    valor = pop_op();
+    valor = popOp();
 
     frameCorrente->fields[indice] = valor;
 
@@ -1418,9 +1418,9 @@ void astore_3() {
 void iastore() {
 	int32_t* ref;
 	int32_t indice,valor;
-	valor = pop_op();
-	indice = pop_op();
-	ref = (int32_t*)pop_op();
+	valor = popOp();
+	indice = popOp();
+	ref = (int32_t*)popOp();
 	ref[indice] = valor;
 
 	atualizaPc();
@@ -1430,13 +1430,13 @@ void lastore() {
 	static int16_t countPos = 0;
 	int32_t alta,baixa;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
-	int32_t indice = pop_op();
+	int32_t indice = popOp();
 
 	int32_t* referencia;
-	referencia = (int32_t*) pop_op();
+	referencia = (int32_t*) popOp();
 
 	referencia[countPos + indice] = baixa;
 	referencia[countPos + indice + 1] = alta;
@@ -1449,9 +1449,9 @@ void fastore() {
     tipoGlobal = tipo;
 	int32_t* ref;
 	int32_t indice,valor;
-	valor = pop_op();
-	indice = pop_op();
-	ref = (int32_t*)pop_op();
+	valor = popOp();
+	indice = popOp();
+	ref = (int32_t*)popOp();
 	ref[indice] = valor;
 
 	atualizaPc();
@@ -1461,13 +1461,13 @@ void dastore() {
 	static int16_t countPos = 0;
 	int32_t alta,baixa;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
-	int32_t indice = pop_op();
+	int32_t indice = popOp();
 
 	int32_t* referencia;
-	referencia = (int32_t*) pop_op();
+	referencia = (int32_t*) popOp();
 
 	referencia[countPos + indice] = baixa;
 	referencia[countPos + indice + 1] = alta;
@@ -1478,9 +1478,9 @@ void dastore() {
 void aastore() {
 	int32_t* ref;
 	int32_t indice,valor;
-	valor = pop_op();
-	indice = pop_op();
-	ref = (int32_t*)pop_op();
+	valor = popOp();
+	indice = popOp();
+	ref = (int32_t*)popOp();
 	ref[indice] = valor;
 
 	atualizaPc();
@@ -1489,9 +1489,9 @@ void aastore() {
 void bastore() {
 	int32_t* ref;
 	int32_t indice,valor;
-	valor = pop_op();
-	indice = pop_op();
-	ref = (int32_t*)pop_op();
+	valor = popOp();
+	indice = popOp();
+	ref = (int32_t*)popOp();
 	ref[indice] = (int8_t)valor;
 
 	atualizaPc();
@@ -1500,9 +1500,9 @@ void bastore() {
 void castore() {
 	int32_t* ref;
 	int32_t indice,valor;
-	valor = pop_op();
-	indice = pop_op();
-	ref = (int32_t*)pop_op();
+	valor = popOp();
+	indice = popOp();
+	ref = (int32_t*)popOp();
 	ref[indice] = (int16_t)valor;
 
 	atualizaPc();
@@ -1511,23 +1511,23 @@ void castore() {
 void sastore() {
 	int32_t* ref;
 	int32_t indice,valor;
-	valor = pop_op();
-	indice = pop_op();
-	ref = (int32_t*)pop_op();
+	valor = popOp();
+	indice = popOp();
+	ref = (int32_t*)popOp();
 	ref[indice] = (int16_t)valor;
 
 	atualizaPc();
 }
 
 void pop() {
-	pop_op();
+	popOp();
 
 	atualizaPc();
 }
 
 void pop2() {
-	pop_op();
-	pop_op();
+	popOp();
+	popOp();
 
 	atualizaPc();
 }
@@ -1535,7 +1535,7 @@ void pop2() {
 void dup() {
 	int32_t retPilha;
 
-	retPilha = pop_op();
+	retPilha = popOp();
 
 	push(retPilha);
 	push(retPilha);
@@ -1545,9 +1545,9 @@ void dup() {
 void dup_x1() {
 	int32_t aux1, aux2;
 
-	aux1 = pop_op();
+	aux1 = popOp();
 
-	aux2 = pop_op();
+	aux2 = popOp();
 
 	push(aux1);
 
@@ -1563,11 +1563,11 @@ void dup_x2() {
 
 	int32_t aux1, aux2, aux3;
 
-	aux1 = pop_op();
+	aux1 = popOp();
 
-	aux2 = pop_op();
+	aux2 = popOp();
 
-	aux3 = pop_op();
+	aux3 = popOp();
 
 	push(aux1);
 	push(aux3);
@@ -1581,9 +1581,9 @@ void dup2() {
 
 	int32_t aux1, aux2, aux3;
 
-	aux1 = pop_op();
+	aux1 = popOp();
 
-	aux2 = pop_op();
+	aux2 = popOp();
 
 	push(aux2);
 	push(aux1);
@@ -1597,11 +1597,11 @@ void dup2_x1() {
 
 	int32_t aux1, aux2, aux3;
 
-	aux1 = pop_op();
+	aux1 = popOp();
 
-	aux2 = pop_op();
+	aux2 = popOp();
 
-	aux3 = pop_op();
+	aux3 = popOp();
 
 	push(aux2);
 	push(aux1);
@@ -1617,13 +1617,13 @@ void dup2_x2() {
 
 	int32_t aux1, aux2, aux3, aux4;
 
-	aux1 = pop_op();
+	aux1 = popOp();
 
-	aux2 = pop_op();
+	aux2 = popOp();
 
-	aux3 = pop_op();
+	aux3 = popOp();
 
-	aux4 = pop_op();
+	aux4 = popOp();
 
 	push(aux2);
 	push(aux1);
@@ -1638,8 +1638,8 @@ void dup2_x2() {
 void swap() {
 	int32_t val1,val2;
 
-	val1 = pop_op();
-	val2 = pop_op();
+	val1 = popOp();
+	val2 = popOp();
 
 	push(val1);
 	push(val2);
@@ -1649,8 +1649,8 @@ void swap() {
 
 void iadd() {
 	int32_t v1,v2;
-	v2 = pop_op();
-	v1 = pop_op();
+	v2 = popOp();
+	v1 = popOp();
 
 	push(v1+v2);
 
@@ -1660,16 +1660,16 @@ void iadd() {
 void ladd() {
 	int32_t baixa,alta;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 
 	int64_t lVal = alta;
 	lVal <<= 32;
 	lVal = lVal + baixa;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t lVal1 = alta;
 	lVal1 <<= 32;
@@ -1690,8 +1690,8 @@ void ladd() {
 void fadd() {
 	float fVal1,fVal2;
 
-	int32_t aux1 = pop_op();
-	int32_t aux2 = pop_op();
+	int32_t aux1 = popOp();
+	int32_t aux2 = popOp();
 
 	memcpy(&fVal1, &aux1, sizeof(int32_t));
 	memcpy(&fVal2, &aux2, sizeof(int32_t));
@@ -1711,8 +1711,8 @@ void dadd() {
 	int32_t alta;
 	int32_t baixa;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t dVal = alta;
 	dVal <<= 32;
@@ -1721,8 +1721,8 @@ void dadd() {
 	double valorDouble1;
 	memcpy(&valorDouble1, &dVal, sizeof(int64_t));
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	dVal = alta;
 	dVal <<= 32;
@@ -1747,8 +1747,8 @@ void dadd() {
 
 void isub() {
 	int32_t v1,v2;
-	v2 = pop_op();
-	v1 = pop_op();
+	v2 = popOp();
+	v1 = popOp();
 
 	push(v1-v2);
 
@@ -1758,15 +1758,15 @@ void isub() {
 void lsub() {
 	int32_t baixa,alta;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t lVal = alta;
 	lVal <<= 32;
 	lVal = lVal + baixa;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t lVal1 = alta;
 	lVal1 <<= 32;
@@ -1786,8 +1786,8 @@ void lsub() {
 void fsub() {
 	float fVal1,fVal2;
 
-	int32_t aux2 = pop_op();
-	int32_t aux1 = pop_op();
+	int32_t aux2 = popOp();
+	int32_t aux1 = popOp();
 
 	memcpy(&fVal1, &aux1, sizeof(int32_t));
 	memcpy(&fVal2, &aux2, sizeof(int32_t));
@@ -1806,8 +1806,8 @@ void dsub() {
 	int32_t alta;
 	int32_t baixa;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t dVal = alta;
 	dVal <<= 32;
@@ -1816,8 +1816,8 @@ void dsub() {
 	double valorDouble1;
 	memcpy(&valorDouble1, &dVal, sizeof(int64_t));
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	dVal = alta;
 	dVal <<= 32;
@@ -1841,8 +1841,8 @@ void dsub() {
 }
 
 void imul() {
-	int32_t v1 = pop_op();
-	int32_t v2 = pop_op();
+	int32_t v1 = popOp();
+	int32_t v2 = popOp();
 
 	push((int32_t)(v1 * v2));
 
@@ -1853,15 +1853,15 @@ void lmul() {
 
 	int32_t baixa,alta;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t lVal = alta;
 	lVal <<= 32;
 	lVal = lVal + baixa;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t lVal1 = alta;
 	lVal1 <<= 32;
@@ -1881,8 +1881,8 @@ void lmul() {
 void fmul() {
 	float fVal1,fVal2;
 
-	int32_t aux1 = pop_op();
-	int32_t aux2 = pop_op();
+	int32_t aux1 = popOp();
+	int32_t aux2 = popOp();
 
 	memcpy(&fVal1, &aux1, sizeof(int32_t));
 	memcpy(&fVal2, &aux2, sizeof(int32_t));
@@ -1901,8 +1901,8 @@ void dmul() {
 	int32_t alta;
 	int32_t baixa;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t dVal = alta;
 	dVal <<= 32;
@@ -1911,8 +1911,8 @@ void dmul() {
 	double valorDouble1;
 	memcpy(&valorDouble1, &dVal, sizeof(int64_t));
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	dVal = alta;
 	dVal <<= 32;
@@ -1936,8 +1936,8 @@ void dmul() {
 }
 
 void idiv() {
-	int32_t v2 = pop_op();
-	int32_t v1 = pop_op();
+	int32_t v2 = popOp();
+	int32_t v1 = popOp();
 
 	push((int32_t)(v1 / v2));
 
@@ -1947,15 +1947,15 @@ void idiv() {
 void ins_ldiv() {
 	int32_t baixa,alta;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t lVal = alta;
 	lVal <<= 32;
 	lVal = lVal + baixa;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t lVal1 = alta;
 	lVal1 <<= 32;
@@ -1975,8 +1975,8 @@ void ins_ldiv() {
 void fdiv() {
 	float fVal1,fVal2;
 
-	int32_t aux2 = pop_op();
-	int32_t aux1 = pop_op();
+	int32_t aux2 = popOp();
+	int32_t aux1 = popOp();
 
 	memcpy(&fVal1, &aux1, sizeof(int32_t));
 	memcpy(&fVal2, &aux2, sizeof(int32_t));
@@ -1994,11 +1994,11 @@ void fdiv() {
 void ddiv() {
 	int32_t alta,baixa,alta1,baixa1;
 
-	baixa1 = pop_op();
-	alta1 = pop_op();
+	baixa1 = popOp();
+	alta1 = popOp();
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t dVal = alta1;
 	dVal <<= 32;
@@ -2029,8 +2029,8 @@ void ddiv() {
 }
 
 void irem() {
-	int32_t v2 = pop_op();
-	int32_t v1 = pop_op();
+	int32_t v2 = popOp();
+	int32_t v1 = popOp();
 
 	push((int32_t)(v1 % v2));
 
@@ -2040,15 +2040,15 @@ void irem() {
 void lrem() {
 	int32_t baixa,alta;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t lVal = alta;
 	lVal <<= 32;
 	lVal = lVal + baixa;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t lVal1 = alta;
 	lVal1 <<= 32;
@@ -2068,8 +2068,8 @@ void lrem() {
 void frem() {
 	float fVal1,fVal2;
 
-	int32_t aux2 = pop_op();
-	int32_t aux1 = pop_op();
+	int32_t aux2 = popOp();
+	int32_t aux1 = popOp();
 
 	memcpy(&fVal1, &aux1, sizeof(int32_t));
 	memcpy(&fVal2, &aux2, sizeof(int32_t));
@@ -2087,11 +2087,11 @@ void frem() {
 void _drem() {
 	int32_t alta,baixa,alta1,baixa1;
 
-	baixa1 = pop_op();
-	alta1 = pop_op();
+	baixa1 = popOp();
+	alta1 = popOp();
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t dVal = alta1;
 	dVal <<= 32;
@@ -2122,7 +2122,7 @@ void _drem() {
 }
 
 void ineg() {
-	int32_t retPilha = pop_op();
+	int32_t retPilha = popOp();
 	int32_t aux = -retPilha;
 
 	push(aux);
@@ -2133,8 +2133,8 @@ void ineg() {
 void lneg() {
 	int32_t baixa,alta;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t lVal = alta;
 	lVal <<= 32;
@@ -2154,7 +2154,7 @@ void lneg() {
 
 void fneg() {
 	float fVal;
-	int32_t retPilha = pop_op();
+	int32_t retPilha = popOp();
 
 	memcpy(&fVal,&retPilha,sizeof(float));
 
@@ -2171,8 +2171,8 @@ void dneg() {
 
 	int32_t baixa,alta;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t dVal = alta;
 	dVal <<= 32;
@@ -2195,10 +2195,10 @@ void dneg() {
 }
 
 void ishl() {
-	int32_t shift = pop_op();
+	int32_t shift = popOp();
 	shift = shift & 0x1f;
 
-	int32_t sVal = pop_op();
+	int32_t sVal = popOp();
 	sVal = sVal << shift;
 	push(sVal);
 
@@ -2207,12 +2207,12 @@ void ishl() {
 
 void lshl() {
 
-	int32_t shift = pop_op();
+	int32_t shift = popOp();
 	shift = shift & 0x3f;
 
 	int32_t baixa,alta;
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t lVal = alta;
 	lVal <<= 32;
@@ -2230,10 +2230,10 @@ void lshl() {
 }
 
 void ishr() {
-	int32_t shift = pop_op();
+	int32_t shift = popOp();
 	shift = shift & 0x1f;
 
-	int32_t sVal = pop_op();
+	int32_t sVal = popOp();
 
 	int32_t i = 0;
 	while(i < shift) {
@@ -2248,11 +2248,11 @@ void ishr() {
 
 void lshr() {
 
-    int32_t v2 = pop_op();
+    int32_t v2 = popOp();
 
 	int32_t baixa,alta;
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 	int64_t lVal = alta;
 	lVal <<= 32;
 	lVal = lVal + baixa;
@@ -2268,10 +2268,10 @@ void lshr() {
 }
 
 void iushr() {
-	int32_t shift = pop_op();
+	int32_t shift = popOp();
 	shift = shift & 0x1f;
 
-	int32_t sVal = pop_op();
+	int32_t sVal = popOp();
 	sVal = sVal >> shift;
 	push(sVal);
 
@@ -2279,12 +2279,12 @@ void iushr() {
 }
 
 void lushr() {
-	int32_t shift = pop_op();
+	int32_t shift = popOp();
 	shift = shift & 0x3f;
 
 	int32_t baixa,alta;
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t lVal = alta;
 	lVal <<= 32;
@@ -2302,9 +2302,9 @@ void lushr() {
 }
 
 void iand() {
-	int32_t pop1 = pop_op();
+	int32_t pop1 = popOp();
 
-	int32_t pop2 = pop_op();
+	int32_t pop2 = popOp();
 
 	int32_t aux = pop1 & pop2;
 
@@ -2316,15 +2316,15 @@ void iand() {
 void land() {
 	int32_t baixa,alta;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t lVal = alta;
 	lVal <<= 32;
 	lVal = lVal + baixa;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t lVal1 = alta;
 	lVal1 <<= 32;
@@ -2342,9 +2342,9 @@ void land() {
 }
 
 void ior() {
-	int32_t pop1 = pop_op();
+	int32_t pop1 = popOp();
 
-	int32_t pop2 = pop_op();
+	int32_t pop2 = popOp();
 
 	int32_t aux = pop1 | pop2;
 
@@ -2356,15 +2356,15 @@ void ior() {
 void lor() {
 	int32_t baixa,alta;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t lVal = alta;
 	lVal <<= 32;
 	lVal = lVal + baixa;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t lVal1 = alta;
 	lVal1 <<= 32;
@@ -2385,9 +2385,9 @@ void lor() {
 }
 
 void ixor() {
-	int32_t pop1 = pop_op();
+	int32_t pop1 = popOp();
 
-	int32_t pop2 = pop_op();
+	int32_t pop2 = popOp();
 
 	int32_t aux = pop1 ^ pop2;
 
@@ -2399,15 +2399,15 @@ void ixor() {
 void lxor() {
 	int32_t baixa,alta;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t lVal = alta;
 	lVal <<= 32;
 	lVal = lVal + baixa;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t lVal1 = alta;
 	lVal1 <<= 32;
@@ -2444,7 +2444,7 @@ void i2l() {
     tipoGlobal = tipo;
     int32_t alta, baixa;
 
-    int32_t val = pop_op();
+    int32_t val = popOp();
 
     int64_t long_num = (int64_t) val;
 	alta = long_num >> 32;
@@ -2460,7 +2460,7 @@ void i2f() {
     char* tipo = "F";
     tipoGlobal = tipo;
 
-	int32_t val = (int32_t) pop_op();
+	int32_t val = (int32_t) popOp();
 
 	float valF = (float) val;
 
@@ -2476,7 +2476,7 @@ void i2d() {
     char* tipo = "D";
     tipoGlobal = tipo;
 
-	int32_t retPilha = pop_op();
+	int32_t retPilha = popOp();
 
 	double dVal = (double) retPilha;
 
@@ -2501,8 +2501,8 @@ void l2i() {
     tipoGlobal = tipo;
 	int32_t alta,baixa;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	push(baixa);
 	atualizaPc();
@@ -2513,8 +2513,8 @@ void l2f() {
     tipoGlobal = tipo;
 
 	int32_t baixa,alta;
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t lVal = alta;
 	lVal <<= 32;
@@ -2536,8 +2536,8 @@ void l2d() {
     tipoGlobal = tipo;
 
 	int32_t baixa,alta;
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t lVal = alta;
 	lVal <<= 32;
@@ -2562,7 +2562,7 @@ void f2i() {
     char* tipo = "I";
     tipoGlobal = tipo;
 
-	int32_t retPilha = pop_op();
+	int32_t retPilha = popOp();
 
 	float fVal;
 	memcpy(&fVal, &retPilha, sizeof(int32_t));
@@ -2574,7 +2574,7 @@ void f2l() {
     char* tipo = "L";
     tipoGlobal = tipo;
 
-	int32_t retPilha = pop_op();
+	int32_t retPilha = popOp();
 	float fVal;
 	memcpy(&fVal, &retPilha, sizeof(int32_t));
 
@@ -2597,7 +2597,7 @@ void f2d() {
     char* tipo = "D";
     tipoGlobal = tipo;
 
-	int32_t retPilha = pop_op();
+	int32_t retPilha = popOp();
 	float fVal;
 	memcpy(&fVal, &retPilha, sizeof(int32_t));
 
@@ -2624,8 +2624,8 @@ void d2i() {
     tipoGlobal = tipo;
 
 	int32_t baixa,alta;
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t dVal = alta;
 	dVal <<= 32;
@@ -2643,8 +2643,8 @@ void d2l() {
     tipoGlobal = tipo;
 
 	int32_t baixa,alta;
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t dVal = alta;
 	dVal <<= 32;
@@ -2667,8 +2667,8 @@ void d2f() {
     tipoGlobal = tipo;
 
 	int32_t alta,baixa;
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t dVal = alta;
 	dVal <<= 32;
@@ -2688,7 +2688,7 @@ void d2f() {
 }
 
 void i2b() {
-	int32_t valPilha = pop_op();
+	int32_t valPilha = popOp();
 	int8_t bVal = (int8_t) valPilha;
 	push((int32_t) bVal);
 	atualizaPc();
@@ -2698,14 +2698,14 @@ void i2c() {
     char* tipo = "C";
     tipoGlobal = tipo;
 
-	int32_t valPilha = pop_op();
+	int32_t valPilha = popOp();
 	int16_t cVal = (int16_t) valPilha;
 	push((int32_t) cVal);
 	atualizaPc();
 }
 
 void i2s() {
-	int32_t valPilha = pop_op();
+	int32_t valPilha = popOp();
 	int16_t cVal = (int16_t) valPilha;
 	push((int32_t) cVal);
 	atualizaPc();
@@ -2713,15 +2713,15 @@ void i2s() {
 
 void lcmp() {
 	int32_t baixa,alta;
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t lVal = alta;
 	lVal <<= 32;
 	lVal = lVal + baixa;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t lVal2 = alta;
 	lVal2 <<= 32;
@@ -2742,10 +2742,10 @@ void fcmpl() {
 	float val1,val2;
 	int32_t retPilha;
 
-	retPilha = pop_op();
+	retPilha = popOp();
 	memcpy(&val2,&retPilha,sizeof(float));
 
-	retPilha = pop_op();
+	retPilha = popOp();
 	memcpy(&val1,&retPilha,sizeof(float));
 
 	if(val1 == val2) {
@@ -2765,10 +2765,10 @@ void fcmpg() {
 	float val1,val2;
 	int32_t retPilha;
 
-	retPilha = pop_op();
+	retPilha = popOp();
 	memcpy(&val2,&retPilha,sizeof(float));
 
-	retPilha = pop_op();
+	retPilha = popOp();
 	memcpy(&val1,&retPilha,sizeof(float));
 
 	if(val1 == val2) {
@@ -2786,8 +2786,8 @@ void fcmpg() {
 
 void dcmpl() {
 	int32_t baixa,alta;
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t dVal = alta;
 	dVal <<= 32;
@@ -2796,8 +2796,8 @@ void dcmpl() {
 	double doubleCmpl;
 	memcpy(&doubleCmpl, &dVal, sizeof(double));
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t dVal2 = alta;
 	dVal2 <<= 32;
@@ -2821,8 +2821,8 @@ void dcmpl() {
 
 void dcmpg() {
 	int32_t baixa,alta;
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t dVal = alta;
 	dVal <<= 32;
@@ -2831,8 +2831,8 @@ void dcmpg() {
 	double doubleCmpl;
 	memcpy(&doubleCmpl, &dVal, sizeof(double));
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	int64_t dVal2 = alta;
 	dVal2 <<= 32;
@@ -2864,7 +2864,7 @@ void ifeq() {
 	offset <<= 8;
 	offset |= offset2;
 
-	int32_t retPilha = pop_op();
+	int32_t retPilha = popOp();
 
 	if(retPilha == 0) {
 		frameCorrente->pc += offset;
@@ -2883,7 +2883,7 @@ void ifne() {
 	offset <<= 8;
 	offset |= offset2;
 
-	int32_t retPilha = pop_op();
+	int32_t retPilha = popOp();
 
 	if(retPilha != 0) {
 		frameCorrente->pc += offset;
@@ -2902,7 +2902,7 @@ void iflt() {
 	offset <<= 8;
 	offset |= offset2;
 
-	int32_t retPilha = pop_op();
+	int32_t retPilha = popOp();
 
 	if(retPilha < 0) {
 		frameCorrente->pc += offset;
@@ -2921,7 +2921,7 @@ void ifge() {
 	offset <<= 8;
 	offset |= offset2;
 
-	int32_t retPilha = pop_op();
+	int32_t retPilha = popOp();
 
 	if(retPilha >= 0) {
 		frameCorrente->pc += offset;
@@ -2940,7 +2940,7 @@ void ifgt() {
 	offset <<= 8;
 	offset |= offset2;
 
-	int32_t retPilha = pop_op();
+	int32_t retPilha = popOp();
 
 	if(retPilha > 0) {
 		frameCorrente->pc += offset;
@@ -2959,7 +2959,7 @@ void ifle() {
 	offset <<= 8;
 	offset |= offset2;
 
-	int32_t retPilha = pop_op();
+	int32_t retPilha = popOp();
 
 	if(retPilha <= 0) {
 		frameCorrente->pc += offset;
@@ -2978,8 +2978,8 @@ void if_icmpeq() {
 	offset <<= 8;
 	offset |= offset2;
 
-	int32_t retPilha1 = pop_op();
-	int32_t retPilha2 = pop_op();
+	int32_t retPilha1 = popOp();
+	int32_t retPilha2 = popOp();
 
 	if(retPilha1 == retPilha2) {
 		frameCorrente->pc += offset;
@@ -2998,8 +2998,8 @@ void if_icmpne() {
 	offset <<= 8;
 	offset |= offset2;
 
-	int32_t retPilha1 = pop_op();
-	int32_t retPilha2 = pop_op();
+	int32_t retPilha1 = popOp();
+	int32_t retPilha2 = popOp();
 
 	if(retPilha1 != retPilha2) {
 		frameCorrente->pc += offset;
@@ -3018,8 +3018,8 @@ void if_icmplt() {
 	offset <<= 8;
 	offset |= offset2;
 
-	int32_t retPilha1 = pop_op();
-	int32_t retPilha2 = pop_op();
+	int32_t retPilha1 = popOp();
+	int32_t retPilha2 = popOp();
 
 	if(retPilha2 < retPilha1) {
 		frameCorrente->pc += offset;
@@ -3038,8 +3038,8 @@ void if_icmpge() {
 	offset <<= 8;
 	offset |= offset2;
 
-	int32_t retPilha1 = pop_op();
-	int32_t retPilha2 = pop_op();
+	int32_t retPilha1 = popOp();
+	int32_t retPilha2 = popOp();
 
 	if(retPilha2 >= retPilha1) {
 		frameCorrente->pc += offset;
@@ -3058,8 +3058,8 @@ void if_icmpgt() {
 	offset <<= 8;
 	offset |= offset2;
 
-	int32_t retPilha1 = pop_op();
-	int32_t retPilha2 = pop_op();
+	int32_t retPilha1 = popOp();
+	int32_t retPilha2 = popOp();
 
 	if(retPilha2 > retPilha1) {
 		frameCorrente->pc += offset;
@@ -3078,8 +3078,8 @@ void if_icmple() {
 	offset <<= 8;
 	offset |= offset2;
 
-	int32_t retPilha1 = pop_op();
-	int32_t retPilha2 = pop_op();
+	int32_t retPilha1 = popOp();
+	int32_t retPilha2 = popOp();
 
 	if(retPilha2 <= retPilha1) {
 		frameCorrente->pc += offset;
@@ -3098,8 +3098,8 @@ void if_acmpeq() {
 	offset <<= 8;
 	offset |= offset2;
 
-	int32_t retPilha1 = pop_op();
-	int32_t retPilha2 = pop_op();
+	int32_t retPilha1 = popOp();
+	int32_t retPilha2 = popOp();
 
 	if(retPilha2 == retPilha1) {
 		frameCorrente->pc += offset;
@@ -3118,8 +3118,8 @@ void if_acmpne() {
 	offset <<= 8;
 	offset |= offset2;
 
-	int32_t retPilha1 = pop_op();
-	int32_t retPilha2 = pop_op();
+	int32_t retPilha1 = popOp();
+	int32_t retPilha2 = popOp();
 
 	if(retPilha2 != retPilha1) {
 		frameCorrente->pc += offset;
@@ -3172,7 +3172,7 @@ void tableswitch() {
 
     pc_aux = frameCorrente->pc;
 
-    indice = pop_op();
+    indice = popOp();
 
     bytes_preench = (4 - ((pc_aux + 1) % 4) ) % 4;
     pc_aux += bytes_preench;
@@ -3243,7 +3243,7 @@ void lookupswitch() {
 
     pc_aux = frameCorrente->pc;
 
-    key = pop_op();
+    key = popOp();
 
     bytes_preench = (4 - ((pc_aux + 1) % 4) ) % 4;
     pc_aux += bytes_preench;
@@ -3301,8 +3301,8 @@ void ireturn() {
 void lreturn() {
 	int32_t alta,baixa;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	flagRet = 2;
 
@@ -3313,7 +3313,7 @@ void lreturn() {
 }
 
 void freturn() {
-	retorno = pop_op();
+	retorno = popOp();
 	flagRet = 1;
   frameCorrente->pc = frameCorrente->codeLength + 1;
 }
@@ -3321,8 +3321,8 @@ void freturn() {
 void dreturn() {
 	int32_t alta,baixa;
 
-	baixa = pop_op();
-	alta = pop_op();
+	baixa = popOp();
+	alta = popOp();
 
 	flagRet = 2;
 
@@ -3333,7 +3333,7 @@ void dreturn() {
 }
 
 void areturn() {
-	retorno = pop_op();
+	retorno = popOp();
 	flagRet = 1;
 
     frameCorrente->pc = frameCorrente->codeLength + 1;
@@ -3369,7 +3369,7 @@ void getfield() {
 		return;
  	}
 
- 	Objeto* obj = (Objeto*) pop_op();
+ 	Objeto* obj = (Objeto*) popOp();
 
  	int32_t indiceField = buscaCampo(nomeClasse, nome, tipo);
  	uint32_t indiceNome = frameCorrente->classe->fields[indiceField].nameIndex;
@@ -3431,8 +3431,8 @@ void putfield() {
 		obj->campos[i] = baixa;
 		obj->campos[i+1] = alta;
  	} else {
-	 	int32_t val = pop_op();
-	 	Objeto* obj = (Objeto*)pop_op();
+	 	int32_t val = popOp();
+	 	Objeto* obj = (Objeto*)popOp();
 	 	int i;
 	 	for(i = 0; obj->indiceCampos[i] != indiceNome; i++);
 		obj->campos[i] = val;
@@ -3454,14 +3454,14 @@ void invokevirtual() {
 
     uint32_t pcAux = frameCorrente->code[frameCorrente->pc + 2];
 
-    classeIndice = frameCorrente->constant_pool[pcAux - 1].info.Methodref.class_index;
+    classeIndice = frameCorrente->constantPool[pcAux - 1].info.Methodref.class_index;
 
-    nomeClasse = retornaNome(frameCorrente->classe, frameCorrente->constant_pool[classeIndice - 1].info.Class.name_index);
-    nomeTipoAux = frameCorrente->constant_pool[pcAux - 1].info.Methodref.name_and_type_index;
+    nomeClasse = retornaNome(frameCorrente->classe, frameCorrente->constantPool[classeIndice - 1].info.Class.name_index);
+    nomeTipoAux = frameCorrente->constantPool[pcAux - 1].info.Methodref.name_and_type_index;
 
-    nomeMetodoAux = frameCorrente->constant_pool[nomeTipoAux - 1].info.NameAndType.name_index;
+    nomeMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.name_index;
 
-	descricaoMetodoAux = frameCorrente->constant_pool[nomeTipoAux - 1].info.NameAndType.descriptor_index;
+	descricaoMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.descriptor_index;
 
     nomeMetodo = retornaNome(frameCorrente->classe, nomeMetodoAux);
 
@@ -3493,9 +3493,9 @@ void invokevirtual() {
         if (strcmp(descricaoMetodo, "()V") == 0) {
             printf("\n");
         } else if (flagAppend == 0) {
-            resultado = pop_op();
+            resultado = popOp();
             if (tipoGlobal == NULL) {
-                string = frameCorrente->constant_pool[resultado].info.Utf8.bytes;
+                string = frameCorrente->constantPool[resultado].info.Utf8.bytes;
             }
 
             if (string != NULL) {
@@ -3511,7 +3511,7 @@ void invokevirtual() {
                 memcpy(&valDesemp, &resultado, sizeof(float));
                 printf("%f\n",valDesemp);
             } else if(strcmp(tipoGlobal, "D") == 0) {
-                resultado2 = pop_op();
+                resultado2 = popOp();
                 double resultado_double;
                 int64_t temp;
 
@@ -3521,7 +3521,7 @@ void invokevirtual() {
                 memcpy(&resultado_double, &temp, sizeof(int64_t));
                 printf("%f\n", resultado_double);
             } else if(strcmp(tipoGlobal, "L") == 0) {
-                resultado2 = pop_op();
+                resultado2 = popOp();
                 int64_t long_num;
                 long long result;
 
@@ -3546,10 +3546,10 @@ void invokevirtual() {
             }
         } else if (flagAppend == 2) {
             if(strcmp(tipoGlobal, "F") == 0) {
-                resultado = pop_op();
-                resultado_string = pop_op();
+                resultado = popOp();
+                resultado_string = popOp();
 
-                string = frameCorrente->constant_pool[resultado_string].info.Utf8.bytes;
+                string = frameCorrente->constantPool[resultado_string].info.Utf8.bytes;
                 if (string != NULL) {
                     printf("%s",string);
                 }
@@ -3557,18 +3557,18 @@ void invokevirtual() {
                 memcpy(&valDesemp,&resultado, sizeof(float));
                 printf("%f\n",valDesemp);
             } else if(strcmp(tipoGlobal, "I") == 0) {
-                resultado = pop_op();
-                resultado_string = pop_op();
+                resultado = popOp();
+                resultado_string = popOp();
 
-                string = frameCorrente->constant_pool[resultado_string].info.Utf8.bytes;
+                string = frameCorrente->constantPool[resultado_string].info.Utf8.bytes;
                 if (string != NULL) {
                     printf("%s",string);
                 }
                 printf("%d\n", resultado);
             } else if(strcmp(tipoGlobal, "D") == 0) {
-                resultado = pop_op();
-                resultado2 = pop_op();
-                resultado_string = pop_op();
+                resultado = popOp();
+                resultado2 = popOp();
+                resultado_string = popOp();
 
                 double resultado_double;
                 int64_t temp;
@@ -3612,7 +3612,7 @@ void invokevirtual() {
 	uint32_t* fields = calloc(sizeof(uint32_t),numeroParametros + 1);
 
 	for(int32_t i = 0; i <= numeroParametros; i++) {
-		fields[i] = pop_op();
+		fields[i] = popOp();
 	}
 
 	empilhaMetodo(metodoInvocado, classe);
@@ -3633,9 +3633,9 @@ void invokespecial() {
 
 	uint32_t indice = frameCorrente->code[frameCorrente->pc + 2];
 
-	uint32_t indiceClasse = (frameCorrente->constant_pool[indice-1]).info.Methodref.class_index;
+	uint32_t indiceClasse = (frameCorrente->constantPool[indice-1]).info.Methodref.class_index;
 
-	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constant_pool[indiceClasse-1]).info.Class.name_index);
+	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constantPool[indiceClasse-1]).info.Class.name_index);
 
     if(strcmp("java/lang/Object",nomeClasse) == 0) {
 
@@ -3661,7 +3661,7 @@ void invokespecial() {
 
 	classFile* classe = buscaClasseIndice(indexClasse);
 
-	uint16_t nomeTipoIndice = frameCorrente->constant_pool[indice-1].info.Methodref.name_and_type_index;
+	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Methodref.name_and_type_index;
 
 	metodoInvocado = buscaMetodo(frameCorrente->classe,classe,nomeTipoIndice);
 
@@ -3670,7 +3670,7 @@ void invokespecial() {
 	uint32_t* fields = calloc(sizeof(uint32_t),numeroParametros + 1);
 
 	for(int32_t i = 0; i <= numeroParametros; i++) {
-		fields[i] = pop_op();
+		fields[i] = popOp();
 	}
 
 	empilhaMetodo(metodoInvocado, classe);
@@ -3694,15 +3694,15 @@ void invokestatic() {
 
 	uint32_t indice = frameCorrente->code[frameCorrente->pc + 2];
 
-	uint32_t indiceClasse = (frameCorrente->constant_pool[indice-1]).info.Methodref.class_index;
+	uint32_t indiceClasse = (frameCorrente->constantPool[indice-1]).info.Methodref.class_index;
 
-	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constant_pool[indiceClasse-1]).info.Class.name_index);
+	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constantPool[indiceClasse-1]).info.Class.name_index);
 
-	nomeTipoAux = frameCorrente->constant_pool[indice - 1].info.Methodref.name_and_type_index;
+	nomeTipoAux = frameCorrente->constantPool[indice - 1].info.Methodref.name_and_type_index;
 
-    nomeMetodoAux = frameCorrente->constant_pool[nomeTipoAux - 1].info.NameAndType.name_index;
+    nomeMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.name_index;
 
-	descricaoMetodoAux = frameCorrente->constant_pool[nomeTipoAux - 1].info.NameAndType.descriptor_index;
+	descricaoMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.descriptor_index;
 
 
     nomeMetodo = retornaNome(frameCorrente->classe, nomeMetodoAux);
@@ -3711,7 +3711,7 @@ void invokestatic() {
 
 	if((strcmp(nomeClasse, "java/lang/System") == 0) && (strcmp(nomeMetodo,"exit") == 0)) {
 		if(strstr(descricaoMetodo, "(I)V") != NULL) {
-			int32_t retPilha = pop_op();
+			int32_t retPilha = popOp();
 			exit(retPilha);
             atualizaPc();
             return;
@@ -3720,8 +3720,8 @@ void invokestatic() {
 
 	if((strcmp(nomeClasse, "java/lang/Integer") == 0) && (strcmp(nomeMetodo,"parseInt") == 0)) {
 
-		int32_t retPilha = pop_op();
-		pop_op();
+		int32_t retPilha = popOp();
+		popOp();
 		push(retPilha);
         atualizaPc();
         return;
@@ -3729,8 +3729,8 @@ void invokestatic() {
 
 	if((strcmp(nomeClasse, "java/lang/Math") == 0) && (strcmp(nomeMetodo,"sqrt") == 0)) {
 		if(strstr(descricaoMetodo, "(D)D") != NULL) {
-			int32_t baixa = pop_op();
-			int32_t alta = pop_op();
+			int32_t baixa = popOp();
+			int32_t alta = popOp();
 
 			int64_t dVal = alta;
 			dVal <<= 32;
@@ -3759,7 +3759,7 @@ void invokestatic() {
 
 	classFile* classe = buscaClasseIndice(indexClasse);
 
-	uint16_t nomeTipoIndice = frameCorrente->constant_pool[indice-1].info.Methodref.name_and_type_index;
+	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Methodref.name_and_type_index;
 
 	metodoInvocado = buscaMetodo(frameCorrente->classe,classe,nomeTipoIndice);
 
@@ -3768,7 +3768,7 @@ void invokestatic() {
 	uint32_t* fields = calloc(sizeof(uint32_t),numeroParametros + 1);
 
 	for(int32_t i = 0; i < numeroParametros; i++) {
-		fields[i] = pop_op();
+		fields[i] = popOp();
 	}
 
 	empilhaMetodo(metodoInvocado, classe);
@@ -3790,15 +3790,15 @@ void invokeinterface() {
 
 	uint32_t indice = frameCorrente->code[frameCorrente->pc + 2];
 
-	uint32_t indiceClasse = (frameCorrente->constant_pool[indice-1]).info.Methodref.class_index;
+	uint32_t indiceClasse = (frameCorrente->constantPool[indice-1]).info.Methodref.class_index;
 
-	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constant_pool[indiceClasse-1]).info.Class.name_index);
+	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constantPool[indiceClasse-1]).info.Class.name_index);
 
-	nomeTipoAux = frameCorrente->constant_pool[indice - 1].info.Methodref.name_and_type_index;
+	nomeTipoAux = frameCorrente->constantPool[indice - 1].info.Methodref.name_and_type_index;
 
-    nomeMetodoAux = frameCorrente->constant_pool[nomeTipoAux - 1].info.NameAndType.name_index;
+    nomeMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.name_index;
 
-	descricaoMetodoAux = frameCorrente->constant_pool[nomeTipoAux - 1].info.NameAndType.descriptor_index;
+	descricaoMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.descriptor_index;
 
     nomeMetodo = retornaNome(frameCorrente->classe, nomeMetodoAux);
 
@@ -3808,7 +3808,7 @@ void invokeinterface() {
 
 	classFile* classe = buscaClasseIndice(indexClasse);
 
-	uint16_t nomeTipoIndice = frameCorrente->constant_pool[indice-1].info.Methodref.name_and_type_index;
+	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Methodref.name_and_type_index;
 
 	metodoInvocado = buscaMetodo(frameCorrente->classe,classe,nomeTipoIndice);
 
@@ -3817,7 +3817,7 @@ void invokeinterface() {
 	uint32_t* fields = calloc(sizeof(uint32_t),numeroParametros + 1);
 
 	for(int32_t i = 0; i < numeroParametros; i++) {
-		fields[i] = pop_op();
+		fields[i] = popOp();
 	}
 
 	empilhaMetodo(metodoInvocado, classe);
@@ -3839,7 +3839,7 @@ void ins_new() {
 
 	indice = frameCorrente->code[2+(frameCorrente->pc)];
 
-	nomeClasse = retornaNome(frameCorrente->classe, frameCorrente->constant_pool[indice-1].info.Class.name_index);
+	nomeClasse = retornaNome(frameCorrente->classe, frameCorrente->constantPool[indice-1].info.Class.name_index);
 
 	if(strcmp("java/util/Scanner",nomeClasse) == 0) {
 		naoEmpilhaFlag = 1;
@@ -3871,7 +3871,7 @@ void ins_new() {
 
 void newarray() {
 	int32_t tamanhoBytes;
-	int32_t tamanhoArray = pop_op();
+	int32_t tamanhoArray = popOp();
 	int8_t tipoArray = frameCorrente->code[(frameCorrente->pc)+1];
 
 
@@ -3923,7 +3923,7 @@ void newarray() {
 
 void anewarray() {
 	int32_t tamanhoBytes;
-	int32_t tamanhoArray = pop_op();
+	int32_t tamanhoArray = popOp();
 	int8_t tipoArray = frameCorrente->code[(frameCorrente->pc)+1];
 
 
@@ -3969,7 +3969,7 @@ void anewarray() {
 }
 
 void arraylength() {
-	int32_t arrayRef = pop_op();
+	int32_t arrayRef = popOp();
 	int i = 0;
 	while(i  < qtdArrays) {
 		if(arrayVetores[i].referencia == arrayRef) {
@@ -3993,7 +3993,7 @@ void checkcast() {
 
 	indice = (offset1 << 8) | offset2;
 
-	objeto* objeto = (struct objeto*) pop_op();
+	objeto* objeto = (struct objeto*) popOp();
 
 	if(objeto == NULL) {
 		printf("Objeto nulo!\n");
@@ -4020,7 +4020,7 @@ void instanceof() {
 
 	indice = (offset1 << 8) | offset2;
 
-	objeto* objeto = (struct objeto*) pop_op();
+	objeto* objeto = (struct objeto*) popOp();
 
 	if(objeto == NULL) {
 		printf("Objeto nulo!\n");
@@ -4056,7 +4056,7 @@ void ifnull() {
 	offset <<= 8;
 	offset |= offset2;
 
-	int32_t retPilha = pop_op();
+	int32_t retPilha = popOp();
 
 	if(retPilha == 0) {
 		frameCorrente->pc += offset;
@@ -4075,7 +4075,7 @@ void ifnonnull() {
 	offset <<= 8;
 	offset |= offset2;
 
-	int32_t retPilha = pop_op();
+	int32_t retPilha = popOp();
 
 	if(retPilha != 0) {
 		frameCorrente->pc += offset;
