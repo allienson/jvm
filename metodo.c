@@ -21,7 +21,7 @@ extern struct frame* frameCorrente;
 uint32_t numObjetos = 0;
 
 MethodInfo* buscaMetodoMain() {
-	classFile* main;
+	ClassFile* main;
 	uint16_t tamanhoNome;
   uint16_t tamanhoDesc;
 	uint8_t* nome;
@@ -29,9 +29,9 @@ MethodInfo* buscaMetodoMain() {
 
 	main = buscaClasseIndice(1);
 
-	for(int i = 0; i < main->methods_count; i++){
-		nome = main->constant_pool[(main->methods[i].name_index -1)].info.Utf8.bytes;
-		desc = main->constant_pool[(main->methods[i].descriptor_index - 1)].info.Utf8.bytes;
+	for(int i = 0; i < main->methodsCount; i++) {
+		nome = main->constantPool[(main->methods[i].nameIndex -1)].info.Utf8.bytes;
+		desc = main->constantPool[(main->methods[i].descriptorIndex - 1)].info.Utf8.bytes;
 
 		if(strcmp("main",(char *)nome) == 0) {
 			if(strcmp("([Ljava/lang/String;)V",(char *)desc) == 0) {
@@ -46,11 +46,11 @@ MethodInfo* buscaMetodoMain() {
 
 void empilhaMetodo(MethodInfo* metodo, ClassFile* classe) {
 	newInstrucoes();
-	criaFrame(classe->constant_pool,classe,metodo->cd_atrb);
+	criaFrame(classe->constantPool,classe,metodo->cdAtrb);
 }
 
-void executaFrameCorrente(){
-	for(;(frameCorrente->pc) < frameCorrente->code_length;) {
+void executaFrameCorrente() {
+	for(;(frameCorrente->pc) < frameCorrente->codeLength;) {
 		if(frameCorrente == NULL) {
 			break;
     }
@@ -60,21 +60,21 @@ void executaFrameCorrente(){
 	desalocaFrame();
 }
 
-objeto* criaObjeto(classFile* classe){
+objeto* criaObjeto(classFile* classe) {
 	objeto* objeto;
 
-	if(numObjetos == 0){
+	if(numObjetos == 0) {
 		heap = calloc(128,sizeof(struct objeto*));
 	}
 
 	objeto = calloc(sizeof(objeto),1);
 	objeto->classe = classe;
 
-	objeto->campos = calloc(sizeof(uint32_t), classe->fields_count);
-	objeto->indiceCampos = calloc(sizeof(uint32_t), classe->fields_count);
+	objeto->campos = calloc(sizeof(uint32_t), classe->fieldsCount);
+	objeto->indiceCampos = calloc(sizeof(uint32_t), classe->fieldsCount);
 
-	for(int i = 0; i < classe->fields_count; i++){
-		objeto->indiceCampos[i] = classe->fields[i].name_index;
+	for(int i = 0; i < classe->fieldsCount; i++) {
+		objeto->indiceCampos[i] = classe->fields[i].nameIndex;
 	}
 
 	return objeto;

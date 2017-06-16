@@ -1,22 +1,3 @@
-/**
- *@file
- *@section DESCRIPTION
- *Universidade de Brasilia
- *
- *Gabriel Mesquita de Araujo 13/0009121\n
- *Gabriel Ferreira Silva 14/0140131\n
- *Renato 13/0009121\n
- *Leandro 13/0009121\n
- *Carlos 13/0009121\n\n
- *
- * Software Basico - 1/2016\n
- * Professor: Marcelo Ladeira\n\n
- *
- * Arquivo que contém as instrucoes implementadas pelo nosso programa
- * Conforme sugerido, foi usado um vetor de ponteiro para funcoes
- *
- */
-
 #include "./includes/instrucao.h"
 #include "./includes/frame.h"
 #include "./includes/carregador.h"
@@ -33,78 +14,33 @@
 #define POS_BAIXA 1
 #define POS_ALTA 0
 
-/**
- * Similar ao nosso array de classes esse é o array
- * que guarda as referencias aos vetores alocados.
- * Necessario para a instrução arraylength.
- */
 vector* arrayVetores = NULL;
 
-/**
- * Guarda a quantidade de arrays alocados para realiar o realloc.
- * e necessario tambem para a instrução arraylength
- */
 int32_t qtdArrays = 0;
 
-
-//OBS: Alternativa para memcpy no manipulação de ponto flutuante -> UNION.
-
-/**
- * Acesso ao frame corrente declarado no modulo frame.h
- */
 extern struct frame* frameCorrente;
 
-/**
- * Flag que controla o push na pilha de operandos.
- */
 int naoEmpilhaFlag = 0;
 
-/**
- * o decodificador eh um array com informacoes das varias instrucoes\n
- * a partir do opcode da instrucao, pode-se pelo decodificador descobrir o nome e quantos bytes ele ocupa
- */
 decodificador dec[NUM_INSTRUCAO];
 
-/**
- * Função que atualiza o valor do program counter do frame corrente.
- * @param void
- * @return void
- */
 void atualizaPc(){
-
-	//atualiza pc
-	inicializa_decodificador(dec);
+	inicializaDecodificador(dec);
 	int num_bytes = dec[frameCorrente->code[frameCorrente->pc]].bytes;
-
-	//proxima instruçao.
-	for(int8_t i = 0; i < num_bytes + 1; i++)
+	for(int8_t i = 0; i < num_bytes + 1; i++) {
 		frameCorrente->pc++;
+  }
 }
 
-/**
- * a funcao recebe uma referencia para a constant pool e a posicao que se deseja acessar
- * a funcao retorna o indice da CONSTANT_UTF8 associada a CONSTANT da posicao passada na constant pool
- * @param cp_info* uma referencia a constant pool
- * @param int um indice para a constant pool
- * @return int indice da CONSTANT_UTF8 associada
- */
-int obtem_utf_eq(cp_info* cp, int pos_pool)
-{
+int obtemUtfEq(cp_info* cp, int pos_pool) {
     int tag;
-
-    // pega tag
     tag = cp[pos_pool].tag;
 
-    // se a tag for o de uma UTF8
-    if (tag == CONSTANT_Utf8)
-    {
-        // imprime informacao e sai
+    if (tag == CONSTANT_Utf8) {
         return pos_pool;
     }
 
-    // senao, de acordo com a tag, decide qual sera a proxima posicao da cte pool que iremos olhar
-    switch(tag)
-    {
+    switch(tag) {
         case CONSTANT_Class:
             return obtem_utf_eq(cp, cp[pos_pool].info.Class.name_index - 1);
         case CONSTANT_String:
@@ -116,15 +52,7 @@ int obtem_utf_eq(cp_info* cp, int pos_pool)
     }
 }
 
-
-/**
- * Função que aponta para uma implementação de cada instrução de acordo
- * com o opcode fornecido.
- * @param void
- * @return void
- */
 void newInstrucoes(){
-
 	instrucao[0] = nop;
 	instrucao[1] = aconst_null;
 	instrucao[2] = iconst_m1;
@@ -325,148 +253,64 @@ void newInstrucoes(){
 	instrucao[201] = jsr_w;
 }
 
-//Implementação de cada instrução.
-
-/**
- * funcao que nao realiza nada na pilha de operandos nem no array de var local
- * Somente pula para a proxima instruçao.
- * @param void
- * @return void
- */
 void nop(){
-    // pula para proxima instrucao, atualizando pc
 	frameCorrente->pc++;
 }
 
-/**
- * funcao que poe o valor a referencia null na pilha de operandos
- * @param void
- * @return void
- */
 void aconst_null(){
-    // poe a refererencia null na pilha
-    push((int32_t)NULL_REF);
-
-    // atualiza pc
+  push((int32_t)NULL_REF);
 	frameCorrente->pc++;
 }
 
-/**
- * funcao que poe a constante inteira -1 na pilha de operandos
- * @param void
- * @return void
- */
 void iconst_m1(){
     char* tipo = "I";
     tipoGlobal = tipo;
-
-    // poe -1 na pilha de operandos
     push(-1);
-
-    // atualiza pc
     frameCorrente->pc++;
 }
 
-/**
- * Funcao que empilha 0 na pilha de operandos.
- * @param void
- * @return void
- */
 void iconst_0(){
-    char* tipo = "I";
-    tipoGlobal = tipo;
-
-    // poe 0 na pilha de operandos
+  char* tipo = "I";
+  tipoGlobal = tipo;
 	push((int32_t) 0);
-
 	atualizaPc();
 }
 
-/**
- * Funcao que empilha 1 na pilha de operandos.
- * @param void
- * @return void
- */
 void iconst_1(){
     char* tipo = "I";
     tipoGlobal = tipo;
-
-    // poe 1 na pilha de operandos
     push(1);
-
-    // atualiza pc
     frameCorrente->pc++;
 }
 
-/**
- * Funcao que empilha 2 na pilha de operandos.
- * @param void
- * @return void
- */
 void iconst_2(){
     char* tipo = "I";
     tipoGlobal = tipo;
-
-    // poe 2 na pilha de operandos
     push(2);
-
-    // atualiza pc
     frameCorrente->pc++;
 }
 
-/**
- * Funcao que empilha 3 na pilha de operandos.
- * @param void
- * @return void
- */
 void iconst_3(){
     char* tipo = "I";
     tipoGlobal = tipo;
-
-    // poe 3 na pilha de operandos
     push(3);
-    // atualiza pc
     frameCorrente->pc++;
 }
 
-/**
- * Funcao que empilha 4 na pilha de operandos.
- * @param void
- * @return void
- */
 void iconst_4(){
     char* tipo = "I";
     tipoGlobal = tipo;
-
-    // poe 4 na pilha de operandos
     push(4);
-
-    // atualiza pc
     frameCorrente->pc++;
 }
 
-/**
- * Funcao que empilha 5 na pilha de operandos.
- * @param void
- * @return void
- */
 void iconst_5(){
     char* tipo = "I";
     tipoGlobal = tipo;
-
-    // poe 5 na pilha de operandos
     push(5);
-
-    // atualiza pc
     frameCorrente->pc++;
 }
 
-/**
- * a funcao coloca a constante long 0 na pilha de operandos
- * ocupa 2 espacos na pilha
- * @param void
- * @return void
- */
 void lconst_0(){
     char* tipo = "L";
     tipoGlobal = tipo;

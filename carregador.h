@@ -18,8 +18,8 @@
 #include "areaMetodos.h"
 
 void carregaMemClass(char*);
-int isClasseCarregada();
-void carregaClasse();
+int isClasseCarregada(char*);
+void carregaClasse(char*);
 char* retornaNomeClass(ClassFile*);
 ClassFile* buscaClassPorIndice(int);
 char * retornaNome(ClassFile*, uint16_t);

@@ -30,20 +30,20 @@
 #include "exibidor.h"
 
 void printaClassFile(ClassFile* classFile) {
-    
-    // GENERAL INFORMATION 
+
+    // GENERAL INFORMATION
     printTopo();
     printBlank();
     printf("\t%c\t\tGENERAL INFORMATION\t\t%c\n", 179, 179);
     printBlank();
     printBase();
-    printf("\t\tMagic:                 0x%08X\n", classFile->magic);                  
+    printf("\t\tMagic:                 0x%08X\n", classFile->magic);
     printf("\t\tMinor Version:         %d\n", classFile->minorVersion);
     printf("\t\tMajor Version:         %d\n", classFile->majorVersion);
     printf("\t\tConstant Pool Count:   %d\n", classFile->constantPoolCount);
     printf("\t\tAccess Flags:          0x%04X\n", classFile->accessFlags);
     printf("\t\tThis Class:            ");
-    imprimeStringPool(classFile->constantPool, classFile->thisClass-1);     
+    imprimeStringPool(classFile->constantPool, classFile->thisClass-1);
     printf("\n");
     printf("\t\tSuper Class:           ");
     imprimeStringPool(classFile->constantPool, classFile->superClass-1);
@@ -72,7 +72,7 @@ void printaClassFile(ClassFile* classFile) {
     printf("\n");
     printaInterfaces(classFile);
     getchar();
-    
+
     // FIELD INFO
     printTopo();
     printBlank();
@@ -88,10 +88,10 @@ void printaClassFile(ClassFile* classFile) {
     printBlank();
     printf("\t%c\t\t   METHOD INFO     \t\t%c\n", 179, 179);
     printBlank();
-    printBase();    
+    printBase();
     printaMethodInfo(classFile);
     getchar();
-    
+
     // ATTRIBUTE INFO
     printTopo();
     printBlank();
@@ -104,10 +104,10 @@ void printaClassFile(ClassFile* classFile) {
 }
 
 void printaCpInfo(ClassFile* classFile) {
-    double valorDouble;                     
-    float valorFloat;                       
+    double valorDouble;
+    float valorFloat;
     long valorLong;
-    
+
     for (int i = 0; i < classFile->constantPoolCount-1; ++i) {
 
         switch (classFile->constantPool[i].tag) {
@@ -126,12 +126,12 @@ void printaCpInfo(ClassFile* classFile) {
                 imprimeStringPool(classFile->constantPool, classFile->constantPool[i].info.Fieldref.nameAndTypeIndex-1);
                 printf("\n");
                 break;
-                
+
             case CONSTANT_NameAndType:
                 printf("\t[%d] CONSTANT_NameAndType_Info", i+1);
                 printf("\n");
                 printf("\t\tNameIndex:          cp_info_#%d  ", classFile->constantPool[i].info.NameAndType.nameIndex);
-                imprimeStringPool(classFile->constantPool, classFile->constantPool[i].info.NameAndType.nameIndex-1);                
+                imprimeStringPool(classFile->constantPool, classFile->constantPool[i].info.NameAndType.nameIndex-1);
                 printf("\n");
                 printf("\t\tDescriptorIndex:    cp_info_#%d  ", classFile->constantPool[i].info.NameAndType.descriptorIndex);
                 imprimeStringPool(classFile->constantPool, classFile->constantPool[i].info.NameAndType.descriptorIndex-1);
@@ -146,7 +146,7 @@ void printaCpInfo(ClassFile* classFile) {
                 printf("\n");
                 break;
             case CONSTANT_Methodref:
-                printf("\t[%d] CONSTANT_Methodref_Info",i+1); 
+                printf("\t[%d] CONSTANT_Methodref_Info",i+1);
                 printf("\n");
                 printf("\t\tClassIndex:        cp_info_#%d  ", classFile->constantPool[i].info.Methodref.classIndex);
                 imprimeStringPool(classFile->constantPool, classFile->constantPool[i].info.Methodref.classIndex -1);
@@ -159,7 +159,7 @@ void printaCpInfo(ClassFile* classFile) {
                 printf("\t[%d] CONSTANT_InterfaceMethodref_Info",i+1);
                 printf("\n");
                 printf("\t\tClassIndex:        cp_info_#%d  ",classFile->constantPool[i].info.InterfaceMethodref.classIndex);
-                imprimeStringPool(classFile->constantPool, classFile->constantPool[i].info.InterfaceMethodref.classIndex -1);                
+                imprimeStringPool(classFile->constantPool, classFile->constantPool[i].info.InterfaceMethodref.classIndex -1);
                 printf("\n");
                 printf("\t\tNameAndTypeIndex:  cp_info_#%d  ",i+1, classFile->constantPool[i].info.InterfaceMethodref.nameAndTypeIndex);
                 imprimeStringPool(classFile->constantPool, classFile->constantPool[i].info.InterfaceMethodref.nameAndTypeIndex -1);
@@ -197,7 +197,7 @@ void printaCpInfo(ClassFile* classFile) {
                 printf("\n");
                 printf("\t[%d] (large numeric continued)", i+2);
                 printf("\n");
-                i++;                
+                i++;
                 break;
             case CONSTANT_Long:
                 printf("\t[%d] CONSTANT_Long_Info", i+1);
@@ -211,7 +211,7 @@ void printaCpInfo(ClassFile* classFile) {
                 printf("\n");
                 printf("\t[%d] (large numeric continued)", i+2);
                 printf("\n");
-                i++;                
+                i++;
                 break;
             default:
                 break;
@@ -220,12 +220,11 @@ void printaCpInfo(ClassFile* classFile) {
 }
 
 void printaInterfaces(ClassFile* classFile) {
-
     if (classFile->interfacesCount) {
         for (int i = 0; i < classFile->interfacesCount; ++i) {
-            
+
             int index = classFile->constantPool[classFile->interfaces[i]-1].info.Class.nameIndex;
-            
+
             printf("\tInterface %d:   cp_info_#%d   ", i, classFile->interfaces[i], index);
             imprimeStringPool(classFile->constantPool, classFile->interfaces[i]-1);
             printf("\n");
@@ -233,11 +232,11 @@ void printaInterfaces(ClassFile* classFile) {
     } else {
         printf("\t     !! Esse classe nao possui Interfaces !!");
         printf("\n");
-    }   
+    }
 }
 
-void printaFieldInfo(ClassFile* classFile) {    
-    
+void printaFieldInfo(ClassFile* classFile) {
+
     if(classFile->fieldsCount != 0) {
         for (int i = 0; i < classFile->fieldsCount; i++) {
 
@@ -251,9 +250,9 @@ void printaFieldInfo(ClassFile* classFile) {
             printAccessFlag(classFile->fields[i].accessFlags);
             printf("\tNumero de Atributos:  %d", classFile->fields[i].attributesCount);
             printf("\n\n");
-            
-            for (int j = 0; j < classFile->fields[i].attributesCount; j++) {                
-                
+
+            for (int j = 0; j < classFile->fields[i].attributesCount; j++) {
+
                 printf("\tGeneric Info %c", 196);
                 printSingleLine();
                 printf("\n");
@@ -276,16 +275,15 @@ void printaFieldInfo(ClassFile* classFile) {
 }
 
 void printaMethodInfo(ClassFile* classFile) {
-    
-    uint16_t methodsCount = classFile->methodsCount; 
-
+    uint16_t methodsCount = classFile->methodsCount;
     printf("\tMethods Count: %d\n", methodsCount);
+
     if(methodsCount == 0)
         return;
     else{
         MethodInfo* cp = classFile->methods;
         for(int i = 0; i < methodsCount; cp++){
-            
+
             printf("\tname_index:        cp_info_#%d   ",cp->nameIndex);
             imprimeStringPool(classFile->constantPool, cp->nameIndex - 1);
             printf("\n");
@@ -299,7 +297,7 @@ void printaMethodInfo(ClassFile* classFile) {
             imprimeCode(classFile, cp->cdAtrb);
 
             if (cp->attributesCount == 2) {
-                imprimeExc(classFile, cp->excAtrb); 
+                imprimeExc(classFile, cp->excAtrb);
             }
             i++;
         }
@@ -307,11 +305,11 @@ void printaMethodInfo(ClassFile* classFile) {
 }
 
 void printaAttributeInfo(ClassFile* classFile) {
-    
+
     if (classFile->attributesCount) {
-        
+
         AttributeInfo* attrInfo = classFile->attributes;
-        
+
         for(int i = 0; i < classFile->attributesCount; attrInfo++){
             printf("\tGeneric Info %c", 196);
             printSingleLine();
@@ -338,7 +336,7 @@ void printaAttributeInfo(ClassFile* classFile) {
     } else {
         printf("\t     !! Essa classe nao possui Atributos !!");
         printf("\n\n");
-    }    
+    }
 }
 
 void imprimeStringPool(CpInfo* cp, int pos) {
@@ -357,27 +355,27 @@ void imprimeStringPool(CpInfo* cp, int pos) {
             break;
 
         case CONSTANT_Fieldref:
-            imprimeStringPool(cp, cp[pos].info.Fieldref.classIndex - 1); 
-            imprimeStringPool(cp, cp[pos].info.Fieldref.nameAndTypeIndex - 1); 
+            imprimeStringPool(cp, cp[pos].info.Fieldref.classIndex - 1);
+            imprimeStringPool(cp, cp[pos].info.Fieldref.nameAndTypeIndex - 1);
             break;
 
         case CONSTANT_NameAndType:
-            imprimeStringPool(cp, cp[pos].info.NameAndType.nameIndex - 1 ); 
-            imprimeStringPool(cp, cp[pos].info.NameAndType.descriptorIndex - 1); 
+            imprimeStringPool(cp, cp[pos].info.NameAndType.nameIndex - 1 );
+            imprimeStringPool(cp, cp[pos].info.NameAndType.descriptorIndex - 1);
             break;
 
         case CONSTANT_Methodref:
-            imprimeStringPool(cp, cp[pos].info.Methodref.classIndex - 1); 
-            imprimeStringPool(cp, cp[pos].info.Methodref.nameAndTypeIndex - 1); 
+            imprimeStringPool(cp, cp[pos].info.Methodref.classIndex - 1);
+            imprimeStringPool(cp, cp[pos].info.Methodref.nameAndTypeIndex - 1);
             break;
-            
+
         case CONSTANT_InterfaceMethodref:
-            imprimeStringPool(cp, cp[pos].info.InterfaceMethodref.classIndex - 1); 
-            imprimeStringPool(cp, cp[pos].info.InterfaceMethodref.nameAndTypeIndex - 1); 
+            imprimeStringPool(cp, cp[pos].info.InterfaceMethodref.classIndex - 1);
+            imprimeStringPool(cp, cp[pos].info.InterfaceMethodref.nameAndTypeIndex - 1);
             break;
-            
+
         case CONSTANT_String:
-            imprimeStringPool(cp, cp[pos].info.String.stringIndex - 1); 
+            imprimeStringPool(cp, cp[pos].info.String.stringIndex - 1);
             break;
 
         case CONSTANT_Integer:
@@ -403,7 +401,7 @@ double hexToDouble(uint32_t highBytes, uint32_t lowBytes){
     valorDouble |= lowBytes;
 
     memcpy(&retorno, &valorDouble, sizeof(uint64_t));
- 
+
     return retorno;
 }
 
@@ -473,10 +471,10 @@ void printAccessFlag(uint16_t accessFlags){
 }
 
 void imprimeCode(ClassFile* classFile, CodeAttribute* cdAtrb) {
-    int opcode, posReferencia; 
+    int opcode, posReferencia;
     int bytesPreench, offsets;
-    uint32_t defautV, low, high, npairs, temp; 
-    
+    uint32_t defautV, low, high, npairs, temp;
+
     printf("\n\tCode Info");
     printSingleLine();
     printf("\n");
@@ -490,115 +488,115 @@ void imprimeCode(ClassFile* classFile, CodeAttribute* cdAtrb) {
     printf("\tTamanho do codigo: %d\n", cdAtrb->codeLength);
 
     Decodificador dec[NUM_INSTRUCAO];
-    inicializaDecodificador(dec); 
+    inicializaDecodificador(dec);
 
-    for(uint32_t k = 0; k < cdAtrb->codeLength; ) {    
+    for(uint32_t k = 0; k < cdAtrb->codeLength; ) {
         opcode = cdAtrb->code[k];
         printf("\t%d: %s  ", k, dec[opcode].instrucao);
-        k++; 
+        k++;
 
         if (opcode == TABLESWITCH) {
             posReferencia = k - 1;
-            bytesPreench = (4 - (k % 4)) % 4;  
+            bytesPreench = (4 - (k % 4)) % 4;
             for (int l = 0; l < bytesPreench; l++) {
-                k++; 
+                k++;
             }
 
             defautV = 0;
             for (int l = 0; l < 4; l++) {
-                defautV = (defautV << 4) + cdAtrb->code[k];   
-                k++; 
-            }       
+                defautV = (defautV << 4) + cdAtrb->code[k];
+                k++;
+            }
 
             low = 0;
             for (int l = 0; l < 4; l++) {
-                low = (low << 4) + cdAtrb->code[k];   
-                k++; 
-            }       
+                low = (low << 4) + cdAtrb->code[k];
+                k++;
+            }
 
             high = 0;
             for (int l = 0; l < 4; l++) {
-                high = (high << 4) + cdAtrb->code[k];   
-                k++; 
-            }       
+                high = (high << 4) + cdAtrb->code[k];
+                k++;
+            }
 
             printf("  from  %d to %d\n", low, high);
 
             offsets = 1 + high - low;
             for (int l = 0; l < offsets; l++) {
-                temp = 0; 
+                temp = 0;
                 for (int i = 0; i < 4; i++) {
-                    temp = (temp << 4) + cdAtrb->code[k];   
-                    k++; 
+                    temp = (temp << 4) + cdAtrb->code[k];
+                    k++;
                 }
                 printf("\t%d: %d (+%d)\n", l, (posReferencia + temp), temp);
-            } 
+            }
             printf("\tdefault: %d (+%d)\n", (defautV + posReferencia), defautV);
         } else if (opcode == LOOKUPSWITCH) {
-            posReferencia = k - 1; 
-            bytesPreench = (4 - (k % 4)) % 4;  
+            posReferencia = k - 1;
+            bytesPreench = (4 - (k % 4)) % 4;
             for (int l = 0; l < bytesPreench; l++) {
-                k++; 
+                k++;
             }
 
             defautV = 0;
             for (int l = 0; l < 4; l++) {
-                defautV = (defautV << 4) + cdAtrb->code[k];   
-                k++; 
-            }       
+                defautV = (defautV << 4) + cdAtrb->code[k];
+                k++;
+            }
 
             npairs = 0;
             for (int l = 0; l < 4; l++) {
-                npairs = (npairs << 4) + cdAtrb->code[k];   
-                k++; 
-            }       
+                npairs = (npairs << 4) + cdAtrb->code[k];
+                k++;
+            }
 
             printf("  %d\n", npairs);
 
             for (uint32_t l = 0; l < npairs; l++) {
-                temp = 0; 
+                temp = 0;
                 for (int i = 0; i < 4; i++) {
-                    temp = (temp << 8) + cdAtrb->code[k];   
-                    k++; 
+                    temp = (temp << 8) + cdAtrb->code[k];
+                    k++;
                 }
                 printf("\t%d:  ", temp);
 
-                temp = 0; 
+                temp = 0;
                 for (int i = 0; i < 4; i++) {
-                    temp = (temp << 8) + cdAtrb->code[k];   
-                    k++; 
+                    temp = (temp << 8) + cdAtrb->code[k];
+                    k++;
                 }
                 printf("%d (+%d)\n", temp + posReferencia, temp);
 
-            } 
+            }
             printf("\tdefault: %d (+%d)\n", defautV + posReferencia, defautV);
 
         } else if (opcode == WIDE) {
             printf("\n");
 
             opcode = cdAtrb->code[k];
-            k++; 
+            k++;
 
             if (opcode == ILOAD || opcode == FLOAD || opcode == ALOAD || opcode == LLOAD ||
                 opcode == DLOAD || opcode == ISTORE || opcode == FSTORE || opcode == ASTORE ||
                 opcode == LSTORE || opcode == DSTORE || opcode == RET) {
 
                 printf("%d: %s  ", k - 1, dec[opcode].instrucao);
-                k+=2; 
+                k+=2;
                 temp = cdAtrb->code[k-2] << 8;
                 temp += cdAtrb->code[k-1];
                 printf(" %u \n", temp);
                 printf("%d: iinc ", k - 1);
-                k+=2; 
+                k+=2;
                 temp = cdAtrb->code[k-2] << 8;
                 temp += cdAtrb->code[k-1];
-                printf(" %u ", temp); 
-                k+=2; 
-                temp = cdAtrb->code[k-2] << 8; 
+                printf(" %u ", temp);
+                k+=2;
+                temp = cdAtrb->code[k-2] << 8;
                 temp += cdAtrb->code[k-1];
-                printf(" por  %u \n", temp); 
-            
-            } else { 
+                printf(" por  %u \n", temp);
+
+            } else {
                 printf("arquivo .class invalido na instrucao wide");
                 exit(1);
             }
@@ -613,7 +611,7 @@ void imprimeCode(ClassFile* classFile, CodeAttribute* cdAtrb) {
             }
             printf("\n");
         }
-    }      
+    }
     printf("\n\n");
 }
 
@@ -630,10 +628,10 @@ void imprimeExc(ClassFile* classFile, ExceptionsAttribute* excAtrb) {
 }
 
 void printTopo() {
- 
+
     printf("\n\t%c", 218);
     for (int i = 0; i < 47; ++i) {
-        printf("%c", 196);  
+        printf("%c", 196);
     }
     printf("%c\n", 191);
 }
@@ -642,7 +640,7 @@ void printBlank() {
 
     printf("\t%c", 179);
     for (int i = 0; i < 47; ++i) {
-        printf("%c", 32);  
+        printf("%c", 32);
     }
     printf("%c\n", 179);
 }
@@ -651,14 +649,14 @@ void printBase() {
 
     printf("\t%c", 192);
     for (int i = 0; i < 47; ++i) {
-        printf("%c", 196);  
+        printf("%c", 196);
     }
     printf("%c\n", 217);
 }
 
 void printSingleLine(){
     for (int i = 0; i < 34; ++i) {
-        printf("%c", 196);  
+        printf("%c", 196);
     }
     printf("%c", 170);
 }
