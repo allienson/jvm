@@ -3228,13 +3228,13 @@ void invokevirtual() {
                 int64_t long_num;
                 long long result;
 
-            memcpy(&result, &long_num, sizeof(long));
-            foi_lneg = false;
-            if (!foi_lneg) {
-                printf("%" PRId64 "\n", long_num);
-            } else {
-                printf("%" PRId64 "\n", result);
-            }
+				memcpy(&result, &long_num, sizeof(long));
+				foi_lneg = false;
+				if (!foi_lneg) {
+					printf("%" PRId64 "\n", long_num);
+				} else {
+					printf("%" PRId64 "\n", result);
+				}
 			}
         } else if (flagAppend == 2) {
             if(strcmp(tipoGlobal, "F") == 0) {
