@@ -3235,6 +3235,7 @@ void invokevirtual() {
             } else {
                 printf("%" PRId64 "\n", result);
             }
+			}
         } else if (flagAppend == 2) {
             if(strcmp(tipoGlobal, "F") == 0) {
                 resultado = popOp();
@@ -3317,6 +3318,7 @@ void invokevirtual() {
 	atualizaPc();
 	return;
 }
+
 
 void invokespecial() {
 	MethodInfo* metodoInvocado;
@@ -3794,5 +3796,4 @@ void jsr_w(){
 	deslocamento |= (offset4 & 0xFF);
 
 	frameCorrente->pc += deslocamento;
-}
 }
