@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -m32 -std=c99 
+CFLAGS = -m32 -std=c99 -coverage
 OUTFILE = JVM
 OBJS = carregador.o exibidor.o leitor.o decodificador.o main.o
 SRCS = carregador.c exibidor.c leitor.c decodificador.c main.c
