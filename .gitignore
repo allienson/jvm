@@ -12,3 +12,4 @@ JVM
 *.gcda
 
 *.exe
+log.txt

@@ -23,8 +23,6 @@ extern struct Frame* frameCorrente;
 uint32_t numObjetos = 0;
 
 MethodInfo* buscaMetodoMain(ClassFile* classFile) {
-	uint16_t tamanhoNome;
-	uint16_t tamanhoDesc;
 	uint8_t* nome;
 	uint8_t* desc;
 
@@ -62,10 +60,6 @@ void executaFrameCorrente() {
 
 Objeto* criaObjeto(ClassFile* classe) {
 	Objeto* objeto;
-
-	if(numObjetos == 0) {
-		heap = calloc(128,sizeof(struct objeto*));
-	}
 
 	objeto = calloc(sizeof(objeto),1);
 	objeto->classe = classe;
