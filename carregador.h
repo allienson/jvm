@@ -17,7 +17,7 @@
 #include "leitor.h"
 #include "areaMetodos.h"
 
-int32_t carregaMemClass(char*);
+int32_t carregaClasseParaMemoria(char*);
 void inicializaPrimeiraVez();
 void carregaClasse(char*);
 char* retornaNomeClass(ClassFile*);
