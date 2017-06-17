@@ -52,7 +52,7 @@ void pushFrame(ClassFile* classe, CodeAttribute* codeAttribute, struct StackFram
 }
 
 void popFrame() {
-	struct StackFrame *anterior;
+	StackFrame *anterior;
 
 	if (topo->next != NULL) {
 		frameCorrente = topo->next->refFrame;
@@ -101,17 +101,15 @@ int32_t popOp() {
 	return frameCorrente->pilhaOp->operandos[frameCorrente->pilhaOp->depth];
 }
 
-void dumpStack(){
-	int i;
-    printf("\n");
-	for(i = 0; i < frameCorrente->pilhaOp->depth; i++){
-		printf("valor: %d\n",frameCorrente->pilhaOp->operandos[i]);
+void dumpStack() {
+  printf("\n");
+	for(int i = 0; i < frameCorrente->pilhaOp->depth; i++) {
+		printf("valor: %d\n", frameCorrente->pilhaOp->operandos[i]);
 	}
 }
 
-void dumpFields(){
-	int i;
-	for(i = 0; i < frameCorrente->maxLocals; i++){
+void dumpFields() {
+	for(int i = 0; i < frameCorrente->maxLocals; i++) {
 		printf("valor: %d\n",frameCorrente->fields[i]);
 	}
 }
