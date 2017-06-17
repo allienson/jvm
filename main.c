@@ -28,36 +28,36 @@ MethodInfo* metodoMain;
 char* nomeArquivo;
 
 int main(int argc, char* argv[]) {
-    nomeArquivo = calloc(TAMANHO_ARQUIVO, sizeof(argv[1]));
-    int printPrompt = 0;
+	nomeArquivo = calloc(TAMANHO_ARQUIVO, sizeof(argv[1]));
+	int printPrompt = 0;
 
-    if (argc < 3) {
-    	printf("\n\nInforme o caminho completo do arquivo \".class\" que contem o metodo main:\n");
-    	scanf("%s", nomeArquivo);
-    	getchar();
-    } else {
-    	strcpy(nomeArquivo, argv[1]);
-      if(*argv[2] == '1') {
-        printPrompt = 1;
-      }
-    }
-	
+	if (argc < 3) {
+		printf("\n\nInforme o caminho completo do arquivo \".class\" que contem o metodo main:\n");
+		scanf("%s", nomeArquivo);
+		getchar();
+	} else {
+		strcpy(nomeArquivo, argv[1]);
+		if(*argv[2] == '1') {
+			printPrompt = 1;
+		}
+	}
+
 	carregaMemClass("java/lang/Object");
-    carregaMemClass(nomeArquivo);
+	carregaMemClass(nomeArquivo);
 
-    ClassFile* classeMain = buscaClassPorIndice(1);
+	ClassFile* classeMain = buscaClassPorIndice(1);
 
-    metodoMain = buscaMetodoMain();
+	metodoMain = buscaMetodoMain();
 
-    if (metodoMain == NULL) {
-        printf("O arquivo \".class\" informado nao possui metodo Main!");
-        return 0;
-    }
+	if (metodoMain == NULL) {
+		printf("O arquivo \".class\" informado nao possui metodo Main!");
+		return 0;
+	}
 
 
 	empilhaMetodo(metodoMain, classeMain);
-    executaFrameCorrente();
+	executaFrameCorrente();
 
-    free(nomeArquivo);
-    return 0;
+	free(nomeArquivo);
+	return 0;
 }
