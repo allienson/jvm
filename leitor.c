@@ -173,50 +173,50 @@ void leFieldInfo(FILE* fp, ClassFile* classFile) {
 }
 
 void leMethodInfo(FILE* fp, ClassFile* classFile) {
-    uint16_t nameIndex;
-    uint32_t attributesCount;
+  uint16_t nameIndex;
+  uint32_t attributesCount;
 
-    if(classFile->methodsCount == 0) {
-        return;
-    } else {
-        classFile->methods = (MethodInfo*) malloc(classFile->methodsCount * sizeof(MethodInfo));
-        MethodInfo* methodInfo = classFile->methods;
-        for(int i = 0; i < classFile->methodsCount; methodInfo++, i++) {
-            methodInfo->accessFlags = le2Bytes(fp);
-            if(methodInfo->accessFlags == 0x010a ||methodInfo->accessFlags == 0x0101||methodInfo->accessFlags == 0x0111){
-                methodInfo->nameIndex = le2Bytes(fp);
-                methodInfo->descriptorIndex = le2Bytes(fp);
-                methodInfo->attributesCount = le2Bytes(fp);
-                i++;
-                for (int j = 0; j < methodInfo->attributesCount; j++) {
-                    int64_t temp, temp2; 
-                    // pega atributo name index do metodo 
-                    temp = le2Bytes(fp); 
-                    // pega attributo length do metodo 
-                    temp = le4Bytes(fp); 
-                    // vai lendo info 
-                    for (int k = 0; k < temp; k++) {
-                        temp2 = le1Byte(fp);
-                    }
-                }
-                continue; 
-            }
-            methodInfo->nameIndex = le2Bytes(fp);
-            methodInfo->descriptorIndex = le2Bytes(fp);
-            methodInfo->attributesCount = le2Bytes(fp);
-            for(int j = 0; j < methodInfo->attributesCount; j++) {
-                nameIndex = le2Bytes(fp);
-                attributesCount = le4Bytes(fp);
-                if (strcmp( (char*) classFile->constantPool[nameIndex - 1].info.Utf8.bytes, "Code") == 0) {
-                    methodInfo->cdAtrb = (CodeAttribute*) malloc(sizeof(CodeAttribute));
-                    leCode(fp, &(methodInfo->cdAtrb), nameIndex, attributesCount);
-                } else if (strcmp( (char*) classFile->constantPool[nameIndex - 1].info.Utf8.bytes, "Exceptions") == 0) {
-                    methodInfo->excAtrb = (ExceptionsAttribute*) malloc(sizeof(ExceptionsAttribute));
-                    leExc(fp, &(methodInfo->excAtrb), nameIndex, attributesCount);
-                }
-            }
+  if(classFile->methodsCount == 0) {
+    return;
+  } else {
+    classFile->methods = (MethodInfo*) malloc(classFile->methodsCount * sizeof(MethodInfo));
+    MethodInfo* methodInfo = classFile->methods;
+    for(int i = 0; i < classFile->methodsCount; methodInfo++, i++) {
+      methodInfo->accessFlags = le2Bytes(fp);
+      if(methodInfo->accessFlags == 0x010a ||methodInfo->accessFlags == 0x0101||methodInfo->accessFlags == 0x0111){
+        methodInfo->nameIndex = le2Bytes(fp);
+        methodInfo->descriptorIndex = le2Bytes(fp);
+        methodInfo->attributesCount = le2Bytes(fp);
+        i++;
+        for (int j = 0; j < methodInfo->attributesCount; j++) {
+          int64_t temp, temp2;
+          // pega atributo name index do metodo
+          temp = le2Bytes(fp);
+          // pega attributo length do metodo
+          temp = le4Bytes(fp);
+          // vai lendo info
+          for (int k = 0; k < temp; k++) {
+            temp2 = le1Byte(fp);
+          }
         }
+        continue;
+      }
+      methodInfo->nameIndex = le2Bytes(fp);
+      methodInfo->descriptorIndex = le2Bytes(fp);
+      methodInfo->attributesCount = le2Bytes(fp);
+      for(int j = 0; j < methodInfo->attributesCount; j++) {
+        nameIndex = le2Bytes(fp);
+        attributesCount = le4Bytes(fp);
+        if (strcmp( (char*) classFile->constantPool[nameIndex - 1].info.Utf8.bytes, "Code") == 0) {
+          methodInfo->cdAtrb = (CodeAttribute*) malloc(sizeof(CodeAttribute));
+          leCode(fp, &(methodInfo->cdAtrb), nameIndex, attributesCount);
+        } else if (strcmp( (char*) classFile->constantPool[nameIndex - 1].info.Utf8.bytes, "Exceptions") == 0) {
+          methodInfo->excAtrb = (ExceptionsAttribute*) malloc(sizeof(ExceptionsAttribute));
+          leExc(fp, &(methodInfo->excAtrb), nameIndex, attributesCount);
+        }
+      }
     }
+  }
 }
 
 void leAttributeInfo(FILE* fp, ClassFile* classFile) {
