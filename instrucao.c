@@ -1236,7 +1236,7 @@ void dup_x2() {
 }
 
 void dup2() {
-	int32_t aux1, aux2, aux3;
+	int32_t aux1, aux2;
 	aux1 = popOp();
 	aux2 = popOp();
 	push(aux2);
@@ -2991,7 +2991,7 @@ void invokevirtual(){
     char* nomeClasse;
     char* nomeMetodo;
     char* descricaoMetodo;
-    uint16_t nomeMetodoAux, descricaoMetodoAux,nomeTipoAux,stringAux;
+    uint16_t nomeMetodoAux, descricaoMetodoAux,nomeTipoAux;
     int32_t resultado,resultado2, resultado_string;
     int32_t classeIndice;
     uint8_t* string = NULL;
@@ -3279,7 +3279,7 @@ void invokestatic() {
 
     char* nomeMetodo;
     char* descricaoMetodo;
-    uint16_t nomeMetodoAux, descricaoMetodoAux,nomeTipoAux,stringAux;
+    uint16_t nomeMetodoAux, descricaoMetodoAux,nomeTipoAux;
 
 	uint32_t indice = frameCorrente->code[frameCorrente->pc + 2];
 
@@ -3375,7 +3375,7 @@ void invokeinterface() {
 
     char* nomeMetodo;
     char* descricaoMetodo;
-    uint16_t nomeMetodoAux, descricaoMetodoAux,nomeTipoAux,stringAux;
+    uint16_t nomeMetodoAux, descricaoMetodoAux,nomeTipoAux;
 
 	uint32_t indice = frameCorrente->code[frameCorrente->pc + 2];
 
@@ -3469,7 +3469,6 @@ void newarray() {
 	if(tipoArray == 7) {
 		tamanhoBytes = 8;
 	}
-
 
 	if(tipoArray == 6) {
 		tamanhoBytes = 4;
