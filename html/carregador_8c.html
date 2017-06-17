@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>JVM - G3: Referência do Arquivo carregador.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">JVM - G3
+   </div>
+   <div id="projectbrief">SB Turma B - JVM (Grupo 3) - 1/2017</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Definições e Macros</a> &#124;
+<a href="#func-members">Funções</a> &#124;
+<a href="#var-members">Variáveis</a>  </div>
+  <div class="headertitle">
+<div class="title">Referência do Arquivo carregador.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Carrega, inicializa e aloca um <a class="el" href="structClassFile.html">ClassFile</a> e associa com a estrutura do <a class="el" href="structAreaMetodos.html">AreaMetodos</a>.  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="carregador_8h_source.html">carregador.h</a>&quot;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Definições e Macros</h2></td></tr>
+<tr class="memitem:aa93f0eb578d23995850d61f7d61c55c1"><td class="memItemLeft" align="right" valign="top"><a id="aa93f0eb578d23995850d61f7d61c55c1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>FALSE</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:aa93f0eb578d23995850d61f7d61c55c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8cecfc5c5c054d2875c03e77b7be15d"><td class="memItemLeft" align="right" valign="top"><a id="aa8cecfc5c5c054d2875c03e77b7be15d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TRUE</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:aa8cecfc5c5c054d2875c03e77b7be15d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a795a29ecfadc4dfbda716fb5c583f166"><td class="memItemLeft" align="right" valign="top"><a id="a795a29ecfadc4dfbda716fb5c583f166"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>carregaMemClass</b> (char *caminhoClasse)</td></tr>
+<tr class="separator:a795a29ecfadc4dfbda716fb5c583f166"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad79fe3f83657a5542b2278537ccfbdd1"><td class="memItemLeft" align="right" valign="top"><a id="ad79fe3f83657a5542b2278537ccfbdd1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>inicializaPrimeiraVez</b> ()</td></tr>
+<tr class="separator:ad79fe3f83657a5542b2278537ccfbdd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c9a3135d3a02d275706a00116816824"><td class="memItemLeft" align="right" valign="top"><a id="a9c9a3135d3a02d275706a00116816824"></a>
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>retornaNomeClass</b> (<a class="el" href="structClassFile.html">ClassFile</a> *classe)</td></tr>
+<tr class="separator:a9c9a3135d3a02d275706a00116816824"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5791c228ebcf57d6eb24ba9618eae973"><td class="memItemLeft" align="right" valign="top"><a id="a5791c228ebcf57d6eb24ba9618eae973"></a>
+<a class="el" href="structClassFile.html">ClassFile</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>buscaClassPorIndice</b> (int indice)</td></tr>
+<tr class="separator:a5791c228ebcf57d6eb24ba9618eae973"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a105b443574a31282ef83c2e34f376f0b"><td class="memItemLeft" align="right" valign="top"><a id="a105b443574a31282ef83c2e34f376f0b"></a>
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>retornaNome</b> (<a class="el" href="structClassFile.html">ClassFile</a> *cf, uint16_t indiceNome)</td></tr>
+<tr class="separator:a105b443574a31282ef83c2e34f376f0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variáveis</h2></td></tr>
+<tr class="memitem:ac2492b2ee633ac35c62b2632b337c557"><td class="memItemLeft" align="right" valign="top"><a id="ac2492b2ee633ac35c62b2632b337c557"></a>
+<a class="el" href="structAreaMetodos.html">AreaMetodos</a>&#160;</td><td class="memItemRight" valign="bottom"><b>areaMetodos</b></td></tr>
+<tr class="separator:ac2492b2ee633ac35c62b2632b337c557"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b93f1b26aba4ad5cbecbf642d6f9944"><td class="memItemLeft" align="right" valign="top"><a id="a5b93f1b26aba4ad5cbecbf642d6f9944"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>primeira</b> = FALSE</td></tr>
+<tr class="separator:a5b93f1b26aba4ad5cbecbf642d6f9944"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
+<div class="textblock"><p>Carrega, inicializa e aloca um <a class="el" href="structClassFile.html">ClassFile</a> e associa com a estrutura do <a class="el" href="structAreaMetodos.html">AreaMetodos</a>. </p>
+<p>Arquivo que carrega a area de metodos na memoria para inciar a execucao do programa Java.</p>
+<dl class="section author"><dt>Autores</dt><dd>Allisson Barros 12/0055619<br />
+Daniel Luz 13/0007714<br />
+Luiz Fernando Vieira 13/0013757<br />
+Mariana Pannunzio 12/0018276<br />
+Mateus Denucci 12/0053080<br />
+ </dd></dl>
+<dl class="section date"><dt>Data</dt><dd>26/06/2017</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright © 2017 GrupoSB. All rights reserved.</dd></dl>
+<dl class="section author"><dt>Autores</dt><dd>Allisson Barros 12/0055619<br />
+Daniel Luz 13/0007714<br />
+Luiz Fernando Vieira 13/0013757<br />
+Mariana Pannunzio 12/0018276<br />
+Mateus Denucci 12/0053080<br />
+ </dd></dl>
+<dl class="section date"><dt>Data</dt><dd>26/06/2017</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright © 2017 GrupoSB. All rights reserved.</dd></dl>
+<p>Carrega as classes a partir do arquivo ".class" chamando o leitor e em seguida carrega essa classe para a memoria. Alem disso, confere se a classe ja esta carregada antes de chamar o Leitor. Tambem retorna um ponteiro para uma classe no array ou o seu nome, pelas funcoes implementadas. </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

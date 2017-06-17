@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>JVM - G3: Código-Fonte de metodo.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">JVM - G3
+   </div>
+   <div id="projectbrief">SB Turma B - JVM (Grupo 3) - 1/2017</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">metodo.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="metodo_8h.html">Vá para a documentação deste arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#ifndef METODO_H</span></div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define METODO_H</span></div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="carregador_8h.html">carregador.h</a>&quot;</span></div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<a class="code" href="structAreaMetodos.html">AreaMetodos</a> areaMetodos;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<a class="code" href="structMethodInfo.html">MethodInfo</a>* buscaMetodoMain();</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">void</span> empilhaMetodo(<a class="code" href="structMethodInfo.html">MethodInfo</a>*, <a class="code" href="structClassFile.html">ClassFile</a>*);</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> executaFrameCorrente();</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<a class="code" href="structObjeto.html">Objeto</a>* criaObjeto(<a class="code" href="structClassFile.html">ClassFile</a>*);</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<a class="code" href="structMethodInfo.html">MethodInfo</a>* buscaMetodo(<a class="code" href="structClassFile.html">ClassFile</a>*, <a class="code" href="structClassFile.html">ClassFile</a>*, uint16_t);</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;int32_t retornaNumeroParametros(<a class="code" href="structClassFile.html">ClassFile</a>*, <a class="code" href="structMethodInfo.html">MethodInfo</a>*);</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<a class="code" href="structClassFile.html">ClassFile</a>* retornaClassePorNome(<span class="keywordtype">char</span>*);</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;int32_t buscaCampo(<span class="keywordtype">char</span>*, <span class="keywordtype">char</span>*, <span class="keywordtype">char</span>*);</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="structObjeto_html"><div class="ttname"><a href="structObjeto.html">Objeto</a></div><div class="ttdef"><b>Definition:</b> areaMetodos.h:37</div></div>
+<div class="ttc" id="structAreaMetodos_html"><div class="ttname"><a href="structAreaMetodos.html">AreaMetodos</a></div><div class="ttdef"><b>Definition:</b> areaMetodos.h:32</div></div>
+<div class="ttc" id="structMethodInfo_html"><div class="ttname"><a href="structMethodInfo.html">MethodInfo</a></div><div class="ttdef"><b>Definition:</b> leitor.h:153</div></div>
+<div class="ttc" id="structClassFile_html"><div class="ttname"><a href="structClassFile.html">ClassFile</a></div><div class="ttdef"><b>Definition:</b> leitor.h:162</div></div>
+<div class="ttc" id="carregador_8h_html"><div class="ttname"><a href="carregador_8h.html">carregador.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>
