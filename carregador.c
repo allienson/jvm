@@ -23,30 +23,29 @@ AreaMetodos areaMetodos;
 
 int primeira = FALSE;
 
-void carregaMemClass(char* nomeClass) {
-  if(!isClasseCarregada(nomeClass)) {
-    areaMetodos.numClasses++;
-    ClassFile** arrayClassesAux = NULL;
-    arrayClassesAux = (ClassFile**) realloc(areaMetodos.arrayClasses, (areaMetodos.numClasses*sizeof(ClassFile*)));
-    areaMetodos.arrayClasses = (ClassFile**) calloc(1, sizeof(ClassFile*));
-    areaMetodos.arrayClasses = arrayClassesAux;
-    carregaClasse(nomeClass);
-  }
+int32_t carregaMemClass(char* nomeClass) {
+  inicializaPrimeiraVez();
+
+	for (int i = 0; i < areaMetodos.numClasses; i++) {
+		if (strcmp(nomeClass, retornaNomeClass(areaMetodos.arrayClasses[i])) == 0) {
+			return i;
+		}
+	}
+
+  areaMetodos.numClasses++;
+  ClassFile** arrayClassesAux = NULL;
+  arrayClassesAux = (ClassFile**) realloc(areaMetodos.arrayClasses, (areaMetodos.numClasses*sizeof(ClassFile*)));
+  areaMetodos.arrayClasses = (ClassFile**) calloc(1, sizeof(ClassFile*));
+  areaMetodos.arrayClasses = arrayClassesAux;
+  carregaClasse(nomeClass);
+  return areaMetodos.numClasses - 1;
 }
 
-int isClasseCarregada(char* nomeClass) {
+void inicializaPrimeiraVez() {
   if (primeira == FALSE) {
       areaMetodos.numClasses = 0;
       primeira = TRUE;
   }
-
-	for (int i = 0; i < areaMetodos.numClasses; i++) {
-		if (strcmp(nomeClass, retornaNomeClass(areaMetodos.arrayClasses[i])) == 0) {
-			return TRUE;
-		}
-	}
-
-  return FALSE;
 }
 
 void carregaClasse(char* nomeClass) {

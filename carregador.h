@@ -17,8 +17,8 @@
 #include "leitor.h"
 #include "areaMetodos.h"
 
-void carregaMemClass(char*);
-int isClasseCarregada(char*);
+int32_t carregaMemClass(char*);
+void inicializaPrimeiraVez();
 void carregaClasse(char*);
 char* retornaNomeClass(ClassFile*);
 ClassFile* buscaClassPorIndice(int);
