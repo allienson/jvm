@@ -38,7 +38,7 @@ ClassFile* inicializaLeitor(char* caminhoClasse) {
         printf("Erro ao alocar espaço para o arquivo ! \n");
         exit(0);
     }
-
+	//da segfault aqui
     leClassFile(fp, classFile);
     fclose(fp);
     return classFile;

@@ -41,11 +41,10 @@ int main(int argc, char* argv[]) {
         printPrompt = 1;
       }
     }
-
+	carregaMemClass("java/lang/Object");
     carregaMemClass(nomeArquivo);
-    printf("\nOlar\n");
+
     ClassFile* classeMain = buscaClassPorIndice(1);
-    printf("teste\n");
 
     metodoMain = buscaMetodoMain();
 
