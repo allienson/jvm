@@ -34,7 +34,7 @@ void printaClassFile(ClassFile* classFile) {
     // GENERAL INFORMATION
     printTopo();
     printBlank();
-    printf("\t%c\t\tGENERAL INFORMATION\t\t%c\n", 179, 179);
+    printf("\t*\t\tGENERAL INFORMATION\t\t*\n");
     printBlank();
     printBase();
     printf("\t\tMagic:                 0x%08X\n", classFile->magic);
@@ -248,7 +248,7 @@ void printaFieldInfo(ClassFile* classFile) {
 
             for (int j = 0; j < classFile->fields[i].attributesCount; j++) {
 
-                printf("\tGeneric Info %c", 196);
+                printf("\tGeneric Info -");
                 printSingleLine();
                 printf("\n");
                 printf("\t\tattribute_name_index:   cp_info_#%d  ", classFile->fields[i].attributes->attributeNameIndex);
@@ -624,34 +624,34 @@ void imprimeExc(ClassFile* classFile, ExceptionsAttribute* excAtrb) {
 
 void printTopo() {
 
-    printf("\n\t%c", 218);
+    printf("\n\t*");
     for (int i = 0; i < 47; ++i) {
-        printf("%c", 196);
+        printf("*");
     }
-    printf("%c\n", 191);
+    printf("*\n");
 }
 
 void printBlank() {
 
-    printf("\t%c", 179);
+    printf("\t*");
     for (int i = 0; i < 47; ++i) {
-        printf("%c", 32);
+        printf(" ");
     }
-    printf("%c\n", 179);
+    printf("*\n");
 }
 
 void printBase() {
 
-    printf("\t%c", 192);
+    printf("\t*");
     for (int i = 0; i < 47; ++i) {
-        printf("%c", 196);
+        printf("*");
     }
-    printf("%c\n", 217);
+    printf("*\n");
 }
 
 void printSingleLine(){
     for (int i = 0; i < 34; ++i) {
-        printf("%c", 196);
+        printf("-");
     }
-    printf("%c", 170);
+    printf("*");
 }
