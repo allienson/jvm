@@ -1,15 +1,22 @@
-//
-//  main.c
-//  Java Virtual Machine - Software Basico 2017-1
-//
-//  Created on 26/05/17.
-//  Copyright © 2017 GrupoSB. All rights reserved.
-//
-//  Allisson Barros         12/0055619
-//  Daniel Luz              13/0007714
-//  Luiz Fernando Vieira    13/0013757
-//  Mariana Pannunzio       12/0018276
-//  Mateus Denucci          12/0053080
+///
+///		@file carregador.h
+///		@class carregador.c "carregador.c"
+///		@headerfile leitor.h "leitor.h"
+///		@headerfile areaMetodos.h "areaMetodos.h"
+///
+///		@date 26/06/17.
+///		@copyright Copyright © 2017 GrupoSB. All rights reserved.
+///
+///		@authors
+///		Allisson Barros         12/0055619\n
+///		Daniel Luz              13/0007714\n
+///		Luiz Fernando Vieira    13/0013757\n
+///		Mariana Pannunzio       12/0018276\n
+///		Mateus Denucci          12/0053080
+///
+///		@brief
+///		Carrega, inicializa e aloca um ClassFile e associa com a estrutura do AreaMetodos.
+///
 
 #ifndef CARREGADOR_H
 #define CARREGADOR_H
@@ -17,7 +24,7 @@
 #include "leitor.h"
 #include "areaMetodos.h"
 
-int32_t carregaClasseParaMemoria(char*);
+int32_t carregaMemClass(char*);
 void inicializaPrimeiraVez();
 void carregaClasse(char*);
 char* retornaNomeClass(ClassFile*);
