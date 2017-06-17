@@ -60,9 +60,8 @@ int main(int argc, char* argv[]) {
   executaFrameCorrente();
 
   if (printPrompt) {
-    printf("%i\n", areaMet.numClasses);
-		for (int i = 1; i < areaMet.numClasses; i++) {      
-			printaClassFile(areaMet.arrayClasses[i]);
+		for (int i = 1; i < areaMetodos.numClasses; i++) {      
+			printaClassFile(areaMetodos.arrayClasses[i]);
     }
   }
 
