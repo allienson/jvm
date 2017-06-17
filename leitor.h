@@ -53,49 +53,49 @@
 #define IINC 132
 
 typedef struct CpInfo {
-    uint8_t tag;
-    union {
-        struct {
-            uint16_t nameIndex;
-        } Class;
-        struct {
-            uint16_t classIndex;
-            uint16_t nameAndTypeIndex;
-        } Fieldref;
-        struct {
-            uint16_t classIndex;
-            uint16_t nameAndTypeIndex;
-         } Methodref;
-        struct {
-            uint16_t classIndex;
-            uint16_t nameAndTypeIndex;
-        } InterfaceMethodref;
-        struct {
-            uint16_t stringIndex;
-        } String;
-        struct {
-            uint32_t bytes;
-        } Integer;
-        struct {
-            uint32_t bytes;
-        } Float;
-        struct {
-            uint32_t highBytes;
-            uint32_t lowBytes;
-        } Long;
-        struct {
-            uint32_t highBytes;
-            uint32_t lowBytes;
-        } Double;
-        struct {
-            uint16_t nameIndex;
-            uint16_t descriptorIndex;
-        } NameAndType;
-        struct {
-            uint16_t length;
-            uint8_t* bytes;
-        } Utf8;
-    } info;
+  uint8_t tag;
+  union {
+    struct {
+      uint16_t nameIndex;
+    } Class;
+    struct {
+      uint16_t classIndex;
+      uint16_t nameAndTypeIndex;
+    } Fieldref;
+    struct {
+      uint16_t classIndex;
+      uint16_t nameAndTypeIndex;
+     } Methodref;
+    struct {
+      uint16_t classIndex;
+      uint16_t nameAndTypeIndex;
+    } InterfaceMethodref;
+    struct {
+      uint16_t stringIndex;
+    } String;
+    struct {
+      uint32_t bytes;
+    } Integer;
+    struct {
+      uint32_t bytes;
+    } Float;
+    struct {
+      uint32_t highBytes;
+      uint32_t lowBytes;
+    } Long;
+    struct {
+      uint32_t highBytes;
+      uint32_t lowBytes;
+    } Double;
+    struct {
+      uint16_t nameIndex;
+      uint16_t descriptorIndex;
+    } NameAndType;
+    struct {
+      uint16_t length;
+      uint8_t* bytes;
+    } Utf8;
+  } info;
 } CpInfo;
 
 typedef struct ExceptionsAttribute {
@@ -106,70 +106,70 @@ typedef struct ExceptionsAttribute {
 } ExceptionsAttribute;
 
 typedef struct CvInfo {
-    uint16_t attributeNameIndex;
-    uint32_t attributeLength;
-    uint16_t constantValueIndex;
+  uint16_t attributeNameIndex;
+  uint32_t attributeLength;
+  uint16_t constantValueIndex;
 } CvInfo;
 
 typedef struct FieldInfo {
-    uint16_t accessFlags;
-    uint16_t nameIndex;
-    uint16_t descriptorIndex;
-    uint16_t attributesCount;
-    CvInfo* attributes;
+  uint16_t accessFlags;
+  uint16_t nameIndex;
+  uint16_t descriptorIndex;
+  uint16_t attributesCount;
+  CvInfo* attributes;
 } FieldInfo;
 
 typedef struct AttributeInfo {
-    uint16_t attributeNameIndex;
-    uint32_t attributeLength;
-    uint8_t* info;
+  uint16_t attributeNameIndex;
+  uint32_t attributeLength;
+  uint8_t* info;
 } AttributeInfo;
 
 typedef struct ExceptionTable {
-    uint16_t startPc;
-    uint16_t endPc;
-    uint16_t catchType;
+  uint16_t startPc;
+  uint16_t endPc;
+  uint16_t catchType;
 } ExceptionTable;
 
 typedef struct CodeAttribute {
-    uint16_t attributeNameIndex;
-    uint32_t attributeLength;
-    uint16_t maxStack;
-    uint16_t maxLocals;
-    uint32_t codeLength;
-    uint8_t* code;
-    uint16_t exceptionTableLength;
-    ExceptionTable* exceptionTable;
-    uint16_t attributesCount;
-    AttributeInfo* attributes;
+  uint16_t attributeNameIndex;
+  uint32_t attributeLength;
+  uint16_t maxStack;
+  uint16_t maxLocals;
+  uint32_t codeLength;
+  uint8_t* code;
+  uint16_t exceptionTableLength;
+  ExceptionTable* exceptionTable;
+  uint16_t attributesCount;
+  AttributeInfo* attributes;
 } CodeAttribute;
 
 typedef struct MethodInfo {
-    uint16_t accessFlags;
-    uint16_t nameIndex;
-    uint16_t descriptorIndex;
-    uint16_t attributesCount;
-    CodeAttribute* cdAtrb;
-    ExceptionsAttribute* excAtrb;
+  uint16_t accessFlags;
+  uint16_t nameIndex;
+  uint16_t descriptorIndex;
+  uint16_t attributesCount;
+  CodeAttribute* cdAtrb;
+  ExceptionsAttribute* excAtrb;
 } MethodInfo;
 
 typedef struct ClassFile {
-    uint32_t magic;
-    uint16_t minorVersion;
-    uint16_t majorVersion;
-    uint16_t constantPoolCount;
-    CpInfo* constantPool;
-    uint16_t accessFlags;
-    uint16_t thisClass;
-    uint16_t superClass;
-    uint16_t interfacesCount;
-    uint16_t* interfaces;
-    uint16_t fieldsCount;
-    FieldInfo* fields;
-    uint16_t methodsCount;
-    MethodInfo* methods;
-    uint16_t attributesCount;
-    AttributeInfo* attributes;
+  uint32_t magic;
+  uint16_t minorVersion;
+  uint16_t majorVersion;
+  uint16_t constantPoolCount;
+  CpInfo* constantPool;
+  uint16_t accessFlags;
+  uint16_t thisClass;
+  uint16_t superClass;
+  uint16_t interfacesCount;
+  uint16_t* interfaces;
+  uint16_t fieldsCount;
+  FieldInfo* fields;
+  uint16_t methodsCount;
+  MethodInfo* methods;
+  uint16_t attributesCount;
+  AttributeInfo* attributes;
 } ClassFile;
 
 ClassFile* inicializaLeitor(char*);

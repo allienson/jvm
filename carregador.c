@@ -23,12 +23,12 @@ AreaMetodos areaMetodos;
 
 int primeira = FALSE;
 
-int32_t carregaMemClass(char* nomeClass) {
+int32_t carregaMemClass(char* caminhoClasse) {
   inicializaPrimeiraVez();
 
 	for (int i = 0; i < areaMetodos.numClasses; i++) {
 		char* nomeClassAux = retornaNomeClass(areaMetodos.arrayClasses[i]);
-		if (strcmp(nomeClass, nomeClassAux) == 0) {
+		if (strcmp(caminhoClasse, nomeClassAux) == 0) {
 			return i;
 		}
 	}
@@ -38,17 +38,21 @@ int32_t carregaMemClass(char* nomeClass) {
   arrayClassesAux = (ClassFile**) realloc(areaMetodos.arrayClasses, (areaMetodos.numClasses*sizeof(ClassFile*)));
   areaMetodos.arrayClasses = (ClassFile**) calloc(1, sizeof(ClassFile*));
   areaMetodos.arrayClasses = arrayClassesAux;
-  char* destino = malloc(strlen(nomeClass) + 10);
-  if (strstr(nomeClass,".class") != NULL) {
-	sprintf(destino, "%s", nomeClass);
+  char* caminhoDestino = malloc(strlen(caminhoClasse) + 10);
+
+  if (strstr(caminhoClasse, ".class") != NULL) {
+	   sprintf(caminhoDestino, "%s", caminhoClasse);
   } else {
-    sprintf(destino, "./%s.class",nomeClass);
+    sprintf(caminhoDestino, "./%s.class",caminhoClasse);
   }
-  areaMetodos.arrayClasses[areaMetodos.numClasses - 1] = inicializaLeitor(destino);
+
+  areaMetodos.arrayClasses[areaMetodos.numClasses - 1] = inicializaLeitor(caminhoDestino);
+
   if(areaMetodos.arrayClasses[areaMetodos.numClasses -1] == NULL){
     printf("Erro ao carregar classe!\n");
     exit(0);
   }
+  
   return areaMetodos.numClasses - 1;
 }
 
