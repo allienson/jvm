@@ -100,7 +100,7 @@ MethodInfo* buscaMetodo(ClassFile* indiceClasse, ClassFile* searchClasse, uint16
 }
 
 int32_t buscaCampo(char* className, char* name, char* desc){
-	ClassFile* classe = retornaNomeClass(className);
+	ClassFile* classe = retornaClassePorNome(className);
 	uint8_t* searchName;
 	uint8_t* searchDesc;
 
@@ -113,7 +113,7 @@ int32_t buscaCampo(char* className, char* name, char* desc){
 	}
 }
 
-ClassFile* retornaClasseNome(char* nomeClasse) {
+ClassFile* retornaClassePorNome(char* nomeClasse) {
 	for (int i = 0; i < areaMet.numClasses; i++) {
 		if (strcmp(nomeClasse, retornaNomeClass(areaMet.arrayClasses[i])) == 0)
 			return areaMet.arrayClasses[i];

@@ -22,7 +22,7 @@ void executaFrameCorrente();
 Objeto* criaObjeto(ClassFile*);
 MethodInfo* buscaMetodo(ClassFile*, ClassFile*, uint16_t);
 int32_t retornaNumeroParametros(ClassFile*, MethodInfo*);
-ClassFile* retornaClasseNome(char*);
+ClassFile* retornaClassePorNome(char*);
 int32_t buscaCampo(char*, char*, char*);
 
 #endif

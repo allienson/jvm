@@ -15,6 +15,7 @@
 #define FRAME_H
 
 #include <stdint.h>
+#include <stdlib.h>
 #include "leitor.h"
 
 typedef struct PilhaOp {

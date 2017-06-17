@@ -34,10 +34,12 @@ int main(int argc, char* argv[]) {
     	printf("\n\nInforme o caminho completo do arquivo \".class\" que contem o metodo main:\n");
     	scanf("%s", nomeArquivo);
     	getchar();
-    } else {
+    }else{
     	strcpy(nomeArquivo, argv[1]);
     }
-
+	
+	printf("teste\n");
+	
     carregaMemClass(nomeArquivo);
     ClassFile* classeMain = buscaClassPorIndice(1);
 
@@ -47,8 +49,9 @@ int main(int argc, char* argv[]) {
         printf("O arquivo \".class\" informado nao possui metodo Main!");
         return 0;
     }
-
-	  empilhaMetodo(metodoMain, classeMain);
+	
+	
+	empilhaMetodo(metodoMain, classeMain);
     executaFrameCorrente();
 
     free(nomeArquivo);
