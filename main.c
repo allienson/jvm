@@ -79,7 +79,7 @@ void exibeArrayClasses() {
   if (exibeClassFile) {
     FILE *saved;
     if (printaParaArquivo) {
-      saved = freopen("log.txt", "a+", stdout);
+      saved = freopen("log.txt", "w+", stdout);
     }
     for (int i = 1; i < areaMetodos.numClasses; i++) {
       printaClassFile(areaMetodos.arrayClasses[i]);

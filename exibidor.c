@@ -56,7 +56,7 @@ void printaClassFile(ClassFile* classFile) {
     // CONSTANT POOL
     printTopo();
     printBlank();
-    printf("\t%c\t\t   CONSTANT POOL   \t\t%c\n", 179, 179);
+    printf("\t*\t\t   CONSTANT POOL   \t\t*\n");
     printBlank();
     printBase();
     printaCpInfo(classFile);
@@ -64,7 +64,7 @@ void printaClassFile(ClassFile* classFile) {
     // INTERFACES
     printTopo();
     printBlank();
-    printf("\t%c\t\t    INTERFACES     \t\t%c\n", 179, 179);
+    printf("\t*\t\t    INTERFACES     \t\t*\n");
     printBlank();
     printBase();
     printf("\n");
@@ -73,7 +73,7 @@ void printaClassFile(ClassFile* classFile) {
     // FIELD INFO
     printTopo();
     printBlank();
-    printf("\t%c\t\t    FIELD INFO     \t\t%c\n", 179, 179);
+    printf("\t*\t\t    FIELD INFO     \t\t*\n");
     printBlank();
     printBase();
     printf("\n");
@@ -82,7 +82,7 @@ void printaClassFile(ClassFile* classFile) {
     // METHOD INFO
     printTopo();
     printBlank();
-    printf("\t%c\t\t   METHOD INFO     \t\t%c\n", 179, 179);
+    printf("\t*\t\t   METHOD INFO     \t\t*\n");
     printBlank();
     printBase();
     printaMethodInfo(classFile);
@@ -90,7 +90,7 @@ void printaClassFile(ClassFile* classFile) {
     // ATTRIBUTE INFO
     printTopo();
     printBlank();
-    printf("\t%c\t\t  ATTRIBUTE INFO   \t\t%c\n", 179, 179);
+    printf("\t*\t\t  ATTRIBUTE INFO   \t\t*\n");
     printBlank();
     printBase();
     printf("\n");
