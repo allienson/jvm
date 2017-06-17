@@ -16,6 +16,8 @@
 
 #include "carregador.h"
 
+AreaMetodos areaMetodos;
+
 MethodInfo* buscaMetodoMain();
 void empilhaMetodo(MethodInfo*, ClassFile*);
 void executaFrameCorrente();

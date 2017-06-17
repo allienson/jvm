@@ -22,7 +22,6 @@
 #include <string.h>
 
 ClassFile* inicializaLeitor(char* caminhoClasse) {
-
     FILE* fp;
     fp = fopen(caminhoClasse, "rb");
 
@@ -38,7 +37,7 @@ ClassFile* inicializaLeitor(char* caminhoClasse) {
         printf("Erro ao alocar espaço para o arquivo ! \n");
         exit(0);
     }
-	
+
     leClassFile(fp, classFile);
     fclose(fp);
     return classFile;
@@ -252,7 +251,7 @@ void leExc(FILE* fp, ExceptionsAttribute** excAtrb, uint16_t nameIndex, uint32_t
 
 void leCode(FILE* fp, CodeAttribute** cdAtrb, uint16_t nameIndex, uint32_t attributesCount) {
     int posicaoInicial = (int) ftell(fp);
-	
+
     (*cdAtrb)->attributeNameIndex = nameIndex;
     (*cdAtrb)->attributeLength = attributesCount;
     (*cdAtrb)->maxStack = le2Bytes(fp);

@@ -20,8 +20,6 @@
 
 extern struct Frame* frameCorrente;
 
-AreaMetodos areaMet;
-
 uint32_t numObjetos = 0;
 
 MethodInfo* buscaMetodoMain() {
@@ -118,9 +116,10 @@ int32_t buscaCampo(char* className, char* name, char* desc){
 }
 
 ClassFile* retornaClassePorNome(char* nomeClasse) {
-	for (int i = 0; i < areaMet.numClasses; i++) {
-		if (strcmp(nomeClasse, retornaNomeClass(areaMet.arrayClasses[i])) == 0){
-			return areaMet.arrayClasses[i];
+	for (int i = 0; i < areaMetodos.numClasses; i++) {
+		char* nomeClassAux = retornaNomeClass(areaMetodos.arrayClasses[i]);
+		if (strcmp(nomeClasse, nomeClassAux) == 0){
+			return areaMetodos.arrayClasses[i];
 		}
 	}
 	return NULL;

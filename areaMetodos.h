@@ -19,21 +19,21 @@
 #define MAX_VAR 256
 
 union var {
-    int inteiro;
-    char caractere;
-    float pFlutuante;
+  int inteiro;
+  char caractere;
+  float pFlutuante;
 };
 
 typedef struct AreaMetodos {
-    ClassFile** arrayClasses;
-    int numClasses;
+  ClassFile** arrayClasses;
+  int numClasses;
 } AreaMetodos;
 
 typedef struct Objeto {
-    ClassFile* classe;
-    struct objeto* superClasse;
-    uint32_t* campos;
-    uint32_t* indiceCampos;
+  ClassFile* classe;
+  struct objeto* superClasse;
+  uint32_t* campos;
+  uint32_t* indiceCampos;
 } Objeto;
 
 Objeto** heap;

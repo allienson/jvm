@@ -27,7 +27,8 @@ int32_t carregaMemClass(char* nomeClass) {
   inicializaPrimeiraVez();
 
 	for (int i = 0; i < areaMetodos.numClasses; i++) {
-		if (strcmp(nomeClass, retornaNomeClass(areaMetodos.arrayClasses[i])) == 0) {
+		char* nomeClassAux = retornaNomeClass(areaMetodos.arrayClasses[i]);
+		if (strcmp(nomeClass, nomeClassAux) == 0) {
 			return i;
 		}
 	}

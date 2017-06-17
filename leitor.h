@@ -99,10 +99,10 @@ typedef struct CpInfo {
 } CpInfo;
 
 typedef struct ExceptionsAttribute {
-    uint16_t attributeNameIndex;
-    uint32_t attributeLength;
-    uint16_t numberExceptions;
-    uint16_t* exceptionIndexTable;
+  uint16_t attributeNameIndex;
+  uint32_t attributeLength;
+  uint16_t numberExceptions;
+  uint16_t* exceptionIndexTable;
 } ExceptionsAttribute;
 
 typedef struct CvInfo {
