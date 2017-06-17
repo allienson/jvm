@@ -54,10 +54,9 @@ int main(int argc, char* argv[]) {
         return 0;
     }
 
-	  empilhaMetodo(metodoMain, classeMain);
-    printf("\nOlar\n");
+
+	empilhaMetodo(metodoMain, classeMain);
     executaFrameCorrente();
-    printf("\nOlar\n");
 
     free(nomeArquivo);
     return 0;

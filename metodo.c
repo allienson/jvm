@@ -27,13 +27,15 @@ uint32_t numObjetos = 0;
 MethodInfo* buscaMetodoMain() {
 	ClassFile* main;
 	uint16_t tamanhoNome;
-  uint16_t tamanhoDesc;
+	uint16_t tamanhoDesc;
 	uint8_t* nome;
 	uint8_t* desc;
 
-	main = buscaClassPorIndice(0);
+	main = buscaClassPorIndice(1);
+
 
 	for(int i = 0; i < main->methodsCount; i++) {
+
 		nome = main->constantPool[(main->methods[i].nameIndex -1)].info.Utf8.bytes;
 		desc = main->constantPool[(main->methods[i].descriptorIndex - 1)].info.Utf8.bytes;
 

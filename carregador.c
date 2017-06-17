@@ -27,7 +27,7 @@ int32_t carregaMemClass(char* nomeClass) {
   inicializaPrimeiraVez();
 
 	for (int i = 0; i < areaMetodos.numClasses; i++) {
-		if (strcmp(nomeClass, retornaNomeClass(areaMetodos.arrayClasses[i])) == 0) {      
+		if (strcmp(nomeClass, retornaNomeClass(areaMetodos.arrayClasses[i])) == 0) {
 			return i;
 		}
 	}
@@ -69,7 +69,6 @@ void carregaClasse(char* nomeClass) {
     sprintf(destino, "./%s.class",nomeClass);
   }
 
-  inicializaLeitor(destino);
   areaMetodos.arrayClasses[areaMetodos.numClasses - 1] = inicializaLeitor(destino);
 
   if(areaMetodos.arrayClasses[areaMetodos.numClasses -1] == NULL){
