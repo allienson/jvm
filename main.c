@@ -18,6 +18,8 @@
 
 #include "carregador.h"
 #include "metodo.h"
+#include "areaMetodos.h"
+#include "exibidor.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,36 +30,42 @@ MethodInfo* metodoMain;
 char* nomeArquivo;
 
 int main(int argc, char* argv[]) {
-    nomeArquivo = calloc(TAMANHO_ARQUIVO, sizeof(argv[1]));
-    int printPrompt = 0;
+  nomeArquivo = calloc(TAMANHO_ARQUIVO, sizeof(argv[1]));
+  int printPrompt = 0;
 
-    if (argc < 3) {
-    	printf("\n\nInforme o caminho completo do arquivo \".class\" que contem o metodo main:\n");
-    	scanf("%s", nomeArquivo);
-    	getchar();
-    } else {
-    	strcpy(nomeArquivo, argv[1]);
-      if(*argv[2] == '1') {
-        printPrompt = 1;
-      }
+  if (argc < 3) {
+  	printf("\n\nInforme o caminho completo do arquivo \".class\" que contem o metodo main:\n");
+  	scanf("%s", nomeArquivo);
+  	getchar();
+  } else {
+  	strcpy(nomeArquivo, argv[1]);
+    if(*argv[2] == '1') {
+      printPrompt = 1;
     }
-	
-	carregaMemClass("java/lang/Object");
-    carregaMemClass(nomeArquivo);
+  }
 
-    ClassFile* classeMain = buscaClassPorIndice(1);
+  carregaMemClass("java/lang/Object");
+  carregaMemClass(nomeArquivo);
 
-    metodoMain = buscaMetodoMain();
+  ClassFile* classeMain = buscaClassPorIndice(1);
 
-    if (metodoMain == NULL) {
-        printf("O arquivo \".class\" informado nao possui metodo Main!");
-        return 0;
+  metodoMain = buscaMetodoMain();
+
+  if (metodoMain == NULL) {
+      printf("O arquivo \".class\" informado nao possui metodo Main!");
+      return 0;
+  }
+
+  empilhaMetodo(metodoMain, classeMain);
+  executaFrameCorrente();
+
+  if (printPrompt) {
+    printf("%i\n", areaMet.numClasses);
+		for (int i = 1; i < areaMet.numClasses; i++) {      
+			printaClassFile(areaMet.arrayClasses[i]);
     }
+  }
 
-
-	empilhaMetodo(metodoMain, classeMain);
-    executaFrameCorrente();
-
-    free(nomeArquivo);
-    return 0;
+  free(nomeArquivo);
+  return 0;
 }

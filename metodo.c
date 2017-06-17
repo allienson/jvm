@@ -20,8 +20,6 @@
 
 extern struct Frame* frameCorrente;
 
-AreaMetodos areaMet;
-
 uint32_t numObjetos = 0;
 
 MethodInfo* buscaMetodoMain() {

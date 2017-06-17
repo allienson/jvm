@@ -161,7 +161,7 @@ void printaCpInfo(ClassFile* classFile) {
                 printf("\t\tClassIndex:        cp_info_#%d  ",classFile->constantPool[i].info.InterfaceMethodref.classIndex);
                 imprimeStringPool(classFile->constantPool, classFile->constantPool[i].info.InterfaceMethodref.classIndex -1);
                 printf("\n");
-                printf("\t\tNameAndTypeIndex:  cp_info_#%d  ",i+1, classFile->constantPool[i].info.InterfaceMethodref.nameAndTypeIndex);
+                printf("\t\tNameAndTypeIndex:  cp_info_#%d  %u",i+1, classFile->constantPool[i].info.InterfaceMethodref.nameAndTypeIndex);
                 imprimeStringPool(classFile->constantPool, classFile->constantPool[i].info.InterfaceMethodref.nameAndTypeIndex -1);
                 printf("\n");
                 break;
@@ -182,7 +182,7 @@ void printaCpInfo(ClassFile* classFile) {
                 memcpy(&valorFloat, &classFile->constantPool[i].info.Float.bytes, sizeof(int32_t));
                 printf("\t[%d] CONSTANT_Float_Info", i+1);
                 printf("\n");
-                printf("\t\tValor: %d", valorFloat);
+                printf("\t\tValor: %0.2f", valorFloat);
                 printf("\n");
                 break;
             case CONSTANT_Double:
@@ -225,7 +225,7 @@ void printaInterfaces(ClassFile* classFile) {
 
             int index = classFile->constantPool[classFile->interfaces[i]-1].info.Class.nameIndex;
 
-            printf("\tInterface %d:   cp_info_#%d   ", i, classFile->interfaces[i], index);
+            printf("\tInterface %d:   cp_info_#%d   %d", i, classFile->interfaces[i], index);
             imprimeStringPool(classFile->constantPool, classFile->interfaces[i]-1);
             printf("\n");
         }
