@@ -117,7 +117,8 @@ int32_t buscaCampo(char* className, char* name, char* desc){
 
 ClassFile* retornaClassePorNome(char* nomeClasse) {
 	for (int i = 0; i < areaMetodos.numClasses; i++) {
-		if (strcmp(nomeClasse, retornaNomeClass(areaMetodos.arrayClasses[i])) == 0){
+		char* nomeClassAux = retornaNomeClass(areaMetodos.arrayClasses[i]);
+		if (strcmp(nomeClasse, nomeClassAux) == 0){
 			return areaMetodos.arrayClasses[i];
 		}
 	}
