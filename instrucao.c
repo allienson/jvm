@@ -3373,9 +3373,9 @@ void invokestatic() {
 void invokeinterface() {
 	MethodInfo* metodoInvocado;
 
-    char* nomeMetodo;
-    char* descricaoMetodo;
-    uint16_t nomeMetodoAux, descricaoMetodoAux,nomeTipoAux;
+	char* nomeMetodo;
+	char* descricaoMetodo;
+	uint16_t nomeMetodoAux, descricaoMetodoAux,nomeTipoAux;
 
 	uint32_t indice = frameCorrente->code[frameCorrente->pc + 2];
 
@@ -3385,13 +3385,13 @@ void invokeinterface() {
 
 	nomeTipoAux = frameCorrente->constantPool[indice - 1].info.Methodref.nameAndTypeIndex;
 
-    nomeMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.nameIndex;
+  nomeMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.nameIndex;
 
 	descricaoMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.descriptorIndex;
 
-    nomeMetodo = retornaNome(frameCorrente->classe, nomeMetodoAux);
+  nomeMetodo = retornaNome(frameCorrente->classe, nomeMetodoAux);
 
-    descricaoMetodo = retornaNome(frameCorrente->classe, descricaoMetodoAux);
+  descricaoMetodo = retornaNome(frameCorrente->classe, descricaoMetodoAux);
 
 	int32_t indexClasse = carregaMemClass(nomeClasse);
 
