@@ -1,15 +1,22 @@
-//
-//  main.c
-//  Java Virtual Machine - Software Basico 2017-1
-//
-//  Created on 26/05/17.
-//  Copyright © 2017 GrupoSB. All rights reserved.
-//
-//  Allisson Barros         12/0055619
-//  Daniel Luz              13/0007714
-//  Luiz Fernando Vieira    13/0013757
-//  Mariana Pannunzio       12/0018276
-//  Mateus Denucci          12/0053080
+///
+///  @file instrucao.c
+///  @headerfile instrucao.h "instrucao.h"
+///	 @headerfile frame.h "frame.h"
+///
+///  @authors
+///  Allisson Barros         12/0055619\n
+///  Daniel Luz              13/0007714\n
+///  Luiz Fernando Vieira    13/0013757\n
+///  Mariana Pannunzio       12/0018276\n
+///  Mateus Denucci          12/0053080\n
+///
+///  @date 26/06/2017
+///
+///  @copyright Copyright © 2017 GrupoSB. All rights reserved.
+///
+///  @brief 
+///  Define, interpreta e executa as instruções do programa sendo executado.
+///
 
 #include "instrucao.h"
 #include "frame.h"
@@ -504,7 +511,7 @@ void ldc2_w() {
 	}
 
 	atualizaPc();
-  foi_lneg = false;
+  flagLNEG = FALSE;
 }
 
 void iload() {
@@ -2711,7 +2718,7 @@ void tableswitch() {
     int32_t qtd_offset, offset, posicao;
     uint32_t temp;
 
-    bool definido = false;
+    int definido = FALSE;
 
     pc_aux = frameCorrente->pc;
 
@@ -2735,7 +2742,7 @@ void tableswitch() {
 
 
     if (indice < low && !definido) {
-        definido = true;
+        definido = TRUE;
         pc_novo = frameCorrente->pc + default_v;
     }
 
@@ -2746,7 +2753,7 @@ void tableswitch() {
     }
 
     if (indice > high && !definido) {
-        definido = true;
+        definido = TRUE;
         pc_novo = frameCorrente->pc + default_v;
     }
 
@@ -2761,7 +2768,7 @@ void tableswitch() {
             }
 
             pc_novo = frameCorrente->pc + offset;
-            definido = true;
+            definido = TRUE;
 
             break;
         } else {
@@ -2782,7 +2789,7 @@ void lookupswitch() {
     int32_t match;
     int32_t key;
 
-    bool definido = false;
+    int definido = FALSE;
 
     pc_aux = frameCorrente->pc;
 
@@ -2821,7 +2828,7 @@ void lookupswitch() {
 
             pc_novo = frameCorrente->pc + offset;
 
-            definido = true;
+            definido = TRUE;
         } else {
             for(int i = 0; i < 4; i++) {
                 pc_aux++;
@@ -3015,13 +3022,13 @@ void invokevirtual(){
 
     if((strcmp(nomeClasse, "java/lang/StringBuffer") == 0) && (strcmp(nomeMetodo,"append") == 0)){
 			flagAppend++;
-		    foi_lneg = false;
+		    flagLNEG = FALSE;
 			atualizaPc();
 			return;
 	}
 
 	if((strcmp(nomeClasse, "java/lang/StringBuffer") == 0) && (strcmp(nomeMetodo,"toString") == 0)){
-		    foi_lneg = false;
+		    flagLNEG = FALSE;
 			atualizaPc();
 			return;
 	}
@@ -3030,7 +3037,7 @@ void invokevirtual(){
 		int32_t aux;
 		scanf("%d",&aux);
 		pushOp(aux);
-		foi_lneg = false;
+		flagLNEG = FALSE;
 		atualizaPc();
 		return;
 	}
@@ -3092,8 +3099,8 @@ void invokevirtual(){
                 long_num |= resultado;
 
                 memcpy(&result, &long_num, sizeof(long));
-                foi_lneg = false;
-                if (!foi_lneg)
+                flagLNEG = FALSE;
+                if (!flagLNEG)
                 {
                     printf("%" PRId64 "\n", long_num);
                 }
@@ -3185,12 +3192,12 @@ void invokevirtual(){
         	return;
         }
 
-        foi_lneg = false;
+        flagLNEG = FALSE;
 		atualizaPc();
 		return;
 	}
 
-	classeIndice = carregaClasseParaMemoria(nomeClasse);
+	classeIndice = carregaMemClass(nomeClasse);
 	ClassFile* classe = buscaClassPorIndice(classeIndice);
 
 	//Busca método a ser invocado.
@@ -3222,7 +3229,7 @@ void invokevirtual(){
 	//Executa método.
 	executaFrameCorrente();
 
-	foi_lneg = false;
+	flagLNEG = FALSE;
 	atualizaPc();
 	return;
 }
@@ -3237,7 +3244,7 @@ void invokespecial() {
 	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constantPool[indiceClasse-1]).info.Class.nameIndex);
 
     if(strcmp("java/lang/Object",nomeClasse) == 0) {
-		carregaClasseParaMemoria(nomeClasse);
+		carregaMemClass(nomeClasse);
 		atualizaPc();
 		return;
 	}
@@ -3252,7 +3259,7 @@ void invokespecial() {
 		return;
 	}
 
-	int32_t indexClasse = carregaClasseParaMemoria(nomeClasse);
+	int32_t indexClasse = carregaMemClass(nomeClasse);
 	ClassFile* classe = buscaClassPorIndice(indexClasse);
 	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Methodref.nameAndTypeIndex;
 	metodoInvocado = buscaMetodo(frameCorrente->classe,classe,nomeTipoIndice);
@@ -3344,7 +3351,7 @@ void invokestatic() {
 		}
 	}
 
-	int32_t indexClasse = carregaClasseParaMemoria(nomeClasse);
+	int32_t indexClasse = carregaMemClass(nomeClasse);
 
 	ClassFile* classe = buscaClassPorIndice(indexClasse);
 
@@ -3393,7 +3400,7 @@ void invokeinterface() {
 
   descricaoMetodo = retornaNome(frameCorrente->classe, descricaoMetodoAux);
 
-	int32_t indexClasse = carregaClasseParaMemoria(nomeClasse);
+	int32_t indexClasse = carregaMemClass(nomeClasse);
 
 	ClassFile* classe = buscaClassPorIndice(indexClasse);
 
@@ -3443,7 +3450,7 @@ void ins_new() {
 		return;
 	}
 
-	aux = carregaClasseParaMemoria(nomeClasse);
+	aux = carregaMemClass(nomeClasse);
 
 	classe = buscaClassPorIndice(aux);
 
@@ -3704,3 +3711,5 @@ void jsr_w(){
 
 	frameCorrente->pc += deslocamento;
 }
+
+  flagLNEG = TRUE;

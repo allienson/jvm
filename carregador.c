@@ -1,15 +1,21 @@
-//
-//  main.c
-//  Java Virtual Machine - Software Basico 2017-1
-//
-//  Created on 26/05/17.
-//  Copyright © 2017 GrupoSB. All rights reserved.
-//
-//  Allisson Barros         12/0055619
-//  Daniel Luz              13/0007714
-//  Luiz Fernando Vieira    13/0013757
-//  Mariana Pannunzio       12/0018276
-//  Mateus Denucci          12/0053080
+///
+///  @file carregador.c
+///  @headerfile carregador.h "carregador.h"
+///
+///  @authors
+///  Allisson Barros         12/0055619\n
+///  Daniel Luz              13/0007714\n
+///  Luiz Fernando Vieira    13/0013757\n
+///  Mariana Pannunzio       12/0018276\n
+///  Mateus Denucci          12/0053080\n
+///
+///  @date 26/06/2017
+///
+///  @copyright Copyright © 2017 GrupoSB. All rights reserved.
+///
+///  @brief
+///  Carrega, inicializa e aloca um ClassFile e associa com a estrutura do AreaMetodos.
+///
 
 #include "carregador.h"
 #include <string.h>
