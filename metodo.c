@@ -43,19 +43,18 @@ MethodInfo* buscaMetodoMain(ClassFile* classFile) {
 }
 
 void empilhaMetodo(MethodInfo* metodo, ClassFile* classe) {
-	newInstrucoes();
-	criaFrame(classe->constantPool, classe, metodo->cdAtrb);
+	inicializaInstrucoes();
+	criaFrame(classe, metodo->cdAtrb);
 }
 
 void executaFrameCorrente() {
-	for(;(frameCorrente->pc) < frameCorrente->codeLength;) {
-		if(frameCorrente == NULL) {
+  while(frameCorrente->pc < frameCorrente->codeLength) {
+    if(frameCorrente == NULL) {
 			break;
     }
 		instrucao[frameCorrente->code[frameCorrente->pc]]();
-	}
-
-	desalocaFrame();
+  }
+	popFrame();
 }
 
 Objeto* criaObjeto(ClassFile* classe) {

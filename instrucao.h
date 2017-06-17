@@ -22,7 +22,7 @@ void (*instrucao[256]) ();
 char* tipoGlobal;
 bool foi_lneg;
 
-void newInstrucoes();
+void inicializaInstrucoes();
 void atualizaPc();
 
 void nop();

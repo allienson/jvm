@@ -21,35 +21,32 @@ int32_t qtdArrays;
 
 static StackFrame* topo = NULL;
 
-void criaFrame(CpInfo* cp, ClassFile* classe, CodeAttribute* code){
-	StackFrame* sf = NULL;
-	sf = (StackFrame*) calloc(sizeof(StackFrame),1);
+void criaFrame(ClassFile* classe, CodeAttribute* codeAttribute){
+	StackFrame* stackFrame = NULL;
+	stackFrame = (StackFrame*) calloc(sizeof(StackFrame),1);
 
-	if(sf == NULL) {
+	if(stackFrame == NULL) {
 		printf("Problema na alocação do frame\n");
 	}
 
-	sf->refFrame = (struct Frame*) calloc(sizeof(struct Frame),1);
-
-	pushFrame(cp, classe, code, sf);
+	stackFrame->refFrame = (struct Frame*) calloc(sizeof(struct Frame),1);
+	pushFrame(classe, codeAttribute, stackFrame);
 }
 
-void pushFrame(CpInfo* cp, ClassFile* classe, CodeAttribute* code, struct StackFrame* sf){
-	sf->next = topo;
-	topo = sf;
-
+void pushFrame(ClassFile* classe, CodeAttribute* codeAttribute, struct StackFrame* stackFrame){
+	stackFrame->next = topo;
+	topo = stackFrame;
 	topo->refFrame->pc = 0;
 	topo->refFrame->classe = classe;
-	topo->refFrame->constantPool = cp;
-	topo->refFrame->maxStack = 2 * code->maxStack + 110;
-	topo->refFrame->maxLocals = code->maxLocals;
-	topo->refFrame->codeLength = code->codeLength;
-	topo->refFrame->code = code->code;
+	topo->refFrame->constantPool = classe->constantPool;
+	topo->refFrame->maxStack = 2 * codeAttribute->maxStack + 110;
+	topo->refFrame->maxLocals = codeAttribute->maxLocals;
+	topo->refFrame->codeLength = codeAttribute->codeLength;
+	topo->refFrame->code = codeAttribute->code;
 	topo->refFrame->fields = calloc(sizeof(uint32_t), topo->refFrame->maxLocals);
   topo->refFrame->pilhaOp = calloc(1, sizeof(PilhaOp));
   topo->refFrame->pilhaOp->operandos = calloc(topo->refFrame->maxStack, sizeof(uint32_t));
   topo->refFrame->pilhaOp->depth = 0;
-
 	frameCorrente = topo->refFrame;
 }
 
@@ -60,10 +57,10 @@ void popFrame() {
 		frameCorrente = topo->next->refFrame;
 
   	if(flagRet == 1) {
-  		push(retorno);
+  		pushOp(retorno);
   	} else if(flagRet == 2) {
-  		push(retAlta);
-  		push(retBaixa);
+  		pushOp(retAlta);
+  		pushOp(retBaixa);
   	}
 
   	flagRet = 0;
@@ -82,12 +79,7 @@ void popFrame() {
 	topo = anterior;
 }
 
-void desalocaFrame() {
-	popFrame();
-}
-
-void push(int32_t valor) {
-
+void pushOp(int32_t valor) {
 	if(frameCorrente->pilhaOp->depth >= frameCorrente->maxStack){
 		printf("Overflow na pilha de operandos!\n");
 		exit(0);

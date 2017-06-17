@@ -28,7 +28,7 @@
 
 MethodInfo* metodoMain;
 ClassFile* classeMain;
-char* nomeArquivo;
+char* caminhoArquivo;
 int exibeClassFile;
 int printaParaArquivo;
 
@@ -39,24 +39,24 @@ void exibeArrayClasses();
 int main(int argc, char* argv[]) {
   leParamsEntrada(argc, argv);
   carregaMemClass("java/lang/Object");
-  carregaMemClass(nomeArquivo);
+  carregaMemClass(caminhoArquivo);
   preparaMetodoMain();
   empilhaMetodo(metodoMain, classeMain);
   executaFrameCorrente();
   exibeArrayClasses();
-  free(nomeArquivo);
+  free(caminhoArquivo);
   return 0;
 }
 
 void leParamsEntrada(int argc, char* argv[]) {
-  nomeArquivo = calloc(TAMANHO_ARQUIVO, sizeof(argv[1]));
+  caminhoArquivo = calloc(TAMANHO_ARQUIVO, sizeof(argv[1]));
   if (argc < 3) {
     printf("\n\nInforme o caminho completo do arquivo \".class\" que contem o metodo main:\n");
-    scanf("%s", nomeArquivo);
+    scanf("%s", caminhoArquivo);
     getchar();
     exibeClassFile = 0;
   } else {
-    strcpy(nomeArquivo, argv[1]);
+    strcpy(caminhoArquivo, argv[1]);
     if(*argv[2] == '1') {
       exibeClassFile = 1;
     } else if(*argv[2] == '2') {

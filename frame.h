@@ -53,12 +53,12 @@ int8_t flagRet;
 
 int32_t popOp();
 
-void criaFrame(CpInfo*, ClassFile*, CodeAttribute*);
+void criaFrame(ClassFile*, CodeAttribute*);
 void desalocaFrame();
-void push(int32_t);
+void pushOp(int32_t);
 void dumpStack();
 void dumpFields();
-void pushFrame(CpInfo*, ClassFile*, CodeAttribute*, struct StackFrame*);
+void pushFrame(ClassFile*, CodeAttribute*, StackFrame*);
 void popFrame();
 
 #endif
