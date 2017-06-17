@@ -16,7 +16,6 @@
 Decodificador dec[NUM_INSTRUCAO];
 
 Frame* frameCorrente;
-Vector* arrayVetores;
 
 int32_t qtdArrays;
 

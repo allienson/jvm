@@ -3190,7 +3190,7 @@ void invokevirtual(){
 		return;
 	}
 
-	classeIndice = carregaMemClass(nomeClasse);
+	classeIndice = carregaClasseParaMemoria(nomeClasse);
 	ClassFile* classe = buscaClassPorIndice(classeIndice);
 
 	//Busca método a ser invocado.
@@ -3237,7 +3237,7 @@ void invokespecial() {
 	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constantPool[indiceClasse-1]).info.Class.nameIndex);
 
     if(strcmp("java/lang/Object",nomeClasse) == 0) {
-		carregaMemClass(nomeClasse);
+		carregaClasseParaMemoria(nomeClasse);
 		atualizaPc();
 		return;
 	}
@@ -3252,7 +3252,7 @@ void invokespecial() {
 		return;
 	}
 
-	int32_t indexClasse = carregaMemClass(nomeClasse);
+	int32_t indexClasse = carregaClasseParaMemoria(nomeClasse);
 	ClassFile* classe = buscaClassPorIndice(indexClasse);
 	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Methodref.nameAndTypeIndex;
 	metodoInvocado = buscaMetodo(frameCorrente->classe,classe,nomeTipoIndice);
@@ -3344,7 +3344,7 @@ void invokestatic() {
 		}
 	}
 
-	int32_t indexClasse = carregaMemClass(nomeClasse);
+	int32_t indexClasse = carregaClasseParaMemoria(nomeClasse);
 
 	ClassFile* classe = buscaClassPorIndice(indexClasse);
 
@@ -3373,9 +3373,9 @@ void invokestatic() {
 void invokeinterface() {
 	MethodInfo* metodoInvocado;
 
-    char* nomeMetodo;
-    char* descricaoMetodo;
-    uint16_t nomeMetodoAux, descricaoMetodoAux,nomeTipoAux;
+	char* nomeMetodo;
+	char* descricaoMetodo;
+	uint16_t nomeMetodoAux, descricaoMetodoAux,nomeTipoAux;
 
 	uint32_t indice = frameCorrente->code[frameCorrente->pc + 2];
 
@@ -3385,15 +3385,15 @@ void invokeinterface() {
 
 	nomeTipoAux = frameCorrente->constantPool[indice - 1].info.Methodref.nameAndTypeIndex;
 
-    nomeMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.nameIndex;
+  nomeMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.nameIndex;
 
 	descricaoMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.descriptorIndex;
 
-    nomeMetodo = retornaNome(frameCorrente->classe, nomeMetodoAux);
+  nomeMetodo = retornaNome(frameCorrente->classe, nomeMetodoAux);
 
-    descricaoMetodo = retornaNome(frameCorrente->classe, descricaoMetodoAux);
+  descricaoMetodo = retornaNome(frameCorrente->classe, descricaoMetodoAux);
 
-	int32_t indexClasse = carregaMemClass(nomeClasse);
+	int32_t indexClasse = carregaClasseParaMemoria(nomeClasse);
 
 	ClassFile* classe = buscaClassPorIndice(indexClasse);
 
@@ -3443,7 +3443,7 @@ void ins_new() {
 		return;
 	}
 
-	aux = carregaMemClass(nomeClasse);
+	aux = carregaClasseParaMemoria(nomeClasse);
 
 	classe = buscaClassPorIndice(aux);
 
