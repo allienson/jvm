@@ -22,6 +22,6 @@ void inicializaPrimeiraVez();
 void carregaClasse(char*);
 char* retornaNomeClass(ClassFile*);
 ClassFile* buscaClassPorIndice(int);
-char * retornaNome(ClassFile*, uint16_t);
+char* retornaNome(ClassFile*, uint16_t);
 
 #endif

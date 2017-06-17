@@ -29,13 +29,17 @@ char* nomeArquivo;
 
 int main(int argc, char* argv[]) {
     nomeArquivo = calloc(TAMANHO_ARQUIVO, sizeof(argv[1]));
+    int printPrompt = 0;
 
-    if (argc < 2) {
+    if (argc < 3) {
     	printf("\n\nInforme o caminho completo do arquivo \".class\" que contem o metodo main:\n");
     	scanf("%s", nomeArquivo);
     	getchar();
     }else{
     	strcpy(nomeArquivo, argv[1]);
+      if(*argv[2] == '1') {
+        printPrompt = 1;
+      }
     }
 	
 	printf("teste\n");
@@ -44,6 +48,8 @@ int main(int argc, char* argv[]) {
     ClassFile* classeMain = buscaClassPorIndice(1);
 
     metodoMain = buscaMetodoMain();
+
+    printf("\nOlar\n");
 
     if (metodoMain == NULL) {
         printf("O arquivo \".class\" informado nao possui metodo Main!");
