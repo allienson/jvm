@@ -88,7 +88,6 @@ void desalocaFrame() {
 }
 
 void push(int32_t valor) {
-  mostraProfundidade(1);
 
 	if(frameCorrente->pilhaOp->depth >= frameCorrente->maxStack){
 		printf("Overflow na pilha de operandos!\n");
@@ -100,28 +99,14 @@ void push(int32_t valor) {
 }
 
 int32_t popOp() {
-    mostraProfundidade(-1);
+	frameCorrente->pilhaOp->depth -= 1;
 
-    frameCorrente->pilhaOp->depth -= 1;
+	if (frameCorrente->pilhaOp->depth < 0) {
+		printf("profundidade da pilha de operandos negativa: %d\n", frameCorrente->pilhaOp->depth);
+		printf("pc: %u\n", frameCorrente->pc);
+	}
 
-    if (frameCorrente->pilhaOp->depth < 0) {
-        printf("profundidade da pilha de operandos negativa: %d\n", frameCorrente->pilhaOp->depth);
-        printf("pc: %d\n", frameCorrente->pc);
-    }
-
-    return frameCorrente->pilhaOp->operandos[frameCorrente->pilhaOp->depth];
-}
-
-void mostraProfundidade(int i) {
-    int j = 0;
-
-    if (j == 1) {
-        inicializaDecodificador(dec);
-        int numBytes = dec[frameCorrente->code[frameCorrente->pc]].bytes;
-        printf("instrucao que modifica pilha: %s\n", dec[frameCorrente->code[frameCorrente->pc]].instrucao);
-        printf("valor de pc: %d\n", frameCorrente->pc);
-        printf("nova profundidade da pilha: %d\n", frameCorrente->pilhaOp->depth + i);
-    }
+	return frameCorrente->pilhaOp->operandos[frameCorrente->pilhaOp->depth];
 }
 
 void dumpStack(){

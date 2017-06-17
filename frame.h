@@ -60,6 +60,5 @@ void dumpStack();
 void dumpFields();
 void pushFrame(CpInfo*, ClassFile*, CodeAttribute*, struct StackFrame*);
 void popFrame();
-void mostraProfundidade(int);
 
 #endif
