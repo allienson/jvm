@@ -29,11 +29,11 @@ void criaFrame(ClassFile* classe, CodeAttribute* codeAttribute){
 		printf("Problema na alocação do frame\n");
 	}
 
-	stackFrame->refFrame = (struct Frame*) calloc(sizeof(struct Frame),1);
+	stackFrame->refFrame = (Frame*) calloc(sizeof(Frame),1);
 	pushFrame(classe, codeAttribute, stackFrame);
 }
 
-void pushFrame(ClassFile* classe, CodeAttribute* codeAttribute, struct StackFrame* stackFrame){
+void pushFrame(ClassFile* classe, CodeAttribute* codeAttribute, StackFrame* stackFrame){
 	stackFrame->next = topo;
 	topo = stackFrame;
 	topo->refFrame->pc = 0;
