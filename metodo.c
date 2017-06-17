@@ -33,10 +33,8 @@ MethodInfo* buscaMetodoMain() {
 
 	main = buscaClassPorIndice(1);
 
-  printf("\n%d\n", main->methodsCount);
 
 	for(int i = 0; i < main->methodsCount; i++) {
-    printf("\nUAAAAi\n");
 
 		nome = main->constantPool[(main->methods[i].nameIndex -1)].info.Utf8.bytes;
 		desc = main->constantPool[(main->methods[i].descriptorIndex - 1)].info.Utf8.bytes;

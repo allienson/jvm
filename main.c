@@ -41,6 +41,7 @@ int main(int argc, char* argv[]) {
         printPrompt = 1;
       }
     }
+	
 	carregaMemClass("java/lang/Object");
     carregaMemClass(nomeArquivo);
 
