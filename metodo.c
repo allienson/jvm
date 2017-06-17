@@ -31,8 +31,8 @@ MethodInfo* buscaMetodoMain() {
 	uint8_t* nome;
 	uint8_t* desc;
 
-	main = buscaClassPorIndice(1);
-  
+	main = retornaClassePorNome(1);
+
   printf("\n%d\n", main->methodsCount);
 
 	for(int i = 0; i < main->methodsCount; i++) {
