@@ -56,13 +56,13 @@ int obtemUtfEq(CpInfo* cp, int posPool) {
 
     switch(tag) {
         case CONSTANT_Class:
-            return obtem_utf_eq(cp, cp[posPool].info.Class.nameIndex - 1);
+            return obtemUtfEq(cp, cp[posPool].info.Class.nameIndex - 1);
         case CONSTANT_String:
-            return obtem_utf_eq(cp, cp[posPool].info.String.stringIndex - 1);
+            return obtemUtfEq(cp, cp[posPool].info.String.stringIndex - 1);
         case CONSTANT_Integer:
-            return obtem_utf_eq(cp, cp[posPool].info.String.stringIndex - 1);
+            return obtemUtfEq(cp, cp[posPool].info.String.stringIndex - 1);
         case CONSTANT_Float:
-            return obtem_utf_eq(cp, cp[posPool].info.String.stringIndex - 1);
+            return obtemUtfEq(cp, cp[posPool].info.String.stringIndex - 1);
     }
 }
 
@@ -3137,7 +3137,7 @@ void invokevirtual() {
 	}
 
 	classeIndice = carregaMemClass(nomeClasse);
-	ClassFile* classe = buscaClasseIndice(classeIndice);
+	ClassFile* classe = buscaClassPorIndice(classeIndice);
 
 	metodoInvocado = buscaMetodo(frameCorrente->classe,classe,nomeTipoAux);
 	if(metodoInvocado == NULL) {
@@ -3191,7 +3191,7 @@ void invokespecial() {
 	}
 
 	int32_t indexClasse = carregaMemClass(nomeClasse);
-	ClassFile* classe = buscaClasseIndice(indexClasse);
+	ClassFile* classe = buscaClassPorIndice(indexClasse);
 	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Methodref.nameAndTypeIndex;
 	metodoInvocado = buscaMetodo(frameCorrente->classe,classe,nomeTipoIndice);
 	int32_t numeroParametros = retornaNumeroParametros(classe,metodoInvocado);
@@ -3284,7 +3284,7 @@ void invokestatic() {
 
 	int32_t indexClasse = carregaMemClass(nomeClasse);
 
-	ClassFile* classe = buscaClasseIndice(indexClasse);
+	ClassFile* classe = buscaClassPorIndice(indexClasse);
 
 	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Methodref.nameAndTypeIndex;
 
@@ -3333,7 +3333,7 @@ void invokeinterface() {
 
 	int32_t indexClasse = carregaMemClass(nomeClasse);
 
-	ClassFile* classe = buscaClasseIndice(indexClasse);
+	ClassFile* classe = buscaClassPorIndice(indexClasse);
 
 	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Methodref.nameAndTypeIndex;
 
@@ -3383,7 +3383,7 @@ void ins_new() {
 
 	aux = carregaMemClass(nomeClasse);
 
-	classe = buscaClasseIndice(aux);
+	classe = buscaClassPorIndice(aux);
 
 	Objeto = criaObjeto(classe);
 
@@ -3525,7 +3525,7 @@ void checkcast() {
 		printf("Objeto nulo!\n");
 	}
 
-	char* nomeClasse = retornaNomeClasse(Objeto->classe);
+	char* nomeClasse = retornaNomeClass(Objeto->classe);
 
 	char* nomeIndice = retornaNome(frameCorrente->classe,indice);
 
@@ -3553,7 +3553,7 @@ void instanceof() {
 		push(0);
 	}
 
-	char* nomeClasse = retornaNomeClasse(Objeto->classe);
+	char* nomeClasse = retornaNomeClass(Objeto->classe);
 
 	char* nomeIndice = retornaNome(frameCorrente->classe,indice);
 
