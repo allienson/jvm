@@ -1,4 +1,3 @@
 1100 - bagulho do retorno int32_t
 metodo.c mudar funcao executaFrameCorrente (for -> while)
-buscaMetodoMain receber (mainClass)
 criaFrame nao precisa de tantos args (cp)
