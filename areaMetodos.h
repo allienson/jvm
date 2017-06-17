@@ -36,6 +36,4 @@ typedef struct Objeto {
   uint32_t* indiceCampos;
 } Objeto;
 
-Objeto** heap;
-
 #endif
