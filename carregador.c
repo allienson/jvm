@@ -37,7 +37,19 @@ int32_t carregaMemClass(char* nomeClass) {
   arrayClassesAux = (ClassFile**) realloc(areaMetodos.arrayClasses, (areaMetodos.numClasses*sizeof(ClassFile*)));
   areaMetodos.arrayClasses = (ClassFile**) calloc(1, sizeof(ClassFile*));
   areaMetodos.arrayClasses = arrayClassesAux;
-  carregaClasse(nomeClass);
+  //carregaClasse(nomeClass);
+  //MUDEI AQUI
+  char* destino = malloc(strlen(nomeClass) + 10);
+  if (strstr(nomeClass,".class") != NULL) {
+	sprintf(destino, "%s", nomeClass);
+  } else {
+    sprintf(destino, "./%s.class",nomeClass);
+  }
+  areaMetodos.arrayClasses[areaMetodos.numClasses - 1] = inicializaLeitor(destino);
+  if(areaMetodos.arrayClasses[areaMetodos.numClasses -1] == NULL){
+    printf("Erro ao carregar classe!\n");
+    exit(0);
+  }
   return areaMetodos.numClasses - 1;
 }
 

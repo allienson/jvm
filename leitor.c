@@ -38,7 +38,7 @@ ClassFile* inicializaLeitor(char* caminhoClasse) {
         printf("Erro ao alocar espaço para o arquivo ! \n");
         exit(0);
     }
-
+	
     leClassFile(fp, classFile);
     fclose(fp);
     return classFile;
@@ -49,7 +49,7 @@ void leClassFile(FILE* fp, ClassFile* classFile) {
 
         classFile->minorVersion = le2Bytes(fp);
         classFile->majorVersion = le2Bytes(fp);
-        classFile->constantPoolCount = le2Bytes(fp);
+        classFile->constantPoolCount = le2Bytes(fp);//lendo errado aqui
         leConstantPool(fp, classFile);
 
         classFile->accessFlags = le2Bytes(fp);
@@ -62,7 +62,7 @@ void leClassFile(FILE* fp, ClassFile* classFile) {
         leFieldInfo(fp, classFile);
 
         classFile->methodsCount = le2Bytes(fp);
-        leMethodInfo(fp, classFile);
+        leMethodInfo(fp, classFile);//morre aqui dentro
 
         classFile->attributesCount = le2Bytes(fp);
         leAttributeInfo(fp,classFile);
@@ -183,6 +183,35 @@ void leMethodInfo(FILE* fp, ClassFile* classFile) {
         MethodInfo* methodInfo = classFile->methods;
         for(int i = 0; i < classFile->methodsCount; methodInfo++){
             methodInfo->accessFlags = le2Bytes(fp);
+			//MUDEI AQUI
+            if(methodInfo->accessFlags == 0x010a ||methodInfo->accessFlags == 0x0101||methodInfo->accessFlags == 0x0111){
+                methodInfo->nameIndex = le2Bytes(fp);
+                methodInfo->descriptorIndex = le2Bytes(fp);
+                methodInfo->attributesCount = le2Bytes(fp);
+                
+                i++;
+                for (int j = 0; j < methodInfo->attributesCount; j++)
+                {
+                    int64_t temp, temp2; 
+
+                    // pega atributo name index do metodo 
+                    temp = le2Bytes(fp); 
+                    
+                    // pega attributo length do metodo 
+                    temp = le4Bytes(fp); 
+
+                    // vai lendo info 
+                    for (int k = 0; k < temp; k++)
+                    {
+                        temp2 = le1Byte(fp);
+                    }
+                    
+                    
+                }
+                continue; 
+            }
+			
+			
             methodInfo->nameIndex = le2Bytes(fp);
             methodInfo->descriptorIndex = le2Bytes(fp);
             methodInfo->attributesCount = le2Bytes(fp);
@@ -239,14 +268,14 @@ void leExc(FILE* fp, ExceptionsAttribute** excAtrb, uint16_t nameIndex, uint32_t
 
 void leCode(FILE* fp, CodeAttribute** cdAtrb, uint16_t nameIndex, uint32_t attributesCount) {
     int posicaoInicial = (int) ftell(fp);
-
+	
     (*cdAtrb)->attributeNameIndex = nameIndex;
     (*cdAtrb)->attributeLength = attributesCount;
     (*cdAtrb)->maxStack = le2Bytes(fp);
     (*cdAtrb)->maxLocals = le2Bytes(fp);
     (*cdAtrb)->codeLength = le4Bytes(fp);
 
-    salvaInstrucoes(cdAtrb, fp);
+    salvaInstrucoes(cdAtrb, fp); //testar depois
 
     (*cdAtrb)->exceptionTableLength = le2Bytes(fp);
     (*cdAtrb)->exceptionTable = (ExceptionTable*) malloc((*cdAtrb)->exceptionTableLength * sizeof(ExceptionTable));
