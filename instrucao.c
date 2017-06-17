@@ -504,7 +504,7 @@ void ldc2_w() {
 	}
 
 	atualizaPc();
-  foi_lneg = false;
+  flagLNEG = FALSE;
 }
 
 void iload() {
@@ -1756,7 +1756,7 @@ void lneg() {
 	pushOp(alta);
 	pushOp(baixa);
 	atualizaPc();
-  foi_lneg = true;
+  flagLNEG = TRUE;
 }
 
 void fneg() {
@@ -2711,7 +2711,7 @@ void tableswitch() {
     int32_t qtd_offset, offset, posicao;
     uint32_t temp;
 
-    bool definido = false;
+    int definido = FALSE;
 
     pc_aux = frameCorrente->pc;
 
@@ -2735,7 +2735,7 @@ void tableswitch() {
 
 
     if (indice < low && !definido) {
-        definido = true;
+        definido = TRUE;
         pc_novo = frameCorrente->pc + default_v;
     }
 
@@ -2746,7 +2746,7 @@ void tableswitch() {
     }
 
     if (indice > high && !definido) {
-        definido = true;
+        definido = TRUE;
         pc_novo = frameCorrente->pc + default_v;
     }
 
@@ -2761,7 +2761,7 @@ void tableswitch() {
             }
 
             pc_novo = frameCorrente->pc + offset;
-            definido = true;
+            definido = TRUE;
 
             break;
         } else {
@@ -2782,7 +2782,7 @@ void lookupswitch() {
     int32_t match;
     int32_t key;
 
-    bool definido = false;
+    int definido = FALSE;
 
     pc_aux = frameCorrente->pc;
 
@@ -2821,7 +2821,7 @@ void lookupswitch() {
 
             pc_novo = frameCorrente->pc + offset;
 
-            definido = true;
+            definido = TRUE;
         } else {
             for(int i = 0; i < 4; i++) {
                 pc_aux++;
@@ -3015,13 +3015,13 @@ void invokevirtual(){
 
     if((strcmp(nomeClasse, "java/lang/StringBuffer") == 0) && (strcmp(nomeMetodo,"append") == 0)){
 			flagAppend++;
-		    foi_lneg = false;
+		    flagLNEG = FALSE;
 			atualizaPc();
 			return;
 	}
 
 	if((strcmp(nomeClasse, "java/lang/StringBuffer") == 0) && (strcmp(nomeMetodo,"toString") == 0)){
-		    foi_lneg = false;
+		    flagLNEG = FALSE;
 			atualizaPc();
 			return;
 	}
@@ -3030,7 +3030,7 @@ void invokevirtual(){
 		int32_t aux;
 		scanf("%d",&aux);
 		pushOp(aux);
-		foi_lneg = false;
+		flagLNEG = FALSE;
 		atualizaPc();
 		return;
 	}
@@ -3092,8 +3092,8 @@ void invokevirtual(){
                 long_num |= resultado;
 
                 memcpy(&result, &long_num, sizeof(long));
-                foi_lneg = false;
-                if (!foi_lneg)
+                flagLNEG = FALSE;
+                if (!flagLNEG)
                 {
                     printf("%" PRId64 "\n", long_num);
                 }
@@ -3185,7 +3185,7 @@ void invokevirtual(){
         	return;
         }
 
-        foi_lneg = false;
+        flagLNEG = FALSE;
 		atualizaPc();
 		return;
 	}
@@ -3222,7 +3222,7 @@ void invokevirtual(){
 	//Executa método.
 	executaFrameCorrente();
 
-	foi_lneg = false;
+	flagLNEG = FALSE;
 	atualizaPc();
 	return;
 }

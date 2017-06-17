@@ -15,12 +15,15 @@
 #define INSTRUCAO_H
 
 #include <stdint.h>
-#include <stdbool.h>
+
+#define FALSE 0
+#define TRUE 1
 
 void (*instrucao[256]) ();
 
 char* tipoGlobal;
-bool foi_lneg;
+
+int flagLNEG;
 
 void inicializaInstrucoes();
 void atualizaPc();

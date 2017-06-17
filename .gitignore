@@ -1,4 +1,6 @@
 
+*.cppcheck
+
 *.o
 
 \.DS_Store

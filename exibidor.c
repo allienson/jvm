@@ -651,7 +651,7 @@ void printBase() {
 
 void printSingleLine(){
     for (int i = 0; i < 34; ++i) {
-        printf("-");
+        printf("_");
     }
-    printf("*");
+    //printf("*");
 }
