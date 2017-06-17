@@ -31,7 +31,7 @@ MethodInfo* buscaMetodoMain() {
 	uint8_t* nome;
 	uint8_t* desc;
 
-	main = retornaClassePorNome(1);
+	main = buscaClassPorIndice(1);
 
   printf("\n%d\n", main->methodsCount);
 
@@ -94,8 +94,8 @@ MethodInfo* buscaMetodo(ClassFile* indiceClasse, ClassFile* searchClasse, uint16
 	char* searchName;
 	char* searchDesc;
 	for(int i = 0; i < searchClasse->methodsCount; i++) {
-    searchName = searchClasse->constantPool[(searchClasse->methods[i].nameIndex-1)].info.Utf8.bytes;
-		searchDesc = searchClasse->constantPool[(searchClasse->methods[i].descriptorIndex-1)].info.Utf8.bytes;
+    searchName = (char*) searchClasse->constantPool[(searchClasse->methods[i].nameIndex-1)].info.Utf8.bytes;
+		searchDesc = (char*) searchClasse->constantPool[(searchClasse->methods[i].descriptorIndex-1)].info.Utf8.bytes;
 		if((strcmp(name,searchName) == 0) && (strcmp(desc,searchDesc) == 0)) {
 			return(searchClasse->methods + i);
 		}
@@ -105,16 +105,18 @@ MethodInfo* buscaMetodo(ClassFile* indiceClasse, ClassFile* searchClasse, uint16
 
 int32_t buscaCampo(char* className, char* name, char* desc){
 	ClassFile* classe = retornaClassePorNome(className);
-	uint8_t* searchName;
-	uint8_t* searchDesc;
+	char* searchName;
+	char* searchDesc;
 
 	for(int i = 0; i < classe->fieldsCount; i++) {
-		searchName = classe->constantPool[(classe->fields[i].nameIndex-1)].info.Utf8.bytes;
-		searchDesc = classe->constantPool[(classe->fields[i].descriptorIndex-1)].info.Utf8.bytes;
+		searchName = (char*) classe->constantPool[(classe->fields[i].nameIndex-1)].info.Utf8.bytes;
+		searchDesc = (char*) classe->constantPool[(classe->fields[i].descriptorIndex-1)].info.Utf8.bytes;
 		if ((strcmp(name, searchName) == 0) && (strcmp(desc, searchDesc) == 0)) {
 			return i;
 		}
 	}
+
+  exit(0);
 }
 
 ClassFile* retornaClassePorNome(char* nomeClasse) {

@@ -64,6 +64,8 @@ int obtemUtfEq(CpInfo* cp, int posPool) {
         case CONSTANT_Float:
             return obtemUtfEq(cp, cp[posPool].info.String.stringIndex - 1);
     }
+
+    exit(0);
 }
 
 void newInstrucoes() {
@@ -461,7 +463,7 @@ void ldc_w() {
   uint32_t indice;
 	inicializaDecodificador(dec);
 	int numBytes = dec[frameCorrente->code[frameCorrente->pc]].bytes;
-  indice = (frameCorrente->code[frameCorrente->pc + 1] << 8 + frameCorrente->code[frameCorrente->pc + 2]);
+  indice = ((frameCorrente->code[frameCorrente->pc + 1] << 8) + (frameCorrente->code[frameCorrente->pc + 2]));
   if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_Float || \
           frameCorrente->constantPool[indice - 1].tag == CONSTANT_Integer) {
       if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_Float) {
@@ -2927,8 +2929,11 @@ void getfield() {
 		atualizaPc();
  	} else {
 
-	 	int32_t i;
-		for(i = 0;obj->indiceCampos[i] != indiceNome; i++);
+	 	int32_t i = 0;
+    while(obj->indiceCampos[i] != indiceNome) {
+      i++;
+    }
+
 	 	uint32_t val = obj->campos[i];
 
 	 	push(val);

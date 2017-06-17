@@ -42,14 +42,12 @@ int main(int argc, char* argv[]) {
       }
     }
 
-	printf("teste\n");
-
     carregaMemClass(nomeArquivo);
+    printf("\nOlar\n");
     ClassFile* classeMain = buscaClassPorIndice(1);
+    printf("teste\n");
 
     metodoMain = buscaMetodoMain();
-
-    printf("\nOlar\n");
 
     if (metodoMain == NULL) {
         printf("O arquivo \".class\" informado nao possui metodo Main!");
