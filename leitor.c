@@ -180,7 +180,7 @@ void leMethodInfo(FILE* fp, ClassFile* classFile) {
   } else {
     classFile->methods = (MethodInfo*) malloc(classFile->methodsCount * sizeof(MethodInfo));
     MethodInfo* methodInfo = classFile->methods;
-    for(int i = 0; i < classFile->methodsCount; methodInfo++, i++) {
+    for(int i = 0; i < classFile->methodsCount; methodInfo++) {
       methodInfo->accessFlags = le2Bytes(fp);
       if(methodInfo->accessFlags == 0x010a ||methodInfo->accessFlags == 0x0101||methodInfo->accessFlags == 0x0111){
         methodInfo->nameIndex = le2Bytes(fp);
@@ -214,6 +214,7 @@ void leMethodInfo(FILE* fp, ClassFile* classFile) {
           leExc(fp, &(methodInfo->excAtrb), nameIndex, attributesCount);
         }
       }
+      i++;
     }
   }
 }
