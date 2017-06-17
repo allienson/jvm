@@ -1,15 +1,22 @@
-//
-//  main.c
-//  Java Virtual Machine - Software Basico 2017-1
-//
-//  Created on 26/05/17.
-//  Copyright © 2017 GrupoSB. All rights reserved.
-//
-//  Allisson Barros         12/0055619
-//  Daniel Luz              13/0007714
-//  Luiz Fernando Vieira    13/0013757
-//  Mariana Pannunzio       12/0018276
-//  Mateus Denucci          12/0053080
+///
+///  @file instrucao.c
+///  @headerfile instrucao.h "instrucao.h"
+///	 @headerfile frame.h "frame.h"
+///
+///  @authors
+///  Allisson Barros         12/0055619\n
+///  Daniel Luz              13/0007714\n
+///  Luiz Fernando Vieira    13/0013757\n
+///  Mariana Pannunzio       12/0018276\n
+///  Mateus Denucci          12/0053080\n
+///
+///  @date 26/06/2017
+///
+///  @copyright Copyright © 2017 GrupoSB. All rights reserved.
+///
+///  @brief 
+///  Define, interpreta e executa as instruções do programa sendo executado.
+///
 
 #include "instrucao.h"
 #include "frame.h"
@@ -1756,7 +1763,7 @@ void lneg() {
 	pushOp(alta);
 	pushOp(baixa);
 	atualizaPc();
-  flagLNEG = TRUE;
+  foi_lneg = true;
 }
 
 void fneg() {
@@ -3190,7 +3197,7 @@ void invokevirtual(){
 		return;
 	}
 
-	classeIndice = carregaClasseParaMemoria(nomeClasse);
+	classeIndice = carregaMemClass(nomeClasse);
 	ClassFile* classe = buscaClassPorIndice(classeIndice);
 
 	//Busca método a ser invocado.
@@ -3237,7 +3244,7 @@ void invokespecial() {
 	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constantPool[indiceClasse-1]).info.Class.nameIndex);
 
     if(strcmp("java/lang/Object",nomeClasse) == 0) {
-		carregaClasseParaMemoria(nomeClasse);
+		carregaMemClass(nomeClasse);
 		atualizaPc();
 		return;
 	}
@@ -3252,7 +3259,7 @@ void invokespecial() {
 		return;
 	}
 
-	int32_t indexClasse = carregaClasseParaMemoria(nomeClasse);
+	int32_t indexClasse = carregaMemClass(nomeClasse);
 	ClassFile* classe = buscaClassPorIndice(indexClasse);
 	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Methodref.nameAndTypeIndex;
 	metodoInvocado = buscaMetodo(frameCorrente->classe,classe,nomeTipoIndice);
@@ -3344,7 +3351,7 @@ void invokestatic() {
 		}
 	}
 
-	int32_t indexClasse = carregaClasseParaMemoria(nomeClasse);
+	int32_t indexClasse = carregaMemClass(nomeClasse);
 
 	ClassFile* classe = buscaClassPorIndice(indexClasse);
 
@@ -3393,7 +3400,7 @@ void invokeinterface() {
 
   descricaoMetodo = retornaNome(frameCorrente->classe, descricaoMetodoAux);
 
-	int32_t indexClasse = carregaClasseParaMemoria(nomeClasse);
+	int32_t indexClasse = carregaMemClass(nomeClasse);
 
 	ClassFile* classe = buscaClassPorIndice(indexClasse);
 
@@ -3443,7 +3450,7 @@ void ins_new() {
 		return;
 	}
 
-	aux = carregaClasseParaMemoria(nomeClasse);
+	aux = carregaMemClass(nomeClasse);
 
 	classe = buscaClassPorIndice(aux);
 
@@ -3704,3 +3711,5 @@ void jsr_w(){
 
 	frameCorrente->pc += deslocamento;
 }
+
+  flagLNEG = TRUE;

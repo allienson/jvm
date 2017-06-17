@@ -1,19 +1,22 @@
-//
-//  decodificadorodificador.c
-//  LeitorExibidor - Software Basico 2017-1
-//
-//  Created on 26/05/17.
-//  Copyright © 2017 GrupoSB. All rights reserved.
-//
-//  Allisson Barros         12/0055619
-//  Daniel Luz              13/0007714
-//  Luiz Fernando Vieira    13/0013757
-//  Mariana Pannunzio       12/0018276
-//  Mateus Denucci          12/0053080
-//
-//  Recebe uma estrutura Decodificador vazia e preenche
-//  com strings que sao as instrucoes presentes no bytecode.
-//  Retorna uma estrutura Decodificador preenchida.
+///
+///  @file decodificador.c
+///  @headerfile decodificador.h "decodificador.h"
+///
+///  @authors
+///  Allisson Barros         12/0055619\n
+///  Daniel Luz              13/0007714\n
+///  Luiz Fernando Vieira    13/0013757\n
+///  Mariana Pannunzio       12/0018276\n
+///  Mateus Denucci          12/0053080\n
+///
+///  @date 26/06/2017
+///
+///  @copyright Copyright © 2017 GrupoSB. All rights reserved.
+///
+///  @brief 
+///		Recebe uma estrutura Decodificador vazia e preenche
+///		com strings que sao as instrucoes presentes no bytecode.
+///		Retorna uma estrutura Decodificador preenchida.
 
 #include "decodificador.h"
 
