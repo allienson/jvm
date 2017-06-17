@@ -22,24 +22,20 @@ extern struct Frame* frameCorrente;
 
 uint32_t numObjetos = 0;
 
-MethodInfo* buscaMetodoMain() {
-	ClassFile* main;
+MethodInfo* buscaMetodoMain(ClassFile* classFile) {
 	uint16_t tamanhoNome;
 	uint16_t tamanhoDesc;
 	uint8_t* nome;
 	uint8_t* desc;
 
-	main = buscaClassPorIndice(1);
+	classFile = buscaClassPorIndice(1);
 
-
-	for(int i = 0; i < main->methodsCount; i++) {
-
-		nome = main->constantPool[(main->methods[i].nameIndex -1)].info.Utf8.bytes;
-		desc = main->constantPool[(main->methods[i].descriptorIndex - 1)].info.Utf8.bytes;
-
+	for(int i = 0; i < classFile->methodsCount; i++) {
+		nome = classFile->constantPool[(classFile->methods[i].nameIndex -1)].info.Utf8.bytes;
+		desc = classFile->constantPool[(classFile->methods[i].descriptorIndex - 1)].info.Utf8.bytes;
 		if(strcmp("main",(char*)nome) == 0) {
 			if(strcmp("([Ljava/lang/String;)V",(char*)desc) == 0) {
-				return &(main->methods[i]);
+				return &(classFile->methods[i]);
 			}
 		}
 	}

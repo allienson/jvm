@@ -27,44 +27,54 @@
 #define TAMANHO_ARQUIVO 100
 
 MethodInfo* metodoMain;
+ClassFile* classeMain;
 char* nomeArquivo;
+int exibeClassFile;
+
+void leParamsEntrada();
+void preparaMetodoMain();
+void exibeArrayClasses();
 
 int main(int argc, char* argv[]) {
-  nomeArquivo = calloc(TAMANHO_ARQUIVO, sizeof(argv[1]));
-  int printPrompt = 0;
-
-  if (argc < 3) {
-  	printf("\n\nInforme o caminho completo do arquivo \".class\" que contem o metodo main:\n");
-  	scanf("%s", nomeArquivo);
-  	getchar();
-  } else {
-  	strcpy(nomeArquivo, argv[1]);
-    if(*argv[2] == '1') {
-      printPrompt = 1;
-    }
-  }
-
+  leParamsEntrada(argc, argv);
   carregaMemClass("java/lang/Object");
   carregaMemClass(nomeArquivo);
-
-  ClassFile* classeMain = buscaClassPorIndice(1);
-
-  metodoMain = buscaMetodoMain();
-
-  if (metodoMain == NULL) {
-      printf("O arquivo \".class\" informado nao possui metodo Main!");
-      return 0;
-  }
-
+  preparaMetodoMain();
   empilhaMetodo(metodoMain, classeMain);
   executaFrameCorrente();
-
-  if (printPrompt) {
-		for (int i = 1; i < areaMetodos.numClasses; i++) {      
-			printaClassFile(areaMetodos.arrayClasses[i]);
-    }
-  }
-
+  exibeArrayClasses();
   free(nomeArquivo);
   return 0;
+}
+
+void leParamsEntrada(int argc, char* argv[]) {
+  nomeArquivo = calloc(TAMANHO_ARQUIVO, sizeof(argv[1]));
+  if (argc < 3) {
+    printf("\n\nInforme o caminho completo do arquivo \".class\" que contem o metodo main:\n");
+    scanf("%s", nomeArquivo);
+    getchar();
+    exibeClassFile = 0;
+  } else {
+    strcpy(nomeArquivo, argv[1]);
+    if(*argv[2] == '1') {
+      exibeClassFile = 1;
+    }
+  }
+}
+
+void preparaMetodoMain() {
+  classeMain = buscaClassPorIndice(1);
+  metodoMain = buscaMetodoMain(classeMain);
+  if (metodoMain == NULL) {
+    printf("O arquivo \".class\" informado nao possui metodo Main!");
+    exit(0);
+  }
+}
+
+void exibeArrayClasses() {
+  if (exibeClassFile) {
+    for (int i = 1; i < areaMetodos.numClasses; i++) {
+      printaClassFile(areaMetodos.arrayClasses[i]);
+    }
+  }
 }
