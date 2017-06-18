@@ -48,8 +48,8 @@ void exibeArrayClasses();
 
 int main(int argc, char* argv[]) {
   leParamsEntrada(argc, argv);
-  carregaMemClass("java/lang/Object");
-  carregaMemClass(caminhoArquivo);
+  carregaClasseParaMemoria("java/lang/Object");
+  carregaClasseParaMemoria(caminhoArquivo);
   preparaMetodoMain();
   empilhaMetodo(metodoMain, classeMain);
   executaFrameCorrente();
