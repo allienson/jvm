@@ -1763,7 +1763,7 @@ void lneg() {
 	pushOp(alta);
 	pushOp(baixa);
 	atualizaPc();
-  foi_lneg = true;
+  	flagLNEG = TRUE;
 }
 
 void fneg() {
@@ -3711,5 +3711,3 @@ void jsr_w(){
 
 	frameCorrente->pc += deslocamento;
 }
-
-  flagLNEG = TRUE;
