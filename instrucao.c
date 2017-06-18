@@ -3274,22 +3274,16 @@ void invokestatic() {
 
 			pushOp(alta);
 			pushOp(baixa);
-
-            atualizaPc();
-            return;
+      atualizaPc();
+      return;
 		}
 	}
 
 	int32_t indexClasse = carregaMemClass(nomeClasse);
-
 	ClassFile* classe = buscaClassPorIndice(indexClasse);
-
 	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Methodref.nameAndTypeIndex;
-
 	metodoInvocado = buscaMetodo(frameCorrente->classe,classe,nomeTipoIndice);
-
 	int32_t numeroParametros = retornaNumeroParametros(classe,metodoInvocado);
-
 	uint32_t* fields = calloc(sizeof(uint32_t),numeroParametros + 1);
 
 	for(int32_t i = 0; i < numeroParametros; i++) {
@@ -3308,37 +3302,25 @@ void invokestatic() {
 
 void invokeinterface() {
 	MethodInfo* metodoInvocado;
-
 	char* nomeMetodo;
 	char* descricaoMetodo;
-	uint16_t nomeMetodoAux, descricaoMetodoAux,nomeTipoAux;
+	uint16_t nomeMetodoAux;
+  uint16_t descricaoMetodoAux;
+  uint16_t nomeTipoAux;
 
 	uint32_t indice = frameCorrente->code[frameCorrente->pc + 2];
-
 	uint32_t indiceClasse = (frameCorrente->constantPool[indice-1]).info.Methodref.classIndex;
-
 	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constantPool[indiceClasse-1]).info.Class.nameIndex);
-
 	nomeTipoAux = frameCorrente->constantPool[indice - 1].info.Methodref.nameAndTypeIndex;
-
   nomeMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.nameIndex;
-
 	descricaoMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.descriptorIndex;
-
   nomeMetodo = retornaNome(frameCorrente->classe, nomeMetodoAux);
-
   descricaoMetodo = retornaNome(frameCorrente->classe, descricaoMetodoAux);
-
 	int32_t indexClasse = carregaMemClass(nomeClasse);
-
 	ClassFile* classe = buscaClassPorIndice(indexClasse);
-
 	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Methodref.nameAndTypeIndex;
-
 	metodoInvocado = buscaMetodo(frameCorrente->classe,classe,nomeTipoIndice);
-
 	int32_t numeroParametros = retornaNumeroParametros(classe,metodoInvocado);
-
 	uint32_t* fields = calloc(sizeof(uint32_t),numeroParametros + 1);
 
 	for(int32_t i = 0; i < numeroParametros; i++) {
@@ -3363,7 +3345,6 @@ void ins_new() {
 	ClassFile* classe;
 
 	indice = frameCorrente->code[2+(frameCorrente->pc)];
-
 	nomeClasse = retornaNome(frameCorrente->classe, frameCorrente->constantPool[indice-1].info.Class.nameIndex);
 
 	if(strcmp("java/util/Scanner",nomeClasse) == 0) {
@@ -3374,15 +3355,12 @@ void ins_new() {
 
 	if(strcmp("java/lang/StringBuffer",nomeClasse) == 0) {
 		naoEmpilhaFlag = 1;
-
 		atualizaPc();
 		return;
 	}
 
 	aux = carregaMemClass(nomeClasse);
-
 	classe = buscaClassPorIndice(aux);
-
 	Objeto = criaObjeto(classe);
 
 	if(Objeto == NULL) {
@@ -3398,7 +3376,6 @@ void newarray() {
 	int32_t tamanhoArray = popOp();
 	int8_t tipoArray = frameCorrente->code[(frameCorrente->pc)+1];
 
-
 	if(tipoArray == 11) {
 		tamanhoBytes = 8;
 	}
@@ -3415,7 +3392,6 @@ void newarray() {
 	if(tipoArray == 10) {
 		tamanhoBytes = 4;
 	}
-
 
 	if(tipoArray == 5) {
 		tamanhoBytes = 2;
@@ -3440,8 +3416,7 @@ void newarray() {
 	arrayVetores[qtdArrays-1].tipo = tipoArray;
 
 	pushOp((int32_t)vetor);
-
-    atualizaPc();
+  atualizaPc();
 }
 
 void anewarray() {
@@ -3449,7 +3424,6 @@ void anewarray() {
 	int32_t tamanhoArray = popOp();
 	int8_t tipoArray = frameCorrente->code[(frameCorrente->pc)+1];
 
-
 	if(tipoArray == 11) {
 		tamanhoBytes = 8;
 	}
@@ -3487,13 +3461,13 @@ void anewarray() {
 	arrayVetores[qtdArrays-1].tipo = tipoArray;
 
 	pushOp((int32_t)vetor);
-
-    atualizaPc();
+  atualizaPc();
 }
 
 void arraylength() {
 	int32_t arrayRef = popOp();
 	int i = 0;
+
 	while(i  < qtdArrays) {
 		if(arrayVetores[i].referencia == arrayRef) {
 			int32_t length = arrayVetores[i].tamanho;
@@ -3503,6 +3477,7 @@ void arraylength() {
 		}
 		i++;
 	}
+
 	pushOp(0);
 	atualizaPc();
 }
@@ -3511,8 +3486,8 @@ void checkcast() {
 	int16_t indice;
 	int8_t offset1,offset2;
 
-	offset1 =  frameCorrente->code[(frameCorrente->pc)+1];
-	offset2 =  frameCorrente->code[(frameCorrente->pc)+2];
+	offset1 = frameCorrente->code[(frameCorrente->pc)+1];
+	offset2 = frameCorrente->code[(frameCorrente->pc)+2];
 
 	indice = (offset1 << 8) | offset2;
 
@@ -3523,11 +3498,10 @@ void checkcast() {
 	}
 
 	char* nomeClasse = retornaNomeClass(Objeto->classe);
-
-	char* nomeIndice = retornaNome(frameCorrente->classe,indice);
+	char* nomeIndice = retornaNome(frameCorrente->classe, indice);
 
 	if(strcmp(nomeClasse,nomeIndice) == 0) {
-		printf("Objeto é do tipo: %s\n",nomeIndice);
+		printf("Objeto é do tipo: %s\n", nomeIndice);
 	}
 
 	pushOp((int32_t)Objeto);
@@ -3551,13 +3525,13 @@ void instanceof() {
 	}
 
 	char* nomeClasse = retornaNomeClass(Objeto->classe);
-
 	char* nomeIndice = retornaNome(frameCorrente->classe,indice);
 
 	if(strcmp(nomeClasse,nomeIndice) == 0) {
 		printf("Objeto é do tipo: %s\n",nomeIndice);
 		pushOp(1);
 	}
+
 	atualizaPc();
 }
 
@@ -3583,7 +3557,7 @@ void ifnull() {
 
 	if(retPilha == 0) {
 		frameCorrente->pc += offset;
-	}else{
+	} else {
 		frameCorrente->pc += 3;
 	}
 }
@@ -3615,16 +3589,20 @@ void goto_w() {
 	offset3 = frameCorrente->code[frameCorrente->pc + 3];
 	offset4 = frameCorrente->code[frameCorrente->pc + 4];
 
-	deslocamento  = (offset1 & 0xFF)<<24;
-	deslocamento |= (offset2 & 0xFF)<<16;
-	deslocamento |= (offset3 & 0xFF)<<8;
+	deslocamento  = (offset1 & 0xFF) << 24;
+	deslocamento |= (offset2 & 0xFF) << 16;
+	deslocamento |= (offset3 & 0xFF) << 8;
 	deslocamento |= (offset4 & 0xFF);
 
 	frameCorrente->pc += deslocamento;
 }
 
-void jsr_w(){
-	int32_t deslocamento,offset1,offset2,offset3,offset4;
+void jsr_w() {
+	int32_t deslocamento;
+  int32_t offset1;
+  int32_t offset2;
+  int32_t offset3;
+  int32_t offset4;
 
 	pushOp(frameCorrente->code[frameCorrente->pc + 5]);
 
