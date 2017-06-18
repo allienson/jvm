@@ -29,7 +29,7 @@ AreaMetodos areaMetodos;
 
 int primeira = FALSE;
 
-int32_t carregaMemClass(char* caminhoClasse) {
+int32_t carregaClasseParaMemoria(char* caminhoClasse) {
   inicializaPrimeiraVez();
 
 	for (int i = 0; i < areaMetodos.numClasses; i++) {
@@ -58,7 +58,7 @@ int32_t carregaMemClass(char* caminhoClasse) {
     printf("Erro ao carregar classe!\n");
     exit(0);
   }
-  
+
   return areaMetodos.numClasses - 1;
 }
 
