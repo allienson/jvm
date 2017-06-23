@@ -1,1 +1,4 @@
 1 - 1100 - bagulho do retorno int32_t
+2 - atualizaPC() no instrucao.c eh realmente preciso?
+3 - Obtemutf tem que ser tudo stringIndex?
+4 - Modificar buscaMetodoMain() pq ele ja recebe  classe, nao precisa buscar de novo
