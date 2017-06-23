@@ -62,8 +62,6 @@ int32_t popOp();
 void criaFrame(ClassFile*, CodeAttribute*);
 void desalocaFrame();
 void pushOp(int32_t);
-void dumpStack();
-void dumpFields();
 void pushFrame(ClassFile*, CodeAttribute*, StackFrame*);
 void popFrame();
 
