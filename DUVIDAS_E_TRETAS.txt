@@ -1,16 +1,17 @@
-1 - 1100 - bagulho do retorno int32_t
-2 - atualizaPC() no instrucao.c eh realmente preciso?
-3 - Obtemutf tem que ser tudo stringIndex?
-4 - Modificar buscaMetodoMain() pq ele ja recebe  classe, nao precisa buscar de novo
-5 - Ver como vai ficar a documentacao de prototipos e .h
-*** 6 - Testar se iconst_0 precisa da atulizaPC() ***
-7 - retornaNomeClass e retornaNome fazem a mesma coisa?
-***********8 - Tirar Scanner toString e afins************88
-9 - mudar os lconst e fconst pra ficar sem aquelas loucuras de mascara
-
-
-
-DIVISAO DA DOCUMENTACAO
------------------------
-Allisson - exibidor.c / leitor.c / areaMetodos.h
-Denucci  - carregador.c / frame.c / metodo.c / main.c
+1 - 1100 - bagulho do retorno int32_t
+2 - atualizaPC() no instrucao.c eh realmente preciso?
+3 - Obtemutf tem que ser tudo stringIndex?
+4 - Modificar buscaMetodoMain() pq ele ja recebe  classe, nao precisa buscar de novo
+5 - Ver como vai ficar a documentacao de prototipos e .h
+*** 6 - Testar se iconst_0 precisa da atulizaPC() ***
+7 - retornaNomeClass e retornaNome fazem a mesma coisa?
+***********8 - Tirar Scanner toString e afins************88
+9- Falta a documentacao da funcao "MethodInfo* buscaMetodo" em metodo.c (descobrir oq essa caralha faz).
+9 - mudar os lconst e fconst pra ficar sem aquelas loucuras de mascara
+
+
+
+DIVISAO DA DOCUMENTACAO
+-----------------------
+Allisson - exibidor.c / leitor.c / areaMetodos.h
+Denucci  - carregador.c / frame.c / metodo.c / main.c

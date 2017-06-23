@@ -37,7 +37,11 @@
 extern struct Frame* frameCorrente;
 
 uint32_t numObjetos = 0;
-
+///
+/// Retorna qual dos metodos da classe passada por parametro eh a main.
+/// 
+/// @param ClassFile* Ponteiro para uma estrutura ClassFile que contem a main
+/// @return MethodInfo* Retorna o metodo main
 MethodInfo* buscaMetodoMain(ClassFile* classFile) {
 	uint8_t* nome;
 	uint8_t* desc;
@@ -55,12 +59,23 @@ MethodInfo* buscaMetodoMain(ClassFile* classFile) {
 	printf("Método main não encontrado.");
 	return NULL;
 }
-
+///
+/// Cria um frame para o metodo passado como parametro e empilha ele na pilha de frames.
+/// 
+/// @param MethodInfo* Ponteiro para uma estrutura MethodInfo
+/// @param ClassFile** Ponteiro para uma estrutura ClassFile.
+/// @return void
+/// @see inicializaInstrucoes criaFrame
 void empilhaMetodo(MethodInfo* metodo, ClassFile* classe) {
 	inicializaInstrucoes();
 	criaFrame(classe, metodo->cdAtrb);
 }
-
+///
+/// Executa todas as intrucoes do frame corrente e retira ele da pilha de frames apos o termino.
+/// 
+/// @param Nao possui parametros
+/// @return void
+/// @see popFrame
 void executaFrameCorrente() {
   while(frameCorrente->pc < frameCorrente->codeLength) {
     if(frameCorrente == NULL) {
@@ -70,7 +85,11 @@ void executaFrameCorrente() {
   }
 	popFrame();
 }
-
+///
+/// Funcao que instacia um objeto a partir da classe passada como parametro.
+/// 
+/// @param ClassFile* Ponteiro para uma estrutura ClassFile.
+/// @return Objeto* Retorna o objeto criado.
 Objeto* criaObjeto(ClassFile* classe) {
 	Objeto* objeto;
 
@@ -101,7 +120,13 @@ MethodInfo* buscaMetodo(ClassFile* indiceClasse, ClassFile* searchClasse, uint16
 	}
   return NULL;
 }
-
+///
+/// Funcao que busca por um campo especifico dentro de uma classe.
+/// 
+/// @param char* Nome da classe em que se vai realizar a busca
+/// @param char* Nome do campo a ser procurado
+/// @param char* Descriptor do campo a ser procurado
+/// @return int32_t Indice do campo procurado.
 int32_t buscaCampo(char* className, char* name, char* desc){
 	ClassFile* classe = retornaClassePorNome(className);
 	char* searchName;
@@ -117,7 +142,11 @@ int32_t buscaCampo(char* className, char* name, char* desc){
 
   exit(0);
 }
-
+///
+/// Funcao que percorre todo a area de metodos buscando a classe com o nome passado por parametro.
+/// 
+/// @param char* Nome da classe a ser procurada na area de metodos.
+/// @return ClassFile* Retorna a classe procurada (se existe).
 ClassFile* retornaClassePorNome(char* nomeClasse) {
 	for (int i = 0; i < areaMetodos.numClasses; i++) {
 		char* nomeClassAux = retornaNomeClass(areaMetodos.arrayClasses[i]);
@@ -127,7 +156,12 @@ ClassFile* retornaClassePorNome(char* nomeClasse) {
 	}
 	return NULL;
 }
-
+///
+/// Funcao que retorna o numero de parametros de um determinado metodo de uma classe.
+/// 
+/// @param ClassFile* Ponteiro para ClassFile que contem a classe
+/// @param MethodInfo* Ponteiro para MethodInfo que se deseja saber o numero de parametros.
+/// @return int32_t Retirna o numero de parametros do metodo analisado.
 int32_t retornaNumeroParametros(ClassFile* classe, MethodInfo* metodo) {
 	int32_t numeroParametros = 0;
 	uint16_t length;
