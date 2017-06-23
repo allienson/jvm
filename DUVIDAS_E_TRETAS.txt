@@ -6,8 +6,7 @@
 *** 6 - Testar se iconst_0 precisa da atulizaPC() ***
 7 - retornaNomeClass e retornaNome fazem a mesma coisa?
 ***********8 - Tirar Scanner toString e afins************88
-
-
+9- Falta a documentacao da funcao "MethodInfo* buscaMetodo" em metodo.c (descobrir oq essa caralha faz).
 
 
 DIVISAO DA DOCUMENTACAO
