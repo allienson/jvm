@@ -13,7 +13,7 @@
 ///	Mateus Denucci          12/0053080
 ///
 ///	@brief
-///	Define a estrutura da Area de Metodos e Objeto, o espaço das variáveis e a heap.
+///	Define a estrutura da Area de Metodos e Objeto.
 ///
 
 #ifndef AREA_METODOS_H
@@ -21,17 +21,27 @@
 
 #include "leitor.h"
 
-
+///
+/// @brief Estrutura geral que contem todas as demais estruturas
+///
+/// Aqui ficam guaradas as classes carregadas e todas as subestrutures
+/// dessas classes, de forma que os dados de classes estao todos aqui.
 typedef struct AreaMetodos {
-  ClassFile** arrayClasses;
-  int numClasses;
+  ClassFile** arrayClasses;			
+  int numClasses;								
 } AreaMetodos;
 
+
+///
+/// @brief Estrutura para um objeto java
+///
+/// Essa estrutura guarda todas as informacoes especificas de cada
+/// objeto instanciado.
 typedef struct Objeto {
-  ClassFile* classe;
-  struct Objeto* superClasse;
-  uint32_t* campos;
-  uint32_t* indiceCampos;
+  ClassFile* classe;						
+  struct Objeto* superClasse;		
+  uint32_t* campos;							
+  uint32_t* indiceCampos;				
 } Objeto;
 
 #endif

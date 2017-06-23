@@ -302,7 +302,7 @@ void inicializaInstrucoes() {
 
 ///
 /// Implementacao da instrucao <i>nop</i>, que nao executa nada,
-/// apenas avanca o PC;
+/// apenas avanca o PC.
 ///
 /// @param Nenhum
 /// @return @c void
@@ -312,7 +312,7 @@ void nop() {
 
 ///
 /// Implementacao da instrucao <i>aconst_null</i> que empilha
-/// uma referencia NULL na pilha de operandos e avanca o PC;
+/// uma referencia NULL na pilha de operandos e avanca o PC.
 ///
 /// @param Nenhum
 /// @return @c void
@@ -325,7 +325,7 @@ void aconst_null() {
 ///
 /// Implementacao da instrucao <i>iconst_m1</i> 
 /// que empilha o valor -1 na pilha de operandos
-/// e avanca o PC;
+/// e avanca o PC.
 ///
 /// @param Nenhum
 /// @return @c void
@@ -340,10 +340,11 @@ void iconst_m1() {
 ///
 /// Implementacao da instrucao <i>iconst_0</i> 
 /// que empilha o valor 0 na pilha de operandos
-/// e avanca o PC;
+/// e avanca o PC.
 ///
 /// @param Nenhum
 /// @return @c void
+/// @see pushOp atualizaPc
 void iconst_0() {
   char* tipo = "I";
   tipoGlobal = tipo;
@@ -351,6 +352,14 @@ void iconst_0() {
 	atualizaPc();
 }
 
+///
+/// Implementacao da instrucao <i>iconst_1</i> 
+/// que empilha o valor 1 na pilha de operandos
+/// e avanca o PC.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp
 void iconst_1() {
   char* tipo = "I";
   tipoGlobal = tipo;
@@ -358,6 +367,14 @@ void iconst_1() {
   frameCorrente->pc++;
 }
 
+///
+/// Implementacao da instrucao <i>iconst_2</i> 
+/// que empilha o valor 2 na pilha de operandos
+/// e avanca o PC.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp
 void iconst_2() {
   char* tipo = "I";
   tipoGlobal = tipo;
@@ -365,6 +382,14 @@ void iconst_2() {
   frameCorrente->pc++;
 }
 
+///
+/// Implementacao da instrucao <i>iconst_3</i> 
+/// que empilha o valor 3 na pilha de operandos
+/// e avanca o PC.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp
 void iconst_3() {
   char* tipo = "I";
   tipoGlobal = tipo;
@@ -372,6 +397,14 @@ void iconst_3() {
   frameCorrente->pc++;
 }
 
+///
+/// Implementacao da instrucao <i>iconst_4</i> 
+/// que empilha o valor 4 na pilha de operandos
+/// e avanca o PC.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp
 void iconst_4() {
   char* tipo = "I";
   tipoGlobal = tipo;
@@ -379,6 +412,14 @@ void iconst_4() {
   frameCorrente->pc++;
 }
 
+///
+/// Implementacao da instrucao <i>iconst_5</i> 
+/// que empilha o valor 0 na pilha de operandos
+/// e avanca o PC.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp
 void iconst_5() {
   char* tipo = "I";
   tipoGlobal = tipo;
@@ -386,32 +427,54 @@ void iconst_5() {
   frameCorrente->pc++;
 }
 
+///
+/// Implementacao da instrucao <i>lconst_0</i> 
+/// que empilha o valor 0 na pilha de operandos
+/// e avanca o PC.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp
 void lconst_0() {
   char* tipo = "L";
   tipoGlobal = tipo;
-  int64_t long0 = 0;
-  int32_t parte_alta;
-  int32_t parte_baixa;
-  parte_alta = long0 >> 32;
-  parte_baixa = long0 & 0xffffffff;
-  pushOp(parte_alta);
-  pushOp(parte_baixa);
+  int32_t parteAlta;
+  int32_t parteBaixa;
+  parteAlta = 0x0000;
+  parteBaixa = 0x0000;
+  pushOp(parteAlta);
+  pushOp(parteBaixa);
   frameCorrente->pc++;
 }
 
+///
+/// Implementacao da instrucao <lconst_1</i> 
+/// que empilha o valor 1 na pilha de operandos
+/// e avanca o PC.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp
 void lconst_1() {
   char* tipo = "L";
   tipoGlobal = tipo;
-  int64_t long1 = 1;
-  int32_t parte_alta;
-  int32_t parte_baixa;
-	parte_alta = long1 >> 32;
-	parte_baixa = long1 & 0xffffffff;
-  pushOp(parte_alta);
-  pushOp(parte_baixa);
+  int32_t parteAlta;
+  int32_t parteBaixa;
+  parteAlta = 0x0000;
+  parteBaixa = 0x0001;
+  pushOp(parteAlta);
+  pushOp(parteBaixa);
   frameCorrente->pc++;
 }
 
+///
+/// Implementacao da instrucao <i>fconst_0</i> 
+/// que empilha o valor 0.0 na pilha de operandos
+/// e avanca o PC.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void fconst_0() {
   char* tipo = "F";
   tipoGlobal = tipo;
@@ -423,6 +486,14 @@ void fconst_0() {
 	atualizaPc();
 }
 
+///
+/// Implementacao da instrucao <i>fconst_1</i> 
+/// que empilha o valor 1.0 na pilha de operandos
+/// e avanca o PC.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void fconst_1() {
   char* tipo = "F";
   tipoGlobal = tipo;
@@ -434,6 +505,14 @@ void fconst_1() {
 	atualizaPc();
 }
 
+///
+/// Implementacao da instrucao <i>fconst_2</i> 
+/// que empilha o valor 2.0 na pilha de operandos
+/// e avanca o PC.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void fconst_2() {
   char* tipo = "F";
   tipoGlobal = tipo;
@@ -445,71 +524,111 @@ void fconst_2() {
 	atualizaPc();
 }
 
+///
+/// Implementacao da instrucao <i>dconst_0</i> 
+/// que empilha o valor 0.0 na pilha de operandos
+/// e avanca o PC.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp
 void dconst_0() {
   char* tipo = "D";
   tipoGlobal = tipo;
   double double0 = 0.0;
   int64_t temp;
-  int32_t parte_alta;
-  int32_t parte_baixa;
+  int32_t parteAlta;
+  int32_t parteBaixa;
 	memcpy(&temp, &double0, sizeof(int64_t));
-	parte_alta = temp >> 32;
-	parte_baixa = temp & 0xffffffff;
-  pushOp(parte_alta);
-  pushOp(parte_baixa);
+	parteAlta = temp >> 32;
+	parteBaixa = temp & 0xffffffff;
+  pushOp(parteAlta);
+  pushOp(parteBaixa);
   frameCorrente->pc++;
 }
 
+///
+/// Implementacao da instrucao <i>dconst_1</i> 
+/// que empilha o valor 1.0 na pilha de operandos
+/// e avanca o PC.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp
 void dconst_1() {
   char* tipo = "D";
   tipoGlobal = tipo;
   double double1 = 1.0;
   int64_t temp;
-  int32_t parte_alta;
-  int32_t parte_baixa;
+  int32_t parteAlta;
+  int32_t parteBaixa;
 	memcpy(&temp, &double1, sizeof(int64_t));
-	parte_alta = temp >> 32;
-	parte_baixa = temp & 0xffffffff;
-  pushOp(parte_alta);
-  pushOp(parte_baixa);
+	parteAlta = temp >> 32;
+	parteBaixa = temp & 0xffffffff;
+  pushOp(parteAlta);
+  pushOp(parteBaixa);
   frameCorrente->pc++;
 }
 
+///
+/// Empilha um byte de argumento na pilha extendendo 
+/// o Imediato como se fosse um valor inteiro e 
+/// avanca o PC.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void bipush() {
 	int8_t argumento = (int8_t) frameCorrente->code[frameCorrente->pc + 1];
 	pushOp((int32_t)argumento);
 	atualizaPc();
 }
 
+///
+/// Empilha os dois bytes de argumento como um short
+/// que eh extendido para um inteiro e avanca o PC.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void sipush() {
-  int32_t byte1, byte2;
-  int32_t valor;
-  int16_t short_temp;
+  int8_t byte1, byte2;
+  int16_t shortTemp;
 	byte1 = frameCorrente->code[(frameCorrente->pc + 1)];
 	byte2 = frameCorrente->code[(frameCorrente->pc + 2)];
-  short_temp = (byte1 << 8) + byte2;
-  valor = (int32_t) short_temp;
-  pushOp(valor);
+	shortTemp = byte1;
+  shortTemp = (shortTemp << 8) + byte2;
+  pushOp((int32_t) shortTemp);
   atualizaPc();
 }
 
+///
+/// Empilha uma entrada do Constant Pool 
+/// que eh extendido para um inteiro e avanca o PC.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void ldc() {
   uint32_t indice;
   tipoGlobal = NULL;
   indice = frameCorrente->code[frameCorrente->pc + 1];
-  if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_Float || \
-      frameCorrente->constantPool[indice - 1].tag == CONSTANT_Integer) {
-      if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_Float) {
-          pushOp(frameCorrente->constantPool[indice - 1].info.Float.bytes);
-      } else {
-          pushOp(frameCorrente->constantPool[indice - 1].info.Integer.bytes);
-      }
+  if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_Float) {
+    pushOp(frameCorrente->constantPool[indice - 1].info.Float.bytes);
+  } else if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_Integer) {
+  	pushOp(frameCorrente->constantPool[indice - 1].info.Integer.bytes);
   } else if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_String) {
       uint32_t indice_utf;
       indice_utf = obtemUtfEq(frameCorrente->constantPool, indice-1);
       pushOp(indice_utf);
   } else if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_String) {
-      printf("a implementar\n");
+      printf("Referencia
+
+
+      	dsnalkndasdlnkslksanldksndlakns
+
+
+      	\n");
       exit(1);
   } else {
       printf("erro na instrucao ldc\n");
@@ -579,10 +698,10 @@ void lload() {
 	char* tipo = "L";
   tipoGlobal = tipo;
   int32_t indice;
-  int32_t parte_alta, parte_baixa;
+  int32_t parteAlta, parte_baixa;
   indice = frameCorrente->code[frameCorrente->pc + 1];
-  parte_alta = frameCorrente->fields[indice + POS_ALTA];
-  pushOp(parte_alta);
+  parteAlta = frameCorrente->fields[indice + POS_ALTA];
+  pushOp(parteAlta);
   parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
   pushOp(parte_baixa);
   atualizaPc();

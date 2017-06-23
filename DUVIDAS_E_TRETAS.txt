@@ -6,11 +6,11 @@
 *** 6 - Testar se iconst_0 precisa da atulizaPC() ***
 7 - retornaNomeClass e retornaNome fazem a mesma coisa?
 ***********8 - Tirar Scanner toString e afins************88
-
+9 - mudar os lconst e fconst pra ficar sem aquelas loucuras de mascara
 
 
 
 DIVISAO DA DOCUMENTACAO
 -----------------------
-Allisson - exibidor.c / leitor.c
-Denucci  - carregador.c / frame.c / metodo.c
+Allisson - exibidor.c / leitor.c / areaMetodos.h
+Denucci  - carregador.c / frame.c / metodo.c / main.c
