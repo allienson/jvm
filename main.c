@@ -45,9 +45,10 @@ int printaParaArquivo;
 void leParamsEntrada();
 void preparaMetodoMain();
 void exibeArrayClasses();
+
 ///
-/// Funcao principal que controla o inicio do  programa. 
-/// 
+/// Funcao principal que controla o inicio do  programa.
+///
 /// @param argc Numero de argumentos passados via linha de comando
 /// @param char* Array que contem as strings passadas via linha de comando
 /// @return int Retorna 0 caso a execucao seja bem sucedida.
@@ -63,9 +64,10 @@ int main(int argc, char* argv[]) {
   free(caminhoArquivo);
   return 0;
 }
+
 ///
 /// Le os paramentros inseridos via linha de comando.
-/// 
+///
 /// @param argc Numero de argumentos passados via linha de comando
 /// @param char* Array que contem as strings passadas via linha de comando
 /// @return void
@@ -86,9 +88,10 @@ void leParamsEntrada(int argc, char* argv[]) {
     }
   }
 }
+
 ///
 /// Busca a classe que possui o metodo main e depois busca dentro dessa classe o metodo main.
-/// 
+///
 /// @param Nao possui paramentros
 /// @return void
 /// @see buscaClassPorIndice buscaMetodoMain
@@ -100,13 +103,14 @@ void preparaMetodoMain() {
     exit(0);
   }
 }
+
 ///
 /// Mostra o  bytecode da classe lida no terminal e criar um arquivo de texto "log.txt"
 /// com o bytecode da classe caso a flag printaParaArquivo tenha sido setada.
-/// 
+///
 /// @param Nao possui paramentros
 /// @return void
-/// @see printaClassFile 
+/// @see printaClassFile
 void exibeArrayClasses() {
   if (exibeClassFile) {
     FILE *saved;

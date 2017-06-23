@@ -21,7 +21,6 @@
 
 #include "leitor.h"
 
-
 typedef struct AreaMetodos {
   ClassFile** arrayClasses;
   int numClasses;

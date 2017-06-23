@@ -13,7 +13,7 @@
 ///
 ///  @copyright Copyright © 2017 GrupoSB. All rights reserved.
 ///
-///  @brief 
+///  @brief
 ///		Recebe uma estrutura Decodificador vazia e preenche
 ///		com strings que sao as instrucoes presentes no bytecode.
 ///		Retorna uma estrutura Decodificador preenchida.
@@ -27,7 +27,7 @@ void inicializaDecodificador(Decodificador decodificador[]) {
 
     strcpy(decodificador[1].instrucao, "aconst_null");
     decodificador[1].bytes = 0;
-    
+
     strcpy(decodificador[2].instrucao, "iconst_m1");
     decodificador[2].bytes = 0;
 
@@ -37,8 +37,8 @@ void inicializaDecodificador(Decodificador decodificador[]) {
     strcpy(decodificador[4].instrucao, "iconst_1");
     decodificador[4].bytes = 0;
 
-	strcpy(decodificador[5].instrucao, "iconst_2");
-	decodificador[5].bytes = 0;
+    strcpy(decodificador[5].instrucao, "iconst_2");
+    decodificador[5].bytes = 0;
 
     strcpy(decodificador[6].instrucao, "iconst_3");
     decodificador[6].bytes = 0;
@@ -78,7 +78,7 @@ void inicializaDecodificador(Decodificador decodificador[]) {
 
     strcpy(decodificador[18].instrucao, "ldc");
     decodificador[18].bytes = 1;
-    
+
     strcpy(decodificador[19].instrucao, "ldc_w");
     decodificador[19].bytes = 2;
 
@@ -283,7 +283,7 @@ void inicializaDecodificador(Decodificador decodificador[]) {
     decodificador[85].bytes = 0;
 
     strcpy(decodificador[86].instrucao, "sastore");
-	decodificador[86].bytes = 0;
+    decodificador[86].bytes = 0;
 
 
 	strcpy(decodificador[87].instrucao, "pop");
@@ -576,7 +576,7 @@ void inicializaDecodificador(Decodificador decodificador[]) {
 
     strcpy(decodificador[181].instrucao, "putfield");
     decodificador[181].bytes = 2;
-    
+
     strcpy(decodificador[182].instrucao, "invokevirtual");
     decodificador[182].bytes = 2;
 

@@ -13,9 +13,9 @@
 ///
 ///  @copyright Copyright © 2017 GrupoSB. All rights reserved.
 ///
-///  @brief 
+///  @brief
 ///  Gerenciamento e alocação de memória das frames do programa executado.
-///  
+///
 
 #include "frame.h"
 
@@ -26,9 +26,10 @@ Frame* frameCorrente;
 int32_t qtdArrays;
 
 static StackFrame* topo = NULL;
+
 ///
 /// Cria um frame e coloca ele na pilha de frames.
-/// 
+///
 /// @param ClassFile* Ponteiro para a estrutura ClassFile.
 /// @param CodeAttribute* Ponteiro para a estrutura CodeAttribute.
 /// @return @c void
@@ -44,9 +45,10 @@ void criaFrame(ClassFile* classe, CodeAttribute* codeAttribute){
 	stackFrame->refFrame = (Frame*) calloc(sizeof(Frame),1);
 	pushFrame(classe, codeAttribute, stackFrame);
 }
+
 ///
 /// Coloca o frame passado por parametro na pilha de frames e atualiza o topo da pilha.
-/// 
+///
 /// @param ClassFile* Ponteiro para a estrutura ClassFile.
 /// @param CodeAttribute* Ponteiro para a estrutura CodeAttribute.
 /// @param StackFrame* Ponteiro para a estrutura StackFrame
@@ -67,9 +69,10 @@ void pushFrame(ClassFile* classe, CodeAttribute* codeAttribute, StackFrame* stac
   topo->refFrame->pilhaOp->depth = 0;
 	frameCorrente = topo->refFrame;
 }
+
 ///
 /// Retira um frame da pilha de frames e atualiza o topo da pilha.
-/// 
+///
 /// @param Nao possui parametros
 /// @return @c void
 /// @see pushOp
@@ -101,9 +104,10 @@ void popFrame() {
 
 	topo = anterior;
 }
+
 ///
 /// Empilha um valor na pilha de operandos.
-/// 
+///
 /// @param int32_t Valor a ser inserido na pilha de operandos.
 /// @return @c void
 void pushOp(int32_t valor) {
@@ -114,9 +118,10 @@ void pushOp(int32_t valor) {
 	frameCorrente->pilhaOp->operandos[frameCorrente->pilhaOp->depth] = valor;
   frameCorrente->pilhaOp->depth += 1;
 }
+
 ///
 /// Desempilha um valor na pilha de operandos.
-/// 
+///
 /// @param Nao possui parametros.
 /// @return @c int32_t Retorna o valor desempilhado da pilha de operandos.
 int32_t popOp() {

@@ -22,3 +22,7 @@ log.txt
 
 *.css
 html/
+
+*.tex
+
+latex/
