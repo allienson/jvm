@@ -13,3 +13,4 @@ DIVISAO DA DOCUMENTACAO
 -----------------------
 Allisson - exibidor.c
 Denucci  - carregador.c
+retornaNomeClass e retornaNome fazem a mesma coisa?
