@@ -26,7 +26,13 @@ Frame* frameCorrente;
 int32_t qtdArrays;
 
 static StackFrame* topo = NULL;
-
+///
+/// Cria um frame e coloca ele na pilha de frames.
+/// 
+/// @param ClassFile* Ponteiro para a estrutura ClassFile.
+/// @param CodeAttribute* Ponteiro para a estrutura CodeAttribute.
+/// @return void
+/// @see pushFrame
 void criaFrame(ClassFile* classe, CodeAttribute* codeAttribute){
 	StackFrame* stackFrame = NULL;
 	stackFrame = (StackFrame*) calloc(sizeof(StackFrame),1);
@@ -38,7 +44,13 @@ void criaFrame(ClassFile* classe, CodeAttribute* codeAttribute){
 	stackFrame->refFrame = (Frame*) calloc(sizeof(Frame),1);
 	pushFrame(classe, codeAttribute, stackFrame);
 }
-
+///
+/// Coloca o frame passado por parametro na pilha de frames e atualiza o topo da pilha.
+/// 
+/// @param ClassFile* Ponteiro para a estrutura ClassFile.
+/// @param CodeAttribute* Ponteiro para a estrutura CodeAttribute.
+/// @param StackFrame* Ponteiro para a estrutura StackFrame
+/// @return void
 void pushFrame(ClassFile* classe, CodeAttribute* codeAttribute, StackFrame* stackFrame){
 	stackFrame->next = topo;
 	topo = stackFrame;
@@ -55,7 +67,12 @@ void pushFrame(ClassFile* classe, CodeAttribute* codeAttribute, StackFrame* stac
   topo->refFrame->pilhaOp->depth = 0;
 	frameCorrente = topo->refFrame;
 }
-
+///
+/// Retira um frame da pilha de frames e atualiza o topo da pilha.
+/// 
+/// @param Nao possui parametros
+/// @return void
+/// @see pushOp
 void popFrame() {
 	StackFrame *anterior;
 
@@ -84,17 +101,24 @@ void popFrame() {
 
 	topo = anterior;
 }
-
+///
+/// Empilha um valor na pilha de operandos.
+/// 
+/// @param int32_t Valor a ser inserido na pilha de operandos.
+/// @return void
 void pushOp(int32_t valor) {
 	if(frameCorrente->pilhaOp->depth >= frameCorrente->maxStack){
 		printf("Overflow na pilha de operandos!\n");
 		exit(0);
 	}
-
+	frameCorrente->pilhaOp->operandos[frameCorrente->pilhaOp->depth] = valor;
   frameCorrente->pilhaOp->depth += 1;
-  frameCorrente->pilhaOp->operandos[frameCorrente->pilhaOp->depth - 1] = valor;
 }
-
+///
+/// Desempilha um valor na pilha de operandos.
+/// 
+/// @param Nao possui parametros.
+/// @return int32_t Retorna o valor desempilhado da pilha de operandos.
 int32_t popOp() {
 	frameCorrente->pilhaOp->depth -= 1;
 
@@ -104,17 +128,4 @@ int32_t popOp() {
 	}
 
 	return frameCorrente->pilhaOp->operandos[frameCorrente->pilhaOp->depth];
-}
-
-void dumpStack() {
-  printf("\n");
-	for(int i = 0; i < frameCorrente->pilhaOp->depth; i++) {
-		printf("valor: %d\n", frameCorrente->pilhaOp->operandos[i]);
-	}
-}
-
-void dumpFields() {
-	for(int i = 0; i < frameCorrente->maxLocals; i++) {
-		printf("valor: %d\n",frameCorrente->fields[i]);
-	}
 }
