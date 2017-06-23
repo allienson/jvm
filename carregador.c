@@ -32,7 +32,7 @@ int primeira = FALSE;
 /// Carrega o arquivo .class na memoria e adiciona a classe na area de metodos.
 /// 
 /// @param char* Contem o caminho para a classe a ser lida.
-/// @return int32_t
+/// @return int32_t Retorna o numero de classes em area de metodos - 1 
 /// @see inicializaPrimeiraVez inicializaLeitor
 int32_t carregaClasseParaMemoria(char* caminhoClasse) {
   	inicializaPrimeiraVez();
@@ -82,7 +82,7 @@ void inicializaPrimeiraVez() {
 /// Retorna o nome da classe desejada.
 /// 
 /// @param ClassFile* Classe que se deseja saber o nome.
-/// @return char*
+/// @return char* Nome da classe desejada
 char* retornaNomeClass(ClassFile* classe){
 	uint16_t thisClass = classe->thisClass;
 	uint16_t nameIndex = (classe->constantPool[thisClass - 1]).info.Class.nameIndex;
@@ -99,11 +99,10 @@ char* retornaNomeClass(ClassFile* classe){
 }
 ///
 /// Caso o indice passado seja um numero menor que o numero de classes salvas na 
-/// area de metodos, retorna um ponteiro para a classe apontada por esse indice no
-/// array da area de metodos.
+/// area de metodos.
 /// 
 /// @param int Indice da classe no array de area de metodos que se deseja saber.
-/// @return ClassFile*
+/// @return ClassFile* retorna um ponteiro para a classe apontada por esse indice no array da area de metodos.
 ClassFile* buscaClassPorIndice(int indice) {
 	return indice >= areaMetodos.numClasses ? NULL : areaMetodos.arrayClasses[indice];
 }
@@ -112,7 +111,7 @@ ClassFile* buscaClassPorIndice(int indice) {
 /// 
 /// @param ClassFile* Classe que se deseja saber o nome.
 /// @param uint16_t Indce da classe.
-/// @return char*
+/// @return char* Retorna o nome da classe desejada com base no classfile e no indice do nome.
 char* retornaNome(ClassFile* classe, uint16_t indiceNome) {
 	int i;
 

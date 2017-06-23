@@ -46,12 +46,11 @@ void leParamsEntrada();
 void preparaMetodoMain();
 void exibeArrayClasses();
 ///
-/// Funcao principal que controla o inicio do  programa. Caso a execucao seja
-///bem sucedida, retorna 0.
+/// Funcao principal que controla o inicio do  programa. 
 /// 
 /// @param argc Numero de argumentos passados via linha de comando
 /// @param char* Array que contem as strings passadas via linha de comando
-/// @return int
+/// @return int Retorna 0 caso a execucao seja bem sucedida.
 /// @see leParamsEntrada carregaClasseParaMemoria preparaMetodoMain empilhaMetodo executaFrameCorrente exibeArrayClasses
 int main(int argc, char* argv[]) {
   leParamsEntrada(argc, argv);
