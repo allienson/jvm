@@ -34,7 +34,7 @@
 /// as demais estuturas do classfile
 ///
 /// @param ClassFile* Ponteiro para a estrutura Classfile
-/// @return void
+/// @return @c void
 /// @see printaCpInfo printaInterfaces printaFieldInfo printaMethodInfo printaAttributeInfo
 /// @see imprimeStringPool printTopo printBase printBlank
 void printaClassFile(ClassFile* classFile) {
@@ -112,7 +112,7 @@ void printaClassFile(ClassFile* classFile) {
 /// tambem suas referencias
 ///
 /// @param ClassFile* Ponteiro para a estrutura Classfile
-/// @return void
+/// @return @c void
 /// @see imprimeStringPool hexToDouble hexToLong
 void printaCpInfo(ClassFile* classFile) {
     double valorDouble;
@@ -236,7 +236,7 @@ void printaCpInfo(ClassFile* classFile) {
 /// que contem as informacoes UTF8 de cada Interface 
 ///
 /// @param ClassFile* Ponteiro para a estrutura Classfile
-/// @return void
+/// @return @c void
 /// @see imprimeStringPool
 void printaInterfaces(ClassFile* classFile) {
     if (classFile->interfacesCount) {
@@ -259,7 +259,7 @@ void printaInterfaces(ClassFile* classFile) {
 /// bem como suas referencias no Constant Pool.
 ///
 /// @param ClassFile* Ponteiro para a estrutura Classfile
-/// @return void
+/// @return @c void
 /// @see imprimeStringPool printAccessFlag printSingleLine
 void printaFieldInfo(ClassFile* classFile) {
 
@@ -305,7 +305,7 @@ void printaFieldInfo(ClassFile* classFile) {
 /// suas instrucoes (mnemonicos) e suas referencias no Constant Pool.
 ///
 /// @param ClassFile* Ponteiro para a estrutura Classfile
-/// @return void
+/// @return @c void
 /// @see imprimeStringPool imprimeCode imprimeExc
 void printaMethodInfo(ClassFile* classFile) {
     uint16_t methodsCount = classFile->methodsCount;
@@ -342,7 +342,7 @@ void printaMethodInfo(ClassFile* classFile) {
 /// bem como suas referencias no Constant Pool.
 ///
 /// @param ClassFile* Ponteiro para a estrutura Classfile
-/// @return void
+/// @return @c void
 /// @see imprimeStringPool printSingleLine
 void printaAttributeInfo(ClassFile* classFile) {
 
@@ -385,7 +385,7 @@ void printaAttributeInfo(ClassFile* classFile) {
 ///
 /// @param ClassFile* Ponteiro para a estrutura Classfile
 /// @param int Posicao da costante que sera impressa
-/// @return void
+/// @return @c void
 void imprimeStringPool(CpInfo* cp, int pos) {
     int tag;
 
@@ -444,7 +444,7 @@ void imprimeStringPool(CpInfo* cp, int pos) {
 ///
 /// @param uint32_t Parte alta dos 64 bits
 /// @param uint32_t Parte baixa dos 64 bits
-/// @return O valor Hexadecimal de entrada salvo numa variavel do tipo double
+/// @return @c double O valor Hexadecimal de entrada salvo numa variavel do tipo double
 double hexToDouble(uint32_t highBytes, uint32_t lowBytes){
 
     double retorno;
@@ -465,7 +465,7 @@ double hexToDouble(uint32_t highBytes, uint32_t lowBytes){
 ///
 /// @param uint32_t Parte alta dos 64 bits
 /// @param uint32_t Parte baixa dos 64 bits
-/// @return O valor Hexadecimal de entrada salvo numa variavel do tipo long
+/// @return @c long O valor Hexadecimal de entrada salvo numa variavel do tipo long
 long hexToLong(uint32_t highBytes, uint32_t lowBytes){
     long retorno;
     long negativo;
@@ -484,7 +484,7 @@ long hexToLong(uint32_t highBytes, uint32_t lowBytes){
 ///
 /// @param uint16_t Valor Hexadecimal referente a uma flag ou combinacao de flags
 /// @param uint32_t Parte baixa dos 64 bits
-/// @return void
+/// @return @c void
 void printAccessFlag(uint16_t accessFlags){
 
     switch(accessFlags){
@@ -547,7 +547,7 @@ void printAccessFlag(uint16_t accessFlags){
 ///
 /// @param ClassFile* Ponteiro para a estrutura Classfile
 /// @param CodeAttributte* Ponteiro para a estrutura CodeAttribute
-/// @return void
+/// @return @c void
 /// @see printSingleLine imprimeStringPool inicializaDecodificador
 void imprimeCode(ClassFile* classFile, CodeAttribute* cdAtrb) {
     int opcode, posReferencia;
@@ -700,7 +700,7 @@ void imprimeCode(ClassFile* classFile, CodeAttribute* cdAtrb) {
 ///
 /// @param ClassFile* Ponteiro para a estrutura Classfile
 /// @param ExceptionsAttribute* Ponteiro para a estrutura ExceptionsAttribute
-/// @return void
+/// @return @c void
 /// @see printSingleLine imprimeStringPool
 void imprimeExc(ClassFile* classFile, ExceptionsAttribute* excAtrb) {
     printf("\n\tException Info\n");
@@ -717,7 +717,7 @@ void imprimeExc(ClassFile* classFile, ExceptionsAttribute* excAtrb) {
 ///
 /// Funcao de estilizacao que imprime uma linha no topo de cada titulo
 /// @param Nenhum
-/// @return void
+/// @return @c void
 void printTopo() {
 
     printf("\n\t*");
@@ -730,7 +730,7 @@ void printTopo() {
 ///
 /// Funcao de estilizacao que imprime uma linha em branco, mas com as bordas
 /// @param Nenhum
-/// @return void
+/// @return @c void
 void printBlank() {
 
     printf("\t*");
@@ -743,7 +743,7 @@ void printBlank() {
 ///
 /// Funcao de estilizacao que imprime uma linha na base de cada titulo
 /// @param Nenhum
-/// @return void
+/// @return @c void
 void printBase() {
 
     printf("\t*");
@@ -756,7 +756,7 @@ void printBase() {
 ///
 /// Funcao de estilizacao que imprime uma linha na lateral de um titulo
 /// @param Nenhum
-/// @return void
+/// @return @c void
 void printSingleLine(){
     for (int i = 0; i < 34; ++i) {
         printf("_");

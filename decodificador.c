@@ -20,10 +20,6 @@
 
 #include "decodificador.h"
 
-
-///  inicializa a parada
-/// @param
-/// @return
 void inicializaDecodificador(Decodificador decodificador[]) {
 
     strcpy(decodificador[0].instrucao, "nop");

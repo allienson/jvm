@@ -31,7 +31,7 @@ static StackFrame* topo = NULL;
 /// 
 /// @param ClassFile* Ponteiro para a estrutura ClassFile.
 /// @param CodeAttribute* Ponteiro para a estrutura CodeAttribute.
-/// @return void
+/// @return @c void
 /// @see pushFrame
 void criaFrame(ClassFile* classe, CodeAttribute* codeAttribute){
 	StackFrame* stackFrame = NULL;
@@ -50,7 +50,7 @@ void criaFrame(ClassFile* classe, CodeAttribute* codeAttribute){
 /// @param ClassFile* Ponteiro para a estrutura ClassFile.
 /// @param CodeAttribute* Ponteiro para a estrutura CodeAttribute.
 /// @param StackFrame* Ponteiro para a estrutura StackFrame
-/// @return void
+/// @return @c void
 void pushFrame(ClassFile* classe, CodeAttribute* codeAttribute, StackFrame* stackFrame){
 	stackFrame->next = topo;
 	topo = stackFrame;
@@ -71,7 +71,7 @@ void pushFrame(ClassFile* classe, CodeAttribute* codeAttribute, StackFrame* stac
 /// Retira um frame da pilha de frames e atualiza o topo da pilha.
 /// 
 /// @param Nao possui parametros
-/// @return void
+/// @return @c void
 /// @see pushOp
 void popFrame() {
 	StackFrame *anterior;
@@ -105,7 +105,7 @@ void popFrame() {
 /// Empilha um valor na pilha de operandos.
 /// 
 /// @param int32_t Valor a ser inserido na pilha de operandos.
-/// @return void
+/// @return @c void
 void pushOp(int32_t valor) {
 	if(frameCorrente->pilhaOp->depth >= frameCorrente->maxStack){
 		printf("Overflow na pilha de operandos!\n");
@@ -118,7 +118,7 @@ void pushOp(int32_t valor) {
 /// Desempilha um valor na pilha de operandos.
 /// 
 /// @param Nao possui parametros.
-/// @return int32_t Retorna o valor desempilhado da pilha de operandos.
+/// @return @c int32_t Retorna o valor desempilhado da pilha de operandos.
 int32_t popOp() {
 	frameCorrente->pilhaOp->depth -= 1;
 
