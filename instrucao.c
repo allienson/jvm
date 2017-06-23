@@ -44,6 +44,14 @@ int naoEmpilhaFlag = 0;
 
 Decodificador dec[NUM_INSTRUCAO];
 
+///
+/// Atualiza o valor de PC, considerando a quantidade
+/// de bytes que a instrucao ocupa e avancando ate a 
+/// a posica da proxima instrucao no bytecode.
+/// 
+/// @param Nenhum
+/// @return void
+/// @see inicializaDecodificador
 void atualizaPc() {
 	inicializaDecodificador(dec);
 	int numBytes = dec[frameCorrente->code[frameCorrente->pc]].bytes;
@@ -53,6 +61,15 @@ void atualizaPc() {
 	}
 }
 
+///
+/// Recupera o UTF8 final de uma constante do Constant Pool,
+/// recursivamente a partir uma estrutura CpInfo e da tag de
+/// cada constante lida, ate se chegar numa constante UTF8.
+/// 
+/// @param CpInfo* Ponteiro para uma estrutura Constant Pool
+/// @param int Posicao a ser buscada na Constant Pool
+/// @return int Posicao da constnte final UTF8
+/// @see inicializaDecodificador
 int obtemUtfEq(CpInfo* cp, int posPool) {
     int tag;
     tag = cp[posPool].tag;
@@ -75,6 +92,13 @@ int obtemUtfEq(CpInfo* cp, int posPool) {
     exit(0);
 }
 
+///
+/// Prepara o vetor de ponteiros de funcao e preenche cada
+/// posicao com a funcao que implementa cada instrucao do
+/// bytecode (mnemonicos).
+/// 
+/// @param Nenhum
+/// @return void
 void inicializaInstrucoes() {
 	instrucao[0] = nop;
 	instrucao[1] = aconst_null;
@@ -276,15 +300,36 @@ void inicializaInstrucoes() {
 	instrucao[201] = jsr_w;
 }
 
+///
+/// Implementacao da instrucao <i>nop</i>, que nao executa nada,
+/// apenas avanca o PC;
+///
+/// @param Nenhum
+/// @return void
 void nop() {
 	frameCorrente->pc++;
 }
 
+///
+/// Implementacao da instrucao <i>aconst_null</i> que empilha
+/// uma referencia NULL na pilha de operandos e avanca o PC;
+///
+/// @param Nenhum
+/// @return void
+/// @see pushOp
 void aconst_null() {
   pushOp((int32_t)NULL_REF);
 	frameCorrente->pc++;
 }
 
+///
+/// Implementacao da instrucao <i>iconst_m1</i> 
+/// que empilha o valor -1 na pilha de operandos
+/// e avanca o PC;
+///
+/// @param Nenhum
+/// @return void
+/// @see pushOp
 void iconst_m1() {
   char* tipo = "I";
   tipoGlobal = tipo;
@@ -292,6 +337,13 @@ void iconst_m1() {
   frameCorrente->pc++;
 }
 
+///
+/// Implementacao da instrucao <i>iconst_0</i> 
+/// que empilha o valor 0 na pilha de operandos
+/// e avanca o PC;
+///
+/// @param Nenhum
+/// @return void
 void iconst_0() {
   char* tipo = "I";
   tipoGlobal = tipo;

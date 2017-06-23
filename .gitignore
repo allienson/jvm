@@ -15,3 +15,9 @@ JVM
 
 *.exe
 log.txt
+
+*.js
+
+*.html
+
+*.css

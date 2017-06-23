@@ -28,6 +28,15 @@
 
 #include "exibidor.h"
 
+///
+/// Funcao principal que imprime as informacoes gerais
+/// e coordena as chamadas das funcoes que imprimem
+/// as demais estuturas do classfile
+///
+/// @param ClassFile* Ponteiro para a estrutura Classfile
+/// @return void
+/// @see printaCpInfo printaInterfaces printaFieldInfo printaMethodInfo printaAttributeInfo
+/// @see imprimeStringPool printTopo printBase printBlank
 void printaClassFile(ClassFile* classFile) {
 
     // GENERAL INFORMATION
@@ -97,6 +106,14 @@ void printaClassFile(ClassFile* classFile) {
     printf("\n");
 }
 
+///
+/// Funcao que imprime o Constant Pool, buscando os
+/// valores UTF8 finais de cada constatnte e imprimindo
+/// tambem suas referencias
+///
+/// @param ClassFile* Ponteiro para a estrutura Classfile
+/// @return void
+/// @see imprimeStringPool hexToDouble hexToLong
 void printaCpInfo(ClassFile* classFile) {
     double valorDouble;
     float valorFloat;
@@ -213,6 +230,14 @@ void printaCpInfo(ClassFile* classFile) {
     }
 }
 
+///
+/// Funcao que imprime Interfaces da classe passada
+/// parametro, alem das referencias das constantes
+/// que contem as informacoes UTF8 de cada Interface 
+///
+/// @param ClassFile* Ponteiro para a estrutura Classfile
+/// @return void
+/// @see imprimeStringPool
 void printaInterfaces(ClassFile* classFile) {
     if (classFile->interfacesCount) {
         for (int i = 0; i < classFile->interfacesCount; ++i) {
@@ -229,6 +254,13 @@ void printaInterfaces(ClassFile* classFile) {
     }
 }
 
+///
+/// Funcao que imprime as informacoes de Fields da classe,
+/// bem como suas referencias no Constant Pool.
+///
+/// @param ClassFile* Ponteiro para a estrutura Classfile
+/// @return void
+/// @see imprimeStringPool printAccessFlags printSingleLine
 void printaFieldInfo(ClassFile* classFile) {
 
     if(classFile->fieldsCount != 0) {
@@ -268,6 +300,13 @@ void printaFieldInfo(ClassFile* classFile) {
     }
 }
 
+///
+/// Funcao que imprime as informacoes dos Metodos da classe,
+/// bem como suas referencias no Constant Pool.
+///
+/// @param ClassFile* Ponteiro para a estrutura Classfile
+/// @return void
+/// @see imprimeStringPool 
 void printaMethodInfo(ClassFile* classFile) {
     uint16_t methodsCount = classFile->methodsCount;
     printf("\tMethods Count: %d\n", methodsCount);

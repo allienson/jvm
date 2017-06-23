@@ -30,7 +30,7 @@ AreaMetodos areaMetodos;
 int primeira = FALSE;
 
 int32_t carregaClasseParaMemoria(char* caminhoClasse) {
-  inicializaPrimeiraVez();
+  	inicializaPrimeiraVez();
 
 	for (int i = 0; i < areaMetodos.numClasses; i++) {
 		char* nomeClassAux = retornaNomeClass(areaMetodos.arrayClasses[i]);

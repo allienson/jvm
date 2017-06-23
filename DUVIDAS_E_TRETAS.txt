@@ -2,3 +2,14 @@
 2 - atualizaPC() no instrucao.c eh realmente preciso?
 3 - Obtemutf tem que ser tudo stringIndex?
 4 - Modificar buscaMetodoMain() pq ele ja recebe  classe, nao precisa buscar de novo
+5 - Ver como vai ficar a documentacao de prototipos e .h
+*** 6 - Testar se iconst_0 precisa da atulizaPC() ***
+
+
+
+
+
+DIVISAO DA DOCUMENTACAO
+-----------------------
+Allisson - exibidor.c
+Denucci  - carregador.c
