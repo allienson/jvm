@@ -13,4 +13,4 @@
 DIVISAO DA DOCUMENTACAO
 -----------------------
 Allisson - exibidor.c / leitor.c
-Denucci  - carregador.c / frame.c
+Denucci  - carregador.c / frame.c / metodo.c
