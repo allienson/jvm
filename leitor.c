@@ -22,6 +22,15 @@
 #include <stdlib.h>
 #include <string.h>
 
+///
+/// Funcao principal que imprime as informacoes gerais
+/// e coordena as chamadas das funcoes que imprimem
+/// as demais estuturas do classfile
+///
+/// @param ClassFile* Ponteiro para a estrutura Classfile
+/// @return void
+/// @see printaCpInfo printaInterfaces printaFieldInfo printaMethodInfo printaAttributeInfo
+/// @see imprimeStringPool printTopo printBase printBlank
 ClassFile* inicializaLeitor(char* caminhoClasse) {
     FILE* fp;
     fp = fopen(caminhoClasse, "rb");

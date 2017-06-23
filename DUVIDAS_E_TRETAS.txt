@@ -4,13 +4,13 @@
 4 - Modificar buscaMetodoMain() pq ele ja recebe  classe, nao precisa buscar de novo
 5 - Ver como vai ficar a documentacao de prototipos e .h
 *** 6 - Testar se iconst_0 precisa da atulizaPC() ***
-
+7 - retornaNomeClass e retornaNome fazem a mesma coisa?
+***********8 - Tirar Scanner toString e afins************88
 
 
 
 
 DIVISAO DA DOCUMENTACAO
 -----------------------
-Allisson - exibidor.c
-Denucci  - carregador.c
-retornaNomeClass e retornaNome fazem a mesma coisa?
+Allisson - exibidor.c / leitor.c
+Denucci  - carregador.c / frame.c
