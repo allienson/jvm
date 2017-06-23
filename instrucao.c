@@ -50,7 +50,7 @@ Decodificador dec[NUM_INSTRUCAO];
 /// a posica da proxima instrucao no bytecode.
 /// 
 /// @param Nenhum
-/// @return void
+/// @return @c void
 /// @see inicializaDecodificador
 void atualizaPc() {
 	inicializaDecodificador(dec);
@@ -68,7 +68,7 @@ void atualizaPc() {
 /// 
 /// @param CpInfo* Ponteiro para uma estrutura Constant Pool
 /// @param int Posicao a ser buscada na Constant Pool
-/// @return int Posicao da constnte final UTF8
+/// @return @c int Posicao da constnte final UTF8
 /// @see inicializaDecodificador
 int obtemUtfEq(CpInfo* cp, int posPool) {
     int tag;
@@ -98,7 +98,7 @@ int obtemUtfEq(CpInfo* cp, int posPool) {
 /// bytecode (mnemonicos).
 /// 
 /// @param Nenhum
-/// @return void
+/// @return @c void
 void inicializaInstrucoes() {
 	instrucao[0] = nop;
 	instrucao[1] = aconst_null;
@@ -305,7 +305,7 @@ void inicializaInstrucoes() {
 /// apenas avanca o PC;
 ///
 /// @param Nenhum
-/// @return void
+/// @return @c void
 void nop() {
 	frameCorrente->pc++;
 }
@@ -315,7 +315,7 @@ void nop() {
 /// uma referencia NULL na pilha de operandos e avanca o PC;
 ///
 /// @param Nenhum
-/// @return void
+/// @return @c void
 /// @see pushOp
 void aconst_null() {
   pushOp((int32_t)NULL_REF);
@@ -328,7 +328,7 @@ void aconst_null() {
 /// e avanca o PC;
 ///
 /// @param Nenhum
-/// @return void
+/// @return @c void
 /// @see pushOp
 void iconst_m1() {
   char* tipo = "I";
@@ -343,7 +343,7 @@ void iconst_m1() {
 /// e avanca o PC;
 ///
 /// @param Nenhum
-/// @return void
+/// @return @c void
 void iconst_0() {
   char* tipo = "I";
   tipoGlobal = tipo;

@@ -26,7 +26,7 @@
 /// Funcao principal que comeca a leitura de um classfile.
 ///
 /// @param char* String com o caminho do arquivo .class a ser lido
-/// @return Uma estrutura ClassFile preenchida
+/// @return @c ClassFile* Uma estrutura ClassFile preenchida
 /// @see leClassFile
 ClassFile* inicializaLeitor(char* caminhoClasse) {
     FILE* fp;
@@ -58,7 +58,7 @@ ClassFile* inicializaLeitor(char* caminhoClasse) {
 ///
 /// @param FILE* Descritor do arquivo .class que foi aberto para leitura
 /// @param ClassFile* Ponteiro para a estrutura ClassiFile vazia (porem ja alocada)
-/// @return void
+/// @return @c void
 /// @see cafeBabeValido le2Bytes leConstantPool leInterfaceInfo leFieldInfo leMethodInfo leAttributeInfo
 void leClassFile(FILE* fp, ClassFile* classFile) {
     if(cafeBabeValido(fp, classFile)) {
@@ -96,7 +96,7 @@ void leClassFile(FILE* fp, ClassFile* classFile) {
 ///
 /// @param FILE* Descritor do arquivo .class que foi aberto para leitura
 /// @param ClassFile* Ponteiro para a estrutura ClassiFile
-/// @return Resultado da verificacao (valor booleano)
+/// @return @c int Resultado da verificacao (valor booleano)
 /// @see le4Bytes
 int cafeBabeValido(FILE* fp, ClassFile* classFile) {
     classFile->magic = le4Bytes(fp);
@@ -110,7 +110,7 @@ int cafeBabeValido(FILE* fp, ClassFile* classFile) {
 ///
 /// @param FILE* Descritor do arquivo .class que foi aberto para leitura
 /// @param ClassFile* Ponteiro para a estrutura ClassiFile
-/// @return void
+/// @return @c void
 /// @see le1Byte le2Bytes le4Bytes
 void leConstantPool(FILE* fp, ClassFile* classFile) {
     classFile->constantPool = (CpInfo*) malloc((classFile->constantPoolCount-1) * sizeof(CpInfo));
@@ -180,7 +180,7 @@ void leConstantPool(FILE* fp, ClassFile* classFile) {
 ///
 /// @param FILE* Descritor do arquivo .class que foi aberto para leitura
 /// @param ClassFile* Ponteiro para a estrutura ClassiFile
-/// @return void
+/// @return @c void
 /// @see le2Bytes
 void leInterfaceInfo(FILE* fp, ClassFile* classFile) {
     if(classFile->interfacesCount == 0) {
@@ -200,7 +200,7 @@ void leInterfaceInfo(FILE* fp, ClassFile* classFile) {
 ///
 /// @param FILE* Descritor do arquivo .class que foi aberto para leitura
 /// @param ClassFile* Ponteiro para a estrutura ClassiFile
-/// @return void
+/// @return @c void
 /// @see le2Bytes le4Bytes
 void leFieldInfo(FILE* fp, ClassFile* classFile) {
     if(classFile->fieldsCount == 0) {
@@ -232,7 +232,7 @@ void leFieldInfo(FILE* fp, ClassFile* classFile) {
 ///
 /// @param FILE* Descritor do arquivo .class que foi aberto para leitura
 /// @param ClassFile* Ponteiro para a estrutura ClassiFile
-/// @return void
+/// @return @c void
 /// @see le1Byte le2Bytes le4Bytes leCode leExc
 void leMethodInfo(FILE* fp, ClassFile* classFile) {
   uint16_t nameIndex;
@@ -289,7 +289,7 @@ void leMethodInfo(FILE* fp, ClassFile* classFile) {
 ///
 /// @param FILE* Descritor do arquivo .class que foi aberto para leitura
 /// @param ClassFile* Ponteiro para a estrutura ClassiFile
-/// @return void
+/// @return @c void
 /// @see le2Bytes le4Bytes
 void leAttributeInfo(FILE* fp, ClassFile* classFile) {
     if(classFile->attributesCount == 0) {
@@ -320,7 +320,7 @@ void leAttributeInfo(FILE* fp, ClassFile* classFile) {
 /// @param ExceptionsAttribute** Ponteiro para uma estrutura ExceptionsAttribute
 /// @param uint16_t NameIndex do metodo cujas excecoes serao lidas
 /// @param uint16_t Quantidade de atributos do metodo
-/// @return void
+/// @return @c void
 /// @see le2Bytes
 void leExc(FILE* fp, ExceptionsAttribute** excAtrb, uint16_t nameIndex, uint32_t attributesCount) {
     (*excAtrb)->attributeNameIndex = nameIndex;
@@ -340,7 +340,7 @@ void leExc(FILE* fp, ExceptionsAttribute** excAtrb, uint16_t nameIndex, uint32_t
 /// @param CodeAttribute** Ponteiro para uma estrutura CodeAttribute
 /// @param uint16_t NameIndex do metodo cujas instrucoes serao lidas
 /// @param uint16_t Quantidade de atributos do metodo
-/// @return void
+/// @return @c void
 /// @see le1Byte le2Bytes le4Bytes salvaInstrucoes
 void leCode(FILE* fp, CodeAttribute** cdAtrb, uint16_t nameIndex, uint32_t attributesCount) {
     int posicaoInicial = (int) ftell(fp);
@@ -375,7 +375,7 @@ void leCode(FILE* fp, CodeAttribute** cdAtrb, uint16_t nameIndex, uint32_t attri
 ///
 /// @param FILE* Descritor do arquivo .class que foi aberto para leitura
 /// @param CodeAttribute** Ponteiro para uma estrutura CodeAttribute
-/// @return void
+/// @return @c void
 /// @see inicializaDecodificador
 void salvaInstrucoes(FILE* fp, CodeAttribute** cdAtrb){
     int opcode, posReferencia;
@@ -510,7 +510,7 @@ void salvaInstrucoes(FILE* fp, CodeAttribute** cdAtrb){
 /// Funcao que le 1 byte e salva numa variavel unsigned de 8bits.
 ///
 /// @param FILE* Descritor do arquivo .class que foi aberto para leitura
-/// @return Um valor unsigned de 8bits
+/// @return @c uint8_t O valor lido em um unsigned de 8bits
 uint8_t le1Byte(FILE* fp) {
     uint8_t byte = getc(fp);
     return byte;
@@ -520,7 +520,7 @@ uint8_t le1Byte(FILE* fp) {
 /// Funcao que le 2 byte e salva numa variavel unsigned de 16bits.
 ///
 /// @param FILE* Descritor do arquivo .class que foi aberto para leitura
-/// @return Um valor unsigned de 16bits
+/// @return @c uint16_t O valor lido em um unsigned de 16bits
 uint16_t le2Bytes(FILE* fp) {
     uint16_t bytes = getc(fp);
     bytes = (bytes << 8) | (getc(fp));
@@ -531,7 +531,7 @@ uint16_t le2Bytes(FILE* fp) {
 /// Funcao que le 4 byte e salva numa variavel unsigned de 32bits.
 ///
 /// @param FILE* Descritor do arquivo .class que foi aberto para leitura
-/// @return Um valor unsigned de 32bits
+/// @return @c uint32_t O valor lido em um unsigned de 32bits
 uint32_t le4Bytes(FILE* fp) {
     uint32_t bytes = getc(fp);
     bytes = (bytes << 8) | (getc(fp));
