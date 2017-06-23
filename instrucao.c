@@ -46,9 +46,9 @@ Decodificador dec[NUM_INSTRUCAO];
 
 ///
 /// Atualiza o valor de PC, considerando a quantidade
-/// de bytes que a instrucao ocupa e avancando ate a 
+/// de bytes que a instrucao ocupa e avancando ate a
 /// a posica da proxima instrucao no bytecode.
-/// 
+///
 /// @param Nenhum
 /// @return @c void
 /// @see inicializaDecodificador
@@ -65,7 +65,7 @@ void atualizaPc() {
 /// Recupera o UTF8 final de uma constante do Constant Pool,
 /// recursivamente a partir uma estrutura CpInfo e da tag de
 /// cada constante lida, ate se chegar numa constante UTF8.
-/// 
+///
 /// @param CpInfo* Ponteiro para uma estrutura Constant Pool
 /// @param int Posicao a ser buscada na Constant Pool
 /// @return @c int Posicao da constnte final UTF8
@@ -96,7 +96,7 @@ int obtemUtfEq(CpInfo* cp, int posPool) {
 /// Prepara o vetor de ponteiros de funcao e preenche cada
 /// posicao com a funcao que implementa cada instrucao do
 /// bytecode (mnemonicos).
-/// 
+///
 /// @param Nenhum
 /// @return @c void
 void inicializaInstrucoes() {
@@ -323,7 +323,7 @@ void aconst_null() {
 }
 
 ///
-/// Implementacao da instrucao <i>iconst_m1</i> 
+/// Implementacao da instrucao <i>iconst_m1</i>
 /// que empilha o valor -1 na pilha de operandos
 /// e avanca o PC.
 ///
@@ -338,7 +338,7 @@ void iconst_m1() {
 }
 
 ///
-/// Implementacao da instrucao <i>iconst_0</i> 
+/// Implementacao da instrucao <i>iconst_0</i>
 /// que empilha o valor 0 na pilha de operandos
 /// e avanca o PC.
 ///
@@ -353,7 +353,7 @@ void iconst_0() {
 }
 
 ///
-/// Implementacao da instrucao <i>iconst_1</i> 
+/// Implementacao da instrucao <i>iconst_1</i>
 /// que empilha o valor 1 na pilha de operandos
 /// e avanca o PC.
 ///
@@ -368,7 +368,7 @@ void iconst_1() {
 }
 
 ///
-/// Implementacao da instrucao <i>iconst_2</i> 
+/// Implementacao da instrucao <i>iconst_2</i>
 /// que empilha o valor 2 na pilha de operandos
 /// e avanca o PC.
 ///
@@ -383,7 +383,7 @@ void iconst_2() {
 }
 
 ///
-/// Implementacao da instrucao <i>iconst_3</i> 
+/// Implementacao da instrucao <i>iconst_3</i>
 /// que empilha o valor 3 na pilha de operandos
 /// e avanca o PC.
 ///
@@ -398,7 +398,7 @@ void iconst_3() {
 }
 
 ///
-/// Implementacao da instrucao <i>iconst_4</i> 
+/// Implementacao da instrucao <i>iconst_4</i>
 /// que empilha o valor 4 na pilha de operandos
 /// e avanca o PC.
 ///
@@ -413,7 +413,7 @@ void iconst_4() {
 }
 
 ///
-/// Implementacao da instrucao <i>iconst_5</i> 
+/// Implementacao da instrucao <i>iconst_5</i>
 /// que empilha o valor 0 na pilha de operandos
 /// e avanca o PC.
 ///
@@ -428,7 +428,7 @@ void iconst_5() {
 }
 
 ///
-/// Implementacao da instrucao <i>lconst_0</i> 
+/// Implementacao da instrucao <i>lconst_0</i>
 /// que empilha o valor 0 na pilha de operandos
 /// e avanca o PC.
 ///
@@ -448,7 +448,7 @@ void lconst_0() {
 }
 
 ///
-/// Implementacao da instrucao <lconst_1</i> 
+/// Implementacao da instrucao <lconst_1</i>
 /// que empilha o valor 1 na pilha de operandos
 /// e avanca o PC.
 ///
@@ -468,7 +468,7 @@ void lconst_1() {
 }
 
 ///
-/// Implementacao da instrucao <i>fconst_0</i> 
+/// Implementacao da instrucao <i>fconst_0</i>
 /// que empilha o valor 0.0 na pilha de operandos
 /// e avanca o PC.
 ///
@@ -487,7 +487,7 @@ void fconst_0() {
 }
 
 ///
-/// Implementacao da instrucao <i>fconst_1</i> 
+/// Implementacao da instrucao <i>fconst_1</i>
 /// que empilha o valor 1.0 na pilha de operandos
 /// e avanca o PC.
 ///
@@ -506,7 +506,7 @@ void fconst_1() {
 }
 
 ///
-/// Implementacao da instrucao <i>fconst_2</i> 
+/// Implementacao da instrucao <i>fconst_2</i>
 /// que empilha o valor 2.0 na pilha de operandos
 /// e avanca o PC.
 ///
@@ -525,7 +525,7 @@ void fconst_2() {
 }
 
 ///
-/// Implementacao da instrucao <i>dconst_0</i> 
+/// Implementacao da instrucao <i>dconst_0</i>
 /// que empilha o valor 0.0 na pilha de operandos
 /// e avanca o PC.
 ///
@@ -548,7 +548,7 @@ void dconst_0() {
 }
 
 ///
-/// Implementacao da instrucao <i>dconst_1</i> 
+/// Implementacao da instrucao <i>dconst_1</i>
 /// que empilha o valor 1.0 na pilha de operandos
 /// e avanca o PC.
 ///
@@ -571,8 +571,8 @@ void dconst_1() {
 }
 
 ///
-/// Empilha um byte de argumento na pilha extendendo 
-/// o Imediato como se fosse um valor inteiro e 
+/// Empilha um byte de argumento na pilha extendendo
+/// o Imediato como se fosse um valor inteiro e
 /// avanca o PC.
 ///
 /// @param Nenhum
@@ -603,12 +603,13 @@ void sipush() {
 }
 
 ///
-/// Empilha uma entrada do Constant Pool 
-/// que eh extendido para um inteiro e avanca o PC.
+/// Empilha um valor inteiro / float / string
+/// recuperado da Constant Pool na pilha de operandos,
+/// a partir do argumento indice.
 ///
 /// @param Nenhum
 /// @return @c void
-/// @see pushOp atualizaPc
+/// @see pushOp atualizaPc obtemUtfEq
 void ldc() {
   uint32_t indice;
   tipoGlobal = NULL;
@@ -618,53 +619,54 @@ void ldc() {
   } else if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_Integer) {
   	pushOp(frameCorrente->constantPool[indice - 1].info.Integer.bytes);
   } else if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_String) {
-      uint32_t indice_utf;
-      indice_utf = obtemUtfEq(frameCorrente->constantPool, indice-1);
-      pushOp(indice_utf);
-  } else if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_String) {
-      printf("Referencia
-
-
-      	dsnalkndasdlnkslksanldksndlakns
-
-
-      	\n");
-      exit(1);
+    uint32_t indice_utf;
+    indice_utf = obtemUtfEq(frameCorrente->constantPool, indice-1);
+    pushOp(indice_utf);
   } else {
-      printf("erro na instrucao ldc\n");
-      exit(1);
+    printf("Erro na instrução ldc \n");
+    exit(1);
   }
   atualizaPc();
 }
 
+///
+/// Empilha um valor inteiro / float / string
+/// recuperado da Constant Pool na pilha de operandos,
+/// a partir do argumento indice que agora possui
+/// dois bytes.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc obtemUtfEq
 void ldc_w() {
   uint32_t indice;
-	inicializaDecodificador(dec);
-	int numBytes = dec[frameCorrente->code[frameCorrente->pc]].bytes;
   indice = ((frameCorrente->code[frameCorrente->pc + 1] << 8) + (frameCorrente->code[frameCorrente->pc + 2]));
-  if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_Float || \
-          frameCorrente->constantPool[indice - 1].tag == CONSTANT_Integer) {
-      if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_Float) {
-          pushOp(frameCorrente->constantPool[indice - 1].info.Float.bytes);
-      } else {
-          pushOp(frameCorrente->constantPool[indice - 1].info.Integer.bytes);
-      }
+  if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_Float) {
+    pushOp(frameCorrente->constantPool[indice - 1].info.Float.bytes);
+  } else if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_Integer) {
+    pushOp(frameCorrente->constantPool[indice - 1].info.Integer.bytes);
   } else if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_String) {
-      uint32_t indice_utf;
-      indice_utf = obtemUtfEq(frameCorrente->constantPool, indice-1);
-      pushOp(indice_utf);
-  } else if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_String) {
+    uint32_t indice_utf;
+    indice_utf = obtemUtfEq(frameCorrente->constantPool, indice-1);
+    pushOp(indice_utf);
   } else {
-      printf("erro na instrucao ldc\n");
-      exit(1);
+    printf("Erro na instrução ldc_w \n");
+    exit(1);
   }
-	for(int8_t i = 0; i < numBytes + 1; i++) {
-		frameCorrente->pc++;
-	}
+	atualizaPc();
 }
 
+///
+/// Empilha um valor long / double
+/// recuperado da Constant Pool na pilha de operandos,
+/// a partir do argumento indice que possui
+/// dois bytes.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void ldc2_w() {
-	uint8_t indice = frameCorrente->code[frameCorrente->pc + 2];
+	uint16_t indice = ((frameCorrente->code[frameCorrente->pc + 1] << 8) + (frameCorrente->code[frameCorrente->pc + 2]));
 	uint8_t tag = (frameCorrente->constantPool[indice-1]).tag;
 
 	if(tag == 5) {
@@ -685,37 +687,64 @@ void ldc2_w() {
   flagLNEG = FALSE;
 }
 
+///
+/// Coloca um inteiro na pilha de operandos
+/// a partir de um indice para o array de
+/// variaveis locais.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void iload() {
   char* tipo = "I";
   tipoGlobal = tipo;
-	int32_t argumento = (int32_t) frameCorrente->code[frameCorrente->pc + 1];
-	int32_t aux = frameCorrente->fields[argumento];
-	pushOp(aux);
+	int32_t indice = (int32_t) frameCorrente->code[frameCorrente->pc + 1];
+	int32_t argumento = frameCorrente->fields[indice];
+	pushOp(argumento);
 	atualizaPc();
 }
 
+///
+/// Coloca um long na pilha de operandos
+/// a partir de um indice para o array de
+/// variaveis locais.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void lload() {
 	char* tipo = "L";
   tipoGlobal = tipo;
   int32_t indice;
-  int32_t parteAlta, parte_baixa;
+  int32_t parteAlta;
+  int32_t parteBaixa;
   indice = frameCorrente->code[frameCorrente->pc + 1];
-  parteAlta = frameCorrente->fields[indice + POS_ALTA];
+  parteAlta = frameCorrente->fields[indice + 0];
+  parteBaixa = frameCorrente->fields[indice + 1];
   pushOp(parteAlta);
-  parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
-  pushOp(parte_baixa);
+  pushOp(parteBaixa);
   atualizaPc();
 }
 
+///
+/// Coloca um float na pilha de operandos
+/// a partir de um indice para o array de
+/// variaveis locais.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void fload() {
 	char* tipo = "F";
   tipoGlobal = tipo;
-  int32_t indice, valor;
+  int32_t indice;
+  int32_t valor;
   indice = frameCorrente->code[frameCorrente->pc + 1];
   valor = frameCorrente->fields[indice];
   pushOp(valor);
   atualizaPc();
 }
+
 
 void dload() {
   int32_t indice;

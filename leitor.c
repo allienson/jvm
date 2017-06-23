@@ -52,7 +52,7 @@ ClassFile* inicializaLeitor(char* caminhoClasse) {
 
 ///
 /// Funcao que coordena a leitura do arquivo .class
-/// e coordena as chamadas das funcoes que leem cada 
+/// e coordena as chamadas das funcoes que leem cada
 /// parte do classfile individualmente e preenchem
 /// a estrutura recebida como parametro.
 ///
@@ -91,7 +91,7 @@ void leClassFile(FILE* fp, ClassFile* classFile) {
 
 ///
 /// Funcao que avalia se o arquivo aberto eh de fato
-/// um classfile e se os bytes de control 0xCAFEBABE 
+/// um classfile e se os bytes de control 0xCAFEBABE
 /// estao corretamente no inicio do arquivo.
 ///
 /// @param FILE* Descritor do arquivo .class que foi aberto para leitura
@@ -285,7 +285,7 @@ void leMethodInfo(FILE* fp, ClassFile* classFile) {
 ///
 /// Funcao que le os bytes que compoe as Informacoes de Atributos e
 /// os armazena nas devidas posicoes da estrutura AttributeInfo,
-/// dentro do ClassFile recebido como parametro. 
+/// dentro do ClassFile recebido como parametro.
 ///
 /// @param FILE* Descritor do arquivo .class que foi aberto para leitura
 /// @param ClassFile* Ponteiro para a estrutura ClassiFile
@@ -351,7 +351,7 @@ void leCode(FILE* fp, CodeAttribute** cdAtrb, uint16_t nameIndex, uint32_t attri
     (*cdAtrb)->maxLocals = le2Bytes(fp);
     (*cdAtrb)->codeLength = le4Bytes(fp);
 
-    salvaInstrucoes(cdAtrb, fp); //testar depois
+    salvaInstrucoes(fp, cdAtrb);
 
     (*cdAtrb)->exceptionTableLength = le2Bytes(fp);
     (*cdAtrb)->exceptionTable = (ExceptionTable*) malloc((*cdAtrb)->exceptionTableLength * sizeof(ExceptionTable));
@@ -370,14 +370,14 @@ void leCode(FILE* fp, CodeAttribute** cdAtrb, uint16_t nameIndex, uint32_t attri
 }
 
 ///
-/// Funcao que traduz os bytes de codigo lidos de um metodo e 
+/// Funcao que traduz os bytes de codigo lidos de um metodo e
 /// os armazena nas devidas posicoes da estrutura CodeAttribute.
 ///
 /// @param FILE* Descritor do arquivo .class que foi aberto para leitura
 /// @param CodeAttribute** Ponteiro para uma estrutura CodeAttribute
 /// @return @c void
 /// @see inicializaDecodificador
-void salvaInstrucoes(FILE* fp, CodeAttribute** cdAtrb){
+void salvaInstrucoes(FILE* fp, CodeAttribute** cdAtrb) {
     int opcode, posReferencia;
     int bytesPreench, offsets;
     uint32_t defaultV, low, high, npairs;

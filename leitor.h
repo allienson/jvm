@@ -189,9 +189,9 @@ void leAttributeInfo(FILE*, ClassFile*);
 void leExc(FILE*, ExceptionsAttribute**, uint16_t, uint32_t);
 void leCode(FILE*, CodeAttribute**, uint16_t, uint32_t);
 
-uint8_t le1Byte(FILE* fp);
-uint16_t le2Bytes(FILE* fp);
-uint32_t le4Bytes(FILE* fp);
-void salvaInstrucoes(CodeAttribute** cd_atrb, FILE* file);
+uint8_t le1Byte(FILE*);
+uint16_t le2Bytes(FILE*);
+uint32_t le4Bytes(FILE*);
+void salvaInstrucoes(FILE*, CodeAttribute**);
 
 #endif
