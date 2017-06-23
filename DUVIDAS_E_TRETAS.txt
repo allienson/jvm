@@ -1,3 +1,1 @@
 1 - 1100 - bagulho do retorno int32_t
-
-Em metodo.c na funcao buscaMetodoMain: pega o classfile novamente?

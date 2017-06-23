@@ -42,8 +42,6 @@ MethodInfo* buscaMetodoMain(ClassFile* classFile) {
 	uint8_t* nome;
 	uint8_t* desc;
 
-	classFile = buscaClassPorIndice(1);
-
 	for(int i = 0; i < classFile->methodsCount; i++) {
 		nome = classFile->constantPool[(classFile->methods[i].nameIndex -1)].info.Utf8.bytes;
 		desc = classFile->constantPool[(classFile->methods[i].descriptorIndex - 1)].info.Utf8.bytes;
