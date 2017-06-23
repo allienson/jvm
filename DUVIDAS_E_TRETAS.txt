@@ -1,1 +1,5 @@
 1 - 1100 - bagulho do retorno int32_t
+
+
+Em carregador.c: 
+retornaNomeClass e retornaNome fazem a mesma coisa?

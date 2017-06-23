@@ -28,7 +28,12 @@
 AreaMetodos areaMetodos;
 
 int primeira = FALSE;
-
+///
+/// Carrega o arquivo .class na memoria e adiciona a classe na area de metodos.
+/// 
+/// @param char* Contem o caminho para a classe a ser lida.
+/// @return int32_t
+/// @see inicializaPrimeiraVez inicializaLeitor
 int32_t carregaClasseParaMemoria(char* caminhoClasse) {
   inicializaPrimeiraVez();
 
@@ -61,14 +66,23 @@ int32_t carregaClasseParaMemoria(char* caminhoClasse) {
 
   return areaMetodos.numClasses - 1;
 }
-
+///
+/// Incializa o valor de areaMetodos.numClasses com 0 caso seja a primeira classe a ser lida.
+/// Seta uma variavel global para indicar que a primeira classe ja foi lida.
+/// 
+/// @param Nao possui parametros
+/// @return void
 void inicializaPrimeiraVez() {
   if (primeira == FALSE) {
     areaMetodos.numClasses = 0;
     primeira = TRUE;
   }
 }
-
+///
+/// Retorna o nome da classe desejada.
+/// 
+/// @param ClassFile* Classe que se deseja saber o nome.
+/// @return char*
 char* retornaNomeClass(ClassFile* classe){
 	uint16_t thisClass = classe->thisClass;
 	uint16_t nameIndex = (classe->constantPool[thisClass - 1]).info.Class.nameIndex;
@@ -83,19 +97,30 @@ char* retornaNomeClass(ClassFile* classe){
 	retorno[i] = '\0';
 	return retorno;
 }
-
+///
+/// Caso o indice passado seja um numero menor que o numero de classes salvas na 
+/// area de metodos, retorna um ponteiro para a classe apontada por esse indice no
+/// array da area de metodos.
+/// 
+/// @param int Indice da classe no array de area de metodos que se deseja saber.
+/// @return ClassFile*
 ClassFile* buscaClassPorIndice(int indice) {
 	return indice >= areaMetodos.numClasses ? NULL : areaMetodos.arrayClasses[indice];
 }
-
-char* retornaNome(ClassFile* cf, uint16_t indiceNome) {
+///
+/// Retorna o nome da classe desejada com base no classfile e no indice do nome.
+/// 
+/// @param ClassFile* Classe que se deseja saber o nome.
+/// @param uint16_t Indce da classe.
+/// @return char*
+char* retornaNome(ClassFile* classe, uint16_t indiceNome) {
 	int i;
 
-	char* retorno = malloc((cf->constantPool[indiceNome - 1]).info.Utf8.length + 1);
-	uint16_t indice = cf->constantPool[indiceNome - 1].info.Utf8.length;
+	char* retorno = malloc((classe->constantPool[indiceNome - 1]).info.Utf8.length + 1);
+	uint16_t indice = classe->constantPool[indiceNome - 1].info.Utf8.length;
 
 	for (i = 0; i < indice; i++) {
-		retorno[i] = (char) (cf->constantPool[indiceNome - 1]).info.Utf8.bytes[i];
+		retorno[i] = (char) (classe->constantPool[indiceNome - 1]).info.Utf8.bytes[i];
 	}
 
 	retorno[i] = '\0';

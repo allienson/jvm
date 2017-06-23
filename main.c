@@ -45,7 +45,14 @@ int printaParaArquivo;
 void leParamsEntrada();
 void preparaMetodoMain();
 void exibeArrayClasses();
-
+///
+/// Funcao principal que controla o inicio do  programa. Caso a execucao seja
+///bem sucedida, retorna 0.
+/// 
+/// @param argc Numero de argumentos passados via linha de comando
+/// @param char* Array que contem as strings passadas via linha de comando
+/// @return int
+/// @see leParamsEntrada carregaClasseParaMemoria preparaMetodoMain empilhaMetodo executaFrameCorrente exibeArrayClasses
 int main(int argc, char* argv[]) {
   leParamsEntrada(argc, argv);
   carregaClasseParaMemoria("java/lang/Object");
@@ -57,7 +64,12 @@ int main(int argc, char* argv[]) {
   free(caminhoArquivo);
   return 0;
 }
-
+///
+/// Le os paramentros inseridos via linha de comando.
+/// 
+/// @param argc Numero de argumentos passados via linha de comando
+/// @param char* Array que contem as strings passadas via linha de comando
+/// @return void
 void leParamsEntrada(int argc, char* argv[]) {
   caminhoArquivo = calloc(TAMANHO_ARQUIVO, sizeof(argv[1]));
   if (argc < 3) {
@@ -75,7 +87,12 @@ void leParamsEntrada(int argc, char* argv[]) {
     }
   }
 }
-
+///
+/// Busca a classe que possui o metodo main e depois busca dentro dessa classe o metodo main.
+/// 
+/// @param Nao possui paramentros
+/// @return void
+/// @see buscaClassPorIndice buscaMetodoMain
 void preparaMetodoMain() {
   classeMain = buscaClassPorIndice(1);
   metodoMain = buscaMetodoMain(classeMain);
@@ -84,7 +101,13 @@ void preparaMetodoMain() {
     exit(0);
   }
 }
-
+///
+/// Mostra o  bytecode da classe lida no terminal e criar um arquivo de texto "log.txt"
+/// com o bytecode da classe caso a flag printaParaArquivo tenha sido setada.
+/// 
+/// @param Nao possui paramentros
+/// @return void
+/// @see printaClassFile 
 void exibeArrayClasses() {
   if (exibeClassFile) {
     FILE *saved;
