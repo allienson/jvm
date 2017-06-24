@@ -745,28 +745,53 @@ void fload() {
   atualizaPc();
 }
 
-
+///
+/// Coloca um double na pilha de operandos
+/// a partir de um indice para o array de
+/// variaveis locais.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void dload() {
   int32_t indice;
-  int32_t parte_alta, parte_baixa;
+  int32_t parteAlta;
+  int32_t parteBaixa;
   char* tipo = "D";
   tipoGlobal = tipo;
   indice = frameCorrente->code[frameCorrente->pc + 1];
-  parte_alta = frameCorrente->fields[indice + POS_ALTA];
-  pushOp(parte_alta);
-  parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
-  pushOp(parte_baixa);
+  parteAlta = frameCorrente->fields[indice + 0];
+  parteBaixa = frameCorrente->fields[indice + 1];
+  pushOp(parteAlta);
+  pushOp(parteBaixa);
   atualizaPc();
 }
 
+///
+/// Coloca uma referencia a partir
+/// do array de variaveis locais
+/// na pilha
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void aload() {
-    int32_t indice, valor;
+    int32_t indice;
+    int32_t valor;
     indice = frameCorrente->code[frameCorrente->pc + 1];
     valor = frameCorrente->fields[indice];
     pushOp(valor);
     atualizaPc();
 }
 
+///
+/// Coloca a primeira variavel inteira
+/// do array de variaveis locais
+/// na pilha
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void iload_0() {
 	char* tipo = "I";
   tipoGlobal = tipo;
@@ -776,6 +801,14 @@ void iload_0() {
 	atualizaPc();
 }
 
+///
+/// Coloca a segunda variavel inteira
+/// do array de variaveis locais
+/// na pilha
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void iload_1() {
 	char* tipo = "I";
   tipoGlobal = tipo;
@@ -785,6 +818,14 @@ void iload_1() {
   atualizaPc();
 }
 
+///
+/// Coloca a terceira variavel inteira
+/// do array de variaveis locais
+/// na pilha
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void iload_2() {
 	char* tipo = "I";
   tipoGlobal = tipo;
@@ -794,6 +835,14 @@ void iload_2() {
   atualizaPc();
 }
 
+///
+/// Coloca a quarta variavel inteira
+/// do array de variaveis locais
+/// na pilha
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void iload_3() {
   int32_t valor;
   char* tipo = "I";
@@ -803,146 +852,254 @@ void iload_3() {
   atualizaPc();
 }
 
+///
+/// Coloca a primeira variavel
+/// do array de variaveis locais
+/// na pilha (long)
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void lload_0() {
 	char* tipo = "L";
   tipoGlobal = tipo;
   int32_t indice;
-  int32_t parte_alta, parte_baixa;
+  int32_t parteAlta;
+  int32_t parteBaixa;
   indice = 0;
-  parte_alta = frameCorrente->fields[indice + POS_ALTA];
-  pushOp(parte_alta);
-  parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
-  pushOp(parte_baixa);
+  parteAlta = frameCorrente->fields[indice + 0];
+  parteBaixa = frameCorrente->fields[indice + 1];
+  pushOp(parteAlta);
+  pushOp(parteBaixa);
 	atualizaPc();
 }
 
+///
+/// Coloca a segunda variavel
+/// do array de variaveis locais
+/// na pilha (long)
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void lload_1() {
   int32_t indice;
-  int32_t parte_alta, parte_baixa;
+  int32_t parteAlta;
+  int32_t parteBaixa;
   char* tipo = "L";
   tipoGlobal = tipo;
   indice = 1;
-  parte_alta = frameCorrente->fields[indice + POS_ALTA];
-  pushOp(parte_alta);
-  parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
-  pushOp(parte_baixa);
+  parteAlta = frameCorrente->fields[indice + 0];
+  parteBaixa = frameCorrente->fields[indice + 1];
+  pushOp(parteAlta);
+  pushOp(parteBaixa);
   atualizaPc();
 }
 
+///
+/// Coloca a terceira variavel
+/// do array de variaveis locais
+/// na pilha (long)
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void lload_2() {
 	char* tipo = "L";
   tipoGlobal = tipo;
   int32_t indice;
-  int32_t parte_alta, parte_baixa;
+  int32_t parteAlta;
+  int32_t parteBaixa;
   indice = 2;
-  parte_alta = frameCorrente->fields[indice + POS_ALTA];
-  pushOp(parte_alta);
-  parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
-  pushOp(parte_baixa);
+  parteAlta = frameCorrente->fields[indice + 0];
+  parteBaixa = frameCorrente->fields[indice + 1];
+  pushOp(parteAlta);
+  pushOp(parteBaixa);
   atualizaPc();
 }
 
+///
+/// Coloca a quarta variavel
+/// do array de variaveis locais
+/// na pilha (long)
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void lload_3() {
 	char* tipo = "L";
   tipoGlobal = tipo;
   int32_t indice;
-  int32_t parte_alta, parte_baixa;
+  int32_t parteAlta;
+  int32_t parteBaixa;
   indice = 3;
-  parte_alta = frameCorrente->fields[indice + POS_ALTA];
-  pushOp(parte_alta);
-  parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
-  pushOp(parte_baixa);
+  parteAlta = frameCorrente->fields[indice + 0];
+  parteBaixa = frameCorrente->fields[indice + 1];
+  pushOp(parteAlta);
+  pushOp(parteBaixa);
   atualizaPc();
 }
 
+///
+/// Coloca a primeira variavel
+/// do array de variaveis locais
+/// na pilha (float)
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void fload_0() {
 	char* tipo = "F";
   tipoGlobal = tipo;
-  int32_t indice, valor;
+  int32_t indice;
+  int32_t valor;
   indice = 0;
   valor = frameCorrente->fields[indice];
   pushOp(valor);
- atualizaPc();
+  atualizaPc();
 }
 
+///
+/// Coloca a segunda variavel
+/// do array de variaveis locais
+/// na pilha (float)
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void fload_1() {
 	char* tipo = "F";
   tipoGlobal = tipo;
-  int32_t indice, valor;
+  int32_t indice;
+  int32_t valor;
   indice = 1;
   valor = frameCorrente->fields[indice];
   pushOp(valor);
   atualizaPc();
 }
 
+///
+/// Coloca a terceira variavel
+/// do array de variaveis locais
+/// na pilha (float)
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void fload_2() {
 	char* tipo = "F";
   tipoGlobal = tipo;
-  int32_t indice, valor;
+  int32_t indice;
+  int32_t valor;
   indice = 2;
   valor = frameCorrente->fields[indice];
   pushOp(valor);
   atualizaPc();
 }
 
+///
+/// Coloca a quarta variavel
+/// do array de variaveis locais
+/// na pilha (float)
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void fload_3() {
 	char* tipo = "F";
   tipoGlobal = tipo;
-  int32_t indice, valor;
+  int32_t indice;
+  int32_t valor;
   indice = 3;
   valor = frameCorrente->fields[indice];
   pushOp(valor);
   atualizaPc();
 }
 
+///
+/// Coloca a primeira variavel
+/// do array de variaveis locais
+/// na pilha (double)
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void dload_0() {
 	char* tipo = "D";
   tipoGlobal = tipo;
   int32_t indice;
-  int32_t parte_alta, parte_baixa;
+  int32_t parteAlta;
+  int32_t parteBaixa;
   indice = 0;
-  parte_alta = frameCorrente->fields[indice + POS_ALTA];
-  pushOp(parte_alta);
-  parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
-  pushOp(parte_baixa);
+  parteAlta = frameCorrente->fields[indice + 0];
+  parteBaixa = frameCorrente->fields[indice + 1];
+  pushOp(parteAlta);
+  pushOp(parteBaixa);
   atualizaPc();
 }
 
+///
+/// Coloca a segunda variavel
+/// do array de variaveis locais
+/// na pilha (double)
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void dload_1() {
   int32_t indice;
-  int32_t parte_alta, parte_baixa;
+  int32_t parteAlta;
+  int32_t parteBaixa;
   char* tipo = "D";
   tipoGlobal = tipo;
   indice = 1;
-  parte_alta = frameCorrente->fields[indice + POS_ALTA];
-  pushOp(parte_alta);
-  parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
-  pushOp(parte_baixa);
+  parteAlta = frameCorrente->fields[indice + 0];
+  parteBaixa = frameCorrente->fields[indice + 1];
+  pushOp(parteAlta);
+  pushOp(parteBaixa);
   atualizaPc();
 }
 
+///
+/// Coloca a terceira variavel
+/// do array de variaveis locais
+/// na pilha (double)
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void dload_2() {
   int32_t indice;
-  int32_t parte_alta, parte_baixa;
+  int32_t parte_alta;
+  int32_t parte_baixa;
   char* tipo = "D";
   tipoGlobal = tipo;
   indice = 2;
-  parte_alta = frameCorrente->fields[indice + POS_ALTA];
+  parte_alta = frameCorrente->fields[indice + 0];
+  parte_baixa = frameCorrente->fields[indice + 1];
   pushOp(parte_alta);
-  parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
   pushOp(parte_baixa);
   atualizaPc();
 }
 
+///
+/// Coloca a quarta variavel
+/// do array de variaveis locais
+/// na pilha (double)
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void dload_3() {
   int32_t indice;
-  int32_t parte_alta, parte_baixa;
+  int32_t parte_alta;
+  int32_t parte_baixa;
   char* tipo = "D";
   tipoGlobal = tipo;
   indice = 3;
-  parte_alta = frameCorrente->fields[indice + POS_ALTA];
+  parte_alta = frameCorrente->fields[indice + 0];
+  parte_baixa = frameCorrente->fields[indice + 1];
   pushOp(parte_alta);
-  parte_baixa = frameCorrente->fields[indice + POS_BAIXA];
   pushOp(parte_baixa);
   atualizaPc();
 }
