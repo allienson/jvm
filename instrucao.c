@@ -1070,15 +1070,15 @@ void dload_1() {
 /// @see pushOp atualizaPc
 void dload_2() {
   int32_t indice;
-  int32_t parte_alta;
-  int32_t parte_baixa;
+  int32_t parteAlta;
+  int32_t parteBaixa;
   char* tipo = "D";
   tipoGlobal = tipo;
   indice = 2;
-  parte_alta = frameCorrente->fields[indice + 0];
-  parte_baixa = frameCorrente->fields[indice + 1];
-  pushOp(parte_alta);
-  pushOp(parte_baixa);
+  parteAlta = frameCorrente->fields[indice + 0];
+  parteBaixa = frameCorrente->fields[indice + 1];
+  pushOp(parteAlta);
+  pushOp(parteBaixa);
   atualizaPc();
 }
 
@@ -1092,15 +1092,15 @@ void dload_2() {
 /// @see pushOp atualizaPc
 void dload_3() {
   int32_t indice;
-  int32_t parte_alta;
-  int32_t parte_baixa;
+  int32_t parteAlta;
+  int32_t parteBaixa;
   char* tipo = "D";
   tipoGlobal = tipo;
   indice = 3;
-  parte_alta = frameCorrente->fields[indice + 0];
-  parte_baixa = frameCorrente->fields[indice + 1];
-  pushOp(parte_alta);
-  pushOp(parte_baixa);
+  parteAlta = frameCorrente->fields[indice + 0];
+  parteBaixa = frameCorrente->fields[indice + 1];
+  pushOp(parteAlta);
+  pushOp(parteBaixa);
   atualizaPc();
 }
 
@@ -1334,12 +1334,12 @@ void istore() {
 /// @see atualizaPc popOp
 void lstore() {
   int32_t indice;
-  int32_t parte_alta, parte_baixa;
+  int32_t parteAlta, parteBaixa;
   indice = frameCorrente->code[frameCorrente->pc + 1];
-  parte_baixa = popOp();
-  parte_alta = popOp();
-  frameCorrente->fields[indice ] = parte_alta;
-  frameCorrente->fields[indice + 1] = parte_baixa;
+  parteBaixa = popOp();
+  parteAlta = popOp();
+  frameCorrente->fields[indice ] = parteAlta;
+  frameCorrente->fields[indice + 1] = parteBaixa;
   atualizaPc();
 }
 ///
@@ -1368,12 +1368,12 @@ void fstore() {
 /// @see atualizaPc popOp
 void dstore() {
   int32_t indice;
-  int32_t parte_alta, parte_baixa;
+  int32_t parteAlta, parteBaixa;
   indice = frameCorrente->code[frameCorrente->pc + 1];
-  parte_baixa = popOp();
-  parte_alta = popOp();
-  frameCorrente->fields[indice ] = parte_alta;
-  frameCorrente->fields[indice + 1] = parte_baixa;
+  parteBaixa = popOp();
+  parteAlta = popOp();
+  frameCorrente->fields[indice ] = parteAlta;
+  frameCorrente->fields[indice + 1] = parteBaixa;
   atualizaPc();
 }
 ///
@@ -1484,12 +1484,12 @@ void lstore_0() {
 /// @see atualizaPc popOp
 void lstore_1() {
   int32_t indice;
-  int32_t parteAlta, parte_baixa;
+  int32_t parteAlta, parteBaixa;
   indice = 1;
-  parte_baixa = popOp();
+  parteBaixa = popOp();
   parteAlta = popOp();
   frameCorrente->fields[indice] = parteAlta;
-  frameCorrente->fields[indice + 1] = parte_baixa;
+  frameCorrente->fields[indice + 1] = parteBaixa;
   atualizaPc();
 }
 ///
@@ -1502,12 +1502,12 @@ void lstore_1() {
 /// @see atualizaPc popOp
 void lstore_2() {
   int32_t indice;
-  int32_t parteAlta, parte_baixa;
+  int32_t parteAlta, parteBaixa;
   indice = 2;
-  parte_baixa = popOp();
+  parteBaixa = popOp();
   parteAlta = popOp();
   frameCorrente->fields[indice] = parteAlta;
-  frameCorrente->fields[indice + 1] = parte_baixa;
+  frameCorrente->fields[indice + 1] = parteBaixa;
   atualizaPc();
 }
 ///
@@ -1520,15 +1520,23 @@ void lstore_2() {
 /// @see atualizaPc popOp
 void lstore_3() {
   int32_t indice;
-  int32_t parteAlta, parte_baixa;
+  int32_t parteAlta, parteBaixa;
   indice = 3;
-  parte_baixa = popOp();
+  parteBaixa = popOp();
   parteAlta = popOp();
   frameCorrente->fields[indice] = parteAlta;
-  frameCorrente->fields[indice + 1] = parte_baixa;
+  frameCorrente->fields[indice + 1] = parteBaixa;
   atualizaPc();
 }
 
+///
+/// Coloca no array de variaveis
+/// locais na posicao 0 um float desempilhado
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void fstore_0() {
   int32_t indice;
   int32_t valor;
@@ -1538,6 +1546,15 @@ void fstore_0() {
   atualizaPc();
 }
 
+
+///
+/// Coloca no array de variaveis
+/// locais na posicao 1 um float desempilhado
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void fstore_1() {
   int32_t indice;
   int32_t valor;
@@ -1547,6 +1564,14 @@ void fstore_1() {
   atualizaPc();
 }
 
+///
+/// Coloca no array de variaveis
+/// locais na posicao 2 um float desempilhado
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void fstore_2() {
   int32_t indice;
   int32_t valor;
@@ -1556,6 +1581,14 @@ void fstore_2() {
   atualizaPc();
 }
 
+///
+/// Coloca no array de variaveis
+/// locais na posicao 3 um float desempilhado
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void fstore_3() {
   int32_t indice;
   int32_t valor;
@@ -1565,49 +1598,83 @@ void fstore_3() {
   atualizaPc();
 }
 
+///
+/// Coloca no array de variaveis
+/// locais na posicao 0 um double desempilhado
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void dstore_0() {
   int32_t indice;
-  int32_t parte_alta, parte_baixa;
+  int32_t parteAlta, parteBaixa;
   indice = 0;
-  parte_baixa = popOp();
-  parte_alta = popOp();
-  frameCorrente->fields[indice + POS_ALTA] = parte_alta;
-  frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
+  parteBaixa = popOp();
+  parteAlta = popOp();
+  frameCorrente->fields[indice] = parteAlta;
+  frameCorrente->fields[indice + 1] = parteBaixa;
   atualizaPc();
 }
 
+///
+/// Coloca no array de variaveis
+/// locais na posicao 1 um double desempilhado
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void dstore_1() {
   int32_t indice;
-  int32_t parte_alta, parte_baixa;
+  int32_t parteAlta, parteBaixa;
   indice = 1;
-  parte_baixa = popOp();
-  parte_alta = popOp();
-  frameCorrente->fields[indice + POS_ALTA] = parte_alta;
-  frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
+  parteBaixa = popOp();
+  parteAlta = popOp();
+  frameCorrente->fields[indice] = parteAlta;
+  frameCorrente->fields[indice + 1] = parteBaixa;
   atualizaPc();
 }
 
+
+///
+/// Coloca no array de variaveis
+/// locais na posicao 2 um double desempilhado
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void dstore_2() {
   int32_t indice;
-  int32_t parte_alta, parte_baixa;
+  int32_t parteAlta, parteBaixa;
   indice = 2;
-  parte_baixa = popOp();
-  parte_alta = popOp();
-  frameCorrente->fields[indice + POS_ALTA] = parte_alta;
-  frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
+  parteBaixa = popOp();
+  parteAlta = popOp();
+  frameCorrente->fields[indice] = parteAlta;
+  frameCorrente->fields[indice + 1] = parteBaixa;
   atualizaPc();
 }
 
+///
+/// Coloca no array de variaveis
+/// locais na posicao 3 um double desempilhado
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void dstore_3() {
   int32_t indice;
-  int32_t parte_alta, parte_baixa;
+  int32_t parteAlta, parteBaixa;
   indice = 3;
-  parte_baixa = popOp();
-  parte_alta = popOp();
-  frameCorrente->fields[indice + POS_ALTA] = parte_alta;
-  frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
+  parteBaixa = popOp();
+  parteAlta = popOp();
+  frameCorrente->fields[indice] = parteAlta;
+  frameCorrente->fields[indice + 1] = parteBaixa;
   atualizaPc();
 }
+
 
 void astore_0() {
     int32_t indice;
