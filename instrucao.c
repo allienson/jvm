@@ -1242,7 +1242,7 @@ void daload() {
 
 ///
 /// Coloca na pilha de operandos
-/// uma valor de referencia
+/// um valor de referencia
 /// extraido de um array
 ///
 /// @param Nenhum
@@ -1256,6 +1256,14 @@ void aaload() {
 	atualizaPc();
 }
 
+///
+/// Coloca na pilha de operandos
+/// um byte / booleano extraido
+/// de um array
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc popOp
 void baload() {
 	int32_t* referencia;
 	int32_t indice = popOp();
@@ -1265,26 +1273,48 @@ void baload() {
 	atualizaPc();
 }
 
+///
+/// Coloca na pilha de operandos
+/// um char extraido de um array
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc popOp
 void caload() {
 	char* tipo = "C";
-    tipoGlobal = tipo;
+  tipoGlobal = tipo;
 	int32_t* referencia;
 	int32_t indice = popOp();
 	referencia = (int32_t*)popOp();
-	int16_t* binary = (int16_t*)referencia[indice];
-	pushOp((int32_t)binary);
+	int16_t* charTemp = (int16_t*)referencia[indice];
+	pushOp((int32_t)charTemp);
 	atualizaPc();
 }
 
+///
+/// Coloca na pilha de operandos
+/// um short extraido de um array
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc popOp
 void saload() {
 	int32_t* referencia;
 	int32_t indice = popOp();
 	referencia = (int32_t*)popOp();
-	int16_t* binary = (int16_t*)referencia[indice];
-	pushOp((int32_t)binary);
+	int16_t* shortTemp = (int16_t*)referencia[indice];
+	pushOp((int32_t)shortTemp);
 	atualizaPc();
 }
 
+///
+/// Coloca no array de variaveis
+/// locais o inteiro desempilhado
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void istore() {
   int32_t indice;
   int32_t valor;
@@ -1294,17 +1324,32 @@ void istore() {
   atualizaPc();
 }
 
+///
+/// Coloca no array de variaveis
+/// locais o long desempilhado
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void lstore() {
   int32_t indice;
   int32_t parte_alta, parte_baixa;
   indice = frameCorrente->code[frameCorrente->pc + 1];
   parte_baixa = popOp();
   parte_alta = popOp();
-  frameCorrente->fields[indice + POS_ALTA] = parte_alta;
-  frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
+  frameCorrente->fields[indice ] = parte_alta;
+  frameCorrente->fields[indice + 1] = parte_baixa;
   atualizaPc();
 }
-
+///
+/// Coloca no array de variaveis
+/// locais o float desempilhado
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void fstore() {
   int32_t indice;
   int32_t valor;
@@ -1313,18 +1358,32 @@ void fstore() {
   frameCorrente->fields[indice] = valor;
   atualizaPc();
 }
-
+///
+/// Coloca no array de variaveis
+/// locais o double desempilhado
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void dstore() {
   int32_t indice;
   int32_t parte_alta, parte_baixa;
   indice = frameCorrente->code[frameCorrente->pc + 1];
   parte_baixa = popOp();
   parte_alta = popOp();
-  frameCorrente->fields[indice + POS_ALTA] = parte_alta;
-  frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
+  frameCorrente->fields[indice ] = parte_alta;
+  frameCorrente->fields[indice + 1] = parte_baixa;
   atualizaPc();
 }
-
+///
+/// Coloca no array de variaveis
+/// locais uma referencia desempilhado
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void astore() {
   int32_t indice;
   int32_t valor;
@@ -1333,7 +1392,14 @@ void astore() {
   frameCorrente->fields[indice] = valor;
   atualizaPc();
 }
-
+///
+/// Coloca no array de variaveis
+/// locais na posicao 0 um inteiro desempilhado
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void istore_0() {
   int32_t indice;
   int32_t valor;
@@ -1342,14 +1408,30 @@ void istore_0() {
   frameCorrente->fields[indice] = valor;
   atualizaPc();
 }
-
+///
+/// Coloca no array de variaveis
+/// locais na posicao 1 um inteiro desempilhado
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void istore_1() {
+	int32_t indice;
   uint32_t valor;
+	indice = 1;
   valor = popOp();
   frameCorrente->fields[1] = valor;
   atualizaPc();
 }
-
+///
+/// Coloca no array de variaveis
+/// locais na posicao 2 um inteiro desempilhado
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void istore_2() {
   int32_t indice;
   int32_t valor;
@@ -1358,7 +1440,14 @@ void istore_2() {
   frameCorrente->fields[indice] = valor;
   atualizaPc();
 }
-
+///
+/// Coloca no array de variaveis
+/// locais na posicao 3 um inteiro desempilhado
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void istore_3() {
   int32_t indice;
   int32_t valor;
@@ -1367,48 +1456,76 @@ void istore_3() {
   frameCorrente->fields[indice] = valor;
   atualizaPc();
 }
-
+///
+/// Coloca no array de variaveis
+/// locais na posicao 0 um long desempilhado
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void lstore_0() {
   int32_t indice;
-  int32_t parte_alta, parte_baixa;
+  int32_t parteAlta, parteBaixa;
   indice = 0;
-  parte_baixa = popOp();
-  parte_alta = popOp();
-  frameCorrente->fields[indice + POS_ALTA] = parte_alta;
-  frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
+  parteBaixa = popOp();
+  parteAlta = popOp();
+  frameCorrente->fields[indice] = parteAlta;
+  frameCorrente->fields[indice + 1] = parteBaixa;
   atualizaPc();
 }
-
+///
+/// Coloca no array de variaveis
+/// locais na posicao 1 um long desempilhado
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void lstore_1() {
   int32_t indice;
-  int32_t parte_alta, parte_baixa;
+  int32_t parteAlta, parte_baixa;
   indice = 1;
   parte_baixa = popOp();
-  parte_alta = popOp();
-  frameCorrente->fields[indice + POS_ALTA] = parte_alta;
-  frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
+  parteAlta = popOp();
+  frameCorrente->fields[indice] = parteAlta;
+  frameCorrente->fields[indice + 1] = parte_baixa;
   atualizaPc();
 }
-
+///
+/// Coloca no array de variaveis
+/// locais na posicao 2 um long desempilhado
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void lstore_2() {
   int32_t indice;
-  int32_t parte_alta, parte_baixa;
+  int32_t parteAlta, parte_baixa;
   indice = 2;
   parte_baixa = popOp();
-  parte_alta = popOp();
-  frameCorrente->fields[indice + POS_ALTA] = parte_alta;
-  frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
+  parteAlta = popOp();
+  frameCorrente->fields[indice] = parteAlta;
+  frameCorrente->fields[indice + 1] = parte_baixa;
   atualizaPc();
 }
-
+///
+/// Coloca no array de variaveis
+/// locais na posicao 3 um long desempilhado
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void lstore_3() {
   int32_t indice;
-  int32_t parte_alta, parte_baixa;
+  int32_t parteAlta, parte_baixa;
   indice = 3;
   parte_baixa = popOp();
-  parte_alta = popOp();
-  frameCorrente->fields[indice + POS_ALTA] = parte_alta;
-  frameCorrente->fields[indice + POS_BAIXA] = parte_baixa;
+  parteAlta = popOp();
+  frameCorrente->fields[indice] = parteAlta;
+  frameCorrente->fields[indice + 1] = parte_baixa;
   atualizaPc();
 }
 
@@ -4150,8 +4267,8 @@ void checkcast() {
 }
 
 ///
-/// Recupera uma referencia de objeto da pilha de operandos 
-/// e verifica o tipo do objeto. Em caso nulo, empilha um 
+/// Recupera uma referencia de objeto da pilha de operandos
+/// e verifica o tipo do objeto. Em caso nulo, empilha um
 /// valor 0. Caso contrario, os 2 argumentos sao usados
 /// para encontrar uma constante no Constant Pool que contem
 /// o tipo do objeto (class, array, interface) e o valor 1
@@ -4217,7 +4334,7 @@ void multianewarray() {
 ///
 /// Recupera um valor da pilha de operandos e
 /// verifica se eh uma referencia. Em caso positivo,
-/// usa os 2 argumentos para compor um offset de 16bits 
+/// usa os 2 argumentos para compor um offset de 16bits
 /// da subrotina que deve ser executada em seguida e
 /// avanca o PC, somando o offset calculado.
 ///
@@ -4244,9 +4361,9 @@ void ifnull() {
 }
 
 ///
-/// Recupera um valor da pilha de operandos e verifica se 
-/// eh uma referencia nao nula. Em caso positivo, usa 
-/// os 2 argumentos para compor um offset de 16bits 
+/// Recupera um valor da pilha de operandos e verifica se
+/// eh uma referencia nao nula. Em caso positivo, usa
+/// os 2 argumentos para compor um offset de 16bits
 /// da subrotina que deve ser executada em seguida e
 /// avanca o PC, somando o offset calculado.
 ///
@@ -4275,7 +4392,7 @@ void ifnonnull() {
 ///
 /// Vai para a subrotina usando os 4 argumentos
 /// para compor um offset de 32bits da subrotina
-/// que deve ser executada em seguida e avanca 
+/// que deve ser executada em seguida e avanca
 /// o PC, somando o offset calculado.
 ///
 /// @param Nenhum
@@ -4305,7 +4422,7 @@ void goto_w() {
 /// @return @c void
 /// @see pushOp
 void jsr_w() {
-	
+
 	int32_t deslocamento;
   int32_t offset1;
   int32_t offset2;
