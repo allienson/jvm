@@ -267,7 +267,7 @@ void inicializaInstrucoes() {
 	instrucao[164] = if_icmple;
 	instrucao[165] = if_acmpeq;
 	instrucao[166] = if_acmpne;
-	instrucao[167] = ins_goto;
+	instrucao[167] = _goto;
 	instrucao[168] = jsr;
 	instrucao[169] = ret;
 	instrucao[170] = tableswitch;
@@ -2687,48 +2687,75 @@ void i2s() {
 	atualizaPc();
 }
 
+///
+/// Desempilha dois valores long da pilha de operandos
+/// e os compara, apos serem convertidos. Se valor1 > valor2
+/// entao o valor inteiro 1 eh empilhado. Se valor1 = valor2
+/// entao o valor inteiro 0 eh empilhado. Se valor1 < valor2
+/// entao o valor inteiro -1 eh empilhado. Se valor1 ou valor2
+/// sao NanN, entao o valor inteiro -1 eh empilhado. 
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp atualizaPc
 void lcmp() {
-	int32_t baixa,alta;
-	baixa = popOp();
-	alta = popOp();
+	int32_t parteBaixa, parteAlta;
+	parteBaixa = popOp();
+	parteAlta = popOp();
 
-	int64_t lVal = alta;
-	lVal <<= 32;
-	lVal = lVal + baixa;
+	int64_t valorLong = parteAlta;
+	valorLong <<= 32;
+	valorLong = valorLong | parteBaixa;
 
-	baixa = popOp();
-	alta = popOp();
+	long longCmp;
+	memcpy(&longCmp, &valorLong, sizeof(long));
 
-	int64_t lVal2 = alta;
-	lVal2 <<= 32;
-	lVal2 = lVal2 + baixa;
+	parteBaixa2 = popOp();
+	parteAlta2 = popOp();
 
-	if(lVal2 == lVal) {
-		pushOp((int32_t)0);
-	} else if(lVal2 > lVal) {
-		pushOp((int32_t)1);
-	} else if(lVal2 < lVal) {
-		pushOp((int32_t)-1);
+	int64_t valorDouble2 = parteAlta2;
+	valorDouble2 <<= 32;
+	valorDouble2 = valorDouble2 | parteBaixa2;
+
+	long longCmp2;
+	memcpy(&longCmp2, &valorDouble2, sizeof(long));
+
+	if(longCmp2 > longCmp) {
+		pushOp((int32_t) 1);
+	} else if(longCmp2 == longCmp) {
+		pushOp((int32_t) 0);
+	} else if(longCmp2 < longCmp) {
+		pushOp((int32_t) -1);
 	}
-
 	atualizaPc();
 }
 
+///
+/// Desempilha dois valores float da pilha de operandos
+/// e os compara, apos serem convertidos. Se valor1 > valor2
+/// entao o valor inteiro 1 eh empilhado. Se valor1 = valor2
+/// entao o valor inteiro 0 eh empilhado. Se valor1 < valor2
+/// entao o valor inteiro -1 eh empilhado. Se valor1 ou valor2
+/// sao NanN, entao o valor inteiro -1 eh empilhado. 
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp atualizaPc
 void fcmpl() {
-	float val1,val2;
-	int32_t retPilha;
+	float valorFloat, valorFloat2;
+	int32_t valor;
 
-	retPilha = popOp();
-	memcpy(&val2,&retPilha,sizeof(float));
+	valor = popOp();
+	memcpy(&valorFloat,&valor,sizeof(float));
 
-	retPilha = popOp();
-	memcpy(&val1,&retPilha,sizeof(float));
+	valor = popOp();
+	memcpy(&valorFloat2,&valor,sizeof(float));
 
-	if(val1 == val2) {
+	if(valorFloat == valorFloat2) {
 		pushOp((int32_t)0);
-	} else if(val1 > val2) {
+	} else if(valorFloat > valorFloat2) {
 		pushOp((int32_t)1);
-	} else if(val1 < val2) {
+	} else if(valorFloat < valorFloat2) {
 		pushOp((int32_t)-1);
 	} else {
 		printf("NaN!!\n");
@@ -2737,21 +2764,32 @@ void fcmpl() {
 	atualizaPc();
 }
 
+///
+/// Desempilha dois valores float da pilha de operandos
+/// e os compara, apos serem convertidos. Se valor1 > valor2
+/// entao o valor inteiro 1 eh empilhado. Se valor1 = valor2
+/// entao o valor inteiro 0 eh empilhado. Se valor1 < valor2
+/// entao o valor inteiro -1 eh empilhado. Se valor1 ou valor2
+/// sao NanN, entao o valor inteiro 1 eh empilhado. 
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp atualizaPc
 void fcmpg() {
-	float val1,val2;
-	int32_t retPilha;
+	float valorFloat, valorFloat2;
+	int32_t valor;
 
-	retPilha = popOp();
-	memcpy(&val2,&retPilha,sizeof(float));
+	valor = popOp();
+	memcpy(&valorFloat,&valor,sizeof(float));
 
-	retPilha = popOp();
-	memcpy(&val1,&retPilha,sizeof(float));
+	valor = popOp();
+	memcpy(&valorFloat2,&valor,sizeof(float));
 
-	if(val1 == val2) {
+	if(valorFloat == valorFloat2) {
 		pushOp((int32_t)0);
-	} else if(val1 > val2) {
+	} else if(valorFloat > valorFloat2) {
 		pushOp((int32_t)1);
-	} else if(val1 < val2) {
+	} else if(valorFloat < valorFloat2) {
 		pushOp((int32_t)-1);
 	} else {
 		printf("NaN!!\n");
@@ -2760,34 +2798,45 @@ void fcmpg() {
 	atualizaPc();
 }
 
+///
+/// Desempilha dois valores double da pilha de operandos
+/// e os compara, apos serem convertidos. Se valor1 > valor2
+/// entao o valor inteiro 1 eh empilhado. Se valor1 = valor2
+/// entao o valor inteiro 0 eh empilhado. Se valor1 < valor2
+/// entao o valor inteiro -1 eh empilhado. Se valor1 ou valor2
+/// sao NanN, entao o valor inteiro -1 eh empilhado. 
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp atualizaPc
 void dcmpl() {
-	int32_t baixa,alta;
-	baixa = popOp();
-	alta = popOp();
+	int32_t parteBaixa, parteAlta;
+	parteBaixa = popOp();
+	parteAlta = popOp();
 
-	int64_t dVal = alta;
-	dVal <<= 32;
-	dVal = dVal + baixa;
+	int64_t valorDouble = parteAlta;
+	valorDouble <<= 32;
+	valorDouble = valorDouble | parteBaixa;
 
-	double doubleCmpl;
-	memcpy(&doubleCmpl, &dVal, sizeof(double));
+	double doubleCmp;
+	memcpy(&doubleCmp, &valorDouble, sizeof(double));
 
-	baixa = popOp();
-	alta = popOp();
+	parteBaixa2 = popOp();
+	parteAlta2 = popOp();
 
-	int64_t dVal2 = alta;
-	dVal2 <<= 32;
-	dVal2 = dVal2 + baixa;
+	int64_t valorDouble2 = parteAlta2;
+	valorDouble2 <<= 32;
+	valorDouble2 = valorDouble2 | parteBaixa2;
 
-	double doubleCmpl2;
-	memcpy(&doubleCmpl2, &dVal2, sizeof(double));
+	double doubleCmp2;
+	memcpy(&doubleCmp2, &valorDouble2, sizeof(double));
 
-	if(doubleCmpl2 > doubleCmpl) {
-		pushOp((int32_t)1);
-	} else if(doubleCmpl2 == doubleCmpl) {
-		pushOp((int32_t)0);
-	} else if(doubleCmpl2 < doubleCmpl) {
-		pushOp((int32_t)-1);
+	if(doubleCmp2 > doubleCmp) {
+		pushOp((int32_t) 1);
+	} else if(doubleCmp2 == doubleCmp) {
+		pushOp((int32_t) 0);
+	} else if(doubleCmp2 < doubleCmp) {
+		pushOp((int32_t) -1);
 	} else {
 		printf("NaN!\n");
 		pushOp((int32_t) -1);
@@ -2795,34 +2844,45 @@ void dcmpl() {
 	atualizaPc();
 }
 
+///
+/// Desempilha dois valores double da pilha de operandos
+/// e os compara, apos serem convertidos. Se valor1 > valor2
+/// entao o valor inteiro 1 eh empilhado. Se valor1 = valor2
+/// entao o valor inteiro 0 eh empilhado. Se valor1 < valor2
+/// entao o valor inteiro -1 eh empilhado. Se valor1 ou valor2
+/// sao NanN, entao o valor inteiro 1 eh empilhado. 
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp atualizaPc
 void dcmpg() {
-	int32_t baixa,alta;
-	baixa = popOp();
-	alta = popOp();
+	int32_t parteBaixa, parteAlta;
+	parteBaixa = popOp();
+	parteAlta = popOp();
 
-	int64_t dVal = alta;
-	dVal <<= 32;
-	dVal = dVal + baixa;
+	int64_t valorDouble = parteAlta;
+	valorDouble <<= 32;
+	valorDouble = valorDouble | parteBaixa;
 
-	double doubleCmpl;
-	memcpy(&doubleCmpl, &dVal, sizeof(double));
+	double doubleCmp;
+	memcpy(&doubleCmp, &valorDouble, sizeof(double));
 
-	baixa = popOp();
-	alta = popOp();
+	parteBaixa2 = popOp();
+	parteAlta2 = popOp();
 
-	int64_t dVal2 = alta;
-	dVal2 <<= 32;
-	dVal2 = dVal2 + baixa;
+	int64_t valorDouble2 = parteAlta2;
+	valorDouble2 <<= 32;
+	valorDouble2 = valorDouble2 | parteBaixa2;
 
-	double doubleCmpl2;
-	memcpy(&doubleCmpl2, &dVal2, sizeof(double));
+	double doubleCmp2;
+	memcpy(&doubleCmp2, &valorDouble2, sizeof(double));
 
-	if(doubleCmpl2 > doubleCmpl) {
-		pushOp((int32_t)1);
-	} else if(doubleCmpl2 == doubleCmpl) {
-		pushOp((int32_t)0);
-	} else if(doubleCmpl2 < doubleCmpl) {
-		pushOp((int32_t)-1);
+	if(doubleCmp2 > doubleCmp) {
+		pushOp((int32_t) 1);
+	} else if(doubleCmp2 == doubleCmp) {
+		pushOp((int32_t) 0);
+	} else if(doubleCmp2 < doubleCmp) {
+		pushOp((int32_t) -1);
 	} else {
 		printf("NaN!\n");
 		pushOp((int32_t) 1);
@@ -2830,15 +2890,24 @@ void dcmpg() {
 	atualizaPc();
 }
 
+///
+/// Desempilha um valor inteiro da pilha de operandos
+/// e compara com 0. Se valor = 0, pula para a 
+/// instrucao a partir do offset calculado com os 
+/// dois bytes de argumento. O valor de PC 
+/// eh somado com esse offset.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp
 void ifeq() {
-	uint8_t offset1,offset2;
+	uint8_t branchbyte1,branchbyte2;
 	int16_t offset;
 
-	offset1 = frameCorrente->code[frameCorrente->pc + 1];
-	offset2 = frameCorrente->code[frameCorrente->pc + 2];
-	offset = offset1;
-	offset <<= 8;
-	offset |= offset2;
+	branchbyte1 = frameCorrente->code[frameCorrente->pc + 1];
+	branchbyte2 = frameCorrente->code[frameCorrente->pc + 2];
+	offset = branchbyte1;
+	offset = (branchbyte1 << 8) | branchbyte2;
 
 	int32_t retPilha = popOp();
 
@@ -2849,15 +2918,24 @@ void ifeq() {
 	}
 }
 
+///
+/// Desempilha um valor inteiro da pilha de operandos
+/// e compara com 0. Se valor != 0, pula para a 
+/// instrucao a partir do offset calculado com os 
+/// dois bytes de argumento. O valor de PC 
+/// eh somado com esse offset.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp
 void ifne() {
-	uint8_t offset1,offset2;
+	uint8_t branchbyte1,branchbyte2;
 	int16_t offset;
 
-	offset1 = frameCorrente->code[frameCorrente->pc + 1];
-	offset2 = frameCorrente->code[frameCorrente->pc + 2];
-	offset = offset1;
-	offset <<= 8;
-	offset |= offset2;
+	branchbyte1 = frameCorrente->code[frameCorrente->pc + 1];
+	branchbyte2 = frameCorrente->code[frameCorrente->pc + 2];
+	offset = branchbyte1;
+	offset = (branchbyte1 << 8) | branchbyte2;
 
 	int32_t retPilha = popOp();
 
@@ -2868,15 +2946,24 @@ void ifne() {
 	}
 }
 
+///
+/// Desempilha um valor inteiro da pilha de operandos
+/// e compara com 0. Se valor < 0, pula para a 
+/// instrucao a partir do offset calculado com os 
+/// dois bytes de argumento. O valor de PC 
+/// eh somado com esse offset.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp
 void iflt() {
-	uint8_t offset1,offset2;
+	uint8_t branchbyte1,branchbyte2;
 	int16_t offset;
 
-	offset1 = frameCorrente->code[frameCorrente->pc + 1];
-	offset2 = frameCorrente->code[frameCorrente->pc + 2];
-	offset = offset1;
-	offset <<= 8;
-	offset |= offset2;
+	branchbyte1 = frameCorrente->code[frameCorrente->pc + 1];
+	branchbyte2 = frameCorrente->code[frameCorrente->pc + 2];
+	offset = branchbyte1;
+	offset = (branchbyte1 << 8) | branchbyte2;
 
 	int32_t retPilha = popOp();
 
@@ -2887,15 +2974,24 @@ void iflt() {
 	}
 }
 
+///
+/// Desempilha um valor inteiro da pilha de operandos
+/// e compara com 0. Se valor >= 0, pula para a 
+/// instrucao a partir do offset calculado com os 
+/// dois bytes de argumento. O valor de PC 
+/// eh somado com esse offset.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp
 void ifge() {
-	uint8_t offset1,offset2;
+	uint8_t branchbyte1,branchbyte2;
 	int16_t offset;
 
-	offset1 = frameCorrente->code[frameCorrente->pc + 1];
-	offset2 = frameCorrente->code[frameCorrente->pc + 2];
-	offset = offset1;
-	offset <<= 8;
-	offset |= offset2;
+	branchbyte1 = frameCorrente->code[frameCorrente->pc + 1];
+	branchbyte2 = frameCorrente->code[frameCorrente->pc + 2];
+	offset = branchbyte1;
+	offset = (branchbyte1 << 8) | branchbyte2;
 
 	int32_t retPilha = popOp();
 
@@ -2906,15 +3002,24 @@ void ifge() {
 	}
 }
 
+///
+/// Desempilha um valor inteiro da pilha de operandos
+/// e compara com 0. Se valor > 0, pula para a 
+/// instrucao a partir do offset calculado com os 
+/// dois bytes de argumento. O valor de PC 
+/// eh somado com esse offset.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp
 void ifgt() {
-	uint8_t offset1,offset2;
+	uint8_t branchbyte1,branchbyte2;
 	int16_t offset;
 
-	offset1 = frameCorrente->code[frameCorrente->pc + 1];
-	offset2 = frameCorrente->code[frameCorrente->pc + 2];
-	offset = offset1;
-	offset <<= 8;
-	offset |= offset2;
+	branchbyte1 = frameCorrente->code[frameCorrente->pc + 1];
+	branchbyte2 = frameCorrente->code[frameCorrente->pc + 2];
+	offset = branchbyte1;
+	offset = (branchbyte1 << 8) | branchbyte2;
 
 	int32_t retPilha = popOp();
 
@@ -2925,15 +3030,24 @@ void ifgt() {
 	}
 }
 
+///
+/// Desempilha um valor inteiro da pilha de operandos
+/// e compara com 0. Se valor <= 0, pula para a 
+/// instrucao a partir do offset calculado com os 
+/// dois bytes de argumento. O valor de PC 
+/// eh somado com esse offset.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp
 void ifle() {
-	uint8_t offset1,offset2;
+	uint8_t branchbyte1,branchbyte2;
 	int16_t offset;
 
-	offset1 = frameCorrente->code[frameCorrente->pc + 1];
-	offset2 = frameCorrente->code[frameCorrente->pc + 2];
-	offset = offset1;
-	offset <<= 8;
-	offset |= offset2;
+	branchbyte1 = frameCorrente->code[frameCorrente->pc + 1];
+	branchbyte2 = frameCorrente->code[frameCorrente->pc + 2];
+	offset = branchbyte1;
+	offset = (branchbyte1 << 8) | branchbyte2;
 
 	int32_t retPilha = popOp();
 
@@ -2944,6 +3058,16 @@ void ifle() {
 	}
 }
 
+///
+/// Desempilha dois valores inteiros da pilha de operandos
+/// e compara. Se valor1 = valor2, pula para a 
+/// instrucao a partir do offset calculado com os 
+/// dois bytes de argumento. O valor de PC 
+/// eh somado com esse offset.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp
 void if_icmpeq() {
 	uint8_t offset1,offset2;
 	int16_t offset;
@@ -2964,6 +3088,16 @@ void if_icmpeq() {
 	}
 }
 
+///
+/// Desempilha dois valores inteiros da pilha de operandos
+/// e compara. Se valor1 != valor2, pula para a 
+/// instrucao a partir do offset calculado com os 
+/// dois bytes de argumento. O valor de PC 
+/// eh somado com esse offset.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp
 void if_icmpne() {
 	uint8_t offset1,offset2;
 	int16_t offset;
@@ -2984,6 +3118,16 @@ void if_icmpne() {
 	}
 }
 
+///
+/// Desempilha dois valores inteiros da pilha de operandos
+/// e compara. Se valor1 < valor2, pula para a 
+/// instrucao a partir do offset calculado com os 
+/// dois bytes de argumento. O valor de PC 
+/// eh somado com esse offset.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp
 void if_icmplt() {
 	uint8_t offset1,offset2;
 	int16_t offset;
@@ -3004,6 +3148,16 @@ void if_icmplt() {
 	}
 }
 
+///
+/// Desempilha dois valores inteiros da pilha de operandos
+/// e compara. Se valor1 >= valor2, pula para a 
+/// instrucao a partir do offset calculado com os 
+/// dois bytes de argumento. O valor de PC 
+/// eh somado com esse offset.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp
 void if_icmpge() {
 	uint8_t offset1,offset2;
 	int16_t offset;
@@ -3024,6 +3178,16 @@ void if_icmpge() {
 	}
 }
 
+///
+/// Desempilha dois valores inteiros da pilha de operandos
+/// e compara. Se valor1 > valor2, pula para a 
+/// instrucao a partir do offset calculado com os 
+/// dois bytes de argumento. O valor de PC 
+/// eh somado com esse offset.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp
 void if_icmpgt() {
 	uint8_t offset1,offset2;
 	int16_t offset;
@@ -3044,6 +3208,16 @@ void if_icmpgt() {
 	}
 }
 
+///
+/// Desempilha dois valores inteiros da pilha de operandos
+/// e compara. Se valor1 <= valor2, pula para a 
+/// instrucao a partir do offset calculado com os 
+/// dois bytes de argumento. O valor de PC 
+/// eh somado com esse offset.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp
 void if_icmple() {
 	uint8_t offset1,offset2;
 	int16_t offset;
@@ -3064,6 +3238,16 @@ void if_icmple() {
 	}
 }
 
+///
+/// Desempilha dois valores de referencia da pilha 
+/// de operandos e compara. Se forem iguais, pula para a 
+/// instrucao a partir do offset calculado com os 
+/// dois bytes de argumento. O valor de PC 
+/// eh somado com esse offset.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp
 void if_acmpeq() {
 	uint8_t offset1,offset2;
 	int16_t offset;
@@ -3084,6 +3268,16 @@ void if_acmpeq() {
 	}
 }
 
+///
+/// Desempilha dois valores de referencia da pilha 
+/// de operandos e compara. Se forem iguais, pula para a 
+/// instrucao a partir do offset calculado com os 
+/// dois bytes de argumento. O valor de PC 
+/// eh somado com esse offset.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp
 void if_acmpne() {
 	uint8_t offset1,offset2;
 	int16_t offset;
@@ -3104,7 +3298,14 @@ void if_acmpne() {
 	}
 }
 
-void ins_goto() {
+///
+/// Pula para a instrucao a partir do offset calculado
+/// com os dois bytes de argumento. O valor de PC 
+/// eh somado com esse offset.
+///
+/// @param Nenhum
+/// @return @c void
+void _goto() {
 	uint8_t offset1,offset2;
 	int16_t offset;
 
@@ -3118,12 +3319,10 @@ void ins_goto() {
 }
 
 ///
-/// Pula para uma subrotina
-/// sao compostos para ser usados como indice de uma classe
-/// no Constant Pool. O ultimo argumento eh usado para definir
-/// a quantidade de dimensoes no array.
-///
-/// <b> Essa instruncao nao foi implementada!</b>
+/// Pula para uma subrotina, salvando o endereco da proxima 
+/// instrucao na pilha de operandos. Os dois bytes argumentos 
+/// compoe um offset para a instrucao que sera executada.
+/// O valor de PC eh somado com esse offset.
 ///
 /// @param Nenhum
 /// @return @c void
