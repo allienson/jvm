@@ -1104,11 +1104,29 @@ void dload_3() {
   atualizaPc();
 }
 
+///
+/// Coloca uma referencia a partir
+/// da primeira posicao do
+/// array de variaveis locais
+/// na pilha
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void aload_0() {
 	pushOp(frameCorrente->fields[0]);
 	atualizaPc();
 }
 
+///
+/// Coloca uma referencia a partir
+/// da segunda posicao do
+/// array de variaveis locais
+/// na pilha
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void aload_1() {
   int32_t indice, valor;
   indice = 1;
@@ -1117,6 +1135,15 @@ void aload_1() {
   atualizaPc();
 }
 
+///
+/// Coloca uma referencia a partir
+/// da terceira posicao do
+/// array de variaveis locais
+/// na pilha
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void aload_2() {
   int32_t indice, valor;
   indice = 2;
@@ -1125,14 +1152,31 @@ void aload_2() {
   atualizaPc();
 }
 
+///
+/// Coloca uma referencia a partir
+/// da quarta posicao do
+/// array de variaveis locais
+/// na pilha
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc
 void aload_3() {
-  int32_t indice, valor;
+  int32_t indice;
+  int32_t valor;
   indice = 3;
   valor = frameCorrente->fields[indice];
   pushOp(valor);
   atualizaPc();
 }
 
+///
+/// Coloca na pilha de operandos
+/// um valor inteiro de um array
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc popOp
 void iaload() {
 	int32_t* referencia;
 	int32_t indice = popOp();
@@ -1141,19 +1185,31 @@ void iaload() {
 	atualizaPc();
 }
 
+///
+/// Coloca na pilha de operandos
+/// um valor long de um array
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc popOp
 void laload() {
-	static int16_t countPos = 0;
 	char* tipo = "L";
   tipoGlobal = tipo;
 	int32_t indice = popOp();
 	int32_t* referencia;
 	referencia = (int32_t*)popOp();
-	pushOp(referencia[countPos + indice+1]);
-	pushOp(referencia[countPos + indice]);
-	countPos += 2;
+	pushOp(referencia[indice+1]);
+	pushOp(referencia[indice]);
 	atualizaPc();
 }
 
+///
+/// Coloca na pilha de operandos
+/// um valor float de um array
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc popOp
 void faload() {
 	char* tipo = "F";
   tipoGlobal = tipo;
@@ -1166,19 +1222,32 @@ void faload() {
 	atualizaPc();
 }
 
+///
+/// Coloca na pilha de operandos
+/// um valor double de um array
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc popOp
 void daload() {
-	static int16_t countPos = 0;
 	char* tipo = "D";
   tipoGlobal = tipo;
 	int32_t indice = popOp();
 	int32_t* referencia;
 	referencia = (int32_t*)popOp();
-	pushOp(referencia[countPos + indice+1]);
-	pushOp(referencia[countPos + indice]);
-	countPos += 2;
+	pushOp(referencia[indice+1]);
+	pushOp(referencia[indice]);
 	atualizaPc();
 }
 
+///
+/// Coloca na pilha de operandos
+/// uma valor de referencia
+/// extraido de um array
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp atualizaPc popOp
 void aaload() {
 	int32_t* referencia;
 	int32_t indice = popOp();
