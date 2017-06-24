@@ -2891,6 +2891,17 @@ void ins_goto() {
 	frameCorrente->pc += offset;
 }
 
+///
+/// Pula para uma subrotina
+/// sao compostos para ser usados como indice de uma classe
+/// no Constant Pool. O ultimo argumento eh usado para definir
+/// a quantidade de dimensoes no array.
+///
+/// <b> Essa instruncao nao foi implementada!</b>
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp
 void jsr() {
 	pushOp(frameCorrente->pc+3);
 
@@ -2906,6 +2917,11 @@ void jsr() {
 	frameCorrente->pc += offset;
 }
 
+///
+/// Retorna de uma subrotina.
+///
+/// @param Nenhum
+/// @return @c void
 void ret() {
 	return;
 }
@@ -3708,6 +3724,17 @@ void checkcast() {
 	atualizaPc();
 }
 
+///
+/// Recupera uma referencia de objeto da pilha de operandos 
+/// e verifica o tipo do objeto. Em caso nulo, empilha um 
+/// valor 0. Caso contrario, os 2 argumentos sao usados
+/// para encontrar uma constante no Constant Pool que contem
+/// o tipo do objeto (class, array, interface) e o valor 1
+/// eh empilhado na pilha de operandos.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp retornaNomeClasse retornaNome
 void instanceof() {
 	int16_t indice;
 	int8_t offset1,offset2;
@@ -3735,14 +3762,43 @@ void instanceof() {
 	atualizaPc();
 }
 
+///
+/// Modifica o comportamento de outras instrucoes para receber
+/// mais bytes como argumento, que serao usados para compor
+/// um indice do array de variaveis locais.
+///
+/// <b> Essa instruncao nao foi implementada!</b>
+///
+/// @param Nenhum
+/// @return @c void
 void wide() {
 
 }
 
+///
+/// Cria um array multidimensional onde os 2 primeiros argumentos
+/// sao compostos para ser usados como indice de uma classe
+/// no Constant Pool. O ultimo argumento eh usado para definir
+/// a quantidade de dimensoes no array.
+///
+/// <b> Essa instruncao nao foi implementada!</b>
+///
+/// @param Nenhum
+/// @return @c void
 void multianewarray() {
 
 }
 
+///
+/// Recupera um valor da pilha de operandos e
+/// verifica se eh uma referencia. Em caso positivo,
+/// usa os 2 argumentos para compor um offset de 16bits 
+/// da subrotina que deve ser executada em seguida e
+/// avanca o PC, somando o offset calculado.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp
 void ifnull() {
 	uint8_t offset1,offset2;
 	int16_t offset;
@@ -3762,6 +3818,16 @@ void ifnull() {
 	}
 }
 
+///
+/// Recupera um valor da pilha de operandos e verifica se 
+/// eh uma referencia nao nula. Em caso positivo, usa 
+/// os 2 argumentos para compor um offset de 16bits 
+/// da subrotina que deve ser executada em seguida e
+/// avanca o PC, somando o offset calculado.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp
 void ifnonnull() {
 	uint8_t offset1,offset2;
 	int16_t offset;
@@ -3781,6 +3847,14 @@ void ifnonnull() {
 	}
 }
 
+///
+/// Vai para a subrotina usando os 4 argumentos
+/// para compor um offset de 32bits da subrotina
+/// que deve ser executada em seguida e avanca 
+/// o PC, somando o offset calculado.
+///
+/// @param Nenhum
+/// @return @c void
 void goto_w() {
 	int32_t deslocamento,offset1,offset2,offset3,offset4;
 
@@ -3797,7 +3871,16 @@ void goto_w() {
 	frameCorrente->pc += deslocamento;
 }
 
+///
+/// Pula para a subrotina usando os 4 argumentos
+/// para compor um endereco de 32bits da subrotina
+/// que deve ser executada e avanca o PC.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see pushOp
 void jsr_w() {
+	
 	int32_t deslocamento;
   int32_t offset1;
   int32_t offset2;
