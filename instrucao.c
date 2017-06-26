@@ -2527,14 +2527,14 @@ void lrem() {
 	parteBaixa = popOp();
 	parteAlta = popOp();
 
-	int64_t valorLong = parteAlta;
-	valorLong = (valorLong << 32) + parteBaixa;
+	int64_t valorLong1 = parteAlta;
+	valorLong1 = (valorLong1 << 32) + parteBaixa;
 
 	parteBaixa = popOp();
 	parteAlta = popOp();
 
-	int64_t valorLong1 = parteAlta;
-	valorLong1 = (valorLong1 << 32) + parteBaixa;
+	int64_t valorLong2 = parteAlta;
+	valorLong2 = (valorLong2 << 32) + parteBaixa;
 
 	int64_t resultado = valorLong1 -((valorLong1/valorLong2) * valorLong2);
 
@@ -2769,33 +2769,47 @@ void lushr() {
 
 	atualizaPc();
 }
-
+///
+/// Realiza a operacao and entre os dois primeiros
+/// inteiros da pilha e guarda o resultado
+/// na pilha.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp
 void iand() {
 	int32_t pop1 = popOp();
 	int32_t pop2 = popOp();
-	int32_t aux = pop1 & pop2;
-	pushOp(aux);
+	int32_t resultado = pop1 & pop2;
+	pushOp(resultado);
 	frameCorrente->pc++;
 }
-
+///
+/// Realiza a operacao and entre os dois primeiros
+/// longs da pilha e guarda o resultado
+/// na pilha.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp pushOp
 void land() {
 	int32_t baixa,alta;
 
 	baixa = popOp();
 	alta = popOp();
 
-	int64_t lVal = alta;
-	lVal <<= 32;
-	lVal = lVal + baixa;
+	int64_t val1 = alta;
+	val1 <<= 32;
+	val1 = val1 + baixa;
 
 	baixa = popOp();
 	alta = popOp();
 
-	int64_t lVal1 = alta;
-	lVal1 <<= 32;
-	lVal1 = lVal1 + baixa;
+	int64_t val2 = alta;
+	val2 <<= 32;
+	val2 = val2 + baixa;
 
-	int64_t resultado = lVal1 & lVal;
+	int64_t resultado = val2 & val1;
 
 	alta = resultado >> 32;
 	baixa = resultado & 0xffffffff;
@@ -2804,33 +2818,47 @@ void land() {
 	pushOp(baixa);
 	atualizaPc();
 }
-
+///
+/// Realiza a operacao or entre os dois primeiros
+/// inteiros da pilha e guarda o resultado
+/// na pilha.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp
 void ior() {
 	int32_t pop1 = popOp();
 	int32_t pop2 = popOp();
-	int32_t aux = pop1 | pop2;
-	pushOp(aux);
+	int32_t resultado = pop1 | pop2;
+	pushOp(resultado);
 	frameCorrente->pc++;
 }
-
+///
+/// Realiza a operacao or entre os dois primeiros
+/// longs da pilha e guarda o resultado
+/// na pilha.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp pushOp
 void lor() {
 	int32_t baixa,alta;
 
 	baixa = popOp();
 	alta = popOp();
 
-	int64_t lVal = alta;
-	lVal <<= 32;
-	lVal = lVal + baixa;
+	int64_t val1 = alta;
+	val1 <<= 32;
+	val1 = val1 + baixa;
 
 	baixa = popOp();
 	alta = popOp();
 
-	int64_t lVal1 = alta;
-	lVal1 <<= 32;
-	lVal1 = lVal1 + baixa;
+	int64_t val2 = alta;
+	val2 <<= 32;
+	val2 = val2 + baixa;
 
-	int64_t resultado = lVal1 | lVal;
+	int64_t resultado = val2 | val1;
 
 	alta = resultado >> 32;
 	baixa = resultado & 0xffffffff;
@@ -2843,33 +2871,47 @@ void lor() {
 
 	atualizaPc();
 }
-
+///
+/// Realiza a operacao xor entre os dois primeiros
+/// inteiros da pilha e guarda o resultado
+/// na pilha.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp
 void ixor() {
 	int32_t pop1 = popOp();
 	int32_t pop2 = popOp();
-	int32_t aux = pop1 ^ pop2;
-	pushOp(aux);
+	int32_t resultado = pop1 ^ pop2;
+	pushOp(resultado);
 	frameCorrente->pc++;
 }
-
+///
+/// Realiza a operacao xor entre os dois primeiros
+/// longs da pilha e guarda o resultado
+/// na pilha.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp pushOp
 void lxor() {
 	int32_t baixa,alta;
 
 	baixa = popOp();
 	alta = popOp();
 
-	int64_t lVal = alta;
-	lVal <<= 32;
-	lVal = lVal + baixa;
+	int64_t val1 = alta;
+	val1 <<= 32;
+	val1 = val1 + baixa;
 
 	baixa = popOp();
 	alta = popOp();
 
-	int64_t lVal1 = alta;
-	lVal1 <<= 32;
-	lVal1 = lVal1 + baixa;
+	int64_t val2 = alta;
+	val2 <<= 32;
+	val2 = val2 + baixa;
 
-	int64_t resultado = lVal1 ^ lVal;
+	int64_t resultado = val2 ^ val1;
 
 	alta = resultado >> 32;
 	baixa = resultado & 0xffffffff;
@@ -2878,17 +2920,28 @@ void lxor() {
 	pushOp(baixa);
 	atualizaPc();
 }
-
+///
+/// Incrementa uma variavel do array de variaveis locais
+/// apontada por um indice passado como parametro com um 
+/// byte tambem passado como parametro
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc
 void iinc() {
-	int8_t field = frameCorrente->code[frameCorrente->pc + 1];
-	int32_t value = frameCorrente->fields[field];
-	int8_t constant = frameCorrente->code[frameCorrente->pc + 2];
-	int8_t sumVal = (int8_t) value;
-	sumVal = sumVal + constant;
-	frameCorrente->fields[field] = (int32_t) sumVal;
+	int8_t indice = frameCorrente->code[frameCorrente->pc + 1];
+	int32_t valor = frameCorrente->fields[indice];
+	int8_t byte = frameCorrente->code[frameCorrente->pc + 2];
+	int32_t byteEstendido = byte & 0x000000FF;
+	frameCorrente->fields[indice] = (int32_t) (byteEstendido + valor);
 	atualizaPc();
 }
-
+///
+/// Converte um valor inteiro para um valor long
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc pushOp
 void i2l() {
   char* tipo = "L";
   tipoGlobal = tipo;
@@ -2901,7 +2954,12 @@ void i2l() {
   pushOp(baixa);
   atualizaPc();
 }
-
+///
+/// Converte um valor inteiro para um valor float
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc pushOp
 void i2f() {
   char* tipo = "F";
   tipoGlobal = tipo;
@@ -2912,7 +2970,12 @@ void i2f() {
 	pushOp(valPilha);
 	atualizaPc();
 }
-
+///
+/// Converte um valor inteiro para um valor double
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc pushOp
 void i2d() {
   char* tipo = "D";
   tipoGlobal = tipo;
@@ -2928,7 +2991,12 @@ void i2d() {
 	pushOp(baixa);
 	atualizaPc();
 }
-
+///
+/// Converte um valor long para um valor inteiro
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc pushOp
 void l2i() {
   char* tipo = "I";
   tipoGlobal = tipo;
@@ -2938,7 +3006,12 @@ void l2i() {
 	pushOp(baixa);
 	atualizaPc();
 }
-
+///
+/// Converte um valor long para um valor float
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc pushOp
 void l2f() {
   char* tipo = "F";
   tipoGlobal = tipo;
@@ -2960,7 +3033,12 @@ void l2f() {
 	pushOp(valPilha);
 	atualizaPc();
 }
-
+///
+/// Converte um valor long para um valor double
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc pushOp
 void l2d() {
   char* tipo = "D";
   tipoGlobal = tipo;
@@ -2986,7 +3064,12 @@ void l2d() {
 	pushOp(baixa);
 	atualizaPc();
 }
-
+///
+/// Converte um valor float para um valor inteiro
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc pushOp
 void f2i() {
   char* tipo = "I";
   tipoGlobal = tipo;
@@ -2996,7 +3079,12 @@ void f2i() {
 	pushOp((int32_t)fVal);
 	atualizaPc();
 }
-
+///
+/// Converte um valor float para um valor long
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc pushOp
 void f2l() {
   char* tipo = "L";
   tipoGlobal = tipo;
@@ -3017,7 +3105,12 @@ void f2l() {
 	pushOp(baixa);
 	atualizaPc();
 }
-
+///
+/// Converte um valor float para um valor double
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc pushOp
 void f2d() {
   char* tipo = "D";
   tipoGlobal = tipo;
@@ -3042,7 +3135,12 @@ void f2d() {
 	pushOp(baixa);
 	atualizaPc();
 }
-
+///
+/// Converte um valor double para um valor inteiro
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc pushOp
 void d2i() {
   char* tipo = "I";
   tipoGlobal = tipo;
@@ -3061,7 +3159,12 @@ void d2i() {
 	pushOp((int32_t)v1);
 	atualizaPc();
 }
-
+///
+/// Converte um valor double para um valor long
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc pushOp
 void d2l() {
   char* tipo = "L";
   tipoGlobal = tipo;
@@ -3085,7 +3188,12 @@ void d2l() {
   pushOp(baixa);
 	atualizaPc();
 }
-
+///
+/// Converte um valor double para um valor float
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc pushOp
 void d2f() {
   char* tipo = "F";
   tipoGlobal = tipo;
@@ -3109,14 +3217,24 @@ void d2f() {
 	pushOp(pilhaVal);
 	atualizaPc();
 }
-
+///
+/// Converte um valor inteiro para um valor byte/booleano
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc pushOp
 void i2b() {
 	int32_t valPilha = popOp();
 	int8_t bVal = (int8_t) valPilha;
 	pushOp((int32_t) bVal);
 	atualizaPc();
 }
-
+///
+/// Converte um valor inteiro para um valor char
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc pushOp
 void i2c() {
   char* tipo = "C";
   tipoGlobal = tipo;
@@ -3125,7 +3243,12 @@ void i2c() {
 	pushOp((int32_t) cVal);
 	atualizaPc();
 }
-
+///
+/// Converte um valor inteiro para um valor short
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc pushOp
 void i2s() {
 	int32_t valPilha = popOp();
 	int16_t cVal = (int16_t) valPilha;
@@ -3923,6 +4046,7 @@ void lookupswitch() {
 
     frameCorrente->pc = pc_novo;
 }
+
 void ireturn() {
   retorno = popOp();
 	flagRet = 1;
