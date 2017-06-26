@@ -8,7 +8,7 @@
 ***********8 - Tirar Scanner toString e afins************88
 9- Falta a documentacao da funcao "MethodInfo* buscaMetodo" em metodo.c (descobrir oq essa caralha faz).
 9 - mudar os lconst e fconst pra ficar sem aquelas loucuras de mascara
-
+10 - tratamentos de NaN, inf e zeros nas funcoes de divisao e mutliplicao de floats e doubles
 
 
 DIVISAO DA DOCUMENTACAO
