@@ -209,7 +209,7 @@ void inicializaInstrucoes() {
 	instrucao[106] = fmul;
 	instrucao[107] = dmul;
 	instrucao[108] = idiv;
-	instrucao[109] = ins_ldiv;
+	instrucao[109] = instrucaoLdiv;
 	instrucao[110] = fdiv;
 	instrucao[111] = ddiv;
 	instrucao[112] = irem;
@@ -267,7 +267,7 @@ void inicializaInstrucoes() {
 	instrucao[164] = if_icmple;
 	instrucao[165] = if_acmpeq;
 	instrucao[166] = if_acmpne;
-	instrucao[167] = _goto;
+	instrucao[167] = instrucaoGoto;
 	instrucao[168] = jsr;
 	instrucao[169] = ret;
 	instrucao[170] = tableswitch;
@@ -2083,6 +2083,15 @@ void dsub() {
 	atualizaPc();
 }
 
+///
+/// Desempilha dois inteiros da pilha de
+/// de operandos e multiplica um pelo outro.
+/// Do resultado, sao considerados apenas
+/// os 32bits da parte baixa.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp atualizaPc
 void imul() {
 	int32_t v1 = popOp();
 	int32_t v2 = popOp();
@@ -2090,137 +2099,187 @@ void imul() {
 	atualizaPc();
 }
 
+///
+/// Desempilha dois longs da pilha de
+/// de operandos e multiplica um pelo outro.
+/// Do resultado, sao considerados apenas
+/// os 64bits da parte baixa, que sao
+/// dividos em dois valores de 32bits
+/// para serem salvos na pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp atualizaPc
 void lmul() {
-	int32_t baixa,alta;
+	int32_t parteBaixa, parteAlta;
 
-	baixa = popOp();
-	alta = popOp();
+	parteBaixa = popOp();
+	parteAlta = popOp();
 
-	int64_t lVal = alta;
-	lVal <<= 32;
-	lVal = lVal + baixa;
+	int64_t valorLong = parteAlta;
+	valorLong = (valorLong << 32) + parteBaixa;
 
-	baixa = popOp();
-	alta = popOp();
+	parteBaixa = popOp();
+	parteAlta = popOp();
 
-	int64_t lVal1 = alta;
-	lVal1 <<= 32;
-	lVal1 = lVal1 + baixa;
+	int64_t valorLong2 = parteAlta;
+	valorLong = (valorLong2 << 32) + parteBaixa;
 
-	int64_t resultado = lVal1 * lVal;
+	int64_t resultado = valorLong * valorLong2;
 
-	alta = resultado >> 32;
-	baixa = resultado & 0xffffffff;
+	parteAlta = resultado >> 32;
+	parteBaixa = resultado & 0xfffffff;
 
-	pushOp(alta);
-	pushOp(baixa);
+	pushOp(parteAlta);
+	pushOp(parteBaixa);
 	atualizaPc();
 }
 
+///
+/// Desempilha dois floats da pilha de
+/// de operandos e multiplica um pelo outro.
+/// O resultado entao eh salvo na pilha de 
+/// operandos. 
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp atualizaPc
 void fmul() {
-	float fVal1,fVal2;
+	float valorFloat, valorFloat2;
 
-	int32_t aux1 = popOp();
-	int32_t aux2 = popOp();
+	int32_t valor1 = popOp();
+	int32_t valor2 = popOp();
 
-	memcpy(&fVal1, &aux1, sizeof(int32_t));
-	memcpy(&fVal2, &aux2, sizeof(int32_t));
+	memcpy(&valorFloat, &valor1, sizeof(int32_t));
+	memcpy(&valorFloat2, &valor2, sizeof(int32_t));
 
-	float resultado = fVal1 * fVal2;
+	float resultado = valorFloat * valorFloat2;
 
-	int32_t retPilha;
-	memcpy(&retPilha, &resultado, sizeof(int32_t));
+	int32_t resPilha;
+	memcpy(&resPilha, &resultado, sizeof(int32_t));
 
-	pushOp(retPilha);
+	pushOp(resPilha);
 	atualizaPc();
 }
 
+///
+/// Desempilha dois doubles da pilha de
+/// de operandos e multiplica um pelo outro.
+/// O resultado entao eh salvo na pilha
+/// de operandos.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp atualizaPc
 void dmul() {
-	int32_t alta;
-	int32_t baixa;
+	int32_t parteAlta;
+	int32_t parteBaixa;
 
-	baixa = popOp();
-	alta = popOp();
+	parteBaixa = popOp();
+	parteAlta = popOp();
 
-	int64_t dVal = alta;
-	dVal <<= 32;
-	dVal = dVal + baixa;
+	int64_t valorDouble = parteAlta;
+	valorDouble = (valorDouble << 32) + parteBaixa;
 
 	double valorDouble1;
-	memcpy(&valorDouble1, &dVal, sizeof(int64_t));
+	memcpy(&valorDouble1, &valorDouble, sizeof(int64_t));
 
-	baixa = popOp();
-	alta = popOp();
+	parteBaixa = popOp();
+	parteAlta = popOp();
 
-	dVal = alta;
-	dVal <<= 32;
-	dVal = dVal + baixa;
+	valorDouble = parteAlta;
+	valorDouble = (valorDouble << 32) + parteBaixa;
 
 	double valorDouble2;
-	memcpy(&valorDouble2, &dVal, sizeof(int64_t));
+	memcpy(&valorDouble2, &valorDouble, sizeof(int64_t));
 
-	double doubleMultiplicado = valorDouble1 * valorDouble2;
+	double resultado = valorDouble1 * valorDouble2;
 
 	int64_t valorPilha;
-	memcpy(&valorPilha, &doubleMultiplicado, sizeof(int64_t));
+	memcpy(&valorPilha, &resultado, sizeof(int64_t));
 
-	alta = valorPilha >> 32;
-	baixa = valorPilha & 0xffffffff;
+	parteAlta = valorPilha >> 32;
+	parteBaixa = valorPilha & 0xffffffff;
 
-	pushOp(alta);
-	pushOp(baixa);
+	pushOp(parteAlta);
+	pushOp(parteBaixa);
 	atualizaPc();
 }
 
+///
+/// Desempilha dois inteiros da pilha
+/// de operandos e divide um pelo outro.
+/// O resultado entao eh salvo na pilha
+/// de operandos.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp atualizaPc
 void idiv() {
-	int32_t v2 = popOp();
-	int32_t v1 = popOp();
-	pushOp((int32_t)(v1 / v2));
+	int32_t valor1 = popOp();
+	int32_t valor2 = popOp();
+	pushOp((int32_t)(valor1 / valor2));
 	atualizaPc();
 }
 
-void ins_ldiv() {
-	int32_t baixa,alta;
+///
+/// Desempilha dois longs da pilha de
+/// de operandos e divide um pelo outro.
+/// O resultado entao eh salvo na pilha
+/// de operandos.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp atualizaPc
+void instrucaoLdiv() {
+	int32_t parteBaixa, parteAlta;
 
-	baixa = popOp();
-	alta = popOp();
+	parteBaixa = popOp();
+	parteAlta = popOp();
 
-	int64_t lVal = alta;
-	lVal <<= 32;
-	lVal = lVal + baixa;
+	int64_t valodrLong = parteAlta;
+	valodrLong = (valodrLong << 32) + parteBaixa;
 
-	baixa = popOp();
-	alta = popOp();
+	parteBaixa = popOp();
+	parteAlta = popOp();
 
-	int64_t lVal1 = alta;
-	lVal1 <<= 32;
-	lVal1 = lVal1 + baixa;
+	int64_t valodrLong2 = parteAlta;
+	valodrLong2 = (valodrLon2 << 32) + parteBaixa;
 
-	int64_t resultado = lVal1 / lVal;
+	int64_t resultado = valodrLong / valodrLong2;
 
-	alta = resultado >> 32;
-	baixa = resultado & 0xffffffff;
+	parteAlta = resultado >> 32;
+	parteBaixa = resultado & 0xffffffff;
 
-	pushOp(alta);
-	pushOp(baixa);
+	pushOp(parteAlta);
+	pushOp(parteBaixa);
 	atualizaPc();
 }
 
+///
+/// Desempilha dois floats da pilha de
+/// de operandos e divide um pelo outro.
+/// O resultado entao eh salvo na pilha
+/// de operandos.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp atualizaPc
 void fdiv() {
-	float fVal1,fVal2;
+	float valorFloat, valorFloat2;
 
-	int32_t aux2 = popOp();
-	int32_t aux1 = popOp();
+	int32_t valor = popOp();
+	int32_t valor2 = popOp();
 
-	memcpy(&fVal1, &aux1, sizeof(int32_t));
-	memcpy(&fVal2, &aux2, sizeof(int32_t));
+	memcpy(&valorFloat, &valor, sizeof(int32_t));
+	memcpy(&valorFloat2, &valor2, sizeof(int32_t));
 
-	float resultado = fVal1 / fVal2;
+	float resultado = valorFloat / valorFloat2;
 
-	int32_t retPilha;
-	memcpy(&retPilha, &resultado, sizeof(int32_t));
+	int32_t valorPilha;
+	memcpy(&valorPilha, &resultado, sizeof(int32_t));
 
-	pushOp(retPilha);
+	pushOp(valorPilha);
 	atualizaPc();
 }
 
@@ -2888,18 +2947,16 @@ void lcmp() {
 	parteAlta = popOp();
 
 	int64_t valorLong = parteAlta;
-	valorLong <<= 32;
-	valorLong = valorLong | parteBaixa;
+	valorLong = (valorLong << 32) | parteBaixa;
 
 	long longCmp;
 	memcpy(&longCmp, &valorLong, sizeof(long));
 
-	parteBaixa2 = popOp();
-	parteAlta2 = popOp();
+	parteBaixa = popOp();
+	parteAlta = popOp();
 
-	int64_t valorDouble2 = parteAlta2;
-	valorDouble2 <<= 32;
-	valorDouble2 = valorDouble2 | parteBaixa2;
+	int64_t valorDouble2 = parteAlta;
+	valorDouble2 = (valorDouble2 << 32) | parteBaixa;
 
 	long longCmp2;
 	memcpy(&longCmp2, &valorDouble2, sizeof(long));
@@ -2999,18 +3056,16 @@ void dcmpl() {
 	parteAlta = popOp();
 
 	int64_t valorDouble = parteAlta;
-	valorDouble <<= 32;
-	valorDouble = valorDouble | parteBaixa;
+	valorDouble = (valorDouble << 32) | parteBaixa;
 
 	double doubleCmp;
 	memcpy(&doubleCmp, &valorDouble, sizeof(double));
 
-	parteBaixa2 = popOp();
-	parteAlta2 = popOp();
+	parteBaixa = popOp();
+	parteAlta = popOp();
 
-	int64_t valorDouble2 = parteAlta2;
-	valorDouble2 <<= 32;
-	valorDouble2 = valorDouble2 | parteBaixa2;
+	int64_t valorDouble2 = parteAlta;
+	valorDouble2 = (valorDouble2 << 32) | parteBaixa;
 
 	double doubleCmp2;
 	memcpy(&doubleCmp2, &valorDouble2, sizeof(double));
@@ -3045,18 +3100,16 @@ void dcmpg() {
 	parteAlta = popOp();
 
 	int64_t valorDouble = parteAlta;
-	valorDouble <<= 32;
-	valorDouble = valorDouble | parteBaixa;
+	valorDouble = (valorDouble << 32) | parteBaixa;
 
 	double doubleCmp;
 	memcpy(&doubleCmp, &valorDouble, sizeof(double));
 
-	parteBaixa2 = popOp();
-	parteAlta2 = popOp();
+	parteBaixa = popOp();
+	parteAlta = popOp();
 
-	int64_t valorDouble2 = parteAlta2;
-	valorDouble2 <<= 32;
-	valorDouble2 = valorDouble2 | parteBaixa2;
+	int64_t valorDouble2 = parteAlta;
+	valorDouble2 = (valorDouble2 << 32) | parteBaixa;
 
 	double doubleCmp2;
 	memcpy(&doubleCmp2, &valorDouble2, sizeof(double));
@@ -3489,7 +3542,7 @@ void if_acmpne() {
 ///
 /// @param Nenhum
 /// @return @c void
-void _goto() {
+void instrucaoGoto() {
 	uint8_t offset1,offset2;
 	int16_t offset;
 
