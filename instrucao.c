@@ -2527,14 +2527,14 @@ void lrem() {
 	parteBaixa = popOp();
 	parteAlta = popOp();
 
-	int64_t valorLong = parteAlta;
-	valorLong = (valorLong << 32) + parteBaixa;
+	int64_t valorLong1 = parteAlta;
+	valorLong1 = (valorLong1 << 32) + parteBaixa;
 
 	parteBaixa = popOp();
 	parteAlta = popOp();
 
-	int64_t valorLong1 = parteAlta;
-	valorLong1 = (valorLong1 << 32) + parteBaixa;
+	int64_t valorLong2 = parteAlta;
+	valorLong2 = (valorLong2 << 32) + parteBaixa;
 
 	int64_t resultado = valorLong1 -((valorLong1/valorLong2) * valorLong2);
 
@@ -2546,9 +2546,8 @@ void lrem() {
 	atualizaPc();
 }
 
-
 ///
-/// Desempilha dois longs da pilha de
+/// Desempilha dois floats da pilha de
 /// de operandos e calcula o resto da divisao
 /// de um pelo outro. O resultado entao eh 
 /// salvo na pilha de operandos.
@@ -2565,7 +2564,7 @@ void frem() {
 	memcpy(&valorFloat, &valor1, sizeof(int32_t));
 	memcpy(&valorFloat2, &valor2, sizeof(int32_t));
 
-	float resultado = fmodf(valorFloat,valorFloat2);
+	float resultado = valorFloat - ((valorFloat/valorFloat2) * valorFloat2);
 
 	int32_t retPilha;
 	memcpy(&retPilha, &resultado, sizeof(int32_t));
@@ -2574,77 +2573,105 @@ void frem() {
 	atualizaPc();
 }
 
+///
+/// Desempilha dois doubles da pilha de
+/// de operandos e calcula o resto da divisao
+/// de um pelo outro. O resultado entao eh 
+/// salvo na pilha de operandos.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp atualizaPc
 void _drem() {
-	int32_t alta,baixa,alta1,baixa1;
+	int32_t parteAlta, parteBaixa;
 
-	baixa1 = popOp();
-	alta1 = popOp();
+	parteBaixa = popOp();
+	parteAlta = popOp();
 
-	baixa = popOp();
-	alta = popOp();
+	int64_t valorDouble = parteAlta;
+	valorDouble = (valorDouble << 32) + parteBaixa;
 
-	int64_t dVal = alta1;
-	dVal <<= 32;
-	dVal = dVal + baixa1;
+	double valorDouble1;
+	memcpy(&valorDouble1, &valorDouble, sizeof(double));
 
-	double v1;
-	memcpy(&v1, &dVal, sizeof(double));
+	valorDouble = parteAlta;
+	valorDouble = (valorDouble << 32) + parteBaixa;
 
-	dVal = alta;
-	dVal <<= 32;
-	dVal = dVal + baixa;
+	double valorDouble2;
+	memcpy(&valorDouble2, &valorDouble, sizeof(double));
 
-	double v2;
-	memcpy(&v2, &dVal, sizeof(double));
+	double resultado = valorDouble - ((valorDouble/valorDouble2) * valorDouble2);
 
-	double resultado = fmod(v2,v1);
+	int64_t valorPilha;
+	memcpy(&valorPilha, &resultado, sizeof(int64_t));
 
-	int64_t pilhaVal;
-	memcpy(&pilhaVal, &resultado, sizeof(int64_t));
+	parteAlta = valorPilha >> 32;
+	parteBaixa = valorPilha & 0xffffffff;
 
-	alta = pilhaVal >> 32;
-	baixa = pilhaVal & 0xffffffff;
-
-	pushOp(alta);
-	pushOp(baixa);
+	pushOp(parteAlta);
+	pushOp(parteBaixa);
 	atualizaPc();
 }
 
+///
+/// Desempilha um inteiro e faz a negacao aritmetica
+/// desse valor, salvando o resultado de volta
+/// na pilha de operandos.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp atualizaPc
 void ineg() {
-	int32_t retPilha = popOp();
-	int32_t aux = -retPilha;
-	pushOp(aux);
+	int32_t valor = popOp();
+	pushOp(-valor);
 	atualizaPc();
 }
 
+///
+/// Desempilha um long e faz a negacao aritmetica
+/// desse valor, salvando o resultado de volta
+/// na pilha de operandos.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp atualizaPc
 void lneg() {
-	int32_t baixa,alta;
+	int32_t parteBaixa, parteAlta;
 
-	baixa = popOp();
-	alta = popOp();
+	parteBaixa = popOp();
+	parteAlta = popOp();
 
-	int64_t lVal = alta;
-	lVal <<= 32;
-	lVal = lVal | baixa;
+	int64_t valorLong = parteAlta;
+	valorLong = (valorLong << 32) + parteBaixa;
 
-	lVal = - lVal;
+	valorLong = -valorLong;
 
-	alta = lVal >> 32;
-	baixa = lVal & 0xffffffff;
+	parteAlta = valorLong >> 32;
+	parteBaixa = valorLong & 0xffffffff;
 
-	pushOp(alta);
-	pushOp(baixa);
+	pushOp(parteAlta);
+	pushOp(parteBaixa);
 	atualizaPc();
   	flagLNEG = TRUE;
 }
 
+///
+/// Desempilha um float e faz a negacao aritmetica
+/// desse valor, salvando o resultado de volta
+/// na pilha de operandos.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp atualizaPc
 void fneg() {
-	float fVal;
-	int32_t retPilha = popOp();
-	memcpy(&fVal,&retPilha,sizeof(float));
-	fVal = - fVal;
-	memcpy(&retPilha,&fVal,sizeof(int32_t));
-	pushOp(retPilha);
+
+	int32_t valorFloat = popOp();
+	float valorNeg;
+	memcpy(&valorNeg,&retPilha,sizeof(float));
+	
+	valorNeg = -valorNeg;
+	memcpy(&valorPilha,&valorNeg,sizeof(int32_t));
+	pushOp(valorPilha);
 	atualizaPc();
 }
 
