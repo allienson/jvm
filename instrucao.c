@@ -1675,7 +1675,14 @@ void dstore_3() {
   atualizaPc();
 }
 
-
+///
+/// Coloca no array de variaveis
+/// locais na posicao 0 uma referencia desempilhada
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void astore_0() {
     int32_t indice;
     int32_t valor;
@@ -1684,7 +1691,14 @@ void astore_0() {
     frameCorrente->fields[indice] = valor;
     atualizaPc();
 }
-
+///
+/// Coloca no array de variaveis
+/// locais na posicao 1 uma referencia desempilhada
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void astore_1() {
     int32_t indice;
     int32_t valor;
@@ -1693,7 +1707,14 @@ void astore_1() {
     frameCorrente->fields[indice] = valor;
     atualizaPc();
 }
-
+///
+/// Coloca no array de variaveis
+/// locais na posicao 2 uma referencia desempilhada
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void astore_2() {
     int32_t indice;
     int32_t valor;
@@ -1702,7 +1723,14 @@ void astore_2() {
     frameCorrente->fields[indice] = valor;
     atualizaPc();
 }
-
+///
+/// Coloca no array de variaveis
+/// locais na posicao 3 uma referencia desempilhada
+/// da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void astore_3() {
     int32_t indice;
     int32_t valor;
@@ -1711,7 +1739,12 @@ void astore_3() {
     frameCorrente->fields[indice] = valor;
     atualizaPc();
 }
-
+///
+/// Coloca um inteiro em um array.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void iastore() {
 	int32_t* ref;
 	int32_t indice,valor;
@@ -1721,7 +1754,12 @@ void iastore() {
 	ref[indice] = valor;
 	atualizaPc();
 }
-
+///
+/// Coloca um long em um array.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void lastore() {
 	static int16_t countPos = 0;
 	int32_t alta,baixa;
@@ -1735,7 +1773,12 @@ void lastore() {
 	countPos += 2;
 	atualizaPc();
 }
-
+///
+/// Coloca um float em um array.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void fastore() {
 	char* tipo = "F";
     tipoGlobal = tipo;
@@ -1747,7 +1790,12 @@ void fastore() {
 	ref[indice] = valor;
 	atualizaPc();
 }
-
+///
+/// Coloca um double em um array.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void dastore() {
 	static int16_t countPos = 0;
 	int32_t alta,baixa;
@@ -1765,7 +1813,12 @@ void dastore() {
 	countPos += 2;
 	atualizaPc();
 }
-
+///
+/// Coloca uma referencia em um array.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void aastore() {
 	int32_t* ref;
 	int32_t indice,valor;
@@ -1775,7 +1828,12 @@ void aastore() {
 	ref[indice] = valor;
 	atualizaPc();
 }
-
+///
+/// Coloca um byte/booleano em um array.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void bastore() {
 	int32_t* ref;
 	int32_t indice,valor;
@@ -1785,7 +1843,12 @@ void bastore() {
 	ref[indice] = (int8_t)valor;
 	atualizaPc();
 }
-
+///
+/// Coloca um char em um array.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void castore() {
 	int32_t* ref;
 	int32_t indice,valor;
@@ -1795,7 +1858,12 @@ void castore() {
 	ref[indice] = (int16_t)valor;
 	atualizaPc();
 }
-
+///
+/// Coloca um short em um array.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void sastore() {
 	int32_t* ref;
 	int32_t indice,valor;
@@ -1805,92 +1873,143 @@ void sastore() {
 	ref[indice] = (int16_t)valor;
 	atualizaPc();
 }
-
+///
+/// Retira o valor do topo da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void pop() {
 	popOp();
 	atualizaPc();
 }
-
+///
+/// Retira os dois primeiros valores do topo da pilha
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp
 void pop2() {
 	popOp();
 	popOp();
 	atualizaPc();
 }
-
+///
+/// Duplica o valor do topo da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp pushOp
 void dup() {
-	int32_t retPilha;
+	int32_t topo;
 
-	retPilha = popOp();
-
-	pushOp(retPilha);
-	pushOp(retPilha);
+	topo = popOp();
+	pushOp(topo);
+	pushOp(topo);
 	atualizaPc();
 }
-
+///
+/// Insere uma copia do valor do topo da pilha duas posicoes abaixo do topo da pilha
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp pushOp
 void dup_x1() {
-	int32_t aux1, aux2;
+	int32_t topo, aux;
 
-	aux1 = popOp();
-	aux2 = popOp();
+	topo = popOp();
+	aux = popOp();
 
-	pushOp(aux1);
-	pushOp(aux2);
-	pushOp(aux1);
+	pushOp(topo);
+	pushOp(aux);
+	pushOp(topo);
 
 	atualizaPc();
 }
-
+///
+/// Insere uma copia do valor do topo da pilha tres posicoes abaixo do topo da pilha
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp pushOp
 void dup_x2() {
-	int32_t aux1, aux2, aux3;
-	aux1 = popOp();
+	int32_t topo, aux, aux2;
+	topo = popOp();
+	aux = popOp();
 	aux2 = popOp();
-	aux3 = popOp();
-	pushOp(aux1);
-	pushOp(aux3);
+	pushOp(topo);
 	pushOp(aux2);
-	pushOp(aux1);
+	pushOp(aux);
+	pushOp(topo);
 	atualizaPc();
 }
-
+///
+/// Duplica os dois primeiros valores da pilha
+/// (duas primeiras words) como se o valor no topo 
+/// fosse um long
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp pushOp
 void dup2() {
-	int32_t aux1, aux2;
-	aux1 = popOp();
-	aux2 = popOp();
-	pushOp(aux2);
-	pushOp(aux1);
-	pushOp(aux2);
-	pushOp(aux1);
+	int32_t topo, topo2;
+	topo = popOp();
+	topo2 = popOp();
+	pushOp(topo2);
+	pushOp(topo);
+	pushOp(topo2);
+	pushOp(topo);
 	atualizaPc();
 }
-
+///
+/// Insere uma copia dos dois primeiros valores da pilha
+/// (duas primeiras words) como se o valor no topo 
+/// fosse um long duas posicoes abaixo da pilha.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp pushOp
 void dup2_x1() {
-	int32_t aux1, aux2, aux3;
-	aux1 = popOp();
-	aux2 = popOp();
-	aux3 = popOp();
-	pushOp(aux2);
-	pushOp(aux1);
-	pushOp(aux3);
-	pushOp(aux2);
-	pushOp(aux1);
+	int32_t topo, topo2, aux;
+	topo = popOp();
+	topo2 = popOp();
+	aux = popOp();
+	pushOp(topo2);
+	pushOp(topo);
+	pushOp(aux);
+	pushOp(topo2);
+	pushOp(topo);
 	atualizaPc();
 }
-
+///
+/// Insere uma copia dos dois primeiros valores da pilha
+/// (duas primeiras words) como se o valor no topo 
+/// fosse um long tres posicoes abaixo da pilha.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp pushOp
 void dup2_x2() {
-	int32_t aux1, aux2, aux3, aux4;
-	aux1 = popOp();
+	int32_t topo, topo2, aux, aux2;
+	topo = popOp();
+	topo2 = popOp();
+	aux = popOp();
 	aux2 = popOp();
-	aux3 = popOp();
-	aux4 = popOp();
+	pushOp(topo2);
+	pushOp(topo);
 	pushOp(aux2);
-	pushOp(aux1);
-	pushOp(aux4);
-	pushOp(aux3);
-	pushOp(aux2);
-	pushOp(aux1);
+	pushOp(aux);
+	pushOp(topo2);
+	pushOp(topo);
 	atualizaPc();
 }
-
+///
+/// Troca o valor do topo da pilha com
+/// o segundo valor da pilha
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp pushOp
 void swap() {
 	int32_t val1,val2;
 	val1 = popOp();
@@ -1899,7 +2018,13 @@ void swap() {
 	pushOp(val2);
 	atualizaPc();
 }
-
+///
+/// Soma dois valores inteiros e empilha o 
+/// resultado na pilha.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp pushOp
 void iadd() {
 	int32_t v1,v2;
 	v2 = popOp();
@@ -1907,24 +2032,30 @@ void iadd() {
 	pushOp(v1+v2);
 	atualizaPc();
 }
-
+///
+/// Soma dois valores long e empilha o 
+/// resultado na pilha.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp pushOp
 void ladd() {
 	int32_t baixa,alta;
 	baixa = popOp();
 	alta = popOp();
 
-	int64_t lVal = alta;
-	lVal <<= 32;
-	lVal = lVal + baixa;
+	int64_t val1 = alta;
+	val1 <<= 32;
+	val1 = val1 + baixa;
 
 	baixa = popOp();
 	alta = popOp();
 
-	int64_t lVal1 = alta;
-	lVal1 <<= 32;
-	lVal1 = lVal1 + baixa;
+	int64_t val2 = alta;
+	val2 <<= 32;
+	val2 = val2 + baixa;
 
-	int64_t resultado = lVal1 + lVal;
+	int64_t resultado = val2 + val1;
 
 	alta = resultado >> 32;
 	baixa = resultado & 0xffffffff;
@@ -1934,7 +2065,13 @@ void ladd() {
 
 	atualizaPc();
 }
-
+///
+/// Soma dois valores float e empilha o 
+/// resultado na pilha.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp pushOp
 void fadd() {
 	float fVal1,fVal2;
 
@@ -1954,7 +2091,13 @@ void fadd() {
 	atualizaPc();
 
 }
-
+///
+/// Soma dois valores double e empilha o 
+/// resultado na pilha.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp pushOp
 void dadd() {
 	int32_t alta;
 	int32_t baixa;
@@ -1992,7 +2135,13 @@ void dadd() {
 
 	atualizaPc();
 }
-
+///
+/// Subtrai dois valores inteiros e empilha o 
+/// resultado na pilha.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp pushOp
 void isub() {
 	int32_t v1,v2;
 	v2 = popOp();
@@ -2000,7 +2149,13 @@ void isub() {
 	pushOp(v1-v2);
 	atualizaPc();
 }
-
+///
+/// Subtrai dois valores long e empilha o 
+/// resultado na pilha.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp pushOp
 void lsub() {
 	int32_t baixa,alta;
 
@@ -2027,7 +2182,13 @@ void lsub() {
 	pushOp(baixa);
 	atualizaPc();
 }
-
+///
+/// Subtrai dois valores float e empilha o 
+/// resultado na pilha.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp pushOp
 void fsub() {
 	float fVal1,fVal2;
 
@@ -2045,7 +2206,13 @@ void fsub() {
 	pushOp(retPilha);
 	atualizaPc();
 }
-
+///
+/// Subtrai dois valores double e empilha o 
+/// resultado na pilha.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc popOp pushOp
 void dsub() {
 	int32_t alta;
 	int32_t baixa;
