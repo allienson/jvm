@@ -4166,9 +4166,9 @@ void lookupswitch() {
 /// @param Nenhum
 /// @return @c void
 void ireturn() {
-  retorno = popOp();
+  	retorno = popOp();
 	flagRet = 1;
-  frameCorrente->pc = frameCorrente->codeLength + 1;
+  	frameCorrente->pc = frameCorrente->codeLength + 1;
 }
 
 ///
