@@ -4012,7 +4012,7 @@ void ret() {
 
 ///
 /// Função responsavel pela operação switch case
-/// Com valores variados
+/// Com valores variados.
 ///
 /// @param Nenhum
 /// @return @c void
