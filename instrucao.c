@@ -277,7 +277,7 @@ void inicializaInstrucoes() {
 	instrucao[174] = freturn;
 	instrucao[175] = dreturn;
 	instrucao[176] = areturn;
-	instrucao[177] = ins_return;
+	instrucao[177] = _return;
 	instrucao[178] = getstatic;
 	instrucao[179] = putstatic;
 	instrucao[180] = getfield;
@@ -1945,7 +1945,7 @@ void dup_x2() {
 }
 ///
 /// Duplica os dois primeiros valores da pilha
-/// (duas primeiras words) como se o valor no topo 
+/// (duas primeiras words) como se o valor no topo
 /// fosse um long
 ///
 /// @param Nenhum
@@ -1963,7 +1963,7 @@ void dup2() {
 }
 ///
 /// Insere uma copia dos dois primeiros valores da pilha
-/// (duas primeiras words) como se o valor no topo 
+/// (duas primeiras words) como se o valor no topo
 /// fosse um long duas posicoes abaixo da pilha.
 ///
 /// @param Nenhum
@@ -1983,7 +1983,7 @@ void dup2_x1() {
 }
 ///
 /// Insere uma copia dos dois primeiros valores da pilha
-/// (duas primeiras words) como se o valor no topo 
+/// (duas primeiras words) como se o valor no topo
 /// fosse um long tres posicoes abaixo da pilha.
 ///
 /// @param Nenhum
@@ -2019,7 +2019,7 @@ void swap() {
 	atualizaPc();
 }
 ///
-/// Soma dois valores inteiros e empilha o 
+/// Soma dois valores inteiros e empilha o
 /// resultado na pilha.
 ///
 /// @param Nenhum
@@ -2033,7 +2033,7 @@ void iadd() {
 	atualizaPc();
 }
 ///
-/// Soma dois valores long e empilha o 
+/// Soma dois valores long e empilha o
 /// resultado na pilha.
 ///
 /// @param Nenhum
@@ -2066,7 +2066,7 @@ void ladd() {
 	atualizaPc();
 }
 ///
-/// Soma dois valores float e empilha o 
+/// Soma dois valores float e empilha o
 /// resultado na pilha.
 ///
 /// @param Nenhum
@@ -2092,7 +2092,7 @@ void fadd() {
 
 }
 ///
-/// Soma dois valores double e empilha o 
+/// Soma dois valores double e empilha o
 /// resultado na pilha.
 ///
 /// @param Nenhum
@@ -2136,7 +2136,7 @@ void dadd() {
 	atualizaPc();
 }
 ///
-/// Subtrai dois valores inteiros e empilha o 
+/// Subtrai dois valores inteiros e empilha o
 /// resultado na pilha.
 ///
 /// @param Nenhum
@@ -2150,7 +2150,7 @@ void isub() {
 	atualizaPc();
 }
 ///
-/// Subtrai dois valores long e empilha o 
+/// Subtrai dois valores long e empilha o
 /// resultado na pilha.
 ///
 /// @param Nenhum
@@ -2183,7 +2183,7 @@ void lsub() {
 	atualizaPc();
 }
 ///
-/// Subtrai dois valores float e empilha o 
+/// Subtrai dois valores float e empilha o
 /// resultado na pilha.
 ///
 /// @param Nenhum
@@ -2207,7 +2207,7 @@ void fsub() {
 	atualizaPc();
 }
 ///
-/// Subtrai dois valores double e empilha o 
+/// Subtrai dois valores double e empilha o
 /// resultado na pilha.
 ///
 /// @param Nenhum
@@ -2305,8 +2305,8 @@ void lmul() {
 ///
 /// Desempilha dois floats da pilha de
 /// de operandos e multiplica um pelo outro.
-/// O resultado entao eh salvo na pilha de 
-/// operandos. 
+/// O resultado entao eh salvo na pilha de
+/// operandos.
 ///
 /// @param Nenhum
 /// @return @c void
@@ -2496,7 +2496,7 @@ void ddiv() {
 ///
 /// Desempilha dois inteiros da pilha de
 /// de operandos e calcula o resto da divisao
-/// de um pelo outro. O resultado entao eh 
+/// de um pelo outro. O resultado entao eh
 /// salvo na pilha de operandos.
 ///
 /// @param Nenhum
@@ -2505,7 +2505,7 @@ void ddiv() {
 void irem() {
 	int32_t valor1 = popOp();
 	int32_t valor2 = popOp();
-	
+
 	int32_t resultado = valor1 - ((valor1/valor2) * valor2);
 
 	pushOp((int32_t) resultado);
@@ -2515,7 +2515,7 @@ void irem() {
 ///
 /// Desempilha dois longs da pilha de
 /// de operandos e calcula o resto da divisao
-/// de um pelo outro. O resultado entao eh 
+/// de um pelo outro. O resultado entao eh
 /// salvo na pilha de operandos.
 ///
 /// @param Nenhum
@@ -2549,7 +2549,7 @@ void lrem() {
 ///
 /// Desempilha dois floats da pilha de
 /// de operandos e calcula o resto da divisao
-/// de um pelo outro. O resultado entao eh 
+/// de um pelo outro. O resultado entao eh
 /// salvo na pilha de operandos.
 ///
 /// @param Nenhum
@@ -2576,7 +2576,7 @@ void frem() {
 ///
 /// Desempilha dois doubles da pilha de
 /// de operandos e calcula o resto da divisao
-/// de um pelo outro. O resultado entao eh 
+/// de um pelo outro. O resultado entao eh
 /// salvo na pilha de operandos.
 ///
 /// @param Nenhum
@@ -2668,7 +2668,7 @@ void fneg() {
 	int32_t valorFloat = popOp();
 	float valorNeg;
 	memcpy(&valorNeg,&retPilha,sizeof(float));
-	
+
 	valorNeg = -valorNeg;
 	memcpy(&valorPilha,&valorNeg,sizeof(int32_t));
 	pushOp(valorPilha);
@@ -2715,7 +2715,7 @@ void dneg() {
 void ishl() {
 	int32_t valorShift = popOp();
 	int32_t resultado = popOp();
-	
+
 	valorShift &= 0x1f;
 	resultado <<= valorShift;
 
@@ -2737,9 +2737,9 @@ void lshl() {
 	int32_t valorShift = popOp();
 	int32_t parteAlta, parteBaixa;
 	int64_t resultado;
-	
+
 	valorShift &= 0x3f;
-	
+
 	parteBaixa = popOp();
 	parteAlta = popOp();
 
@@ -2767,7 +2767,7 @@ void lshl() {
 /// @return @c void
 /// @see popOp pushOp atualizaPc
 void ishr() {
-	
+
 	int32_t valorShift = popOp();
 	int32_t resultado = popOp();
 	int32_t i = 0;
@@ -2794,7 +2794,7 @@ void ishr() {
 /// @return @c void
 /// @see popOp pushOp atualizaPc
 void lshr() {
-  	
+
   	int32_t valorShift = popOp();
 	int32_t parteBaixa, parteAlta;
 	int64_t valorLong;
@@ -2825,7 +2825,7 @@ void lshr() {
 /// @return @c void
 /// @see popOp pushOp atualizaPc
 void iushr() {
-	
+
 	int32_t valorShift = popOp();
 	int32_t resultado = popOp();
 
@@ -2853,7 +2853,7 @@ void lushr() {
 	int64_t valorLong = parteAlta;
 
 	valorLong = (valorLong << 32) + parteBaixa;
-	
+
 	valorShift &= 0x3f;
 	valorLong >>= valorShift;
 
@@ -3018,7 +3018,7 @@ void lxor() {
 }
 ///
 /// Incrementa uma variavel do array de variaveis locais
-/// apontada por um indice passado como parametro com um 
+/// apontada por um indice passado como parametro com um
 /// byte tambem passado como parametro
 ///
 /// @param Nenhum
@@ -3358,7 +3358,7 @@ void i2s() {
 /// entao o valor inteiro 1 eh empilhado. Se valor1 = valor2
 /// entao o valor inteiro 0 eh empilhado. Se valor1 < valor2
 /// entao o valor inteiro -1 eh empilhado. Se valor1 ou valor2
-/// sao NanN, entao o valor inteiro -1 eh empilhado. 
+/// sao NanN, entao o valor inteiro -1 eh empilhado.
 ///
 /// @param Nenhum
 /// @return @c void
@@ -3399,7 +3399,7 @@ void lcmp() {
 /// entao o valor inteiro 1 eh empilhado. Se valor1 = valor2
 /// entao o valor inteiro 0 eh empilhado. Se valor1 < valor2
 /// entao o valor inteiro -1 eh empilhado. Se valor1 ou valor2
-/// sao NanN, entao o valor inteiro -1 eh empilhado. 
+/// sao NanN, entao o valor inteiro -1 eh empilhado.
 ///
 /// @param Nenhum
 /// @return @c void
@@ -3433,7 +3433,7 @@ void fcmpl() {
 /// entao o valor inteiro 1 eh empilhado. Se valor1 = valor2
 /// entao o valor inteiro 0 eh empilhado. Se valor1 < valor2
 /// entao o valor inteiro -1 eh empilhado. Se valor1 ou valor2
-/// sao NanN, entao o valor inteiro 1 eh empilhado. 
+/// sao NanN, entao o valor inteiro 1 eh empilhado.
 ///
 /// @param Nenhum
 /// @return @c void
@@ -3467,7 +3467,7 @@ void fcmpg() {
 /// entao o valor inteiro 1 eh empilhado. Se valor1 = valor2
 /// entao o valor inteiro 0 eh empilhado. Se valor1 < valor2
 /// entao o valor inteiro -1 eh empilhado. Se valor1 ou valor2
-/// sao NanN, entao o valor inteiro -1 eh empilhado. 
+/// sao NanN, entao o valor inteiro -1 eh empilhado.
 ///
 /// @param Nenhum
 /// @return @c void
@@ -3511,7 +3511,7 @@ void dcmpl() {
 /// entao o valor inteiro 1 eh empilhado. Se valor1 = valor2
 /// entao o valor inteiro 0 eh empilhado. Se valor1 < valor2
 /// entao o valor inteiro -1 eh empilhado. Se valor1 ou valor2
-/// sao NanN, entao o valor inteiro 1 eh empilhado. 
+/// sao NanN, entao o valor inteiro 1 eh empilhado.
 ///
 /// @param Nenhum
 /// @return @c void
@@ -3551,9 +3551,9 @@ void dcmpg() {
 
 ///
 /// Desempilha um valor inteiro da pilha de operandos
-/// e compara com 0. Se valor = 0, pula para a 
-/// instrucao a partir do offset calculado com os 
-/// dois bytes de argumento. O valor de PC 
+/// e compara com 0. Se valor = 0, pula para a
+/// instrucao a partir do offset calculado com os
+/// dois bytes de argumento. O valor de PC
 /// eh somado com esse offset.
 ///
 /// @param Nenhum
@@ -3579,9 +3579,9 @@ void ifeq() {
 
 ///
 /// Desempilha um valor inteiro da pilha de operandos
-/// e compara com 0. Se valor != 0, pula para a 
-/// instrucao a partir do offset calculado com os 
-/// dois bytes de argumento. O valor de PC 
+/// e compara com 0. Se valor != 0, pula para a
+/// instrucao a partir do offset calculado com os
+/// dois bytes de argumento. O valor de PC
 /// eh somado com esse offset.
 ///
 /// @param Nenhum
@@ -3607,9 +3607,9 @@ void ifne() {
 
 ///
 /// Desempilha um valor inteiro da pilha de operandos
-/// e compara com 0. Se valor < 0, pula para a 
-/// instrucao a partir do offset calculado com os 
-/// dois bytes de argumento. O valor de PC 
+/// e compara com 0. Se valor < 0, pula para a
+/// instrucao a partir do offset calculado com os
+/// dois bytes de argumento. O valor de PC
 /// eh somado com esse offset.
 ///
 /// @param Nenhum
@@ -3635,9 +3635,9 @@ void iflt() {
 
 ///
 /// Desempilha um valor inteiro da pilha de operandos
-/// e compara com 0. Se valor >= 0, pula para a 
-/// instrucao a partir do offset calculado com os 
-/// dois bytes de argumento. O valor de PC 
+/// e compara com 0. Se valor >= 0, pula para a
+/// instrucao a partir do offset calculado com os
+/// dois bytes de argumento. O valor de PC
 /// eh somado com esse offset.
 ///
 /// @param Nenhum
@@ -3663,9 +3663,9 @@ void ifge() {
 
 ///
 /// Desempilha um valor inteiro da pilha de operandos
-/// e compara com 0. Se valor > 0, pula para a 
-/// instrucao a partir do offset calculado com os 
-/// dois bytes de argumento. O valor de PC 
+/// e compara com 0. Se valor > 0, pula para a
+/// instrucao a partir do offset calculado com os
+/// dois bytes de argumento. O valor de PC
 /// eh somado com esse offset.
 ///
 /// @param Nenhum
@@ -3691,9 +3691,9 @@ void ifgt() {
 
 ///
 /// Desempilha um valor inteiro da pilha de operandos
-/// e compara com 0. Se valor <= 0, pula para a 
-/// instrucao a partir do offset calculado com os 
-/// dois bytes de argumento. O valor de PC 
+/// e compara com 0. Se valor <= 0, pula para a
+/// instrucao a partir do offset calculado com os
+/// dois bytes de argumento. O valor de PC
 /// eh somado com esse offset.
 ///
 /// @param Nenhum
@@ -3719,9 +3719,9 @@ void ifle() {
 
 ///
 /// Desempilha dois valores inteiros da pilha de operandos
-/// e compara. Se valor1 = valor2, pula para a 
-/// instrucao a partir do offset calculado com os 
-/// dois bytes de argumento. O valor de PC 
+/// e compara. Se valor1 = valor2, pula para a
+/// instrucao a partir do offset calculado com os
+/// dois bytes de argumento. O valor de PC
 /// eh somado com esse offset.
 ///
 /// @param Nenhum
@@ -3749,9 +3749,9 @@ void if_icmpeq() {
 
 ///
 /// Desempilha dois valores inteiros da pilha de operandos
-/// e compara. Se valor1 != valor2, pula para a 
-/// instrucao a partir do offset calculado com os 
-/// dois bytes de argumento. O valor de PC 
+/// e compara. Se valor1 != valor2, pula para a
+/// instrucao a partir do offset calculado com os
+/// dois bytes de argumento. O valor de PC
 /// eh somado com esse offset.
 ///
 /// @param Nenhum
@@ -3779,9 +3779,9 @@ void if_icmpne() {
 
 ///
 /// Desempilha dois valores inteiros da pilha de operandos
-/// e compara. Se valor1 < valor2, pula para a 
-/// instrucao a partir do offset calculado com os 
-/// dois bytes de argumento. O valor de PC 
+/// e compara. Se valor1 < valor2, pula para a
+/// instrucao a partir do offset calculado com os
+/// dois bytes de argumento. O valor de PC
 /// eh somado com esse offset.
 ///
 /// @param Nenhum
@@ -3809,9 +3809,9 @@ void if_icmplt() {
 
 ///
 /// Desempilha dois valores inteiros da pilha de operandos
-/// e compara. Se valor1 >= valor2, pula para a 
-/// instrucao a partir do offset calculado com os 
-/// dois bytes de argumento. O valor de PC 
+/// e compara. Se valor1 >= valor2, pula para a
+/// instrucao a partir do offset calculado com os
+/// dois bytes de argumento. O valor de PC
 /// eh somado com esse offset.
 ///
 /// @param Nenhum
@@ -3839,9 +3839,9 @@ void if_icmpge() {
 
 ///
 /// Desempilha dois valores inteiros da pilha de operandos
-/// e compara. Se valor1 > valor2, pula para a 
-/// instrucao a partir do offset calculado com os 
-/// dois bytes de argumento. O valor de PC 
+/// e compara. Se valor1 > valor2, pula para a
+/// instrucao a partir do offset calculado com os
+/// dois bytes de argumento. O valor de PC
 /// eh somado com esse offset.
 ///
 /// @param Nenhum
@@ -3869,9 +3869,9 @@ void if_icmpgt() {
 
 ///
 /// Desempilha dois valores inteiros da pilha de operandos
-/// e compara. Se valor1 <= valor2, pula para a 
-/// instrucao a partir do offset calculado com os 
-/// dois bytes de argumento. O valor de PC 
+/// e compara. Se valor1 <= valor2, pula para a
+/// instrucao a partir do offset calculado com os
+/// dois bytes de argumento. O valor de PC
 /// eh somado com esse offset.
 ///
 /// @param Nenhum
@@ -3898,10 +3898,10 @@ void if_icmple() {
 }
 
 ///
-/// Desempilha dois valores de referencia da pilha 
-/// de operandos e compara. Se forem iguais, pula para a 
-/// instrucao a partir do offset calculado com os 
-/// dois bytes de argumento. O valor de PC 
+/// Desempilha dois valores de referencia da pilha
+/// de operandos e compara. Se forem iguais, pula para a
+/// instrucao a partir do offset calculado com os
+/// dois bytes de argumento. O valor de PC
 /// eh somado com esse offset.
 ///
 /// @param Nenhum
@@ -3928,10 +3928,10 @@ void if_acmpeq() {
 }
 
 ///
-/// Desempilha dois valores de referencia da pilha 
-/// de operandos e compara. Se forem iguais, pula para a 
-/// instrucao a partir do offset calculado com os 
-/// dois bytes de argumento. O valor de PC 
+/// Desempilha dois valores de referencia da pilha
+/// de operandos e compara. Se forem iguais, pula para a
+/// instrucao a partir do offset calculado com os
+/// dois bytes de argumento. O valor de PC
 /// eh somado com esse offset.
 ///
 /// @param Nenhum
@@ -3959,7 +3959,7 @@ void if_acmpne() {
 
 ///
 /// Pula para a instrucao a partir do offset calculado
-/// com os dois bytes de argumento. O valor de PC 
+/// com os dois bytes de argumento. O valor de PC
 /// eh somado com esse offset.
 ///
 /// @param Nenhum
@@ -3978,8 +3978,8 @@ void _goto() {
 }
 
 ///
-/// Pula para uma subrotina, salvando o endereco da proxima 
-/// instrucao na pilha de operandos. Os dois bytes argumentos 
+/// Pula para uma subrotina, salvando o endereco da proxima
+/// instrucao na pilha de operandos. Os dois bytes argumentos
 /// compoe um offset para a instrucao que sera executada.
 /// O valor de PC eh somado com esse offset.
 ///
@@ -4010,12 +4010,24 @@ void ret() {
 	return;
 }
 
+///
+/// Função responsavel pela operação switch case
+/// Com valores variados
+///
+/// @param Nenhum
+/// @return @c void
 void tableswitch() {
     uint32_t bytes_preench;
     int32_t indice;
-    int32_t default_v, low, high, npairs;
-    uint32_t pc_novo, pc_aux;
-    int32_t qtd_offset, offset, posicao;
+    int32_t default_v;
+    int32_t low;
+    int32_t high;
+    int32_t npairs;
+    uint32_t pc_novo;
+    uint32_t pc_aux;
+    int32_t qtd_offset;
+    int32_t offset;
+    int32_t posicao;
     uint32_t temp;
 
     int definido = FALSE;
@@ -4039,7 +4051,6 @@ void tableswitch() {
         low = (low << 8) + frameCorrente->code[pc_aux];
         pc_aux++;
     }
-
 
     if (indice < low && !definido) {
         definido = TRUE;
@@ -4066,10 +4077,8 @@ void tableswitch() {
                 offset = (offset << 8) + frameCorrente->code[pc_aux];
                 pc_aux++;
             }
-
             pc_novo = frameCorrente->pc + offset;
             definido = TRUE;
-
             break;
         } else {
             for (int i = 0; i < 4; i++) {
@@ -4081,11 +4090,19 @@ void tableswitch() {
     frameCorrente->pc = pc_novo;
 }
 
+///
+/// Função responsavel pela operação switch case
+/// Com valores sequenciais
+///
+/// @param Nenhum
+/// @return @c void
 void lookupswitch() {
-    uint32_t pc_aux, pc_novo;
+    uint32_t pc_aux;
+    uint32_t pc_novo;
     uint32_t bytes_preench;
     uint32_t offset;
-    int32_t default_v, npairs;
+    int32_t default_v;
+    int32_t npairs;
     int32_t match;
     int32_t key;
 
@@ -4110,7 +4127,6 @@ void lookupswitch() {
         npairs = (npairs << 8) + frameCorrente->code[pc_aux];
         pc_aux++;
     }
-
 
     for (int32_t l = 0; l < npairs; l++) {
         match = 0;
@@ -4143,12 +4159,24 @@ void lookupswitch() {
     frameCorrente->pc = pc_novo;
 }
 
+///
+/// Retorna um valor inteiro finalizando
+/// o metodo
+///
+/// @param Nenhum
+/// @return @c void
 void ireturn() {
   retorno = popOp();
 	flagRet = 1;
   frameCorrente->pc = frameCorrente->codeLength + 1;
 }
 
+///
+/// Retorna um valor long finalizando
+/// o metodo
+///
+/// @param Nenhum
+/// @return @c void
 void lreturn() {
 	int32_t alta,baixa;
 
@@ -4163,12 +4191,24 @@ void lreturn() {
   frameCorrente->pc = frameCorrente->codeLength + 1;
 }
 
+///
+/// Retorna um valor float finalizando
+/// o metodo
+///
+/// @param Nenhum
+/// @return @c void
 void freturn() {
 	retorno = popOp();
 	flagRet = 1;
   frameCorrente->pc = frameCorrente->codeLength + 1;
 }
 
+///
+/// Retorna um valor double finalizando
+/// o metodo
+///
+/// @param Nenhum
+/// @return @c void
 void dreturn() {
 	int32_t alta,baixa;
 
@@ -4183,20 +4223,34 @@ void dreturn() {
   frameCorrente->pc = frameCorrente->codeLength + 1;
 }
 
+///
+/// Retorna um valor de referencia
+///  finalizando o metodo
+///
+/// @param Nenhum
+/// @return @c void
 void areturn() {
 	retorno = popOp();
 	flagRet = 1;
-
-    frameCorrente->pc = frameCorrente->codeLength + 1;
+  frameCorrente->pc = frameCorrente->codeLength + 1;
 }
 
-void ins_return() {
+///
+/// Retorna void de um metodo
+///
+/// @param Nenhum
+/// @return @c void
+void _return() {
 	retorno = 0;
 	flagRet = 0;
-
 	atualizaPc();
 }
 
+///
+/// Recupera um atributo static
+///
+/// @param Nenhum
+/// @return @c void
 void getstatic() {
   frameCorrente->pilhaOp->depth += 1;
 	atualizaPc();

@@ -12,7 +12,7 @@
 ///		Mariana Pannunzio		12/0018276\n
 ///		Mateus Denucci			12/0053080
 ///
-///		@brief 
+///		@brief
 ///		Define, interpreta e executa as instruções do programa executado.
 ///
 
@@ -210,7 +210,7 @@ void lreturn();
 void freturn();
 void dreturn();
 void areturn();
-void ins_return();
+void _return();
 void getstatic();
 void putstatic();
 void getfield();
