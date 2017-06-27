@@ -2664,11 +2664,10 @@ void lneg() {
 /// @return @c void
 /// @see popOp pushOp atualizaPc
 void fneg() {
-
 	int32_t valorFloat = popOp();
+  int32_t valorPilha;
 	float valorNeg;
-	memcpy(&valorNeg,&retPilha,sizeof(float));
-
+	memcpy(&valorNeg,&valorFloat,sizeof(float));
 	valorNeg = -valorNeg;
 	memcpy(&valorPilha,&valorNeg,sizeof(int32_t));
 	pushOp(valorPilha);
@@ -2684,7 +2683,8 @@ void fneg() {
 /// @return @c void
 /// @see popOp pushOp atualizaPc
 void dneg() {
-	int32_t parteBaixa, parteAlta;
+	int32_t parteBaixa;
+  int32_t parteAlta;
 
 	parteBaixa = popOp();
 	parteAlta = popOp();
@@ -4016,6 +4016,7 @@ void ret() {
 ///
 /// @param Nenhum
 /// @return @c void
+/// @see popOp
 void tableswitch() {
     uint32_t bytes_preench;
     int32_t indice;
@@ -4096,6 +4097,7 @@ void tableswitch() {
 ///
 /// @param Nenhum
 /// @return @c void
+/// @see popOp
 void lookupswitch() {
     uint32_t pc_aux;
     uint32_t pc_novo;
@@ -4165,6 +4167,7 @@ void lookupswitch() {
 ///
 /// @param Nenhum
 /// @return @c void
+/// @see popOp
 void ireturn() {
   retorno = popOp();
 	flagRet = 1;
@@ -4177,6 +4180,7 @@ void ireturn() {
 ///
 /// @param Nenhum
 /// @return @c void
+/// @see popOp
 void lreturn() {
 	int32_t alta,baixa;
 
@@ -4197,6 +4201,7 @@ void lreturn() {
 ///
 /// @param Nenhum
 /// @return @c void
+/// @see popOp
 void freturn() {
 	retorno = popOp();
 	flagRet = 1;
@@ -4209,6 +4214,7 @@ void freturn() {
 ///
 /// @param Nenhum
 /// @return @c void
+/// @see popOp
 void dreturn() {
 	int32_t alta,baixa;
 
@@ -4229,6 +4235,7 @@ void dreturn() {
 ///
 /// @param Nenhum
 /// @return @c void
+/// @see popOp
 void areturn() {
 	retorno = popOp();
 	flagRet = 1;
@@ -4240,6 +4247,7 @@ void areturn() {
 ///
 /// @param Nenhum
 /// @return @c void
+/// @see atualizaPc
 void _return() {
 	retorno = 0;
 	flagRet = 0;
@@ -4251,15 +4259,30 @@ void _return() {
 ///
 /// @param Nenhum
 /// @return @c void
+/// @see atualizaPc
 void getstatic() {
   frameCorrente->pilhaOp->depth += 1;
 	atualizaPc();
 }
 
+///
+/// Seta o atributo static
+///
+/// @param Nenhum
+/// @return @c void
+/// @see atualizaPc
 void putstatic() {
-
+  atualizaPc();
 }
 
+///
+/// Pega o field de uma classe a partir
+/// do indice para uma constante do Constant Pool
+/// desempilhado da pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see retornaNome popOp buscaCampo pushOp atualizaPc
 void getfield() {
 	uint32_t indice = frameCorrente->code[frameCorrente->pc + 2];
 	int32_t indiceClasse = frameCorrente->constantPool[indice-1].info.Fieldref.classIndex;
@@ -4268,11 +4291,6 @@ void getfield() {
 	char* nome = retornaNome(frameCorrente->classe, frameCorrente->constantPool[nomeTipoIndice-1].info.NameAndType.nameIndex);
 	char* tipo = retornaNome(frameCorrente->classe, frameCorrente->constantPool[nomeTipoIndice-1].info.NameAndType.descriptorIndex);
 	tipoGlobal = tipo;
-
- 	if((strcmp(tipo, "Ljava/util/Scanner;") == 0)) {
- 		atualizaPc();
-		return;
- 	}
 
  	Objeto* obj = (Objeto*) popOp();
 
@@ -4303,6 +4321,15 @@ void getfield() {
 	}
 }
 
+///
+/// Atribui o valor desempilhado da piha de operandos
+/// a um field de uma classe, a partir dos argumentos
+/// que geram um indice para uma constante do
+/// Constant Pool
+///
+/// @param Nenhum
+/// @return @c void
+/// @see retornaNome popOp buscaCampo atualizaPc
 void putfield() {
 	uint32_t indice = frameCorrente->code[frameCorrente->pc + 2];
 	int32_t indiceClasse = frameCorrente->constantPool[indice-1].info.Fieldref.classIndex;
@@ -4348,13 +4375,26 @@ void putfield() {
 	atualizaPc();
 }
 
+///
+/// Atribui o valor desempilhado da piha de operandos
+/// a um field de uma classe, a partir dos argumentos
+/// que geram um indice para uma constante do
+/// Constant Pool
+///
+/// @param Nenhum
+/// @return @c void
+/// @see retornaNome popOp buscaCampo atualizaPc
 void invokevirtual(){
 	MethodInfo* metodoInvocado;
   char* nomeClasse;
   char* nomeMetodo;
   char* descricaoMetodo;
-  uint16_t nomeMetodoAux, descricaoMetodoAux,nomeTipoAux;
-  int32_t resultado,resultado2, resultado_string;
+  uint16_t nomeMetodoAux;
+  uint16_t descricaoMetodoAux;
+  uint16_t nomeTipoAux;
+  int32_t resultado;
+  int32_t resultado2;
+  int32_t resultado_string;
   int32_t classeIndice;
   uint8_t* string = NULL;
   static int8_t flagAppend = 0;
@@ -4368,28 +4408,6 @@ void invokevirtual(){
   descricaoMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.descriptorIndex;
   nomeMetodo = retornaNome(frameCorrente->classe, nomeMetodoAux);
   descricaoMetodo = retornaNome(frameCorrente->classe, descricaoMetodoAux);
-
-  if((strcmp(nomeClasse, "java/lang/StringBuffer") == 0) && (strcmp(nomeMetodo,"append") == 0)) {
-		flagAppend++;
-	  flagLNEG = FALSE;
-		atualizaPc();
-		return;
-	}
-
-	if((strcmp(nomeClasse, "java/lang/StringBuffer") == 0) && (strcmp(nomeMetodo,"toString") == 0)) {
-	  flagLNEG = FALSE;
-		atualizaPc();
-		return;
-	}
-
-	if((strcmp(nomeClasse, "java/util/Scanner") == 0) && (strcmp(nomeMetodo,"next") == 0)) {
-		int32_t aux;
-		scanf("%d",&aux);
-		pushOp(aux);
-		flagLNEG = FALSE;
-		atualizaPc();
-		return;
-	}
 
 	if((strcmp(nomeClasse, "java/io/PrintStream") == 0) && (strcmp(nomeMetodo,"println") == 0)){
     if (strcmp(descricaoMetodo, "()V") == 0) {
@@ -4445,52 +4463,6 @@ void invokevirtual(){
             printf("erro no invoke_virtual, tipoGlobal ainda nao setado");
             exit(1);
         }
-    } else if (flagAppend == 2) {
-        if(strcmp(tipoGlobal, "F") == 0) {
-            resultado = popOp();
-            resultado_string = popOp();
-
-            string = frameCorrente->constantPool[resultado_string].info.Utf8.bytes;
-            if (string != NULL) {
-                printf("%s",string);
-            }
-
-            float valDesemp;
-            memcpy(&valDesemp,&resultado, sizeof(float));
-            printf("%f\n",valDesemp);
-        } else if(strcmp(tipoGlobal, "I") == 0) {
-            resultado = popOp();
-            resultado_string = popOp();
-
-            string = frameCorrente->constantPool[resultado_string].info.Utf8.bytes;
-            if (string != NULL) {
-                printf("%s",string);
-            }
-            printf("%d\n", resultado);
-        } else if(strcmp(tipoGlobal, "D") == 0) {
-            resultado = popOp();
-            resultado2 = popOp();
-            resultado_string = popOp();
-
-            double resultado_double;
-            int64_t temp;
-
-            temp = resultado2;
-            temp <<= 32;
-            temp += resultado;
-
-            if (string != NULL) {
-                printf("%s",string);
-            }
-
-            memcpy(&resultado_double, &temp, sizeof(int64_t));
-            printf("%lf\n", resultado_double);
-        } else {
-            printf("tipoGlobal ainda nao reconhecido");
-            exit(1);
-        }
-
-        flagAppend = 0;
     } else {
     	return;
     }
