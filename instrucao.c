@@ -2675,58 +2675,84 @@ void fneg() {
 	atualizaPc();
 }
 
+///
+/// Desempilha um double e faz a negacao aritmetica
+/// desse valor, salvando o resultado de volta
+/// na pilha de operandos.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp atualizaPc
 void dneg() {
-	int32_t baixa,alta;
-	baixa = popOp();
-	alta = popOp();
+	int32_t parteBaixa, parteAlta;
 
-	int64_t dVal = alta;
-	dVal <<= 32;
-	dVal = dVal + baixa;
+	parteBaixa = popOp();
+	parteAlta = popOp();
 
-	double valorDouble1;
-	memcpy(&valorDouble1, &dVal, sizeof(int64_t));
+	int64_t valorDouble = parteAlta;
+	valorDouble = (valorDouble << 32) + parteBaixa;
 
-	valorDouble1 = - valorDouble1;
+	valorDouble = -valorDouble;
 
-	memcpy(&dVal, &valorDouble1, sizeof(int64_t));
+	parteAlta = valorDouble >> 32;
+	parteBaixa = valorDouble & 0xffffffff;
 
-	alta = dVal >> 32;
-	baixa = dVal & 0xffffffff;
-
-	pushOp(alta);
-	pushOp(baixa);
+	pushOp(parteAlta);
+	pushOp(parteBaixa);
 	atualizaPc();
 }
 
+///
+/// Desempilha dois valores, um inteiro que sera manipulado
+/// e um inteiro cujos 5bits menos significativos sao
+/// a quantidade de bits a serem shiftados a
+/// esquerda salvando o resultado de volta
+/// na pilha de operandos.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp atualizaPc
 void ishl() {
-	int32_t shift = popOp();
-	shift = shift & 0x1f;
-	int32_t sVal = popOp();
-	sVal = sVal << shift;
-	pushOp(sVal);
+	int32_t valorShift = popOp();
+	int32_t resultado = popOp();
+	
+	valorShift &= 0x1f;
+	resultado <<= valorShift;
+
+	pushOp(resultado);
 	atualizaPc();
 }
 
+///
+/// Desempilha dois valores, um long que sera manipulado
+/// e um inteiro cujos 6bits menos significativos sao
+/// a quantidade de bits a serem shiftados a
+/// esquerda salvando o resultado de volta
+/// na pilha de operandos.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp atualizaPc
 void lshl() {
-	int32_t shift = popOp();
-	shift = shift & 0x3f;
+	int32_t valorShift = popOp();
+	int32_t parteAlta, parteBaixa;
+	int64_t resultado;
+	
+	valorShift &= 0x3f;
+	
+	parteBaixa = popOp();
+	parteAlta = popOp();
 
-	int32_t baixa,alta;
-	baixa = popOp();
-	alta = popOp();
+	resultado = parteAlta;
+	resultado = (resultado << 32) + parteBaixa;
 
-	int64_t lVal = alta;
-	lVal <<= 32;
-	lVal = lVal + baixa;
+	resultado <<= valorShift;
 
-	lVal = lVal << shift;
+	parteAlta = resultado >> 32;
+	parteBaixa = resultado & 0xffffffff;
 
-	alta = lVal >> 32;
-	baixa = lVal & 0xffffffff;
-
-	pushOp(alta);
-	pushOp(baixa);
+	pushOp(parteAlta);
+	pushOp(parteBaixa);
 	atualizaPc();
 }
 
