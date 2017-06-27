@@ -2756,72 +2756,115 @@ void lshl() {
 	atualizaPc();
 }
 
+///
+/// Desempilha dois valores, um inteiro que sera manipulado
+/// e um inteiro cujos 5bits menos significativos sao
+/// a quantidade de bits a serem shiftados a
+/// direita salvando o resultado de volta
+/// na pilha de operandos.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp atualizaPc
 void ishr() {
-	int32_t shift = popOp();
-	shift = shift & 0x1f;
-
-	int32_t sVal = popOp();
-
+	
+	int32_t valorShift = popOp();
+	int32_t resultado = popOp();
 	int32_t i = 0;
-	while(i < shift) {
-		sVal = sVal / 2;
+
+	valorShift &= 0x1f;
+
+	while(i < valorShift) {
+		resultado = resultado / 2;
 		i += 1;
 	}
 
-	pushOp(sVal);
-
+	pushOp(resultado);
 	atualizaPc();
 }
 
+///
+/// Desempilha dois valores, um long que sera manipulado
+/// e um inteiro cujos 6bits menos significativos sao
+/// a quantidade de bits a serem shiftados a
+/// direita salvando o resultado de volta
+/// na pilha de operandos.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp atualizaPc
 void lshr() {
-  int32_t v2 = popOp();
-	int32_t baixa,alta;
-	baixa = popOp();
-	alta = popOp();
-	int64_t lVal = alta;
-	lVal <<= 32;
-	lVal = lVal + baixa;
+  	
+  	int32_t valorShift = popOp();
+	int32_t parteBaixa, parteAlta;
+	int64_t valorLong;
 
-  lVal = lVal << v2;
+	parteBaixa = popOp();
+	parteAlta = popOp();
+	valorLong = parteAlta;
+	valorLong = (valorLong << 32) + parteBaixa;
 
-	alta = lVal >> 32;
-	baixa = lVal & 0xffffffff;
-	pushOp(alta);
-	pushOp(baixa);
+	valorShift &= 0x3f;
+  	valorLong <<= valorShift;
+
+	parteAlta = valorLong >> 32;
+	parteBaixa = valorLong & 0xffffffff;
+	pushOp(parteAlta);
+	pushOp(parteBaixa);
 	atualizaPc();
 }
 
+///
+/// Desempilha dois valores, um inteiro que sera manipulado
+/// e um inteiro cujos 5bits menos significativos sao
+/// a quantidade de bits a serem shiftados a
+/// direita salvando o resultado de volta
+/// na pilha de operandos.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp atualizaPc
 void iushr() {
-	int32_t shift = popOp();
-	shift = shift & 0x1f;
-	int32_t sVal = popOp();
-	sVal = sVal >> shift;
-	pushOp(sVal);
+	
+	int32_t valorShift = popOp();
+	int32_t resultado = popOp();
+
+	valorShift &= 0x1f;
+	resultado >>= valorShift;
+
+	pushOp(resultado);
 	atualizaPc();
 }
 
+///
+/// Desempilha dois valores, um long que sera manipulado
+/// e um inteiro cujos 6bits menos significativos sao
+/// a quantidade de bits a serem shiftados a
+/// direita salvando o resultado de volta
+/// na pilha de operandos.
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp atualizaPc
 void lushr() {
-	int32_t shift = popOp();
-	shift = shift & 0x3f;
+	int32_t valorShift = popOp();
+	int32_t parteBaixa = popOp();
+	int32_t parteAlta = popOp();
+	int64_t valorLong = parteAlta;
 
-	int32_t baixa,alta;
-	baixa = popOp();
-	alta = popOp();
+	valorLong = (valorLong << 32) + parteBaixa;
+	
+	valorShift &= 0x3f;
+	valorLong >>= valorShift;
 
-	int64_t lVal = alta;
-	lVal <<= 32;
-	lVal = lVal + baixa;
+	parteAlta = valorLong >> 32;
+	parteBaixa = valorLong & 0xffffffff;
 
-	lVal = lVal >> shift;
-
-	alta = lVal >> 32;
-	baixa = lVal & 0xffffffff;
-
-	pushOp(alta);
-	pushOp(baixa);
-
+	pushOp(parteAlta);
+	pushOp(parteBaixa);
 	atualizaPc();
 }
+
 ///
 /// Realiza a operacao and entre os dois primeiros
 /// inteiros da pilha e guarda o resultado
