@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>JVM - SB Grupo 3: Referência da Estrutura ClassFile</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">JVM - SB Grupo 3
+   </div>
+   <div id="projectbrief">Java Virtual Machine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Campos de Dados</a>  </div>
+  <div class="headertitle">
+<div class="title">Referência da Estrutura ClassFile</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Campos de Dados</h2></td></tr>
+<tr class="memitem:a9d4d72751ff9250dd3305d5d853f7921"><td class="memItemLeft" align="right" valign="top"><a id="a9d4d72751ff9250dd3305d5d853f7921"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>magic</b></td></tr>
+<tr class="separator:a9d4d72751ff9250dd3305d5d853f7921"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb41e706bd0e19ed5a24cd0e99ecc4c1"><td class="memItemLeft" align="right" valign="top"><a id="afb41e706bd0e19ed5a24cd0e99ecc4c1"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>minorVersion</b></td></tr>
+<tr class="separator:afb41e706bd0e19ed5a24cd0e99ecc4c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3424e098e9ef6dbfbdbb9c708afaffe7"><td class="memItemLeft" align="right" valign="top"><a id="a3424e098e9ef6dbfbdbb9c708afaffe7"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>majorVersion</b></td></tr>
+<tr class="separator:a3424e098e9ef6dbfbdbb9c708afaffe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af185527e4689b1672655f608df4a3c62"><td class="memItemLeft" align="right" valign="top"><a id="af185527e4689b1672655f608df4a3c62"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>constantPoolCount</b></td></tr>
+<tr class="separator:af185527e4689b1672655f608df4a3c62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a209de5f28c80fb453b37a3f0b320ab9c"><td class="memItemLeft" align="right" valign="top"><a id="a209de5f28c80fb453b37a3f0b320ab9c"></a>
+<a class="el" href="struct_cp_info.html">CpInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>constantPool</b></td></tr>
+<tr class="separator:a209de5f28c80fb453b37a3f0b320ab9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbb2cd57bb6eb5baa34e83127e928c18"><td class="memItemLeft" align="right" valign="top"><a id="afbb2cd57bb6eb5baa34e83127e928c18"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>accessFlags</b></td></tr>
+<tr class="separator:afbb2cd57bb6eb5baa34e83127e928c18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc02e661935c638b2f231cef576859f1"><td class="memItemLeft" align="right" valign="top"><a id="abc02e661935c638b2f231cef576859f1"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>thisClass</b></td></tr>
+<tr class="separator:abc02e661935c638b2f231cef576859f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a306c9da73620fa5ad94bbaa64a19afdd"><td class="memItemLeft" align="right" valign="top"><a id="a306c9da73620fa5ad94bbaa64a19afdd"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>superClass</b></td></tr>
+<tr class="separator:a306c9da73620fa5ad94bbaa64a19afdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcd02751a38d5b17559fd3c5201b2c42"><td class="memItemLeft" align="right" valign="top"><a id="adcd02751a38d5b17559fd3c5201b2c42"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>interfacesCount</b></td></tr>
+<tr class="separator:adcd02751a38d5b17559fd3c5201b2c42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86680de028c6df386edafa8e8436b92c"><td class="memItemLeft" align="right" valign="top"><a id="a86680de028c6df386edafa8e8436b92c"></a>
+uint16_t *&#160;</td><td class="memItemRight" valign="bottom"><b>interfaces</b></td></tr>
+<tr class="separator:a86680de028c6df386edafa8e8436b92c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87f4d2ede2eb9df54d69952df84226ca"><td class="memItemLeft" align="right" valign="top"><a id="a87f4d2ede2eb9df54d69952df84226ca"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>fieldsCount</b></td></tr>
+<tr class="separator:a87f4d2ede2eb9df54d69952df84226ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add171dc12613ad29ef94f4f18a50f06a"><td class="memItemLeft" align="right" valign="top"><a id="add171dc12613ad29ef94f4f18a50f06a"></a>
+<a class="el" href="struct_field_info.html">FieldInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>fields</b></td></tr>
+<tr class="separator:add171dc12613ad29ef94f4f18a50f06a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24d224be2ab473bac3506890c6ff6a4d"><td class="memItemLeft" align="right" valign="top"><a id="a24d224be2ab473bac3506890c6ff6a4d"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>methodsCount</b></td></tr>
+<tr class="separator:a24d224be2ab473bac3506890c6ff6a4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67e02d50e6807bb97d7d8f265deef9a0"><td class="memItemLeft" align="right" valign="top"><a id="a67e02d50e6807bb97d7d8f265deef9a0"></a>
+<a class="el" href="struct_method_info.html">MethodInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>methods</b></td></tr>
+<tr class="separator:a67e02d50e6807bb97d7d8f265deef9a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad88c9b8262fbd79d49ad2c163ad45716"><td class="memItemLeft" align="right" valign="top"><a id="ad88c9b8262fbd79d49ad2c163ad45716"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>attributesCount</b></td></tr>
+<tr class="separator:ad88c9b8262fbd79d49ad2c163ad45716"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7db56de00dc682671cb8cfb837d92b7"><td class="memItemLeft" align="right" valign="top"><a id="ad7db56de00dc682671cb8cfb837d92b7"></a>
+<a class="el" href="struct_attribute_info.html">AttributeInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>attributes</b></td></tr>
+<tr class="separator:ad7db56de00dc682671cb8cfb837d92b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<hr/>A documentação para esta estrutura foi gerada a partir do seguinte arquivo:<ul>
+<li><a class="el" href="leitor_8h_source.html">leitor.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

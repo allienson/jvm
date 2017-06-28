@@ -1,0 +1,406 @@
+\hypertarget{exibidor_8c}{}\section{exibidor.\+c File Reference}
+\label{exibidor_8c}\index{exibidor.\+c@{exibidor.\+c}}
+
+
+Arquivo que exibe na tela uma estrutura \hyperlink{structClassFile}{Class\+File} imprimindo todos os dados armazenados.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}exibidor.\+h\char`\"{}}\newline
+Include dependency graph for exibidor.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{exibidor_8c_af66f78ede418a5d96fc683ff46166d15}{printa\+Class\+File} (\hyperlink{structClassFile}{Class\+File} $\ast$class\+File)
+\item 
+void \hyperlink{exibidor_8c_afccec8f6e6482cf1068555390a62c127}{printa\+Cp\+Info} (\hyperlink{structClassFile}{Class\+File} $\ast$class\+File)
+\item 
+void \hyperlink{exibidor_8c_a97e7f4f9858dd377560e568e6c2f6b69}{printa\+Interfaces} (\hyperlink{structClassFile}{Class\+File} $\ast$class\+File)
+\item 
+void \hyperlink{exibidor_8c_a628a6794abdbb58d9f3a512d8918af23}{printa\+Field\+Info} (\hyperlink{structClassFile}{Class\+File} $\ast$class\+File)
+\item 
+void \hyperlink{exibidor_8c_ad6fba2eba482e4cd9b8e0f4727a1a916}{printa\+Method\+Info} (\hyperlink{structClassFile}{Class\+File} $\ast$class\+File)
+\item 
+void \hyperlink{exibidor_8c_aa1ebe5081deb9425d3a11c9316e3d1ec}{printa\+Attribute\+Info} (\hyperlink{structClassFile}{Class\+File} $\ast$class\+File)
+\item 
+void \hyperlink{exibidor_8c_a779037b6863fb2a2a41e99ab25c04b8d}{imprime\+String\+Pool} (\hyperlink{structCpInfo}{Cp\+Info} $\ast$cp, int pos)
+\item 
+double \hyperlink{exibidor_8c_ae3623748d39f700f065fc13619af7599}{hex\+To\+Double} (uint32\+\_\+t high\+Bytes, uint32\+\_\+t low\+Bytes)
+\item 
+long \hyperlink{exibidor_8c_a1d10814d2eb259040b2a191921a7878f}{hex\+To\+Long} (uint32\+\_\+t high\+Bytes, uint32\+\_\+t low\+Bytes)
+\item 
+void \hyperlink{exibidor_8c_aa1dcc58c50687652a1eda3b9d99a4496}{print\+Access\+Flag} (uint16\+\_\+t access\+Flags)
+\item 
+void \hyperlink{exibidor_8c_a7c0475d7e6531aa7a07e7f1103fc56e0}{imprime\+Code} (\hyperlink{structClassFile}{Class\+File} $\ast$class\+File, \hyperlink{structCodeAttribute}{Code\+Attribute} $\ast$cd\+Atrb)
+\item 
+void \hyperlink{exibidor_8c_a9d4be7efdb4277ecb2294302e9d35b37}{imprime\+Exc} (\hyperlink{structClassFile}{Class\+File} $\ast$class\+File, \hyperlink{structExceptionsAttribute}{Exceptions\+Attribute} $\ast$exc\+Atrb)
+\item 
+void \hyperlink{exibidor_8c_a900bd082031766050012dc3b7f348205}{print\+Topo} ()
+\item 
+void \hyperlink{exibidor_8c_a5f3fe4937a7bce5015e350ec7588d15b}{print\+Blank} ()
+\item 
+void \hyperlink{exibidor_8c_a8579e18db3f0cf53464240c9c8e45a8b}{print\+Base} ()
+\item 
+void \hyperlink{exibidor_8c_aa801ec3d076e92418c34fa5e894df667}{print\+Single\+Line} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Arquivo que exibe na tela uma estrutura \hyperlink{structClassFile}{Class\+File} imprimindo todos os dados armazenados. 
+
+\begin{DoxyAuthor}{Authors}
+Allisson Barros 12/0055619~\newline
+Daniel Luz 13/0007714~\newline
+Luiz Fernando Vieira 13/0013757~\newline
+Mariana Pannunzio 12/0018276~\newline
+Mateus Denucci 12/0053080~\newline
+ 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+26/06/2017
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright © 2017 Grupo\+SB. All rights reserved.
+\end{DoxyCopyright}
+Recebe um ponteiro para uma estrutura \hyperlink{structClassFile}{Class\+File}, imprime cada parte de acordo com seu formato e suas subestruturas, isso tudo com uma interface semelhante ao programa \char`\"{}jclasslib bytecode viewer\char`\"{}. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{exibidor_8c_ae3623748d39f700f065fc13619af7599}\label{exibidor_8c_ae3623748d39f700f065fc13619af7599}} 
+\index{exibidor.\+c@{exibidor.\+c}!hex\+To\+Double@{hex\+To\+Double}}
+\index{hex\+To\+Double@{hex\+To\+Double}!exibidor.\+c@{exibidor.\+c}}
+\subsubsection{\texorpdfstring{hex\+To\+Double()}{hexToDouble()}}
+{\footnotesize\ttfamily double hex\+To\+Double (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{high\+Bytes,  }\item[{uint32\+\_\+t}]{low\+Bytes }\end{DoxyParamCaption})}
+
+Funcao converte um valor Hexademical lido em bytes para uma variavel double (tipada de acordo com C99).
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint32\+\_\+t} & Parte alta dos 64 bits \\
+\hline
+{\em uint32\+\_\+t} & Parte baixa dos 64 bits \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily double} O valor Hexadecimal de entrada salvo numa variavel do tipo double 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{exibidor_8c_a1d10814d2eb259040b2a191921a7878f}\label{exibidor_8c_a1d10814d2eb259040b2a191921a7878f}} 
+\index{exibidor.\+c@{exibidor.\+c}!hex\+To\+Long@{hex\+To\+Long}}
+\index{hex\+To\+Long@{hex\+To\+Long}!exibidor.\+c@{exibidor.\+c}}
+\subsubsection{\texorpdfstring{hex\+To\+Long()}{hexToLong()}}
+{\footnotesize\ttfamily long hex\+To\+Long (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{high\+Bytes,  }\item[{uint32\+\_\+t}]{low\+Bytes }\end{DoxyParamCaption})}
+
+Funcao converte um valor Hexademical lido em bytes para uma variavel long (tipada de acordo com C99).
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint32\+\_\+t} & Parte alta dos 64 bits \\
+\hline
+{\em uint32\+\_\+t} & Parte baixa dos 64 bits \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily long} O valor Hexadecimal de entrada salvo numa variavel do tipo long 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{exibidor_8c_a7c0475d7e6531aa7a07e7f1103fc56e0}\label{exibidor_8c_a7c0475d7e6531aa7a07e7f1103fc56e0}} 
+\index{exibidor.\+c@{exibidor.\+c}!imprime\+Code@{imprime\+Code}}
+\index{imprime\+Code@{imprime\+Code}!exibidor.\+c@{exibidor.\+c}}
+\subsubsection{\texorpdfstring{imprime\+Code()}{imprimeCode()}}
+{\footnotesize\ttfamily void imprime\+Code (\begin{DoxyParamCaption}\item[{\hyperlink{structClassFile}{Class\+File} $\ast$}]{class\+File,  }\item[{\hyperlink{structCodeAttribute}{Code\+Attribute} $\ast$}]{cd\+Atrb }\end{DoxyParamCaption})}
+
+Funcao que imprime as instrucoes (mnemonicos) de um metodo, alem das informacoes sobre o Code do metodo e das referencias de cada valor no Constant Pool.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Class\+File$\ast$} & Ponteiro para a estrutura Classfile \\
+\hline
+{\em Code\+Attributte$\ast$} & Ponteiro para a estrutura \hyperlink{structCodeAttribute}{Code\+Attribute} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{exibidor_8c_aa801ec3d076e92418c34fa5e894df667}{print\+Single\+Line} \hyperlink{exibidor_8c_a779037b6863fb2a2a41e99ab25c04b8d}{imprime\+String\+Pool} \hyperlink{decodificador_8h_a33a5a572beb55160cd59df462a10cdc3}{inicializa\+Decodificador} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{exibidor_8c_a9d4be7efdb4277ecb2294302e9d35b37}\label{exibidor_8c_a9d4be7efdb4277ecb2294302e9d35b37}} 
+\index{exibidor.\+c@{exibidor.\+c}!imprime\+Exc@{imprime\+Exc}}
+\index{imprime\+Exc@{imprime\+Exc}!exibidor.\+c@{exibidor.\+c}}
+\subsubsection{\texorpdfstring{imprime\+Exc()}{imprimeExc()}}
+{\footnotesize\ttfamily void imprime\+Exc (\begin{DoxyParamCaption}\item[{\hyperlink{structClassFile}{Class\+File} $\ast$}]{class\+File,  }\item[{\hyperlink{structExceptionsAttribute}{Exceptions\+Attribute} $\ast$}]{exc\+Atrb }\end{DoxyParamCaption})}
+
+Funcao que imprime as excecoes (quando especificadas) e as referencias de cada ao Constant Pool.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Class\+File$\ast$} & Ponteiro para a estrutura Classfile \\
+\hline
+{\em Exceptions\+Attribute$\ast$} & Ponteiro para a estrutura \hyperlink{structExceptionsAttribute}{Exceptions\+Attribute} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{exibidor_8c_aa801ec3d076e92418c34fa5e894df667}{print\+Single\+Line} \hyperlink{exibidor_8c_a779037b6863fb2a2a41e99ab25c04b8d}{imprime\+String\+Pool} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{exibidor_8c_a779037b6863fb2a2a41e99ab25c04b8d}\label{exibidor_8c_a779037b6863fb2a2a41e99ab25c04b8d}} 
+\index{exibidor.\+c@{exibidor.\+c}!imprime\+String\+Pool@{imprime\+String\+Pool}}
+\index{imprime\+String\+Pool@{imprime\+String\+Pool}!exibidor.\+c@{exibidor.\+c}}
+\subsubsection{\texorpdfstring{imprime\+String\+Pool()}{imprimeStringPool()}}
+{\footnotesize\ttfamily void imprime\+String\+Pool (\begin{DoxyParamCaption}\item[{\hyperlink{structCpInfo}{Cp\+Info} $\ast$}]{cp,  }\item[{int}]{pos }\end{DoxyParamCaption})}
+
+Funcao que imprime na tela o U\+T\+F8 final de uma constante a partir de sua posicao. O U\+T\+F8 eh encontrado recursivamente.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Class\+File$\ast$} & Ponteiro para a estrutura Classfile \\
+\hline
+{\em int} & Posicao da costante que sera impressa \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 7
+Here is the caller graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{exibidor_8c_aa1ebe5081deb9425d3a11c9316e3d1ec}\label{exibidor_8c_aa1ebe5081deb9425d3a11c9316e3d1ec}} 
+\index{exibidor.\+c@{exibidor.\+c}!printa\+Attribute\+Info@{printa\+Attribute\+Info}}
+\index{printa\+Attribute\+Info@{printa\+Attribute\+Info}!exibidor.\+c@{exibidor.\+c}}
+\subsubsection{\texorpdfstring{printa\+Attribute\+Info()}{printaAttributeInfo()}}
+{\footnotesize\ttfamily void printa\+Attribute\+Info (\begin{DoxyParamCaption}\item[{\hyperlink{structClassFile}{Class\+File} $\ast$}]{class\+File }\end{DoxyParamCaption})}
+
+Funcao que imprime as informacoes dos Atributos da classe, bem como suas referencias no Constant Pool.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Class\+File$\ast$} & Ponteiro para a estrutura Classfile \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{exibidor_8c_a779037b6863fb2a2a41e99ab25c04b8d}{imprime\+String\+Pool} \hyperlink{exibidor_8c_aa801ec3d076e92418c34fa5e894df667}{print\+Single\+Line} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 9
+Here is the caller graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{exibidor_8c_aa1dcc58c50687652a1eda3b9d99a4496}\label{exibidor_8c_aa1dcc58c50687652a1eda3b9d99a4496}} 
+\index{exibidor.\+c@{exibidor.\+c}!print\+Access\+Flag@{print\+Access\+Flag}}
+\index{print\+Access\+Flag@{print\+Access\+Flag}!exibidor.\+c@{exibidor.\+c}}
+\subsubsection{\texorpdfstring{print\+Access\+Flag()}{printAccessFlag()}}
+{\footnotesize\ttfamily void print\+Access\+Flag (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{access\+Flags }\end{DoxyParamCaption})}
+
+Funcao que imprime o tipo de Access Flag de acordo com o parametro Hexadecimal passado. Se o valor for string com todas as flags eh impressa na tela.
+
+
+\begin{DoxyParams}{Parameters}
+{\em uint16\+\_\+t} & Valor Hexadecimal referente a uma flag ou combinacao de flags \\
+\hline
+{\em uint32\+\_\+t} & Parte baixa dos 64 bits \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 11
+\mbox{\Hypertarget{exibidor_8c_af66f78ede418a5d96fc683ff46166d15}\label{exibidor_8c_af66f78ede418a5d96fc683ff46166d15}} 
+\index{exibidor.\+c@{exibidor.\+c}!printa\+Class\+File@{printa\+Class\+File}}
+\index{printa\+Class\+File@{printa\+Class\+File}!exibidor.\+c@{exibidor.\+c}}
+\subsubsection{\texorpdfstring{printa\+Class\+File()}{printaClassFile()}}
+{\footnotesize\ttfamily void printa\+Class\+File (\begin{DoxyParamCaption}\item[{\hyperlink{structClassFile}{Class\+File} $\ast$}]{class\+File }\end{DoxyParamCaption})}
+
+Funcao principal que imprime as informacoes gerais e coordena as chamadas das funcoes que imprimem as demais estuturas do classfile
+
+
+\begin{DoxyParams}{Parameters}
+{\em Class\+File$\ast$} & Ponteiro para a estrutura Classfile \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{exibidor_8c_afccec8f6e6482cf1068555390a62c127}{printa\+Cp\+Info} \hyperlink{exibidor_8c_a97e7f4f9858dd377560e568e6c2f6b69}{printa\+Interfaces} \hyperlink{exibidor_8c_a628a6794abdbb58d9f3a512d8918af23}{printa\+Field\+Info} \hyperlink{exibidor_8c_ad6fba2eba482e4cd9b8e0f4727a1a916}{printa\+Method\+Info} \hyperlink{exibidor_8c_aa1ebe5081deb9425d3a11c9316e3d1ec}{printa\+Attribute\+Info} 
+
+\hyperlink{exibidor_8c_a779037b6863fb2a2a41e99ab25c04b8d}{imprime\+String\+Pool} \hyperlink{exibidor_8c_a900bd082031766050012dc3b7f348205}{print\+Topo} \hyperlink{exibidor_8c_a8579e18db3f0cf53464240c9c8e45a8b}{print\+Base} \hyperlink{exibidor_8c_a5f3fe4937a7bce5015e350ec7588d15b}{print\+Blank} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 12
+Here is the caller graph for this function\+:
+% FIG 13
+\mbox{\Hypertarget{exibidor_8c_afccec8f6e6482cf1068555390a62c127}\label{exibidor_8c_afccec8f6e6482cf1068555390a62c127}} 
+\index{exibidor.\+c@{exibidor.\+c}!printa\+Cp\+Info@{printa\+Cp\+Info}}
+\index{printa\+Cp\+Info@{printa\+Cp\+Info}!exibidor.\+c@{exibidor.\+c}}
+\subsubsection{\texorpdfstring{printa\+Cp\+Info()}{printaCpInfo()}}
+{\footnotesize\ttfamily void printa\+Cp\+Info (\begin{DoxyParamCaption}\item[{\hyperlink{structClassFile}{Class\+File} $\ast$}]{class\+File }\end{DoxyParamCaption})}
+
+Funcao que imprime o Constant Pool, buscando os valores U\+T\+F8 finais de cada constatnte e imprimindo tambem suas referencias
+
+
+\begin{DoxyParams}{Parameters}
+{\em Class\+File$\ast$} & Ponteiro para a estrutura Classfile \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{exibidor_8c_a779037b6863fb2a2a41e99ab25c04b8d}{imprime\+String\+Pool} \hyperlink{exibidor_8c_ae3623748d39f700f065fc13619af7599}{hex\+To\+Double} \hyperlink{exibidor_8c_a1d10814d2eb259040b2a191921a7878f}{hex\+To\+Long} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 14
+Here is the caller graph for this function\+:
+% FIG 15
+\mbox{\Hypertarget{exibidor_8c_a628a6794abdbb58d9f3a512d8918af23}\label{exibidor_8c_a628a6794abdbb58d9f3a512d8918af23}} 
+\index{exibidor.\+c@{exibidor.\+c}!printa\+Field\+Info@{printa\+Field\+Info}}
+\index{printa\+Field\+Info@{printa\+Field\+Info}!exibidor.\+c@{exibidor.\+c}}
+\subsubsection{\texorpdfstring{printa\+Field\+Info()}{printaFieldInfo()}}
+{\footnotesize\ttfamily void printa\+Field\+Info (\begin{DoxyParamCaption}\item[{\hyperlink{structClassFile}{Class\+File} $\ast$}]{class\+File }\end{DoxyParamCaption})}
+
+Funcao que imprime as informacoes de Fields da classe, bem como suas referencias no Constant Pool.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Class\+File$\ast$} & Ponteiro para a estrutura Classfile \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{exibidor_8c_a779037b6863fb2a2a41e99ab25c04b8d}{imprime\+String\+Pool} \hyperlink{exibidor_8c_aa1dcc58c50687652a1eda3b9d99a4496}{print\+Access\+Flag} \hyperlink{exibidor_8c_aa801ec3d076e92418c34fa5e894df667}{print\+Single\+Line} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 16
+Here is the caller graph for this function\+:
+% FIG 17
+\mbox{\Hypertarget{exibidor_8c_a97e7f4f9858dd377560e568e6c2f6b69}\label{exibidor_8c_a97e7f4f9858dd377560e568e6c2f6b69}} 
+\index{exibidor.\+c@{exibidor.\+c}!printa\+Interfaces@{printa\+Interfaces}}
+\index{printa\+Interfaces@{printa\+Interfaces}!exibidor.\+c@{exibidor.\+c}}
+\subsubsection{\texorpdfstring{printa\+Interfaces()}{printaInterfaces()}}
+{\footnotesize\ttfamily void printa\+Interfaces (\begin{DoxyParamCaption}\item[{\hyperlink{structClassFile}{Class\+File} $\ast$}]{class\+File }\end{DoxyParamCaption})}
+
+Funcao que imprime Interfaces da classe passada parametro, alem das referencias das constantes que contem as informacoes U\+T\+F8 de cada Interface
+
+
+\begin{DoxyParams}{Parameters}
+{\em Class\+File$\ast$} & Ponteiro para a estrutura Classfile \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{exibidor_8c_a779037b6863fb2a2a41e99ab25c04b8d}{imprime\+String\+Pool} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 18
+Here is the caller graph for this function\+:
+% FIG 19
+\mbox{\Hypertarget{exibidor_8c_ad6fba2eba482e4cd9b8e0f4727a1a916}\label{exibidor_8c_ad6fba2eba482e4cd9b8e0f4727a1a916}} 
+\index{exibidor.\+c@{exibidor.\+c}!printa\+Method\+Info@{printa\+Method\+Info}}
+\index{printa\+Method\+Info@{printa\+Method\+Info}!exibidor.\+c@{exibidor.\+c}}
+\subsubsection{\texorpdfstring{printa\+Method\+Info()}{printaMethodInfo()}}
+{\footnotesize\ttfamily void printa\+Method\+Info (\begin{DoxyParamCaption}\item[{\hyperlink{structClassFile}{Class\+File} $\ast$}]{class\+File }\end{DoxyParamCaption})}
+
+Funcao que imprime as informacoes dos Metodos da classe, suas instrucoes (mnemonicos) e suas referencias no Constant Pool.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Class\+File$\ast$} & Ponteiro para a estrutura Classfile \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{exibidor_8c_a779037b6863fb2a2a41e99ab25c04b8d}{imprime\+String\+Pool} \hyperlink{exibidor_8c_a7c0475d7e6531aa7a07e7f1103fc56e0}{imprime\+Code} \hyperlink{exibidor_8c_a9d4be7efdb4277ecb2294302e9d35b37}{imprime\+Exc} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 20
+Here is the caller graph for this function\+:
+% FIG 21
+\mbox{\Hypertarget{exibidor_8c_a8579e18db3f0cf53464240c9c8e45a8b}\label{exibidor_8c_a8579e18db3f0cf53464240c9c8e45a8b}} 
+\index{exibidor.\+c@{exibidor.\+c}!print\+Base@{print\+Base}}
+\index{print\+Base@{print\+Base}!exibidor.\+c@{exibidor.\+c}}
+\subsubsection{\texorpdfstring{print\+Base()}{printBase()}}
+{\footnotesize\ttfamily void print\+Base (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Funcao de estilizacao que imprime uma linha na base de cada titulo 
+\begin{DoxyParams}{Parameters}
+{\em Nenhum} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 22
+\mbox{\Hypertarget{exibidor_8c_a5f3fe4937a7bce5015e350ec7588d15b}\label{exibidor_8c_a5f3fe4937a7bce5015e350ec7588d15b}} 
+\index{exibidor.\+c@{exibidor.\+c}!print\+Blank@{print\+Blank}}
+\index{print\+Blank@{print\+Blank}!exibidor.\+c@{exibidor.\+c}}
+\subsubsection{\texorpdfstring{print\+Blank()}{printBlank()}}
+{\footnotesize\ttfamily void print\+Blank (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Funcao de estilizacao que imprime uma linha em branco, mas com as bordas 
+\begin{DoxyParams}{Parameters}
+{\em Nenhum} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 23
+\mbox{\Hypertarget{exibidor_8c_aa801ec3d076e92418c34fa5e894df667}\label{exibidor_8c_aa801ec3d076e92418c34fa5e894df667}} 
+\index{exibidor.\+c@{exibidor.\+c}!print\+Single\+Line@{print\+Single\+Line}}
+\index{print\+Single\+Line@{print\+Single\+Line}!exibidor.\+c@{exibidor.\+c}}
+\subsubsection{\texorpdfstring{print\+Single\+Line()}{printSingleLine()}}
+{\footnotesize\ttfamily void print\+Single\+Line (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Funcao de estilizacao que imprime uma linha na lateral de um titulo 
+\begin{DoxyParams}{Parameters}
+{\em Nenhum} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 24
+\mbox{\Hypertarget{exibidor_8c_a900bd082031766050012dc3b7f348205}\label{exibidor_8c_a900bd082031766050012dc3b7f348205}} 
+\index{exibidor.\+c@{exibidor.\+c}!print\+Topo@{print\+Topo}}
+\index{print\+Topo@{print\+Topo}!exibidor.\+c@{exibidor.\+c}}
+\subsubsection{\texorpdfstring{print\+Topo()}{printTopo()}}
+{\footnotesize\ttfamily void print\+Topo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Funcao de estilizacao que imprime uma linha no topo de cada titulo 
+\begin{DoxyParams}{Parameters}
+{\em Nenhum} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 25

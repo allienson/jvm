@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>JVM - SB Grupo 3: Código-Fonte de decodificador.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">JVM - SB Grupo 3
+   </div>
+   <div id="projectbrief">Java Virtual Machine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d3/d78/decodificador_8h_source.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">decodificador.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d3/d78/decodificador_8h.html">Vá para a documentação deste arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef DECODIFICADOR_H</span></div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define DECODIFICADOR_H</span></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span> </div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div><div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="../../d3/d78/decodificador_8h.html#a33199dbdd3b5cb12a10b1cbd125293b8">   24</a></span>&#160;<span class="preprocessor">#define NOME_INSTRUCAO 30 </span></div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div><div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="../../d6/d8d/struct_decodificador.html">   26</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="../../d6/d8d/struct_decodificador.html">Decodificador</a> {</div><div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="../../d6/d8d/struct_decodificador.html#abd91e4ab4dc0ec38489f2c487132ccff">   27</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="../../d5/de7/namespaceinstrucao.html">instrucao</a>[<a class="code" href="../../d3/d78/decodificador_8h.html#a33199dbdd3b5cb12a10b1cbd125293b8">NOME_INSTRUCAO</a>];</div><div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="../../d6/d8d/struct_decodificador.html#a7081a89f9d4428ef33fb56f647363f72">   28</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d6/d8d/struct_decodificador.html#a7081a89f9d4428ef33fb56f647363f72">bytes</a>; </div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;} <a class="code" href="../../d3/d78/decodificador_8h.html#af8f64bf402ebd05dd1314452e284031b">Decodificador</a>; </div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/d78/decodificador_8h.html#a33a5a572beb55160cd59df462a10cdc3">inicializaDecodificador</a>(<a class="code" href="../../d6/d8d/struct_decodificador.html">Decodificador</a> <a class="code" href="../../dd/dbe/frame_8c.html#a352d20cc1b440fd3e25d463b5e2efdb4">dec</a>[]);</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#endif </span></div><div class="ttc" id="frame_8c_html_a352d20cc1b440fd3e25d463b5e2efdb4"><div class="ttname"><a href="../../dd/dbe/frame_8c.html#a352d20cc1b440fd3e25d463b5e2efdb4">dec</a></div><div class="ttdeci">Decodificador dec[NUM_INSTRUCAO]</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dbe/frame_8c_source.html#l00022">frame.c:22</a></div></div>
+<div class="ttc" id="struct_decodificador_html_a7081a89f9d4428ef33fb56f647363f72"><div class="ttname"><a href="../../d6/d8d/struct_decodificador.html#a7081a89f9d4428ef33fb56f647363f72">Decodificador::bytes</a></div><div class="ttdeci">int bytes</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d78/decodificador_8h_source.html#l00028">decodificador.h:28</a></div></div>
+<div class="ttc" id="struct_decodificador_html"><div class="ttname"><a href="../../d6/d8d/struct_decodificador.html">Decodificador</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d78/decodificador_8h_source.html#l00026">decodificador.h:26</a></div></div>
+<div class="ttc" id="decodificador_8h_html_af8f64bf402ebd05dd1314452e284031b"><div class="ttname"><a href="../../d3/d78/decodificador_8h.html#af8f64bf402ebd05dd1314452e284031b">Decodificador</a></div><div class="ttdeci">struct Decodificador Decodificador</div></div>
+<div class="ttc" id="decodificador_8h_html_a33a5a572beb55160cd59df462a10cdc3"><div class="ttname"><a href="../../d3/d78/decodificador_8h.html#a33a5a572beb55160cd59df462a10cdc3">inicializaDecodificador</a></div><div class="ttdeci">void inicializaDecodificador(Decodificador dec[])</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d55/decodificador_8c_source.html#l00029">decodificador.c:29</a></div></div>
+<div class="ttc" id="decodificador_8h_html_a33199dbdd3b5cb12a10b1cbd125293b8"><div class="ttname"><a href="../../d3/d78/decodificador_8h.html#a33199dbdd3b5cb12a10b1cbd125293b8">NOME_INSTRUCAO</a></div><div class="ttdeci">#define NOME_INSTRUCAO</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d78/decodificador_8h_source.html#l00024">decodificador.h:24</a></div></div>
+<div class="ttc" id="namespaceinstrucao_html"><div class="ttname"><a href="../../d5/de7/namespaceinstrucao.html">instrucao</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../d3/d78/decodificador_8h.html">decodificador.h</a></li>
+    <li class="footer">Gerado por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

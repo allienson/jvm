@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>JVM - SB Grupo 3: Referência do Arquivo decodificador.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">JVM - SB Grupo 3
+   </div>
+   <div id="projectbrief">Java Virtual Machine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funções</a>  </div>
+  <div class="headertitle">
+<div class="title">Referência do Arquivo decodificador.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Recebe uma estrutura <a class="el" href="struct_decodificador.html">Decodificador</a> vazia e preenche com strings que sao as instrucoes presentes no bytecode. Retorna uma estrutura <a class="el" href="struct_decodificador.html">Decodificador</a> preenchida.  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="decodificador_8h_source.html">decodificador.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:ac4ac4bcce3fed96b1a2657ceafda40bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decodificador_8c.html#ac4ac4bcce3fed96b1a2657ceafda40bc">inicializaDecodificador</a> (<a class="el" href="struct_decodificador.html">Decodificador</a> decodificador[])</td></tr>
+<tr class="separator:ac4ac4bcce3fed96b1a2657ceafda40bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
+<div class="textblock"><p>Recebe uma estrutura <a class="el" href="struct_decodificador.html">Decodificador</a> vazia e preenche com strings que sao as instrucoes presentes no bytecode. Retorna uma estrutura <a class="el" href="struct_decodificador.html">Decodificador</a> preenchida. </p>
+<dl class="section author"><dt>Autores</dt><dd>Allisson Barros 12/0055619<br />
+Daniel Luz 13/0007714<br />
+Luiz Fernando Vieira 13/0013757<br />
+Mariana Pannunzio 12/0018276<br />
+Mateus Denucci 12/0053080<br />
+ </dd></dl>
+<dl class="section date"><dt>Data</dt><dd>28/06/2017</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright © 2017 GrupoSB. All rights reserved. </dd></dl>
+</div><h2 class="groupheader">Funções</h2>
+<a id="ac4ac4bcce3fed96b1a2657ceafda40bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4ac4bcce3fed96b1a2657ceafda40bc">&#9670;&nbsp;</a></span>inicializaDecodificador()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void inicializaDecodificador </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_decodificador.html">Decodificador</a>&#160;</td>
+          <td class="paramname"><em>decodificador</em>[]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Inicializa uma estrutura <a class="el" href="struct_decodificador.html">Decodificador</a> com o nome das instrucoes e a quantidade de bytes que ela ocupa.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="struct_decodificador.html">Decodificador</a></td><td>Um estrutura de <a class="el" href="struct_decodificador.html">Decodificador</a> vazia </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd><code>void</code> </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

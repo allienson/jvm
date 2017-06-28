@@ -1,0 +1,28 @@
+digraph "pushFrame"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node167 [label="pushFrame",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node167 -> Node168 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node168 [label="criaFrame",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$frame_8h.html#aaad5adf20f46c878f963035a8fb53a70"];
+  Node168 -> Node169 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node169 [label="empilhaMetodo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$metodo_8h.html#a68acc5b3f2238f62b7d0ee50964183c1"];
+  Node169 -> Node170 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node170 [label="invokevirtual",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#a78801a57dd7317b58754d741e22607a7"];
+  Node170 -> Node171 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node171 [label="inicializaInstrucoes",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#a308f4b87fb42ab5a62790c0127003ebe"];
+  Node171 -> Node169 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node169 -> Node172 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node172 [label="invokespecial",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#aea396d65920fd2046b81c2b5742f8fc2"];
+  Node172 -> Node171 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node169 -> Node173 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node173 [label="invokestatic",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#a99b74fdcaa5d59615718fc49f4cb1bf2"];
+  Node173 -> Node171 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node169 -> Node174 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node174 [label="invokeinterface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#a04465c61aa4c123ce79dc562244e7af8"];
+  Node174 -> Node171 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node169 -> Node175 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node175 [label="main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97"];
+}

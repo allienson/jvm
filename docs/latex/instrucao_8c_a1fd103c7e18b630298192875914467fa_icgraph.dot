@@ -1,0 +1,26 @@
+digraph "ifnull"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1570 [label="ifnull",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1570 -> Node1571 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1571 [label="inicializaInstrucoes",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#a308f4b87fb42ab5a62790c0127003ebe"];
+  Node1571 -> Node1572 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1572 [label="empilhaMetodo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$metodo_8h.html#a68acc5b3f2238f62b7d0ee50964183c1"];
+  Node1572 -> Node1573 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1573 [label="invokevirtual",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#a78801a57dd7317b58754d741e22607a7"];
+  Node1573 -> Node1571 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1572 -> Node1574 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1574 [label="invokespecial",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#aea396d65920fd2046b81c2b5742f8fc2"];
+  Node1574 -> Node1571 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1572 -> Node1575 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1575 [label="invokestatic",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#a99b74fdcaa5d59615718fc49f4cb1bf2"];
+  Node1575 -> Node1571 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1572 -> Node1576 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1576 [label="invokeinterface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#a04465c61aa4c123ce79dc562244e7af8"];
+  Node1576 -> Node1571 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1572 -> Node1577 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1577 [label="main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97"];
+}

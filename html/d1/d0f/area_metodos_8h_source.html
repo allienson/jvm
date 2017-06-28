@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>JVM - SB Grupo 3: Código-Fonte de areaMetodos.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">JVM - SB Grupo 3
+   </div>
+   <div id="projectbrief">Java Virtual Machine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('../../',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d1/d0f/area_metodos_8h_source.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">areaMetodos.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d1/d0f/area_metodos_8h.html">Vá para a documentação deste arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef AREA_METODOS_H</span></div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define AREA_METODOS_H</span></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d6/d97/leitor_8h.html">leitor.h</a>&quot;</span></div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div><div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="../../db/ddd/struct_area_metodos.html">   29</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="../../db/ddd/struct_area_metodos.html">AreaMetodos</a> {</div><div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="../../db/ddd/struct_area_metodos.html#a2f53ae03ffa9b13b9866efb46811c988">   30</a></span>&#160;  <a class="code" href="../../dd/dc9/struct_class_file.html">ClassFile</a>** <a class="code" href="../../db/ddd/struct_area_metodos.html#a2f53ae03ffa9b13b9866efb46811c988">arrayClasses</a>;         </div><div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="../../db/ddd/struct_area_metodos.html#a16f79347136c9dda54c97a62bd596887">   31</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="../../db/ddd/struct_area_metodos.html#a16f79347136c9dda54c97a62bd596887">numClasses</a>;                               </div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;} <a class="code" href="../../d1/d0f/area_metodos_8h.html#a61a43b36ea956f6d27a33c4a8150aa42">AreaMetodos</a>;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div><div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../de/dd3/struct_objeto.html">   39</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="../../de/dd3/struct_objeto.html">Objeto</a> {</div><div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="../../de/dd3/struct_objeto.html#a5596a470c07ffff562f21911fc34fbf3">   40</a></span>&#160;  <a class="code" href="../../dd/dc9/struct_class_file.html">ClassFile</a>* <a class="code" href="../../de/dd3/struct_objeto.html#a5596a470c07ffff562f21911fc34fbf3">classe</a>;                        </div><div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../de/dd3/struct_objeto.html#aa7b097e2dea86e221a2c7fc1c85b6fe5">   41</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="../../de/dd3/struct_objeto.html">Objeto</a>* <a class="code" href="../../de/dd3/struct_objeto.html#aa7b097e2dea86e221a2c7fc1c85b6fe5">superClasse</a>;       </div><div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="../../de/dd3/struct_objeto.html#a744a42e5e611e1d2d2f65842f4117f7b">   42</a></span>&#160;  uint32_t* <a class="code" href="../../de/dd3/struct_objeto.html#a744a42e5e611e1d2d2f65842f4117f7b">campos</a>;                         </div><div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="../../de/dd3/struct_objeto.html#a7561a3d822608137d47d2babf2dd9048">   43</a></span>&#160;  uint32_t* <a class="code" href="../../de/dd3/struct_objeto.html#a7561a3d822608137d47d2babf2dd9048">indiceCampos</a>;               </div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;} <a class="code" href="../../d1/d0f/area_metodos_8h.html#af86b4905bd1a5f5fbbc9be8105708e0f">Objeto</a>;</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="struct_area_metodos_html_a2f53ae03ffa9b13b9866efb46811c988"><div class="ttname"><a href="../../db/ddd/struct_area_metodos.html#a2f53ae03ffa9b13b9866efb46811c988">AreaMetodos::arrayClasses</a></div><div class="ttdeci">ClassFile ** arrayClasses</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/area_metodos_8h_source.html#l00030">areaMetodos.h:30</a></div></div>
+<div class="ttc" id="area_metodos_8h_html_a61a43b36ea956f6d27a33c4a8150aa42"><div class="ttname"><a href="../../d1/d0f/area_metodos_8h.html#a61a43b36ea956f6d27a33c4a8150aa42">AreaMetodos</a></div><div class="ttdeci">struct AreaMetodos AreaMetodos</div><div class="ttdoc">Estrutura geral que contem todas as demais estruturas. </div></div>
+<div class="ttc" id="struct_area_metodos_html"><div class="ttname"><a href="../../db/ddd/struct_area_metodos.html">AreaMetodos</a></div><div class="ttdoc">Estrutura geral que contem todas as demais estruturas. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/area_metodos_8h_source.html#l00029">areaMetodos.h:29</a></div></div>
+<div class="ttc" id="struct_objeto_html_a7561a3d822608137d47d2babf2dd9048"><div class="ttname"><a href="../../de/dd3/struct_objeto.html#a7561a3d822608137d47d2babf2dd9048">Objeto::indiceCampos</a></div><div class="ttdeci">uint32_t * indiceCampos</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/area_metodos_8h_source.html#l00043">areaMetodos.h:43</a></div></div>
+<div class="ttc" id="struct_objeto_html"><div class="ttname"><a href="../../de/dd3/struct_objeto.html">Objeto</a></div><div class="ttdoc">Estrutura para um objeto java. </div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/area_metodos_8h_source.html#l00039">areaMetodos.h:39</a></div></div>
+<div class="ttc" id="struct_area_metodos_html_a16f79347136c9dda54c97a62bd596887"><div class="ttname"><a href="../../db/ddd/struct_area_metodos.html#a16f79347136c9dda54c97a62bd596887">AreaMetodos::numClasses</a></div><div class="ttdeci">int numClasses</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/area_metodos_8h_source.html#l00031">areaMetodos.h:31</a></div></div>
+<div class="ttc" id="struct_class_file_html"><div class="ttname"><a href="../../dd/dc9/struct_class_file.html">ClassFile</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d97/leitor_8h_source.html#l00162">leitor.h:162</a></div></div>
+<div class="ttc" id="struct_objeto_html_aa7b097e2dea86e221a2c7fc1c85b6fe5"><div class="ttname"><a href="../../de/dd3/struct_objeto.html#aa7b097e2dea86e221a2c7fc1c85b6fe5">Objeto::superClasse</a></div><div class="ttdeci">struct Objeto * superClasse</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/area_metodos_8h_source.html#l00041">areaMetodos.h:41</a></div></div>
+<div class="ttc" id="struct_objeto_html_a5596a470c07ffff562f21911fc34fbf3"><div class="ttname"><a href="../../de/dd3/struct_objeto.html#a5596a470c07ffff562f21911fc34fbf3">Objeto::classe</a></div><div class="ttdeci">ClassFile * classe</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/area_metodos_8h_source.html#l00040">areaMetodos.h:40</a></div></div>
+<div class="ttc" id="leitor_8h_html"><div class="ttname"><a href="../../d6/d97/leitor_8h.html">leitor.h</a></div></div>
+<div class="ttc" id="struct_objeto_html_a744a42e5e611e1d2d2f65842f4117f7b"><div class="ttname"><a href="../../de/dd3/struct_objeto.html#a744a42e5e611e1d2d2f65842f4117f7b">Objeto::campos</a></div><div class="ttdeci">uint32_t * campos</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/area_metodos_8h_source.html#l00042">areaMetodos.h:42</a></div></div>
+<div class="ttc" id="area_metodos_8h_html_af86b4905bd1a5f5fbbc9be8105708e0f"><div class="ttname"><a href="../../d1/d0f/area_metodos_8h.html#af86b4905bd1a5f5fbbc9be8105708e0f">Objeto</a></div><div class="ttdeci">struct Objeto Objeto</div><div class="ttdoc">Estrutura para um objeto java. </div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../d1/d0f/area_metodos_8h.html">areaMetodos.h</a></li>
+    <li class="footer">Gerado por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

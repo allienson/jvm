@@ -1,0 +1,399 @@
+\hypertarget{leitor_8c}{}\section{leitor.\+c File Reference}
+\label{leitor_8c}\index{leitor.\+c@{leitor.\+c}}
+
+
+Recebe o caminho do arquivo \char`\"{}.\+class\char`\"{} e le todas as estruturas do \char`\"{}.\+class\char`\"{}, byte a byte, de forma sequencial.  
+
+
+{\ttfamily \#include \char`\"{}leitor.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+Include dependency graph for leitor.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structClassFile}{Class\+File} $\ast$ \hyperlink{leitor_8c_a6d3ec8ddebcd48da7d95668d16ec46ea}{inicializa\+Leitor} (char $\ast$caminho\+Classe)
+\item 
+void \hyperlink{leitor_8c_a8a9afe01d56583162e5d2d4fba0a38aa}{le\+Class\+File} (F\+I\+LE $\ast$fp, \hyperlink{structClassFile}{Class\+File} $\ast$class\+File)
+\item 
+int \hyperlink{leitor_8c_a878e3123a0ef2433fba5355ceba54703}{cafe\+Babe\+Valido} (F\+I\+LE $\ast$fp, \hyperlink{structClassFile}{Class\+File} $\ast$class\+File)
+\item 
+void \hyperlink{leitor_8c_a52487a1b0952e0c2f4bc22db6ac53153}{le\+Constant\+Pool} (F\+I\+LE $\ast$fp, \hyperlink{structClassFile}{Class\+File} $\ast$class\+File)
+\item 
+void \hyperlink{leitor_8c_abf67c5dca9a8c23f380c37fa95c9c215}{le\+Interface\+Info} (F\+I\+LE $\ast$fp, \hyperlink{structClassFile}{Class\+File} $\ast$class\+File)
+\item 
+void \hyperlink{leitor_8c_a99d0519fab7e0cd8b33a6451649e3d22}{le\+Field\+Info} (F\+I\+LE $\ast$fp, \hyperlink{structClassFile}{Class\+File} $\ast$class\+File)
+\item 
+void \hyperlink{leitor_8c_a6d4e3deddb19180bc91b1892a5f8cc28}{le\+Method\+Info} (F\+I\+LE $\ast$fp, \hyperlink{structClassFile}{Class\+File} $\ast$class\+File)
+\item 
+void \hyperlink{leitor_8c_adac81aedb40c82f25e42a66979a28d86}{le\+Attribute\+Info} (F\+I\+LE $\ast$fp, \hyperlink{structClassFile}{Class\+File} $\ast$class\+File)
+\item 
+void \hyperlink{leitor_8c_a9eb52b74df81ab0e0da46175d591d81f}{le\+Exc} (F\+I\+LE $\ast$fp, \hyperlink{structExceptionsAttribute}{Exceptions\+Attribute} $\ast$$\ast$exc\+Atrb, uint16\+\_\+t name\+Index, uint32\+\_\+t attributes\+Count)
+\item 
+void \hyperlink{leitor_8c_a6d55676267e5cf93c52566d78e1d11e1}{le\+Code} (F\+I\+LE $\ast$fp, \hyperlink{structCodeAttribute}{Code\+Attribute} $\ast$$\ast$cd\+Atrb, uint16\+\_\+t name\+Index, uint32\+\_\+t attributes\+Count)
+\item 
+void \hyperlink{leitor_8c_ab80e6e4a3faed37485e9411ddfc3e549}{salva\+Instrucoes} (F\+I\+LE $\ast$fp, \hyperlink{structCodeAttribute}{Code\+Attribute} $\ast$$\ast$cd\+Atrb)
+\item 
+uint8\+\_\+t \hyperlink{leitor_8c_a2ef408b96bee8729ac29bf490229048f}{le1\+Byte} (F\+I\+LE $\ast$fp)
+\item 
+uint16\+\_\+t \hyperlink{leitor_8c_a90fdde4380531bf81ba1284254004eff}{le2\+Bytes} (F\+I\+LE $\ast$fp)
+\item 
+uint32\+\_\+t \hyperlink{leitor_8c_a69346e08c479223be1ec2294791b6d78}{le4\+Bytes} (F\+I\+LE $\ast$fp)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Recebe o caminho do arquivo \char`\"{}.\+class\char`\"{} e le todas as estruturas do \char`\"{}.\+class\char`\"{}, byte a byte, de forma sequencial. 
+
+\begin{DoxyDate}{Date}
+26/06/17. 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright © 2017 Grupo\+SB. All rights reserved.
+\end{DoxyCopyright}
+\begin{DoxyAuthor}{Authors}
+Allisson Barros 12/0055619~\newline
+Daniel Luz 13/0007714~\newline
+Luiz Fernando Vieira 13/0013757~\newline
+Mariana Pannunzio 12/0018276~\newline
+Mateus Denucci 12/0053080 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{leitor_8c_a878e3123a0ef2433fba5355ceba54703}\label{leitor_8c_a878e3123a0ef2433fba5355ceba54703}} 
+\index{leitor.\+c@{leitor.\+c}!cafe\+Babe\+Valido@{cafe\+Babe\+Valido}}
+\index{cafe\+Babe\+Valido@{cafe\+Babe\+Valido}!leitor.\+c@{leitor.\+c}}
+\subsubsection{\texorpdfstring{cafe\+Babe\+Valido()}{cafeBabeValido()}}
+{\footnotesize\ttfamily int cafe\+Babe\+Valido (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{\hyperlink{structClassFile}{Class\+File} $\ast$}]{class\+File }\end{DoxyParamCaption})}
+
+Funcao que avalia se o arquivo aberto eh de fato um classfile e se os bytes de control 0x\+C\+A\+F\+E\+B\+A\+BE estao corretamente no inicio do arquivo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em F\+I\+L\+E$\ast$} & Descritor do arquivo .class que foi aberto para leitura \\
+\hline
+{\em Class\+File$\ast$} & Ponteiro para a estrutura Classi\+File \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily int} Resultado da verificacao (valor booleano) 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{leitor_8c_a69346e08c479223be1ec2294791b6d78}{le4\+Bytes} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{leitor_8c_a6d3ec8ddebcd48da7d95668d16ec46ea}\label{leitor_8c_a6d3ec8ddebcd48da7d95668d16ec46ea}} 
+\index{leitor.\+c@{leitor.\+c}!inicializa\+Leitor@{inicializa\+Leitor}}
+\index{inicializa\+Leitor@{inicializa\+Leitor}!leitor.\+c@{leitor.\+c}}
+\subsubsection{\texorpdfstring{inicializa\+Leitor()}{inicializaLeitor()}}
+{\footnotesize\ttfamily \hyperlink{structClassFile}{Class\+File}$\ast$ inicializa\+Leitor (\begin{DoxyParamCaption}\item[{char $\ast$}]{caminho\+Classe }\end{DoxyParamCaption})}
+
+Funcao principal que comeca a leitura de um classfile.
+
+
+\begin{DoxyParams}{Parameters}
+{\em char$\ast$} & String com o caminho do arquivo .class a ser lido \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Class\+File$\ast$} Uma estrutura \hyperlink{structClassFile}{Class\+File} preenchida 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{leitor_8c_a8a9afe01d56583162e5d2d4fba0a38aa}{le\+Class\+File} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{leitor_8c_a2ef408b96bee8729ac29bf490229048f}\label{leitor_8c_a2ef408b96bee8729ac29bf490229048f}} 
+\index{leitor.\+c@{leitor.\+c}!le1\+Byte@{le1\+Byte}}
+\index{le1\+Byte@{le1\+Byte}!leitor.\+c@{leitor.\+c}}
+\subsubsection{\texorpdfstring{le1\+Byte()}{le1Byte()}}
+{\footnotesize\ttfamily uint8\+\_\+t le1\+Byte (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp }\end{DoxyParamCaption})}
+
+Funcao que le 1 byte e salva numa variavel unsigned de 8bits.
+
+
+\begin{DoxyParams}{Parameters}
+{\em F\+I\+L\+E$\ast$} & Descritor do arquivo .class que foi aberto para leitura \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily uint8\+\_\+t} O valor lido em um unsigned de 8bits 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{leitor_8c_a90fdde4380531bf81ba1284254004eff}\label{leitor_8c_a90fdde4380531bf81ba1284254004eff}} 
+\index{leitor.\+c@{leitor.\+c}!le2\+Bytes@{le2\+Bytes}}
+\index{le2\+Bytes@{le2\+Bytes}!leitor.\+c@{leitor.\+c}}
+\subsubsection{\texorpdfstring{le2\+Bytes()}{le2Bytes()}}
+{\footnotesize\ttfamily uint16\+\_\+t le2\+Bytes (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp }\end{DoxyParamCaption})}
+
+Funcao que le 2 byte e salva numa variavel unsigned de 16bits.
+
+
+\begin{DoxyParams}{Parameters}
+{\em F\+I\+L\+E$\ast$} & Descritor do arquivo .class que foi aberto para leitura \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily uint16\+\_\+t} O valor lido em um unsigned de 16bits 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{leitor_8c_a69346e08c479223be1ec2294791b6d78}\label{leitor_8c_a69346e08c479223be1ec2294791b6d78}} 
+\index{leitor.\+c@{leitor.\+c}!le4\+Bytes@{le4\+Bytes}}
+\index{le4\+Bytes@{le4\+Bytes}!leitor.\+c@{leitor.\+c}}
+\subsubsection{\texorpdfstring{le4\+Bytes()}{le4Bytes()}}
+{\footnotesize\ttfamily uint32\+\_\+t le4\+Bytes (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp }\end{DoxyParamCaption})}
+
+Funcao que le 4 byte e salva numa variavel unsigned de 32bits.
+
+
+\begin{DoxyParams}{Parameters}
+{\em F\+I\+L\+E$\ast$} & Descritor do arquivo .class que foi aberto para leitura \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily uint32\+\_\+t} O valor lido em um unsigned de 32bits 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{leitor_8c_adac81aedb40c82f25e42a66979a28d86}\label{leitor_8c_adac81aedb40c82f25e42a66979a28d86}} 
+\index{leitor.\+c@{leitor.\+c}!le\+Attribute\+Info@{le\+Attribute\+Info}}
+\index{le\+Attribute\+Info@{le\+Attribute\+Info}!leitor.\+c@{leitor.\+c}}
+\subsubsection{\texorpdfstring{le\+Attribute\+Info()}{leAttributeInfo()}}
+{\footnotesize\ttfamily void le\+Attribute\+Info (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{\hyperlink{structClassFile}{Class\+File} $\ast$}]{class\+File }\end{DoxyParamCaption})}
+
+Funcao que le os bytes que compoe as Informacoes de Atributos e os armazena nas devidas posicoes da estrutura \hyperlink{structAttributeInfo}{Attribute\+Info}, dentro do \hyperlink{structClassFile}{Class\+File} recebido como parametro.
+
+
+\begin{DoxyParams}{Parameters}
+{\em F\+I\+L\+E$\ast$} & Descritor do arquivo .class que foi aberto para leitura \\
+\hline
+{\em Class\+File$\ast$} & Ponteiro para a estrutura Classi\+File \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{leitor_8c_a90fdde4380531bf81ba1284254004eff}{le2\+Bytes} \hyperlink{leitor_8c_a69346e08c479223be1ec2294791b6d78}{le4\+Bytes} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{leitor_8c_a8a9afe01d56583162e5d2d4fba0a38aa}\label{leitor_8c_a8a9afe01d56583162e5d2d4fba0a38aa}} 
+\index{leitor.\+c@{leitor.\+c}!le\+Class\+File@{le\+Class\+File}}
+\index{le\+Class\+File@{le\+Class\+File}!leitor.\+c@{leitor.\+c}}
+\subsubsection{\texorpdfstring{le\+Class\+File()}{leClassFile()}}
+{\footnotesize\ttfamily void le\+Class\+File (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{\hyperlink{structClassFile}{Class\+File} $\ast$}]{class\+File }\end{DoxyParamCaption})}
+
+Funcao que coordena a leitura do arquivo .class e coordena as chamadas das funcoes que leem cada parte do classfile individualmente e preenchem a estrutura recebida como parametro.
+
+
+\begin{DoxyParams}{Parameters}
+{\em F\+I\+L\+E$\ast$} & Descritor do arquivo .class que foi aberto para leitura \\
+\hline
+{\em Class\+File$\ast$} & Ponteiro para a estrutura Classi\+File vazia (porem ja alocada) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{leitor_8c_a878e3123a0ef2433fba5355ceba54703}{cafe\+Babe\+Valido} \hyperlink{leitor_8c_a90fdde4380531bf81ba1284254004eff}{le2\+Bytes} \hyperlink{leitor_8c_a52487a1b0952e0c2f4bc22db6ac53153}{le\+Constant\+Pool} \hyperlink{leitor_8c_abf67c5dca9a8c23f380c37fa95c9c215}{le\+Interface\+Info} \hyperlink{leitor_8c_a99d0519fab7e0cd8b33a6451649e3d22}{le\+Field\+Info} \hyperlink{leitor_8c_a6d4e3deddb19180bc91b1892a5f8cc28}{le\+Method\+Info} \hyperlink{leitor_8c_adac81aedb40c82f25e42a66979a28d86}{le\+Attribute\+Info} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 10
+Here is the caller graph for this function\+:
+% FIG 11
+\mbox{\Hypertarget{leitor_8c_a6d55676267e5cf93c52566d78e1d11e1}\label{leitor_8c_a6d55676267e5cf93c52566d78e1d11e1}} 
+\index{leitor.\+c@{leitor.\+c}!le\+Code@{le\+Code}}
+\index{le\+Code@{le\+Code}!leitor.\+c@{leitor.\+c}}
+\subsubsection{\texorpdfstring{le\+Code()}{leCode()}}
+{\footnotesize\ttfamily void le\+Code (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{\hyperlink{structCodeAttribute}{Code\+Attribute} $\ast$$\ast$}]{cd\+Atrb,  }\item[{uint16\+\_\+t}]{name\+Index,  }\item[{uint32\+\_\+t}]{attributes\+Count }\end{DoxyParamCaption})}
+
+Funcao que le o codigo (mnemonicos) de um metodo e os armazena nas devidas posicoes da estrutura \hyperlink{structCodeAttribute}{Code\+Attribute}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em F\+I\+L\+E$\ast$} & Descritor do arquivo .class que foi aberto para leitura \\
+\hline
+{\em Code\+Attribute$\ast$$\ast$} & Ponteiro para uma estrutura \hyperlink{structCodeAttribute}{Code\+Attribute} \\
+\hline
+{\em uint16\+\_\+t} & Name\+Index do metodo cujas instrucoes serao lidas \\
+\hline
+{\em uint16\+\_\+t} & Quantidade de atributos do metodo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{leitor_8c_a2ef408b96bee8729ac29bf490229048f}{le1\+Byte} \hyperlink{leitor_8c_a90fdde4380531bf81ba1284254004eff}{le2\+Bytes} \hyperlink{leitor_8c_a69346e08c479223be1ec2294791b6d78}{le4\+Bytes} \hyperlink{leitor_8c_ab80e6e4a3faed37485e9411ddfc3e549}{salva\+Instrucoes} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 12
+Here is the caller graph for this function\+:
+% FIG 13
+\mbox{\Hypertarget{leitor_8c_a52487a1b0952e0c2f4bc22db6ac53153}\label{leitor_8c_a52487a1b0952e0c2f4bc22db6ac53153}} 
+\index{leitor.\+c@{leitor.\+c}!le\+Constant\+Pool@{le\+Constant\+Pool}}
+\index{le\+Constant\+Pool@{le\+Constant\+Pool}!leitor.\+c@{leitor.\+c}}
+\subsubsection{\texorpdfstring{le\+Constant\+Pool()}{leConstantPool()}}
+{\footnotesize\ttfamily void le\+Constant\+Pool (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{\hyperlink{structClassFile}{Class\+File} $\ast$}]{class\+File }\end{DoxyParamCaption})}
+
+Funcao que le os bytes que compoe o Constant Pool e os armazena nas devidas posicoes da estrutura \hyperlink{structCpInfo}{Cp\+Info}, dentro do \hyperlink{structClassFile}{Class\+File} recebido como parametro.
+
+
+\begin{DoxyParams}{Parameters}
+{\em F\+I\+L\+E$\ast$} & Descritor do arquivo .class que foi aberto para leitura \\
+\hline
+{\em Class\+File$\ast$} & Ponteiro para a estrutura Classi\+File \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{leitor_8c_a2ef408b96bee8729ac29bf490229048f}{le1\+Byte} \hyperlink{leitor_8c_a90fdde4380531bf81ba1284254004eff}{le2\+Bytes} \hyperlink{leitor_8c_a69346e08c479223be1ec2294791b6d78}{le4\+Bytes} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 14
+Here is the caller graph for this function\+:
+% FIG 15
+\mbox{\Hypertarget{leitor_8c_a9eb52b74df81ab0e0da46175d591d81f}\label{leitor_8c_a9eb52b74df81ab0e0da46175d591d81f}} 
+\index{leitor.\+c@{leitor.\+c}!le\+Exc@{le\+Exc}}
+\index{le\+Exc@{le\+Exc}!leitor.\+c@{leitor.\+c}}
+\subsubsection{\texorpdfstring{le\+Exc()}{leExc()}}
+{\footnotesize\ttfamily void le\+Exc (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{\hyperlink{structExceptionsAttribute}{Exceptions\+Attribute} $\ast$$\ast$}]{exc\+Atrb,  }\item[{uint16\+\_\+t}]{name\+Index,  }\item[{uint32\+\_\+t}]{attributes\+Count }\end{DoxyParamCaption})}
+
+Funcao que le as excecoes (quando definidas) de um metodo da classe e os armazena nas devidas posicoes da estrutura \hyperlink{structExceptionsAttribute}{Exceptions\+Attribute}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em F\+I\+L\+E$\ast$} & Descritor do arquivo .class que foi aberto para leitura \\
+\hline
+{\em Exceptions\+Attribute$\ast$$\ast$} & Ponteiro para uma estrutura \hyperlink{structExceptionsAttribute}{Exceptions\+Attribute} \\
+\hline
+{\em uint16\+\_\+t} & Name\+Index do metodo cujas excecoes serao lidas \\
+\hline
+{\em uint16\+\_\+t} & Quantidade de atributos do metodo \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{leitor_8c_a90fdde4380531bf81ba1284254004eff}{le2\+Bytes} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 16
+Here is the caller graph for this function\+:
+% FIG 17
+\mbox{\Hypertarget{leitor_8c_a99d0519fab7e0cd8b33a6451649e3d22}\label{leitor_8c_a99d0519fab7e0cd8b33a6451649e3d22}} 
+\index{leitor.\+c@{leitor.\+c}!le\+Field\+Info@{le\+Field\+Info}}
+\index{le\+Field\+Info@{le\+Field\+Info}!leitor.\+c@{leitor.\+c}}
+\subsubsection{\texorpdfstring{le\+Field\+Info()}{leFieldInfo()}}
+{\footnotesize\ttfamily void le\+Field\+Info (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{\hyperlink{structClassFile}{Class\+File} $\ast$}]{class\+File }\end{DoxyParamCaption})}
+
+Funcao que le os bytes que compoe as Informacoes de Fields e os armazena nas devidas posicoes da estrutura \hyperlink{structFieldInfo}{Field\+Info}, dentro do \hyperlink{structClassFile}{Class\+File} recebido como parametro.
+
+
+\begin{DoxyParams}{Parameters}
+{\em F\+I\+L\+E$\ast$} & Descritor do arquivo .class que foi aberto para leitura \\
+\hline
+{\em Class\+File$\ast$} & Ponteiro para a estrutura Classi\+File \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{leitor_8c_a90fdde4380531bf81ba1284254004eff}{le2\+Bytes} \hyperlink{leitor_8c_a69346e08c479223be1ec2294791b6d78}{le4\+Bytes} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 18
+Here is the caller graph for this function\+:
+% FIG 19
+\mbox{\Hypertarget{leitor_8c_abf67c5dca9a8c23f380c37fa95c9c215}\label{leitor_8c_abf67c5dca9a8c23f380c37fa95c9c215}} 
+\index{leitor.\+c@{leitor.\+c}!le\+Interface\+Info@{le\+Interface\+Info}}
+\index{le\+Interface\+Info@{le\+Interface\+Info}!leitor.\+c@{leitor.\+c}}
+\subsubsection{\texorpdfstring{le\+Interface\+Info()}{leInterfaceInfo()}}
+{\footnotesize\ttfamily void le\+Interface\+Info (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{\hyperlink{structClassFile}{Class\+File} $\ast$}]{class\+File }\end{DoxyParamCaption})}
+
+Funcao que le os bytes que compoe as Informacoes de Interface e os armazena nas devidas posicoes da estrutura Interface\+Info, dentro do \hyperlink{structClassFile}{Class\+File} recebido como parametro.
+
+
+\begin{DoxyParams}{Parameters}
+{\em F\+I\+L\+E$\ast$} & Descritor do arquivo .class que foi aberto para leitura \\
+\hline
+{\em Class\+File$\ast$} & Ponteiro para a estrutura Classi\+File \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{leitor_8c_a90fdde4380531bf81ba1284254004eff}{le2\+Bytes} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 20
+Here is the caller graph for this function\+:
+% FIG 21
+\mbox{\Hypertarget{leitor_8c_a6d4e3deddb19180bc91b1892a5f8cc28}\label{leitor_8c_a6d4e3deddb19180bc91b1892a5f8cc28}} 
+\index{leitor.\+c@{leitor.\+c}!le\+Method\+Info@{le\+Method\+Info}}
+\index{le\+Method\+Info@{le\+Method\+Info}!leitor.\+c@{leitor.\+c}}
+\subsubsection{\texorpdfstring{le\+Method\+Info()}{leMethodInfo()}}
+{\footnotesize\ttfamily void le\+Method\+Info (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{\hyperlink{structClassFile}{Class\+File} $\ast$}]{class\+File }\end{DoxyParamCaption})}
+
+Funcao que le os bytes que compoe as Informacoes de Metodos e os armazena nas devidas posicoes da estrutura \hyperlink{structMethodInfo}{Method\+Info}, dentro do \hyperlink{structClassFile}{Class\+File} recebido como parametro. Isso tudo incluindo codigo (instrucoes) e excecoes de cada metodo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em F\+I\+L\+E$\ast$} & Descritor do arquivo .class que foi aberto para leitura \\
+\hline
+{\em Class\+File$\ast$} & Ponteiro para a estrutura Classi\+File \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{leitor_8c_a2ef408b96bee8729ac29bf490229048f}{le1\+Byte} \hyperlink{leitor_8c_a90fdde4380531bf81ba1284254004eff}{le2\+Bytes} \hyperlink{leitor_8c_a69346e08c479223be1ec2294791b6d78}{le4\+Bytes} \hyperlink{leitor_8c_a6d55676267e5cf93c52566d78e1d11e1}{le\+Code} \hyperlink{leitor_8c_a9eb52b74df81ab0e0da46175d591d81f}{le\+Exc} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 22
+Here is the caller graph for this function\+:
+% FIG 23
+\mbox{\Hypertarget{leitor_8c_ab80e6e4a3faed37485e9411ddfc3e549}\label{leitor_8c_ab80e6e4a3faed37485e9411ddfc3e549}} 
+\index{leitor.\+c@{leitor.\+c}!salva\+Instrucoes@{salva\+Instrucoes}}
+\index{salva\+Instrucoes@{salva\+Instrucoes}!leitor.\+c@{leitor.\+c}}
+\subsubsection{\texorpdfstring{salva\+Instrucoes()}{salvaInstrucoes()}}
+{\footnotesize\ttfamily void salva\+Instrucoes (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp,  }\item[{\hyperlink{structCodeAttribute}{Code\+Attribute} $\ast$$\ast$}]{cd\+Atrb }\end{DoxyParamCaption})}
+
+Funcao que traduz os bytes de codigo lidos de um metodo e os armazena nas devidas posicoes da estrutura \hyperlink{structCodeAttribute}{Code\+Attribute}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em F\+I\+L\+E$\ast$} & Descritor do arquivo .class que foi aberto para leitura \\
+\hline
+{\em Code\+Attribute$\ast$$\ast$} & Ponteiro para uma estrutura \hyperlink{structCodeAttribute}{Code\+Attribute} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{decodificador_8h_a33a5a572beb55160cd59df462a10cdc3}{inicializa\+Decodificador} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 24
+Here is the caller graph for this function\+:
+% FIG 25

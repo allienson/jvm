@@ -1,0 +1,56 @@
+digraph "carregaClasseParaMemoria"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node13 [label="carregaClasseParaMemoria",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node13 -> Node14 [color="midnightblue",fontsize="10",style="solid"];
+  Node14 [label="inicializaPrimeiraVez",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$carregador_8c.html#ad79fe3f83657a5542b2278537ccfbdd1"];
+  Node13 -> Node15 [color="midnightblue",fontsize="10",style="solid"];
+  Node15 [label="retornaNomeClass",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$carregador_8c.html#a9c9a3135d3a02d275706a00116816824"];
+  Node13 -> Node16 [color="midnightblue",fontsize="10",style="solid"];
+  Node16 [label="inicializaLeitor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$leitor_8c.html#a6d3ec8ddebcd48da7d95668d16ec46ea"];
+  Node16 -> Node17 [color="midnightblue",fontsize="10",style="solid"];
+  Node17 [label="leClassFile",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$leitor_8c.html#a8a9afe01d56583162e5d2d4fba0a38aa"];
+  Node17 -> Node18 [color="midnightblue",fontsize="10",style="solid"];
+  Node18 [label="cafeBabeValido",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$leitor_8c.html#a878e3123a0ef2433fba5355ceba54703"];
+  Node18 -> Node19 [color="midnightblue",fontsize="10",style="solid"];
+  Node19 [label="le4Bytes",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$leitor_8c.html#a69346e08c479223be1ec2294791b6d78"];
+  Node17 -> Node20 [color="midnightblue",fontsize="10",style="solid"];
+  Node20 [label="le2Bytes",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$leitor_8c.html#a90fdde4380531bf81ba1284254004eff"];
+  Node17 -> Node21 [color="midnightblue",fontsize="10",style="solid"];
+  Node21 [label="leConstantPool",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$leitor_8c.html#a52487a1b0952e0c2f4bc22db6ac53153"];
+  Node21 -> Node22 [color="midnightblue",fontsize="10",style="solid"];
+  Node22 [label="le1Byte",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$leitor_8c.html#a2ef408b96bee8729ac29bf490229048f"];
+  Node21 -> Node20 [color="midnightblue",fontsize="10",style="solid"];
+  Node21 -> Node19 [color="midnightblue",fontsize="10",style="solid"];
+  Node17 -> Node23 [color="midnightblue",fontsize="10",style="solid"];
+  Node23 [label="leInterfaceInfo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$leitor_8c.html#abf67c5dca9a8c23f380c37fa95c9c215"];
+  Node23 -> Node20 [color="midnightblue",fontsize="10",style="solid"];
+  Node17 -> Node24 [color="midnightblue",fontsize="10",style="solid"];
+  Node24 [label="leFieldInfo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$leitor_8c.html#a99d0519fab7e0cd8b33a6451649e3d22"];
+  Node24 -> Node20 [color="midnightblue",fontsize="10",style="solid"];
+  Node24 -> Node19 [color="midnightblue",fontsize="10",style="solid"];
+  Node17 -> Node25 [color="midnightblue",fontsize="10",style="solid"];
+  Node25 [label="leMethodInfo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$leitor_8c.html#a6d4e3deddb19180bc91b1892a5f8cc28"];
+  Node25 -> Node20 [color="midnightblue",fontsize="10",style="solid"];
+  Node25 -> Node19 [color="midnightblue",fontsize="10",style="solid"];
+  Node25 -> Node22 [color="midnightblue",fontsize="10",style="solid"];
+  Node25 -> Node26 [color="midnightblue",fontsize="10",style="solid"];
+  Node26 [label="leCode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$leitor_8c.html#a6d55676267e5cf93c52566d78e1d11e1"];
+  Node26 -> Node20 [color="midnightblue",fontsize="10",style="solid"];
+  Node26 -> Node19 [color="midnightblue",fontsize="10",style="solid"];
+  Node26 -> Node27 [color="midnightblue",fontsize="10",style="solid"];
+  Node27 [label="salvaInstrucoes",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$leitor_8c.html#ab80e6e4a3faed37485e9411ddfc3e549"];
+  Node27 -> Node28 [color="midnightblue",fontsize="10",style="solid"];
+  Node28 [label="inicializaDecodificador",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$decodificador_8c.html#ac4ac4bcce3fed96b1a2657ceafda40bc"];
+  Node26 -> Node22 [color="midnightblue",fontsize="10",style="solid"];
+  Node25 -> Node29 [color="midnightblue",fontsize="10",style="solid"];
+  Node29 [label="leExc",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$leitor_8c.html#a9eb52b74df81ab0e0da46175d591d81f"];
+  Node29 -> Node20 [color="midnightblue",fontsize="10",style="solid"];
+  Node17 -> Node30 [color="midnightblue",fontsize="10",style="solid"];
+  Node30 [label="leAttributeInfo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$leitor_8c.html#adac81aedb40c82f25e42a66979a28d86"];
+  Node30 -> Node20 [color="midnightblue",fontsize="10",style="solid"];
+  Node30 -> Node19 [color="midnightblue",fontsize="10",style="solid"];
+}

@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>JVM - SB Grupo 3: Referência do Arquivo carregador.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">JVM - SB Grupo 3
+   </div>
+   <div id="projectbrief">Java Virtual Machine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Definições e Macros</a> &#124;
+<a href="#func-members">Funções</a> &#124;
+<a href="#var-members">Variáveis</a>  </div>
+  <div class="headertitle">
+<div class="title">Referência do Arquivo carregador.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Carrega, inicializa e aloca um <a class="el" href="struct_class_file.html">ClassFile</a> e associa com a estrutura do <a class="el" href="struct_area_metodos.html" title="Estrutura geral que contem todas as demais estruturas. ">AreaMetodos</a>.  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="carregador_8h_source.html">carregador.h</a>&quot;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Definições e Macros</h2></td></tr>
+<tr class="memitem:aa93f0eb578d23995850d61f7d61c55c1"><td class="memItemLeft" align="right" valign="top"><a id="aa93f0eb578d23995850d61f7d61c55c1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>FALSE</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:aa93f0eb578d23995850d61f7d61c55c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8cecfc5c5c054d2875c03e77b7be15d"><td class="memItemLeft" align="right" valign="top"><a id="aa8cecfc5c5c054d2875c03e77b7be15d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TRUE</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:aa8cecfc5c5c054d2875c03e77b7be15d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:aa8226828a719a729baa6de54497dbd06"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="carregador_8c.html#aa8226828a719a729baa6de54497dbd06">carregaClasseParaMemoria</a> (char *caminhoClasse)</td></tr>
+<tr class="separator:aa8226828a719a729baa6de54497dbd06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad79fe3f83657a5542b2278537ccfbdd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="carregador_8c.html#ad79fe3f83657a5542b2278537ccfbdd1">inicializaPrimeiraVez</a> ()</td></tr>
+<tr class="separator:ad79fe3f83657a5542b2278537ccfbdd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c9a3135d3a02d275706a00116816824"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="carregador_8c.html#a9c9a3135d3a02d275706a00116816824">retornaNomeClass</a> (<a class="el" href="struct_class_file.html">ClassFile</a> *classe)</td></tr>
+<tr class="separator:a9c9a3135d3a02d275706a00116816824"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5791c228ebcf57d6eb24ba9618eae973"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="carregador_8c.html#a5791c228ebcf57d6eb24ba9618eae973">buscaClassPorIndice</a> (int indice)</td></tr>
+<tr class="separator:a5791c228ebcf57d6eb24ba9618eae973"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac550604e02bb2506492757b974c6856"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="carregador_8c.html#aac550604e02bb2506492757b974c6856">retornaNome</a> (<a class="el" href="struct_class_file.html">ClassFile</a> *classe, uint16_t indiceNome)</td></tr>
+<tr class="separator:aac550604e02bb2506492757b974c6856"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variáveis</h2></td></tr>
+<tr class="memitem:ac2492b2ee633ac35c62b2632b337c557"><td class="memItemLeft" align="right" valign="top"><a id="ac2492b2ee633ac35c62b2632b337c557"></a>
+<a class="el" href="struct_area_metodos.html">AreaMetodos</a>&#160;</td><td class="memItemRight" valign="bottom"><b>areaMetodos</b></td></tr>
+<tr class="separator:ac2492b2ee633ac35c62b2632b337c557"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b93f1b26aba4ad5cbecbf642d6f9944"><td class="memItemLeft" align="right" valign="top"><a id="a5b93f1b26aba4ad5cbecbf642d6f9944"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>primeira</b> = FALSE</td></tr>
+<tr class="separator:a5b93f1b26aba4ad5cbecbf642d6f9944"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
+<div class="textblock"><p>Carrega, inicializa e aloca um <a class="el" href="struct_class_file.html">ClassFile</a> e associa com a estrutura do <a class="el" href="struct_area_metodos.html" title="Estrutura geral que contem todas as demais estruturas. ">AreaMetodos</a>. </p>
+<dl class="section author"><dt>Autores</dt><dd>Allisson Barros 12/0055619<br />
+Daniel Luz 13/0007714<br />
+Luiz Fernando Vieira 13/0013757<br />
+Mariana Pannunzio 12/0018276<br />
+Mateus Denucci 12/0053080<br />
+ </dd></dl>
+<dl class="section date"><dt>Data</dt><dd>28/06/2017</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright © 2017 GrupoSB. All rights reserved. </dd></dl>
+</div><h2 class="groupheader">Funções</h2>
+<a id="a5791c228ebcf57d6eb24ba9618eae973"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5791c228ebcf57d6eb24ba9618eae973">&#9670;&nbsp;</a></span>buscaClassPorIndice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_class_file.html">ClassFile</a>* buscaClassPorIndice </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>indice</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Caso o indice passado seja um numero menor que o numero de classes salvas na area de metodos.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">int</td><td>Indice da classe no array de area de metodos que se deseja saber. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd><code>ClassFile*</code> retorna um ponteiro para a classe apontada por esse indice no array da area de metodos. </dd></dl>
+
+</div>
+</div>
+<a id="aa8226828a719a729baa6de54497dbd06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8226828a719a729baa6de54497dbd06">&#9670;&nbsp;</a></span>carregaClasseParaMemoria()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t carregaClasseParaMemoria </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>caminhoClasse</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Carrega o arquivo .class na memoria e adiciona a classe na area de metodos.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char*</td><td>Contem o caminho para a classe a ser lida. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd><code>int32_t</code> Retorna o numero de classes em area de metodos - 1 </dd></dl>
+<dl class="section see"><dt>Veja também</dt><dd><a class="el" href="carregador_8c.html#ad79fe3f83657a5542b2278537ccfbdd1">inicializaPrimeiraVez</a> <a class="el" href="leitor_8h.html#a658f67ed6a3ca72248e7cc0eaba67ba5">inicializaLeitor</a> </dd></dl>
+
+</div>
+</div>
+<a id="ad79fe3f83657a5542b2278537ccfbdd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad79fe3f83657a5542b2278537ccfbdd1">&#9670;&nbsp;</a></span>inicializaPrimeiraVez()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void inicializaPrimeiraVez </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Incializa o valor de areaMetodos.numClasses com 0 caso seja a primeira classe a ser lida. Seta uma variavel global para indicar que a primeira classe ja foi lida.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Nao</td><td>possui parametros </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd><code>void</code> </dd></dl>
+
+</div>
+</div>
+<a id="aac550604e02bb2506492757b974c6856"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac550604e02bb2506492757b974c6856">&#9670;&nbsp;</a></span>retornaNome()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* retornaNome </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>classe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>indiceNome</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Retorna o nome da classe desejada com base no classfile e no indice do nome.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ClassFile*</td><td>Classe que se deseja saber o nome. </td></tr>
+    <tr><td class="paramname">uint16_t</td><td>Indce da classe. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd><code>char*</code> Retorna o nome da classe desejada com base no classfile e no indice do nome. </dd></dl>
+
+</div>
+</div>
+<a id="a9c9a3135d3a02d275706a00116816824"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c9a3135d3a02d275706a00116816824">&#9670;&nbsp;</a></span>retornaNomeClass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* retornaNomeClass </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>classe</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Retorna o nome da classe desejada.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ClassFile*</td><td>Classe que se deseja saber o nome. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd><code>char*</code> Nome da classe desejada </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>
