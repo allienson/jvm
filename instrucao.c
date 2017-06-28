@@ -4500,7 +4500,6 @@ void invokevirtual(){
 	return;
 }
 
-
 void invokespecial() {
 	MethodInfo* metodoInvocado;
 
@@ -4509,7 +4508,7 @@ void invokespecial() {
 
 	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constantPool[indiceClasse-1]).info.Class.nameIndex);
 
-  if(strcmp("java/lang/Object",nomeClasse) == 0) {
+  	if(strcmp("java/lang/Object",nomeClasse) == 0) {
 		carregaClasseParaMemoria(nomeClasse);
 		atualizaPc();
 		return;
@@ -4539,7 +4538,7 @@ void invokespecial() {
 	empilhaMetodo(metodoInvocado, classe);
 
 	for(int32_t i = 0; i <= numeroParametros; i++) {
-			frameCorrente->fields[i] = fields[numeroParametros - i];
+		frameCorrente->fields[i] = fields[numeroParametros - i];
 	}
 
 	executaFrameCorrente();
