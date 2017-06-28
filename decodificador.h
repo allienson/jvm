@@ -12,8 +12,7 @@
 ///		Mariana Pannunzio       12/0018276\n
 ///		Mateus Denucci          12/0053080
 ///
-///  @brief 
-///		Recebe uma estrutura Decodificador vazia e preenche
+///  	@brief Recebe uma estrutura Decodificador vazia e preenche
 ///		com strings que sao as instrucoes presentes no bytecode.
 ///		Retorna uma estrutura Decodificador preenchida.
 

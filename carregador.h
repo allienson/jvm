@@ -4,7 +4,7 @@
 ///		@headerfile leitor.h "leitor.h"
 ///		@headerfile areaMetodos.h "areaMetodos.h"
 ///
-///		@date 26/06/17.
+///		@date 28/06/17.
 ///		@copyright Copyright © 2017 GrupoSB. All rights reserved.
 ///
 ///		@authors

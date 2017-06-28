@@ -2,7 +2,7 @@
 ///		@file leitor.c
 ///		@headerfile leitor.h "leitor.h"
 ///
-///		@date 26/06/17.
+///		@date 28/06/17.
 ///		@copyright Copyright © 2017 GrupoSB. All rights reserved.
 ///
 ///		@authors
@@ -31,8 +31,6 @@
 ClassFile* inicializaLeitor(char* caminhoClasse) {
     FILE* fp;
     fp = fopen(caminhoClasse, "rb");
-
-    printf("%s\n", caminhoClasse);
 
     if(fp == NULL) {
         printf("Erro ao abrir o arquivo (nao encontrado) ! \n");

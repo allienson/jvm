@@ -2,7 +2,7 @@
 ///		@file instrucao.h
 ///		@class instrucao.c "instrucao.c"
 ///
-///		@date 26/06/17.
+///		@date 28/06/17.
 ///		@copyright Copyright © 2017 GrupoSB. All rights reserved.
 ///
 ///		@authors

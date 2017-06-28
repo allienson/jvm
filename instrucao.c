@@ -10,7 +10,7 @@
 ///  Mariana Pannunzio       12/0018276\n
 ///  Mateus Denucci          12/0053080\n
 ///
-///  @date 26/06/2017
+///  @date 28/06/2017
 ///
 ///  @copyright Copyright © 2017 GrupoSB. All rights reserved.
 ///
@@ -66,7 +66,7 @@ void atualizaPc() {
 /// @param int Posicao a ser buscada na Constant Pool
 /// @return @c int Posicao da constnte final UTF8
 /// @see inicializaDecodificador
-int obtemUtfEq(CpInfo* cp, int posPool) {
+int resolveUTF(CpInfo* cp, int posPool) {
     int tag;
     tag = cp[posPool].tag;
 
@@ -76,13 +76,13 @@ int obtemUtfEq(CpInfo* cp, int posPool) {
 
     switch(tag) {
         case CONSTANT_Class:
-            return obtemUtfEq(cp, cp[posPool].info.Class.nameIndex - 1);
+            return resolveUTF(cp, cp[posPool].info.Class.nameIndex - 1);
         case CONSTANT_String:
-            return obtemUtfEq(cp, cp[posPool].info.String.stringIndex - 1);
+            return resolveUTF(cp, cp[posPool].info.String.stringIndex - 1);
         case CONSTANT_Integer:
-            return obtemUtfEq(cp, cp[posPool].info.String.stringIndex - 1);
+            return resolveUTF(cp, cp[posPool].info.String.stringIndex - 1);
         case CONSTANT_Float:
-            return obtemUtfEq(cp, cp[posPool].info.String.stringIndex - 1);
+            return resolveUTF(cp, cp[posPool].info.String.stringIndex - 1);
     }
 
     exit(0);
@@ -605,7 +605,7 @@ void sipush() {
 ///
 /// @param Nenhum
 /// @return @c void
-/// @see pushOp atualizaPc obtemUtfEq
+/// @see pushOp atualizaPc resolveUTF
 void ldc() {
   uint32_t indice;
   tipoGlobal = NULL;
@@ -616,7 +616,7 @@ void ldc() {
   	pushOp(frameCorrente->constantPool[indice - 1].info.Integer.bytes);
   } else if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_String) {
     uint32_t indice_utf;
-    indice_utf = obtemUtfEq(frameCorrente->constantPool, indice-1);
+    indice_utf = resolveUTF(frameCorrente->constantPool, indice-1);
     pushOp(indice_utf);
   } else {
     printf("Erro na instrução ldc \n");
@@ -633,7 +633,7 @@ void ldc() {
 ///
 /// @param Nenhum
 /// @return @c void
-/// @see pushOp atualizaPc obtemUtfEq
+/// @see pushOp atualizaPc resolveUTF
 void ldc_w() {
   uint32_t indice;
   indice = ((frameCorrente->code[frameCorrente->pc + 1] << 8) + (frameCorrente->code[frameCorrente->pc + 2]));
@@ -643,7 +643,7 @@ void ldc_w() {
     pushOp(frameCorrente->constantPool[indice - 1].info.Integer.bytes);
   } else if (frameCorrente->constantPool[indice - 1].tag == CONSTANT_String) {
     uint32_t indice_utf;
-    indice_utf = obtemUtfEq(frameCorrente->constantPool, indice-1);
+    indice_utf = resolveUTF(frameCorrente->constantPool, indice-1);
     pushOp(indice_utf);
   } else {
     printf("Erro na instrução ldc_w \n");
@@ -4222,7 +4222,7 @@ void dreturn() {
 	retAlta = alta;
 	retBaixa = baixa;
 
-  frameCorrente->pc = frameCorrente->codeLength + 1;
+  	frameCorrente->pc = frameCorrente->codeLength + 1;
 }
 
 ///

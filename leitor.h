@@ -3,7 +3,7 @@
 ///		@class leitor.c "leitor.c"
 ///		@headerfile decodificador.h "decodificador.h"
 ///
-///		@date 26/06/17.
+///		@date 28/06/17.
 ///		@copyright Copyright © 2017 GrupoSB. All rights reserved.
 ///
 ///		@authors
@@ -14,8 +14,8 @@
 ///		Mateus Denucci          12/0053080
 ///
 ///		@brief
-///		Recebe o caminho do arquivo ".class" e le todas
-///		as estruturas do ".class", byte a byte, de forma sequencial.
+///		Define as estruturas do Classfile e as funcoes que fazem
+///   a leitura de um arquivo .class e populam as estruturas.
 ///
 
 #ifndef LEITOR_h

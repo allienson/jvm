@@ -2,7 +2,7 @@
 ///	@file areaMetodos.h
 ///	@headerfile leitor.h "leitor.h"
 ///
-///	@date 26/06/17.
+///	@date 28/06/17.
 ///	@copyright Copyright © 2017 GrupoSB. All rights reserved.
 ///
 ///	@authors
@@ -13,7 +13,7 @@
 ///	Mateus Denucci          12/0053080
 ///
 ///	@brief
-///	Define a estrutura da Area de Metodos e Objeto.
+///	Define as estruturas Area de Metodos e Objeto.
 ///
 
 #ifndef AREA_METODOS_H
@@ -25,12 +25,11 @@
 /// @brief Estrutura geral que contem todas as demais estruturas
 ///
 /// Aqui ficam guaradas as classes carregadas e todas as subestrutures
-/// dessas classes, de forma que os dados de classes estao todos aqui.
+/// dessas classes.
 typedef struct AreaMetodos {
   ClassFile** arrayClasses;			
   int numClasses;								
 } AreaMetodos;
-
 
 ///
 /// @brief Estrutura para um objeto java

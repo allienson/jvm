@@ -9,7 +9,7 @@
 ///  Mariana Pannunzio       12/0018276\n
 ///  Mateus Denucci          12/0053080\n
 ///
-///  @date 26/06/2017
+///  @date 28/06/2017
 ///
 ///  @copyright Copyright © 2017 GrupoSB. All rights reserved.
 ///
@@ -111,12 +111,13 @@ void popFrame() {
 /// @param int32_t Valor a ser inserido na pilha de operandos.
 /// @return @c void
 void pushOp(int32_t valor) {
-	if(frameCorrente->pilhaOp->depth >= frameCorrente->maxStack){
+	
+	if(checkaOverflowPilhaOp()){
 		printf("Overflow na pilha de operandos!\n");
 		exit(0);
 	}
 	frameCorrente->pilhaOp->operandos[frameCorrente->pilhaOp->depth] = valor;
-  frameCorrente->pilhaOp->depth += 1;
+  	frameCorrente->pilhaOp->depth += 1;
 }
 
 ///
@@ -125,12 +126,33 @@ void pushOp(int32_t valor) {
 /// @param Nao possui parametros.
 /// @return @c int32_t Retorna o valor desempilhado da pilha de operandos.
 int32_t popOp() {
+	
 	frameCorrente->pilhaOp->depth -= 1;
 
-	if (frameCorrente->pilhaOp->depth < 0) {
+	if (checkaUnderflowPilhaOp()) {
 		printf("profundidade da pilha de operandos negativa: %d\n", frameCorrente->pilhaOp->depth);
 		printf("pc: %u\n", frameCorrente->pc);
 	}
 
 	return frameCorrente->pilhaOp->operandos[frameCorrente->pilhaOp->depth];
 }
+
+///
+/// Confere se o tamanho da pilha excedeu o
+/// tamanho maximo (max stack)
+///
+/// @param Nao possui parametros.
+/// @return @c int Resultado de uma comparacao (0 ou 1)
+int checkaOverflowPilhaOp(){
+	return frameCorrente->pilhaOp->depth >= frameCorrente->maxStack;
+}
+
+///
+/// Confere se a profundidade da pilha esta negativa.
+///
+/// @param Nao possui parametros.
+/// @return @c int Resultado de uma comparacao (0 ou 1)
+int checkaUnderflowPilhaOp(){
+	return frameCorrente->pilhaOp->depth < 0;
+}
+

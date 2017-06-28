@@ -3,7 +3,7 @@
 ///		@class metodo.c "metodo.c"
 ///		@headerfile carregador.h "carregador.h"
 ///
-///		@date 26/06/17.
+///		@date 28/06/17.
 ///		@copyright Copyright © 2017 GrupoSB. All rights reserved.
 ///
 ///		@authors
@@ -14,15 +14,8 @@
 ///		Mateus Denucci          12/0053080
 ///
 ///		@brief
-///		Arquivo que carrega a area de metodos na memoria
-///		para inciar a execucao do programa Java.
-///
-///		Carrega as classes a partir do arquivo ".class" chamando
-///		o Leitor e em seguida carrega essa classe para a memoria.
-///		Alem disso, confere se a classe ja esta carregada antes de
-///		chamar o Leitor. Tambem retorna um ponteiro para uma classe
-///		no array ou o seu nome, pelas funcoes implementadas.
-///
+///		Define as funcoes que implementam a execucao de um 
+///     metodo e instanciacao de objetos.
 
 #ifndef METODO_H
 #define METODO_H

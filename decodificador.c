@@ -9,17 +9,23 @@
 ///  Mariana Pannunzio       12/0018276\n
 ///  Mateus Denucci          12/0053080\n
 ///
-///  @date 26/06/2017
+///  @date 28/06/2017
 ///
 ///  @copyright Copyright © 2017 GrupoSB. All rights reserved.
 ///
-///  @brief
-///		Recebe uma estrutura Decodificador vazia e preenche
+///  @brief Recebe uma estrutura Decodificador vazia e preenche
 ///		com strings que sao as instrucoes presentes no bytecode.
 ///		Retorna uma estrutura Decodificador preenchida.
 
 #include "decodificador.h"
 
+///
+/// Inicializa uma estrutura Decodificador com 
+/// o nome das instrucoes e a quantidade de bytes 
+/// que ela ocupa.
+///
+/// @param Decodificador Um estrutura de Decodificador vazia
+/// @return @c void
 void inicializaDecodificador(Decodificador decodificador[]) {
 
     strcpy(decodificador[0].instrucao, "nop");
@@ -148,7 +154,6 @@ void inicializaDecodificador(Decodificador decodificador[]) {
     strcpy(decodificador[41].instrucao, "dload_3");
     decodificador[41].bytes = 0;
 
-    /* loads */
     strcpy(decodificador[42].instrucao, "aload_0");
     decodificador[42].bytes = 0;
 
@@ -184,7 +189,6 @@ void inicializaDecodificador(Decodificador decodificador[]) {
 
     strcpy(decodificador[53].instrucao, "saload");
     decodificador[53].bytes = 0;
-
 
     strcpy(decodificador[54].instrucao, "istore");
     decodificador[54].bytes = 1;
@@ -285,7 +289,6 @@ void inicializaDecodificador(Decodificador decodificador[]) {
     strcpy(decodificador[86].instrucao, "sastore");
     decodificador[86].bytes = 0;
 
-
 	strcpy(decodificador[87].instrucao, "pop");
 	decodificador[87].bytes = 0;
 
@@ -312,7 +315,6 @@ void inicializaDecodificador(Decodificador decodificador[]) {
 
 	strcpy(decodificador[95].instrucao, "swap");
 	decodificador[95].bytes = 0;
-
 
 	strcpy(decodificador[96].instrucao, "iadd");
 	decodificador[96].bytes = 0;
@@ -425,7 +427,6 @@ void inicializaDecodificador(Decodificador decodificador[]) {
 	strcpy(decodificador[132].instrucao, "iinc");
 	decodificador[132].bytes = 2;
 
-
 	strcpy(decodificador[133].instrucao, "i2l");
 	decodificador[133].bytes = 0;
 
@@ -470,7 +471,6 @@ void inicializaDecodificador(Decodificador decodificador[]) {
 
     strcpy(decodificador[147].instrucao, "i2s");
     decodificador[147].bytes = 0;
-
 
     strcpy(decodificador[148].instrucao, "lcmp");
     decodificador[148].bytes = 0;
@@ -529,7 +529,6 @@ void inicializaDecodificador(Decodificador decodificador[]) {
     strcpy(decodificador[166].instrucao, "if_acmpne");
     decodificador[166].bytes = 2;
 
-
     strcpy(decodificador[167].instrucao, "goto");
     decodificador[167].bytes = 2;
 
@@ -539,9 +538,7 @@ void inicializaDecodificador(Decodificador decodificador[]) {
     strcpy(decodificador[169].instrucao, "ret");
     decodificador[169].bytes = 1;
 
-
     decodificador[170].bytes = 14;
-
 
     decodificador[171].bytes = 10;
 
@@ -563,8 +560,6 @@ void inicializaDecodificador(Decodificador decodificador[]) {
     strcpy(decodificador[177].instrucao, "return");
     decodificador[177].bytes = 0;
 
-
-    //getstatic
     strcpy(decodificador[178].instrucao, "getstatic");
     decodificador[178].bytes = 2;
 
