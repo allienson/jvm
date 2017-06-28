@@ -4498,7 +4498,16 @@ void invokevirtual() {
 	return;
 }
 
-
+///
+/// Invoca um metodo a partir da referencia
+/// encontrada usando os dois argumentos para
+/// construir o indice para a Constant Pool.
+/// O metodo deve ser de superclasse ou de
+/// inicializacao
+///
+/// @param Nenhum
+/// @return @c void
+/// @see retornaNome popOp buscaCampo atualizaPc
 void invokespecial() {
 	MethodInfo* metodoInvocado;
 
@@ -4507,7 +4516,7 @@ void invokespecial() {
 
 	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constantPool[indiceClasse-1]).info.Class.nameIndex);
 
-  	if(strcmp("java/lang/Object",nomeClasse) == 0) {
+  if(strcmp("java/lang/Object",nomeClasse) == 0) {
 		carregaClasseParaMemoria(nomeClasse);
 		atualizaPc();
 		return;
@@ -4527,7 +4536,7 @@ void invokespecial() {
 	empilhaMetodo(metodoInvocado, classe);
 
 	for(int32_t i = 0; i <= numeroParametros; i++) {
-		frameCorrente->fields[i] = fields[numeroParametros - i];
+			frameCorrente->fields[i] = fields[numeroParametros - i];
 	}
 
 	executaFrameCorrente();
@@ -4759,6 +4768,16 @@ void newarray() {
   atualizaPc();
 }
 
+///
+/// Cria um array de referencias e de
+/// tamanho especificado por um valor
+/// inteiro desempilhado da pilha de
+/// operandos. Apos alocar, salva uma
+/// referencia na pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp atualizaPc
 void anewarray() {
 	int32_t tamanhoBytes;
 	int32_t tamanhoArray = popOp();
@@ -4804,11 +4823,18 @@ void anewarray() {
   atualizaPc();
 }
 
+///
+/// Desempilha uma referencia para um
+/// array e empilha o tamanho do mesmo
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp atualizaPc
 void arraylength() {
 	int32_t arrayRef = popOp();
 	int i = 0;
 
-	while(i  < qtdArrays) {
+	while(i < qtdArrays) {
 		if(arrayVetores[i].referencia == arrayRef) {
 			int32_t length = arrayVetores[i].tamanho;
 			pushOp(length);
@@ -4818,13 +4844,22 @@ void arraylength() {
 		i++;
 	}
 
-	pushOp(0);
-	atualizaPc();
+  printf("O metodo tentou acessar uma referencia de array nula");
+	exit(0);
 }
 
+///
+/// Checa se o objeto e do tipo
+/// da referencia desempilhada da
+/// pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp atualizaPc
 void checkcast() {
 	int16_t indice;
-	int8_t offset1,offset2;
+	int8_t offset1;
+  int8_t offset2;
 
 	offset1 = frameCorrente->code[(frameCorrente->pc)+1];
 	offset2 = frameCorrente->code[(frameCorrente->pc)+2];
@@ -4835,6 +4870,8 @@ void checkcast() {
 
 	if(Objeto == NULL) {
 		printf("Objeto nulo!\n");
+    atualizaPc();
+    return;
 	}
 
 	char* nomeClasse = retornaNomeClass(Objeto->classe);
@@ -4842,9 +4879,9 @@ void checkcast() {
 
 	if(strcmp(nomeClasse,nomeIndice) == 0) {
 		printf("Objeto é do tipo: %s\n", nomeIndice);
+    pushOp((int32_t)Objeto);
 	}
 
-	pushOp((int32_t)Objeto);
 	atualizaPc();
 }
 
@@ -5025,14 +5062,3 @@ void jsr_w() {
 
 	frameCorrente->pc += deslocamento;
 }
-
-///
-/// Invoca um metodo a partir da referencia
-/// encontrada usando os dois argumentos para
-/// construir o indice para a Constant Pool.
-/// O metodo deve ser de superclasse ou de
-/// inicializacao
-///
-/// @param Nenhum
-/// @return @c void
-/// @see retornaNome popOp buscaCampo atualizaPc
