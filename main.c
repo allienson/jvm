@@ -1,7 +1,10 @@
 ///
 ///  @file main.c
+///
 ///  @headerfile carregador.h "carregador.h"
 ///  @headerfile metodo.h "metodo.h"
+///  @headerfile areaMetodos.h "areaMetodos.h"
+///  @headerfile exibidor.h "exibidor.h"
 ///
 ///  @authors
 ///  Allisson Barros         12/0055619\n
@@ -49,9 +52,9 @@ void exibeArrayClasses();
 ///
 /// Funcao principal que controla o inicio do  programa.
 ///
-/// @param argc Numero de argumentos passados via linha de comando
+/// @param int Numero de argumentos passados via linha de comando
 /// @param char* Array que contem as strings passadas via linha de comando
-/// @return int Retorna 0 caso a execucao seja bem sucedida.
+/// @return @c int Retorna 0 caso a execucao seja bem sucedida.
 /// @see leParamsEntrada carregaClasseParaMemoria preparaMetodoMain empilhaMetodo executaFrameCorrente exibeArrayClasses
 int main(int argc, char* argv[]) {
   leParamsEntrada(argc, argv);
@@ -68,9 +71,9 @@ int main(int argc, char* argv[]) {
 ///
 /// Le os paramentros inseridos via linha de comando.
 ///
-/// @param argc Numero de argumentos passados via linha de comando
+/// @param int Numero de argumentos passados via linha de comando
 /// @param char* Array que contem as strings passadas via linha de comando
-/// @return void
+/// @return @c void
 void leParamsEntrada(int argc, char* argv[]) {
   caminhoArquivo = calloc(TAMANHO_ARQUIVO, sizeof(argv[1]));
   if (argc < 3) {
@@ -92,8 +95,8 @@ void leParamsEntrada(int argc, char* argv[]) {
 ///
 /// Busca a classe que possui o metodo main e depois busca dentro dessa classe o metodo main.
 ///
-/// @param Nao possui paramentros
-/// @return void
+/// @param Nenhum
+/// @return @c void
 /// @see buscaClassPorIndice buscaMetodoMain
 void preparaMetodoMain() {
   classeMain = buscaClassPorIndice(1);
@@ -109,7 +112,7 @@ void preparaMetodoMain() {
 /// com o bytecode da classe caso a flag printaParaArquivo tenha sido setada.
 ///
 /// @param Nao possui paramentros
-/// @return void
+/// @return @c void
 /// @see printaClassFile
 void exibeArrayClasses() {
   if (exibeClassFile) {

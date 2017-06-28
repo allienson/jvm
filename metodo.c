@@ -1,7 +1,7 @@
 ///
-///  @file carregador.c
+///  @file metodo.c
 ///
-///  @headerfile carregador.h "carregador.h"
+///  @headerfile frame.h "frame.h"
 ///  @headerfile areaMetodos.h "areaMetodos.h"
 ///  @headerfile metodo.h "metodo.h"
 ///  @headerfile instrucao.h "instrucao.h"
