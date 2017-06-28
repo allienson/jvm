@@ -9,6 +9,7 @@
 9 - mudar os lconst e fconst pra ficar sem aquelas loucuras de mascara
 10 - tratamentos de NaN, inf e zeros nas funcoes de divisao e mutliplicao de floats e doubles
 11 - ver o que diabos faz a flag lneg
+12 - olhar o INVOKESPECIAL COM CALMA
 
 
 DIVISAO DA DOCUMENTACAO

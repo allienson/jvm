@@ -4498,16 +4498,7 @@ void invokevirtual() {
 	return;
 }
 
-///
-/// Invoca um metodo a partir da referencia
-/// encontrada usando os dois argumentos para
-/// construir o indice para a Constant Pool.
-/// O metodo deve ser de superclasse ou de
-/// inicializacao
-///
-/// @param Nenhum
-/// @return @c void
-/// @see retornaNome popOp buscaCampo atualizaPc
+
 void invokespecial() {
 	MethodInfo* metodoInvocado;
 
@@ -4516,7 +4507,7 @@ void invokespecial() {
 
 	char* nomeClasse = retornaNome(frameCorrente->classe,(frameCorrente->constantPool[indiceClasse-1]).info.Class.nameIndex);
 
-  if(strcmp("java/lang/Object",nomeClasse) == 0) {
+  	if(strcmp("java/lang/Object",nomeClasse) == 0) {
 		carregaClasseParaMemoria(nomeClasse);
 		atualizaPc();
 		return;
@@ -4536,7 +4527,7 @@ void invokespecial() {
 	empilhaMetodo(metodoInvocado, classe);
 
 	for(int32_t i = 0; i <= numeroParametros; i++) {
-			frameCorrente->fields[i] = fields[numeroParametros - i];
+		frameCorrente->fields[i] = fields[numeroParametros - i];
 	}
 
 	executaFrameCorrente();
@@ -5034,3 +5025,14 @@ void jsr_w() {
 
 	frameCorrente->pc += deslocamento;
 }
+
+///
+/// Invoca um metodo a partir da referencia
+/// encontrada usando os dois argumentos para
+/// construir o indice para a Constant Pool.
+/// O metodo deve ser de superclasse ou de
+/// inicializacao
+///
+/// @param Nenhum
+/// @return @c void
+/// @see retornaNome popOp buscaCampo atualizaPc
