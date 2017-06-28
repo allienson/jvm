@@ -110,6 +110,15 @@ Objeto* criaObjeto(ClassFile* classe) {
 	return objeto;
 }
 
+///
+/// Recebe uma classe e um indice do metodo que sera procurado. 
+/// Se encontra, retorna o metodo. Se nao, retorna NULL.
+///
+/// @param ClassFile* Classe do frame corrente em execução
+/// @param ClassFile* Classe do metodo que sera procurado
+/// @param uint16_t Indice do metodo que sera procurado
+/// @return @c MethodInfo* Um ponteiro para uma estrutura MethodInfo
+/// @see retornaNome
 MethodInfo* buscaMetodo(ClassFile* indiceClasse, ClassFile* searchClasse, uint16_t indice){
 	char* name = retornaNome(indiceClasse, indiceClasse->constantPool[indice-1].info.NameAndType.nameIndex);
 	char* desc = retornaNome(indiceClasse, indiceClasse->constantPool[indice-1].info.NameAndType.descriptorIndex);

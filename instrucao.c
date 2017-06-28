@@ -30,10 +30,6 @@
 #include <stdlib.h>
 #include <inttypes.h>
 
-#define NULL_REF NULL
-#define POS_BAIXA 1
-#define POS_ALTA 0
-
 Vector* arrayVetores = NULL;
 
 int32_t qtdArrays = 0;
@@ -318,7 +314,7 @@ void nop() {
 /// @return @c void
 /// @see pushOp
 void aconst_null() {
-  pushOp((int32_t)NULL_REF);
+  pushOp((int32_t)NULL);
 	frameCorrente->pc++;
 }
 
@@ -4698,7 +4694,7 @@ void _new() {
     exit(0);
   }
 
-	classe = buscaClassPorIndice();
+	classe = buscaClassPorIndice(aux);
 	objeto = criaObjeto(classe);
 
 	if(objeto == NULL) {
