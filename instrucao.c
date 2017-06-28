@@ -286,7 +286,7 @@ void inicializaInstrucoes() {
 	instrucao[183] = invokespecial;
 	instrucao[184] = invokestatic;
 	instrucao[185] = invokeinterface;
-	instrucao[187] = ins_new;
+	instrucao[187] = _new;
 	instrucao[188] = newarray;
 	instrucao[189] = anewarray;
 	instrucao[190] = arraylength;
@@ -4376,15 +4376,16 @@ void putfield() {
 }
 
 ///
-/// Atribui o valor desempilhado da piha de operandos
-/// a um field de uma classe, a partir dos argumentos
-/// que geram um indice para uma constante do
-/// Constant Pool
+/// Invoca um metodo a partir da referencia
+/// encontrada usando os dois argumentos para
+/// construir o indice para a Constant Pool.
+/// O metodo nao pode ser de inicializacao
+/// de classe ou de inicializacao de interface
 ///
 /// @param Nenhum
 /// @return @c void
 /// @see retornaNome popOp buscaCampo atualizaPc
-void invokevirtual(){
+void invokevirtual() {
 	MethodInfo* metodoInvocado;
   char* nomeClasse;
   char* nomeMetodo;
@@ -4397,7 +4398,6 @@ void invokevirtual(){
   int32_t resultado_string;
   int32_t classeIndice;
   uint8_t* string = NULL;
-  static int8_t flagAppend = 0;
 
   uint32_t pcAux = frameCorrente->code[frameCorrente->pc + 2];
 
@@ -4409,62 +4409,60 @@ void invokevirtual(){
   nomeMetodo = retornaNome(frameCorrente->classe, nomeMetodoAux);
   descricaoMetodo = retornaNome(frameCorrente->classe, descricaoMetodoAux);
 
-	if((strcmp(nomeClasse, "java/io/PrintStream") == 0) && (strcmp(nomeMetodo,"println") == 0)){
+	if((strcmp(nomeClasse, "java/io/PrintStream") == 0) && (strcmp(nomeMetodo,"println") == 0)) {
     if (strcmp(descricaoMetodo, "()V") == 0) {
         printf("\n");
-    } else if (flagAppend == 0) {
-        resultado = popOp();
-
-        if (tipoGlobal == NULL) {
-            string = frameCorrente->constantPool[resultado].info.Utf8.bytes;
-        }
-
-        if (string != NULL) {
-            printf("%s\n",string);
-        } else if(strcmp(tipoGlobal, "Z") == 0) {
-            if(resultado) {
-            	printf("TRUE\n");
-            } else {
-            	printf("FALSE\n");
-            }
-        } else if(strcmp(tipoGlobal, "F") == 0) {
-            float valDesemp;
-            memcpy(&valDesemp, &resultado, sizeof(float));
-            printf("%f\n",valDesemp);
-        } else if(strcmp(tipoGlobal, "D") == 0) {
-            resultado2 = popOp();
-            double resultado_double;
-            int64_t temp;
-            temp = resultado2;
-            temp <<= 32;
-            temp += resultado;
-            memcpy(&resultado_double, &temp, sizeof(int64_t));
-            printf("%f\n", resultado_double);
-        } else if(strcmp(tipoGlobal, "L") == 0) {
-            resultado2 = popOp();
-            int64_t long_num;
-            long long result;
-            long_num= resultado2;
-            long_num <<= 32;
-            long_num |= resultado;
-            memcpy(&result, &long_num, sizeof(long));
-            flagLNEG = FALSE;
-
-            if (!flagLNEG) {
-                printf("%" PRId64 "\n", long_num);
-            } else {
-                printf("%" PRId64 "\n", result);
-            }
-        } else if (strcmp(tipoGlobal, "I") == 0) {
-            printf("%d\n", resultado);
-        } else if (strcmp(tipoGlobal, "C") == 0) {
-            printf("%c\n", resultado);
-        } else {
-            printf("erro no invoke_virtual, tipoGlobal ainda nao setado");
-            exit(1);
-        }
     } else {
-    	return;
+      resultado = popOp();
+
+      if (tipoGlobal == NULL) {
+          string = frameCorrente->constantPool[resultado].info.Utf8.bytes;
+      }
+
+      if (string != NULL) {
+          printf("%s\n",string);
+      } else if(strcmp(tipoGlobal, "Z") == 0) {
+          if(resultado) {
+          	printf("TRUE\n");
+          } else {
+          	printf("FALSE\n");
+          }
+      } else if(strcmp(tipoGlobal, "F") == 0) {
+          float valDesemp;
+          memcpy(&valDesemp, &resultado, sizeof(float));
+          printf("%f\n",valDesemp);
+      } else if(strcmp(tipoGlobal, "D") == 0) {
+          resultado2 = popOp();
+          double resultado_double;
+          int64_t temp;
+          temp = resultado2;
+          temp <<= 32;
+          temp += resultado;
+          memcpy(&resultado_double, &temp, sizeof(int64_t));
+          printf("%f\n", resultado_double);
+      } else if(strcmp(tipoGlobal, "L") == 0) {
+          resultado2 = popOp();
+          int64_t long_num;
+          long long result;
+          long_num= resultado2;
+          long_num <<= 32;
+          long_num |= resultado;
+          memcpy(&result, &long_num, sizeof(long));
+          flagLNEG = FALSE;
+
+          if (!flagLNEG) {
+              printf("%" PRId64 "\n", long_num);
+          } else {
+              printf("%" PRId64 "\n", result);
+          }
+      } else if (strcmp(tipoGlobal, "I") == 0) {
+          printf("%d\n", resultado);
+      } else if (strcmp(tipoGlobal, "C") == 0) {
+          printf("%c\n", resultado);
+      } else {
+          printf("erro no invoke_virtual, tipoGlobal ainda nao setado");
+          exit(1);
+      }
     }
 
     flagLNEG = FALSE;
@@ -4500,7 +4498,16 @@ void invokevirtual(){
 	return;
 }
 
-
+///
+/// Invoca um metodo a partir da referencia
+/// encontrada usando os dois argumentos para
+/// construir o indice para a Constant Pool.
+/// O metodo deve ser de superclasse ou de
+/// inicializacao
+///
+/// @param Nenhum
+/// @return @c void
+/// @see retornaNome popOp buscaCampo atualizaPc
 void invokespecial() {
 	MethodInfo* metodoInvocado;
 
@@ -4511,16 +4518,6 @@ void invokespecial() {
 
   if(strcmp("java/lang/Object",nomeClasse) == 0) {
 		carregaClasseParaMemoria(nomeClasse);
-		atualizaPc();
-		return;
-	}
-
-	if(strcmp("java/lang/StringBuffer",nomeClasse) == 0) {
-		atualizaPc();
-		return;
-	}
-
-	if(strcmp("java/util/Scanner",nomeClasse) == 0) {
 		atualizaPc();
 		return;
 	}
@@ -4546,6 +4543,15 @@ void invokespecial() {
 	atualizaPc();
 }
 
+///
+/// Invoca um metodo a partir da referencia
+/// encontrada usando os dois argumentos para
+/// construir o indice para a Constant Pool.
+/// O metodo deve ser static
+///
+/// @param Nenhum
+/// @return @c void
+/// @see retornaNome popOp buscaCampo atualizaPc
 void invokestatic() {
 	MethodInfo* metodoInvocado;
   char* nomeMetodo;
@@ -4569,14 +4575,6 @@ void invokestatic() {
       atualizaPc();
       return;
 		}
-	}
-
-	if((strcmp(nomeClasse, "java/lang/Integer") == 0) && (strcmp(nomeMetodo,"parseInt") == 0)) {
-		int32_t retPilha = popOp();
-		popOp();
-		pushOp(retPilha);
-    atualizaPc();
-    return;
 	}
 
 	if((strcmp(nomeClasse, "java/lang/Math") == 0) && (strcmp(nomeMetodo,"sqrt") == 0)) {
@@ -4627,6 +4625,15 @@ void invokestatic() {
 	atualizaPc();
 }
 
+///
+/// Invoca um metodo a partir da referencia
+/// encontrada usando os dois argumentos para
+/// construir o indice para a Constant Pool.
+/// O metodo deve ser de uma Interface
+///
+/// @param Nenhum
+/// @return @c void
+/// @see retornaNome popOp buscaCampo atualizaPc
 void invokeinterface() {
 	MethodInfo* metodoInvocado;
 	char* nomeMetodo;
@@ -4643,6 +4650,7 @@ void invokeinterface() {
 	descricaoMetodoAux = frameCorrente->constantPool[nomeTipoAux - 1].info.NameAndType.descriptorIndex;
   nomeMetodo = retornaNome(frameCorrente->classe, nomeMetodoAux);
   descricaoMetodo = retornaNome(frameCorrente->classe, descricaoMetodoAux);
+
 	int32_t indexClasse = carregaClasseParaMemoria(nomeClasse);
 	ClassFile* classe = buscaClassPorIndice(indexClasse);
 	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Methodref.nameAndTypeIndex;
@@ -4664,40 +4672,54 @@ void invokeinterface() {
 	atualizaPc();
 }
 
-void ins_new() {
+///
+/// Instancia um novo objeto buscando a
+/// classe pelo indice recupera dos
+/// argumentos e, se a classe esta carregada,
+/// instancia um objeto
+///
+/// @param Nenhum
+/// @return @c void
+/// @see retornaNome popOp buscaCampo atualizaPc retornaIndiceDaClassePorNome
+void _new() {
 	uint32_t indice;
 	int32_t aux;
 	char* nomeClasse;
-	Objeto* Objeto;
+	Objeto* objeto;
 	ClassFile* classe;
 
 	indice = frameCorrente->code[2+(frameCorrente->pc)];
 	nomeClasse = retornaNome(frameCorrente->classe, frameCorrente->constantPool[indice-1].info.Class.nameIndex);
 
-	if(strcmp("java/util/Scanner",nomeClasse) == 0) {
-		naoEmpilhaFlag = 1;
-		atualizaPc();
-		return;
-	}
+  aux = retornaIndiceDaClassePorNome(nomeClasse);
 
-	if(strcmp("java/lang/StringBuffer",nomeClasse) == 0) {
-		naoEmpilhaFlag = 1;
-		atualizaPc();
-		return;
-	}
+  if(aux == -1) {
+    printf("Nome da classe invalido (new)\n");
+    exit(0);
+  }
 
-	aux = carregaClasseParaMemoria(nomeClasse);
-	classe = buscaClassPorIndice(aux);
-	Objeto = criaObjeto(classe);
+	classe = buscaClassPorIndice();
+	objeto = criaObjeto(classe);
 
-	if(Objeto == NULL) {
+	if(objeto == NULL) {
 		printf("Objeto não foi corretamente alocado\n");
 	}
 
-	pushOp((int32_t) Objeto);
+	pushOp((int32_t) objeto);
 	atualizaPc();
 }
 
+///
+/// Cria um array do tipo especificado
+/// pelo primeiro argumento e de
+/// tamanho especificado por um valor
+/// inteiro desempilhado da pilha de
+/// operandos. Apos alocar, salva uma
+/// referencia na pilha de operandos
+///
+/// @param Nenhum
+/// @return @c void
+/// @see popOp pushOp atualizaPc
 void newarray() {
 	int32_t tamanhoBytes;
 	int32_t tamanhoArray = popOp();

@@ -164,6 +164,22 @@ ClassFile* retornaClassePorNome(char* nomeClasse) {
 }
 
 ///
+/// Funcao que retorna o indice da classe
+/// recebendo como entrada o nome
+///
+/// @param char* Nome da classe a ser procurada na area de metodos.
+/// @return int Indice
+int retornaIndiceDaClassePorNome(char* nomeClasse) {
+	for (int i = 0; i < areaMetodos.numClasses; i++) {
+		char* nomeClassAux = retornaNomeClass(areaMetodos.arrayClasses[i]);
+		if (strcmp(nomeClasse, nomeClassAux) == 0){
+			return i;
+		}
+	}
+	return -1;
+}
+
+///
 /// Funcao que retorna o numero de parametros de um determinado metodo de uma classe.
 ///
 /// @param ClassFile* Ponteiro para ClassFile que contem a classe

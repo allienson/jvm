@@ -13,7 +13,7 @@
 ///		Mariana Pannunzio       12/0018276\n
 ///		Mateus Denucci          12/0053080
 ///
-///		@brief 
+///		@brief
 ///		Arquivo que carrega a area de metodos na memoria
 ///		para inciar a execucao do programa Java.
 ///
@@ -38,6 +38,7 @@ Objeto* criaObjeto(ClassFile*);
 MethodInfo* buscaMetodo(ClassFile*, ClassFile*, uint16_t);
 int32_t retornaNumeroParametros(ClassFile*, MethodInfo*);
 ClassFile* retornaClassePorNome(char*);
+int retornaIndiceDaClassePorNome(char*);
 int32_t buscaCampo(char*, char*, char*);
 
 #endif

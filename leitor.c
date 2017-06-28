@@ -32,6 +32,8 @@ ClassFile* inicializaLeitor(char* caminhoClasse) {
     FILE* fp;
     fp = fopen(caminhoClasse, "rb");
 
+    printf("%s\n", caminhoClasse);
+
     if(fp == NULL) {
         printf("Erro ao abrir o arquivo (nao encontrado) ! \n");
         exit(0);

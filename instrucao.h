@@ -219,7 +219,7 @@ void invokevirtual();
 void invokespecial();
 void invokestatic();
 void invokeinterface();
-void ins_new();
+void _new();
 void newarray();
 void anewarray();
 void arraylength();
