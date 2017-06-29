@@ -590,7 +590,7 @@ void bipush() {
 /// @return @c void
 /// @see pushOp atualizaPc
 void sipush() {
-  int8_t byte1, byte2;
+  uint8_t byte1, byte2;
   int16_t shortTemp;
 	byte1 = frameCorrente->code[(frameCorrente->pc + 1)];
 	byte2 = frameCorrente->code[(frameCorrente->pc + 2)];
