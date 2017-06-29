@@ -154,7 +154,7 @@ void printaCpInfo(ClassFile* classFile) {
                 printf("\n");
                 printf("\t\tLength: %d", classFile->constantPool[i].info.Utf8.length);
                 printf("\n");
-                printf("\t\tBytes:  %s", classFile->constantPool[i].info.Utf8.bytes);
+                printf("\t\tString:  %s", classFile->constantPool[i].info.Utf8.bytes);
                 printf("\n");
                 break;
             case CONSTANT_Methodref:
@@ -578,62 +578,62 @@ void imprimeCode(ClassFile* classFile, CodeAttribute* cdAtrb) {
         if (opcode == TABLESWITCH) {
             posReferencia = k - 1;
             bytesPreench = (4 - (k % 4)) % 4;
-            for (int l = 0; l < bytesPreench; l++) {
+            for (int j = 0; j < bytesPreench; j++) {
                 k++;
             }
 
             defautV = 0;
-            for (int l = 0; l < 4; l++) {
+            for (int j = 0; j < 4; j++) {
                 defautV = (defautV << 4) + cdAtrb->code[k];
                 k++;
             }
 
             low = 0;
-            for (int l = 0; l < 4; l++) {
+            for (int j = 0; j < 4; j++) {
                 low = (low << 4) + cdAtrb->code[k];
                 k++;
             }
 
             high = 0;
-            for (int l = 0; l < 4; l++) {
+            for (int j = 0; j < 4; j++) {
                 high = (high << 4) + cdAtrb->code[k];
                 k++;
             }
-
+ 
             printf("  from  %u to %u\n", low, high);
 
             offsets = 1 + high - low;
-            for (int l = 0; l < offsets; l++) {
+            for (int j = 0; j < offsets; j++) {
                 temp = 0;
                 for (int i = 0; i < 4; i++) {
                     temp = (temp << 4) + cdAtrb->code[k];
                     k++;
                 }
-                printf("\t%d: %u (+%u)\n", l, (posReferencia + temp), temp);
+                printf("\t%d: %u (+%u)\n", j, (posReferencia + temp), temp);
             }
             printf("\tdefault: %u (+%u)\n", (defautV + posReferencia), defautV);
         } else if (opcode == LOOKUPSWITCH) {
             posReferencia = k - 1;
             bytesPreench = (4 - (k % 4)) % 4;
-            for (int l = 0; l < bytesPreench; l++) {
+            for (int j = 0; j < bytesPreench; j++) {
                 k++;
             }
 
             defautV = 0;
-            for (int l = 0; l < 4; l++) {
+            for (int j = 0; j < 4; j++) {
                 defautV = (defautV << 4) + cdAtrb->code[k];
                 k++;
             }
 
             npairs = 0;
-            for (int l = 0; l < 4; l++) {
+            for (int j = 0; j < 4; j++) {
                 npairs = (npairs << 4) + cdAtrb->code[k];
                 k++;
             }
 
             printf("  %u\n", npairs);
 
-            for (uint32_t l = 0; l < npairs; l++) {
+            for (int j = 0; j < npairs; j++) {
                 temp = 0;
                 for (int i = 0; i < 4; i++) {
                     temp = (temp << 8) + cdAtrb->code[k];
@@ -677,16 +677,18 @@ void imprimeCode(ClassFile* classFile, CodeAttribute* cdAtrb) {
                 printf(" por  %u \n", temp);
 
             } else {
-                printf("arquivo .class invalido na instrucao wide");
+                printf("Arquivo .class invalido na instrucao wide");
                 exit(1);
             }
         } else {
-            int num_bytes = dec[opcode].bytes;
-            for (int l = 0; l < num_bytes; l++) {
+            int numBytes = dec[opcode].bytes;
+            for (int j = 0; j < numBytes; j++) {
 
-                printf("%d  ", cdAtrb->code[k]);
-                if(cdAtrb->code[k] != 0)
+                
+                if(cdAtrb->code[k] != 0){
+                    printf("%d  ", cdAtrb->code[k]);
                     imprimeStringPool(classFile->constantPool, cdAtrb->code[k] - 1);
+                }
                 k++;
             }
             printf("\n");
