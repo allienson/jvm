@@ -1,0 +1,53 @@
+digraph "le4Bytes"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node72 [label="le4Bytes",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node72 -> Node73 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node73 [label="cafeBabeValido",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$leitor_8h.html#aa690fa269e79d6df38f509403e592e76"];
+  Node73 -> Node74 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node74 [label="leClassFile",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$leitor_8h.html#a6c4f68e13e23b5765be0187a0cd1e1bf"];
+  Node74 -> Node75 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node75 [label="inicializaLeitor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$leitor_8h.html#a658f67ed6a3ca72248e7cc0eaba67ba5"];
+  Node75 -> Node76 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node76 [label="carregaClasseParaMemoria",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$carregador_8h.html#a6be3551b88a5154690e9e147217ca181"];
+  Node76 -> Node77 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node77 [label="invokevirtual",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#a78801a57dd7317b58754d741e22607a7"];
+  Node77 -> Node78 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node78 [label="inicializaInstrucoes",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#a308f4b87fb42ab5a62790c0127003ebe"];
+  Node78 -> Node79 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node79 [label="empilhaMetodo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$metodo_8h.html#a68acc5b3f2238f62b7d0ee50964183c1"];
+  Node79 -> Node77 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node79 -> Node80 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node80 [label="invokespecial",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#aea396d65920fd2046b81c2b5742f8fc2"];
+  Node80 -> Node78 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node79 -> Node81 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node81 [label="invokestatic",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#a99b74fdcaa5d59615718fc49f4cb1bf2"];
+  Node81 -> Node78 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node79 -> Node82 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node82 [label="invokeinterface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#a04465c61aa4c123ce79dc562244e7af8"];
+  Node82 -> Node78 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node79 -> Node83 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node83 [label="main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97"];
+  Node76 -> Node80 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node76 -> Node81 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node76 -> Node82 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node76 -> Node83 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node72 -> Node84 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node84 [label="leConstantPool",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$leitor_8h.html#a9b40cc38171f10524e7b5ff37f67a2c2"];
+  Node84 -> Node74 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node72 -> Node85 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node85 [label="leFieldInfo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$leitor_8h.html#ac6b98a9881dc2cf0dfc83e3674129536"];
+  Node85 -> Node74 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node72 -> Node86 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node86 [label="leMethodInfo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$leitor_8h.html#a65640b48b47bed299da6129adf80c472"];
+  Node86 -> Node74 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node72 -> Node87 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node87 [label="leAttributeInfo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$leitor_8h.html#a545e322073fac16d991309e76b56f075"];
+  Node87 -> Node74 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node72 -> Node88 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node88 [label="leCode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$leitor_8h.html#ad16fbcf0c0b1e099da4be9bade95d340"];
+  Node88 -> Node86 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+}

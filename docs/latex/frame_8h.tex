@@ -1,0 +1,238 @@
+\hypertarget{frame_8h}{}\section{frame.\+h File Reference}
+\label{frame_8h}\index{frame.\+h@{frame.\+h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}leitor.\+h\char`\"{}}\newline
+Include dependency graph for frame.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structPilhaOp}{Pilha\+Op}
+\item 
+struct \hyperlink{structFrame}{Frame}
+\item 
+struct \hyperlink{structStackFrame}{Stack\+Frame}
+\item 
+struct \hyperlink{structVector}{Vector}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structPilhaOp}{Pilha\+Op} \hyperlink{frame_8h_a2d17b34734bf257b279535e064833f3f}{Pilha\+Op}
+\item 
+typedef struct \hyperlink{structFrame}{Frame} \hyperlink{frame_8h_a2a5c56d9766cd18277c4c9430518b326}{Frame}
+\item 
+typedef struct \hyperlink{structStackFrame}{Stack\+Frame} \hyperlink{frame_8h_a0b2bdc4691a7ecce810a6639f1aee20a}{Stack\+Frame}
+\item 
+typedef struct \hyperlink{structVector}{Vector} \hyperlink{frame_8h_a6ded2cf071c127e518317e3c451af3ef}{Vector}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int32\+\_\+t \hyperlink{frame_8h_a3670f378856724ca85ced056e6bfc5c4}{pop\+Op} ()
+\item 
+void \hyperlink{frame_8h_aaad5adf20f46c878f963035a8fb53a70}{cria\+Frame} (\hyperlink{structClassFile}{Class\+File} $\ast$, \hyperlink{structCodeAttribute}{Code\+Attribute} $\ast$)
+\item 
+void \hyperlink{frame_8h_afbeae238f4237be83cc60071a8a6384d}{desaloca\+Frame} ()
+\item 
+void \hyperlink{frame_8h_a163ac593cc4380f51ce48a1072b1bf41}{push\+Op} (int32\+\_\+t)
+\item 
+void \hyperlink{frame_8h_a66a49a1024974e095ed46edaad769052}{dump\+Stack} ()
+\item 
+void \hyperlink{frame_8h_a26b0bade701040dce261d302f608ed60}{dump\+Fields} ()
+\item 
+void \hyperlink{frame_8h_a6c316e194f496f983e3b330020df4222}{push\+Frame} (\hyperlink{structClassFile}{Class\+File} $\ast$, \hyperlink{structCodeAttribute}{Code\+Attribute} $\ast$, \hyperlink{structStackFrame}{Stack\+Frame} $\ast$)
+\item 
+void \hyperlink{frame_8h_aca9cbfa46eaa4e3c07217b16d0c5212e}{pop\+Frame} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int32\+\_\+t \hyperlink{frame_8h_ac1c027226ea84b3fcf8eb5e5fbd99d77}{retorno}
+\item 
+int32\+\_\+t \hyperlink{frame_8h_ae095c61cae78465ab2ae26cd68fb239e}{ret\+Alta}
+\item 
+int32\+\_\+t \hyperlink{frame_8h_ae2b60b499c926208b8f46565764dfd3e}{ret\+Baixa}
+\item 
+int8\+\_\+t \hyperlink{frame_8h_a4b4d07f1b803132aeca7f2ee073ec3c8}{flag\+Ret}
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{frame_8h_a2a5c56d9766cd18277c4c9430518b326}\label{frame_8h_a2a5c56d9766cd18277c4c9430518b326}} 
+\index{frame.\+h@{frame.\+h}!Frame@{Frame}}
+\index{Frame@{Frame}!frame.\+h@{frame.\+h}}
+\subsubsection{\texorpdfstring{Frame}{Frame}}
+{\footnotesize\ttfamily typedef struct \hyperlink{structFrame}{Frame}  \hyperlink{structFrame}{Frame}}
+
+\mbox{\Hypertarget{frame_8h_a2d17b34734bf257b279535e064833f3f}\label{frame_8h_a2d17b34734bf257b279535e064833f3f}} 
+\index{frame.\+h@{frame.\+h}!Pilha\+Op@{Pilha\+Op}}
+\index{Pilha\+Op@{Pilha\+Op}!frame.\+h@{frame.\+h}}
+\subsubsection{\texorpdfstring{Pilha\+Op}{PilhaOp}}
+{\footnotesize\ttfamily typedef struct \hyperlink{structPilhaOp}{Pilha\+Op}  \hyperlink{structPilhaOp}{Pilha\+Op}}
+
+\mbox{\Hypertarget{frame_8h_a0b2bdc4691a7ecce810a6639f1aee20a}\label{frame_8h_a0b2bdc4691a7ecce810a6639f1aee20a}} 
+\index{frame.\+h@{frame.\+h}!Stack\+Frame@{Stack\+Frame}}
+\index{Stack\+Frame@{Stack\+Frame}!frame.\+h@{frame.\+h}}
+\subsubsection{\texorpdfstring{Stack\+Frame}{StackFrame}}
+{\footnotesize\ttfamily typedef struct \hyperlink{structStackFrame}{Stack\+Frame}  \hyperlink{structStackFrame}{Stack\+Frame}}
+
+\mbox{\Hypertarget{frame_8h_a6ded2cf071c127e518317e3c451af3ef}\label{frame_8h_a6ded2cf071c127e518317e3c451af3ef}} 
+\index{frame.\+h@{frame.\+h}!Vector@{Vector}}
+\index{Vector@{Vector}!frame.\+h@{frame.\+h}}
+\subsubsection{\texorpdfstring{Vector}{Vector}}
+{\footnotesize\ttfamily typedef struct \hyperlink{structVector}{Vector}  \hyperlink{structVector}{Vector}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{frame_8h_aaad5adf20f46c878f963035a8fb53a70}\label{frame_8h_aaad5adf20f46c878f963035a8fb53a70}} 
+\index{frame.\+h@{frame.\+h}!cria\+Frame@{cria\+Frame}}
+\index{cria\+Frame@{cria\+Frame}!frame.\+h@{frame.\+h}}
+\subsubsection{\texorpdfstring{cria\+Frame()}{criaFrame()}}
+{\footnotesize\ttfamily void cria\+Frame (\begin{DoxyParamCaption}\item[{\hyperlink{structClassFile}{Class\+File} $\ast$}]{classe,  }\item[{\hyperlink{structCodeAttribute}{Code\+Attribute} $\ast$}]{code\+Attribute }\end{DoxyParamCaption})}
+
+Cria um frame e coloca ele na pilha de frames.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Class\+File$\ast$} & Ponteiro para a estrutura \hyperlink{structClassFile}{Class\+File}. \\
+\hline
+{\em Code\+Attribute$\ast$} & Ponteiro para a estrutura \hyperlink{structCodeAttribute}{Code\+Attribute}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{frame_8c_a71c5d25687de0a2568a6cf7c62dfef26}{push\+Frame} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{frame_8h_afbeae238f4237be83cc60071a8a6384d}\label{frame_8h_afbeae238f4237be83cc60071a8a6384d}} 
+\index{frame.\+h@{frame.\+h}!desaloca\+Frame@{desaloca\+Frame}}
+\index{desaloca\+Frame@{desaloca\+Frame}!frame.\+h@{frame.\+h}}
+\subsubsection{\texorpdfstring{desaloca\+Frame()}{desalocaFrame()}}
+{\footnotesize\ttfamily void desaloca\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{frame_8h_a26b0bade701040dce261d302f608ed60}\label{frame_8h_a26b0bade701040dce261d302f608ed60}} 
+\index{frame.\+h@{frame.\+h}!dump\+Fields@{dump\+Fields}}
+\index{dump\+Fields@{dump\+Fields}!frame.\+h@{frame.\+h}}
+\subsubsection{\texorpdfstring{dump\+Fields()}{dumpFields()}}
+{\footnotesize\ttfamily void dump\+Fields (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{frame_8h_a66a49a1024974e095ed46edaad769052}\label{frame_8h_a66a49a1024974e095ed46edaad769052}} 
+\index{frame.\+h@{frame.\+h}!dump\+Stack@{dump\+Stack}}
+\index{dump\+Stack@{dump\+Stack}!frame.\+h@{frame.\+h}}
+\subsubsection{\texorpdfstring{dump\+Stack()}{dumpStack()}}
+{\footnotesize\ttfamily void dump\+Stack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{frame_8h_aca9cbfa46eaa4e3c07217b16d0c5212e}\label{frame_8h_aca9cbfa46eaa4e3c07217b16d0c5212e}} 
+\index{frame.\+h@{frame.\+h}!pop\+Frame@{pop\+Frame}}
+\index{pop\+Frame@{pop\+Frame}!frame.\+h@{frame.\+h}}
+\subsubsection{\texorpdfstring{pop\+Frame()}{popFrame()}}
+{\footnotesize\ttfamily void pop\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Retira um frame da pilha de frames e atualiza o topo da pilha.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Nao} & possui parametros \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{frame_8c_a50993c39467516396b64a90eb81af0ba}{push\+Op} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{frame_8h_a3670f378856724ca85ced056e6bfc5c4}\label{frame_8h_a3670f378856724ca85ced056e6bfc5c4}} 
+\index{frame.\+h@{frame.\+h}!pop\+Op@{pop\+Op}}
+\index{pop\+Op@{pop\+Op}!frame.\+h@{frame.\+h}}
+\subsubsection{\texorpdfstring{pop\+Op()}{popOp()}}
+{\footnotesize\ttfamily int32\+\_\+t pop\+Op (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Desempilha um valor na pilha de operandos.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Nao} & possui parametros. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily int32\+\_\+t} Retorna o valor desempilhado da pilha de operandos. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{frame_8h_a6c316e194f496f983e3b330020df4222}\label{frame_8h_a6c316e194f496f983e3b330020df4222}} 
+\index{frame.\+h@{frame.\+h}!push\+Frame@{push\+Frame}}
+\index{push\+Frame@{push\+Frame}!frame.\+h@{frame.\+h}}
+\subsubsection{\texorpdfstring{push\+Frame()}{pushFrame()}}
+{\footnotesize\ttfamily void push\+Frame (\begin{DoxyParamCaption}\item[{\hyperlink{structClassFile}{Class\+File} $\ast$}]{classe,  }\item[{\hyperlink{structCodeAttribute}{Code\+Attribute} $\ast$}]{code\+Attribute,  }\item[{\hyperlink{structStackFrame}{Stack\+Frame} $\ast$}]{stack\+Frame }\end{DoxyParamCaption})}
+
+Coloca o frame passado por parametro na pilha de frames e atualiza o topo da pilha.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Class\+File$\ast$} & Ponteiro para a estrutura \hyperlink{structClassFile}{Class\+File}. \\
+\hline
+{\em Code\+Attribute$\ast$} & Ponteiro para a estrutura \hyperlink{structCodeAttribute}{Code\+Attribute}. \\
+\hline
+{\em Stack\+Frame$\ast$} & Ponteiro para a estrutura \hyperlink{structStackFrame}{Stack\+Frame} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{frame_8h_a163ac593cc4380f51ce48a1072b1bf41}\label{frame_8h_a163ac593cc4380f51ce48a1072b1bf41}} 
+\index{frame.\+h@{frame.\+h}!push\+Op@{push\+Op}}
+\index{push\+Op@{push\+Op}!frame.\+h@{frame.\+h}}
+\subsubsection{\texorpdfstring{push\+Op()}{pushOp()}}
+{\footnotesize\ttfamily void push\+Op (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{valor }\end{DoxyParamCaption})}
+
+Empilha um valor na pilha de operandos.
+
+
+\begin{DoxyParams}{Parameters}
+{\em int32\+\_\+t} & Valor a ser inserido na pilha de operandos. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{frame_8h_a4b4d07f1b803132aeca7f2ee073ec3c8}\label{frame_8h_a4b4d07f1b803132aeca7f2ee073ec3c8}} 
+\index{frame.\+h@{frame.\+h}!flag\+Ret@{flag\+Ret}}
+\index{flag\+Ret@{flag\+Ret}!frame.\+h@{frame.\+h}}
+\subsubsection{\texorpdfstring{flag\+Ret}{flagRet}}
+{\footnotesize\ttfamily int8\+\_\+t flag\+Ret}
+
+\mbox{\Hypertarget{frame_8h_ae095c61cae78465ab2ae26cd68fb239e}\label{frame_8h_ae095c61cae78465ab2ae26cd68fb239e}} 
+\index{frame.\+h@{frame.\+h}!ret\+Alta@{ret\+Alta}}
+\index{ret\+Alta@{ret\+Alta}!frame.\+h@{frame.\+h}}
+\subsubsection{\texorpdfstring{ret\+Alta}{retAlta}}
+{\footnotesize\ttfamily int32\+\_\+t ret\+Alta}
+
+\mbox{\Hypertarget{frame_8h_ae2b60b499c926208b8f46565764dfd3e}\label{frame_8h_ae2b60b499c926208b8f46565764dfd3e}} 
+\index{frame.\+h@{frame.\+h}!ret\+Baixa@{ret\+Baixa}}
+\index{ret\+Baixa@{ret\+Baixa}!frame.\+h@{frame.\+h}}
+\subsubsection{\texorpdfstring{ret\+Baixa}{retBaixa}}
+{\footnotesize\ttfamily int32\+\_\+t ret\+Baixa}
+
+\mbox{\Hypertarget{frame_8h_ac1c027226ea84b3fcf8eb5e5fbd99d77}\label{frame_8h_ac1c027226ea84b3fcf8eb5e5fbd99d77}} 
+\index{frame.\+h@{frame.\+h}!retorno@{retorno}}
+\index{retorno@{retorno}!frame.\+h@{frame.\+h}}
+\subsubsection{\texorpdfstring{retorno}{retorno}}
+{\footnotesize\ttfamily int32\+\_\+t retorno}
+

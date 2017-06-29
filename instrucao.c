@@ -86,6 +86,8 @@ int resolveUTF(CpInfo* cp, int posPool) {
     }
 
     exit(0);
+
+    
 }
 
 ///

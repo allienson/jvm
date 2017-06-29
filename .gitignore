@@ -17,14 +17,3 @@ JVM
 log.txt
 
 *.js
-
-*.html
-
-*.css
-html/
-
-*.tex
-
-latex/
-
-Doxyfile

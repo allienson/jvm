@@ -1,0 +1,35 @@
+digraph "pop2"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node3538 [label="pop2",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node3538 -> Node3539 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3539 [label="inicializaInstrucoes",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#a308f4b87fb42ab5a62790c0127003ebe"];
+  Node3539 -> Node3540 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3540 [label="empilhaMetodo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$metodo_8h.html#a68acc5b3f2238f62b7d0ee50964183c1"];
+  Node3540 -> Node3541 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3541 [label="invokevirtual",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#a78801a57dd7317b58754d741e22607a7"];
+  Node3541 -> Node3539 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3540 -> Node3542 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3542 [label="invokespecial",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#aea396d65920fd2046b81c2b5742f8fc2"];
+  Node3542 -> Node3539 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3540 -> Node3543 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3543 [label="invokestatic",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#a99b74fdcaa5d59615718fc49f4cb1bf2"];
+  Node3543 -> Node3539 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3540 -> Node3544 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3544 [label="invokeinterface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#a04465c61aa4c123ce79dc562244e7af8"];
+  Node3544 -> Node3539 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3540 -> Node3545 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3545 [label="main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97"];
+  Node3538 -> Node3546 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3546 [label="iand",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#a33c91ef3a786b39fdf213a29341d0f1c"];
+  Node3546 -> Node3539 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3538 -> Node3547 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3547 [label="ior",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#a1b61e8115820a72297d297484dc9072e"];
+  Node3547 -> Node3539 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3538 -> Node3548 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3548 [label="ixor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#a66dc9092c80d31e38c139d23ec632ad7"];
+  Node3548 -> Node3539 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

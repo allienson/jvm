@@ -1,0 +1,26 @@
+digraph "dup2"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node802 [label="dup2",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node802 -> Node803 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node803 [label="inicializaInstrucoes",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#a308f4b87fb42ab5a62790c0127003ebe"];
+  Node803 -> Node804 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node804 [label="empilhaMetodo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$metodo_8h.html#a68acc5b3f2238f62b7d0ee50964183c1"];
+  Node804 -> Node805 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node805 [label="invokevirtual",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#a78801a57dd7317b58754d741e22607a7"];
+  Node805 -> Node803 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node804 -> Node806 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node806 [label="invokespecial",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#aea396d65920fd2046b81c2b5742f8fc2"];
+  Node806 -> Node803 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node804 -> Node807 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node807 [label="invokestatic",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#a99b74fdcaa5d59615718fc49f4cb1bf2"];
+  Node807 -> Node803 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node804 -> Node808 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node808 [label="invokeinterface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$instrucao_8h.html#a04465c61aa4c123ce79dc562244e7af8"];
+  Node808 -> Node803 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node804 -> Node809 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node809 [label="main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97"];
+}

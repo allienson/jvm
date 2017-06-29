@@ -1,0 +1,177 @@
+\hypertarget{frame_8c}{}\section{frame.\+c File Reference}
+\label{frame_8c}\index{frame.\+c@{frame.\+c}}
+
+
+Gerenciamento e alocação de memória das frames do programa executado.  
+
+
+{\ttfamily \#include \char`\"{}frame.\+h\char`\"{}}\newline
+Include dependency graph for frame.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{frame_8c_a043120e5dc10c5874fafd5b92506dd54}{cria\+Frame} (\hyperlink{structClassFile}{Class\+File} $\ast$classe, \hyperlink{structCodeAttribute}{Code\+Attribute} $\ast$code\+Attribute)
+\item 
+void \hyperlink{frame_8c_a71c5d25687de0a2568a6cf7c62dfef26}{push\+Frame} (\hyperlink{structClassFile}{Class\+File} $\ast$classe, \hyperlink{structCodeAttribute}{Code\+Attribute} $\ast$code\+Attribute, \hyperlink{structStackFrame}{Stack\+Frame} $\ast$stack\+Frame)
+\item 
+void \hyperlink{frame_8c_aca9cbfa46eaa4e3c07217b16d0c5212e}{pop\+Frame} ()
+\item 
+void \hyperlink{frame_8c_a50993c39467516396b64a90eb81af0ba}{push\+Op} (int32\+\_\+t valor)
+\item 
+int32\+\_\+t \hyperlink{frame_8c_a3670f378856724ca85ced056e6bfc5c4}{pop\+Op} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structDecodificador}{Decodificador} \hyperlink{frame_8c_a352d20cc1b440fd3e25d463b5e2efdb4}{dec} \mbox{[}\hyperlink{leitor_8h_a4d34398b879119909a61e7f5d80d7f9a}{N\+U\+M\+\_\+\+I\+N\+S\+T\+R\+U\+C\+AO}\mbox{]}
+\item 
+\hyperlink{structFrame}{Frame} $\ast$ \hyperlink{frame_8c_aad62b45c5a0a8993d540ec7b83ef02ee}{frame\+Corrente}
+\item 
+int32\+\_\+t \hyperlink{frame_8c_a41b21f484ed1e3efce18dcb9a07ae865}{qtd\+Arrays}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Gerenciamento e alocação de memória das frames do programa executado. 
+
+\begin{DoxyAuthor}{Authors}
+Allisson Barros 12/0055619~\newline
+Daniel Luz 13/0007714~\newline
+Luiz Fernando Vieira 13/0013757~\newline
+Mariana Pannunzio 12/0018276~\newline
+Mateus Denucci 12/0053080~\newline
+ 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+26/06/2017
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright © 2017 Grupo\+SB. All rights reserved. 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{frame_8c_a043120e5dc10c5874fafd5b92506dd54}\label{frame_8c_a043120e5dc10c5874fafd5b92506dd54}} 
+\index{frame.\+c@{frame.\+c}!cria\+Frame@{cria\+Frame}}
+\index{cria\+Frame@{cria\+Frame}!frame.\+c@{frame.\+c}}
+\subsubsection{\texorpdfstring{cria\+Frame()}{criaFrame()}}
+{\footnotesize\ttfamily void cria\+Frame (\begin{DoxyParamCaption}\item[{\hyperlink{structClassFile}{Class\+File} $\ast$}]{classe,  }\item[{\hyperlink{structCodeAttribute}{Code\+Attribute} $\ast$}]{code\+Attribute }\end{DoxyParamCaption})}
+
+Cria um frame e coloca ele na pilha de frames.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Class\+File$\ast$} & Ponteiro para a estrutura \hyperlink{structClassFile}{Class\+File}. \\
+\hline
+{\em Code\+Attribute$\ast$} & Ponteiro para a estrutura \hyperlink{structCodeAttribute}{Code\+Attribute}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{frame_8c_a71c5d25687de0a2568a6cf7c62dfef26}{push\+Frame} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{frame_8c_aca9cbfa46eaa4e3c07217b16d0c5212e}\label{frame_8c_aca9cbfa46eaa4e3c07217b16d0c5212e}} 
+\index{frame.\+c@{frame.\+c}!pop\+Frame@{pop\+Frame}}
+\index{pop\+Frame@{pop\+Frame}!frame.\+c@{frame.\+c}}
+\subsubsection{\texorpdfstring{pop\+Frame()}{popFrame()}}
+{\footnotesize\ttfamily void pop\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Retira um frame da pilha de frames e atualiza o topo da pilha.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Nao} & possui parametros \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{frame_8c_a50993c39467516396b64a90eb81af0ba}{push\+Op} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{frame_8c_a3670f378856724ca85ced056e6bfc5c4}\label{frame_8c_a3670f378856724ca85ced056e6bfc5c4}} 
+\index{frame.\+c@{frame.\+c}!pop\+Op@{pop\+Op}}
+\index{pop\+Op@{pop\+Op}!frame.\+c@{frame.\+c}}
+\subsubsection{\texorpdfstring{pop\+Op()}{popOp()}}
+{\footnotesize\ttfamily int32\+\_\+t pop\+Op (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Desempilha um valor na pilha de operandos.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Nao} & possui parametros. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily int32\+\_\+t} Retorna o valor desempilhado da pilha de operandos. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{frame_8c_a71c5d25687de0a2568a6cf7c62dfef26}\label{frame_8c_a71c5d25687de0a2568a6cf7c62dfef26}} 
+\index{frame.\+c@{frame.\+c}!push\+Frame@{push\+Frame}}
+\index{push\+Frame@{push\+Frame}!frame.\+c@{frame.\+c}}
+\subsubsection{\texorpdfstring{push\+Frame()}{pushFrame()}}
+{\footnotesize\ttfamily void push\+Frame (\begin{DoxyParamCaption}\item[{\hyperlink{structClassFile}{Class\+File} $\ast$}]{classe,  }\item[{\hyperlink{structCodeAttribute}{Code\+Attribute} $\ast$}]{code\+Attribute,  }\item[{\hyperlink{structStackFrame}{Stack\+Frame} $\ast$}]{stack\+Frame }\end{DoxyParamCaption})}
+
+Coloca o frame passado por parametro na pilha de frames e atualiza o topo da pilha.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Class\+File$\ast$} & Ponteiro para a estrutura \hyperlink{structClassFile}{Class\+File}. \\
+\hline
+{\em Code\+Attribute$\ast$} & Ponteiro para a estrutura \hyperlink{structCodeAttribute}{Code\+Attribute}. \\
+\hline
+{\em Stack\+Frame$\ast$} & Ponteiro para a estrutura \hyperlink{structStackFrame}{Stack\+Frame} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{frame_8c_a50993c39467516396b64a90eb81af0ba}\label{frame_8c_a50993c39467516396b64a90eb81af0ba}} 
+\index{frame.\+c@{frame.\+c}!push\+Op@{push\+Op}}
+\index{push\+Op@{push\+Op}!frame.\+c@{frame.\+c}}
+\subsubsection{\texorpdfstring{push\+Op()}{pushOp()}}
+{\footnotesize\ttfamily void push\+Op (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{valor }\end{DoxyParamCaption})}
+
+Empilha um valor na pilha de operandos.
+
+
+\begin{DoxyParams}{Parameters}
+{\em int32\+\_\+t} & Valor a ser inserido na pilha de operandos. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily void} 
+\end{DoxyReturn}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{frame_8c_a352d20cc1b440fd3e25d463b5e2efdb4}\label{frame_8c_a352d20cc1b440fd3e25d463b5e2efdb4}} 
+\index{frame.\+c@{frame.\+c}!dec@{dec}}
+\index{dec@{dec}!frame.\+c@{frame.\+c}}
+\subsubsection{\texorpdfstring{dec}{dec}}
+{\footnotesize\ttfamily \hyperlink{structDecodificador}{Decodificador} dec\mbox{[}\hyperlink{leitor_8h_a4d34398b879119909a61e7f5d80d7f9a}{N\+U\+M\+\_\+\+I\+N\+S\+T\+R\+U\+C\+AO}\mbox{]}}
+
+\mbox{\Hypertarget{frame_8c_aad62b45c5a0a8993d540ec7b83ef02ee}\label{frame_8c_aad62b45c5a0a8993d540ec7b83ef02ee}} 
+\index{frame.\+c@{frame.\+c}!frame\+Corrente@{frame\+Corrente}}
+\index{frame\+Corrente@{frame\+Corrente}!frame.\+c@{frame.\+c}}
+\subsubsection{\texorpdfstring{frame\+Corrente}{frameCorrente}}
+{\footnotesize\ttfamily \hyperlink{structFrame}{Frame}$\ast$ frame\+Corrente}
+
+\mbox{\Hypertarget{frame_8c_a41b21f484ed1e3efce18dcb9a07ae865}\label{frame_8c_a41b21f484ed1e3efce18dcb9a07ae865}} 
+\index{frame.\+c@{frame.\+c}!qtd\+Arrays@{qtd\+Arrays}}
+\index{qtd\+Arrays@{qtd\+Arrays}!frame.\+c@{frame.\+c}}
+\subsubsection{\texorpdfstring{qtd\+Arrays}{qtdArrays}}
+{\footnotesize\ttfamily int32\+\_\+t qtd\+Arrays}
+
