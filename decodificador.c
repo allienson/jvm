@@ -512,16 +512,16 @@ void inicializaDecodificador(Decodificador decodificador[]) {
     decodificador[160].bytes = 2;
 
     strcpy(decodificador[161].instrucao, "if_icmplt");
-    decodificador[161].bytes = 0;
+    decodificador[161].bytes = 2;
 
     strcpy(decodificador[162].instrucao, "if_icmpge");
-    decodificador[162].bytes = 0;
+    decodificador[162].bytes = 2;
 
     strcpy(decodificador[163].instrucao, "if_icmpgt");
-    decodificador[163].bytes = 0;
+    decodificador[163].bytes = 2;
 
     strcpy(decodificador[164].instrucao, "if_icmple");
-    decodificador[164].bytes = 0;
+    decodificador[164].bytes = 2;
 
     strcpy(decodificador[165].instrucao, "if_acmpeq");
     decodificador[165].bytes = 2;
