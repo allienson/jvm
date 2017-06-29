@@ -280,7 +280,7 @@ void printaFieldInfo(ClassFile* classFile) {
 
             for (int j = 0; j < classFile->fields[i].attributesCount; j++) {
 
-                printf("\tGeneric Info -");
+                printf("\tGeneric Info ");
                 printSingleLine();
                 printf("\n");
                 printf("\t\tattribute_name_index:   cp_info_#%d  ", classFile->fields[i].attributes->attributeNameIndex);
@@ -393,7 +393,7 @@ void imprimeStringPool(CpInfo* cp, int pos) {
     tag = cp[pos].tag;
 
     if (tag == CONSTANT_Utf8) {
-        printf("%s", cp[pos].info.Utf8.bytes);
+        printf("%s ", cp[pos].info.Utf8.bytes);
         return;
     }
 
@@ -565,7 +565,7 @@ void imprimeCode(ClassFile* classFile, CodeAttribute* cdAtrb) {
 
     printf("\tTamanho maximo do Stack: %d\n", cdAtrb->maxStack);
     printf("\tNumero maximo de variaveis locais: %d\n",cdAtrb->maxLocals);
-    printf("\tTamanho do codigo: %u\n", cdAtrb->codeLength);
+    printf("\tTamanho do codigo: %u\n\n", cdAtrb->codeLength);
 
     Decodificador dec[NUM_INSTRUCAO];
     inicializaDecodificador(dec);
@@ -680,6 +680,44 @@ void imprimeCode(ClassFile* classFile, CodeAttribute* cdAtrb) {
                 printf("Arquivo .class invalido na instrucao wide");
                 exit(1);
             }
+        
+        } else if (opcode == IINC){
+            int numBytes = dec[opcode].bytes;
+            for (int j = 0; j < numBytes; j++) {
+                
+                if(cdAtrb->code[k] != 0){
+                    int8_t byteSigned;
+                    memcpy(&byteSigned, &cdAtrb->code[k], sizeof(uint8_t));
+                    printf("%d", byteSigned);
+                }
+                if(j != numBytes - 1){
+                    printf(" by ");    
+                }
+                k++;
+            }
+            printf("\n");
+        } else  if (opcode == IFEQ || opcode == IFNE || opcode == IFLT || opcode == IFGE ||
+                    opcode == IFGT || opcode == IFLE || opcode == IF_ACMPEQ || opcode == IF_ACMPNE || 
+                    opcode == IF_ICMPEQ || opcode == IF_ICMPNE || opcode == IF_ICMPLT || opcode == IF_ICMPGE || 
+                    opcode == IF_ICMPGT || opcode == IF_ICMPLE || opcode == IFNONNULL || opcode == IFNULL ||
+                    opcode == GOTO) {
+                    
+                    int numBytes = dec[opcode].bytes;
+                    int8_t byteSigned;
+                    
+                    if(cdAtrb->code[k+1] != 0){
+                        memcpy(&byteSigned, &cdAtrb->code[k+1], sizeof(uint8_t));
+                    
+                    }
+                    printf("%d ", (k-1) + byteSigned);
+                    if (byteSigned > 0){
+                        printf("(+%d)", byteSigned);
+                    } else {
+                        printf("(%d)", byteSigned);
+                    }
+                    
+                    printf("\n");
+                    k += 2;
         } else {
             int numBytes = dec[opcode].bytes;
             for (int j = 0; j < numBytes; j++) {

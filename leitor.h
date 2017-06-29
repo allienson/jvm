@@ -54,9 +54,26 @@
 #define ASTORE 58
 #define LSTORE 55
 #define DSTORE 57
-#define RET 169
-
 #define IINC 132
+#define IFEQ 153
+#define IFNE 154
+#define IFLT 155
+#define IFGE 156
+#define IFGT 157
+#define IFLE 158
+#define IF_ICMPEQ 159
+#define IF_ICMPNE 160
+#define IF_ICMPLT 161
+#define IF_ICMPGE 162
+#define IF_ICMPGT 163
+#define IF_ICMPLE 164
+#define IF_ACMPEQ 165
+#define IF_ACMPNE 166
+#define GOTO 167
+#define RET 169
+#define IFNULL 198
+#define IFNONNULL 199
+
 
 typedef struct CpInfo {
   uint8_t tag;
