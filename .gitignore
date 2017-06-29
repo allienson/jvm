@@ -17,3 +17,7 @@ JVM
 log.txt
 
 *.js
+
+html/
+
+xml/

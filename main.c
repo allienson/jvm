@@ -64,7 +64,7 @@ int main(int argc, char* argv[]) {
   empilhaMetodo(metodoMain, classeMain);
   executaFrameCorrente();
   exibeArrayClasses();
-  free(caminhoArquivo);
+  //free(caminhoArquivo);
   return 0;
 }
 
@@ -80,7 +80,7 @@ void leParamsEntrada(int argc, char* argv[]) {
     printf("\n\nInforme o caminho completo do arquivo \".class\" que contem o metodo main:\n");
     scanf("%s", caminhoArquivo);
     getchar();
-    exibeClassFile = 0;
+    exibeClassFile = 1;
   } else {
     strcpy(caminhoArquivo, argv[1]);
     if(*argv[2] == '1') {
