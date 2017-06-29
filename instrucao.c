@@ -1194,8 +1194,8 @@ void laload() {
 	int32_t indice = popOp();
 	int32_t* referencia;
 	referencia = (int32_t*)popOp();
-	pushOp(referencia[indice+1]);
-	pushOp(referencia[indice]);
+	pushOp(referencia[(2*indice)+1]);
+	pushOp(referencia[(2*indice)]);
 	atualizaPc();
 }
 
@@ -1231,8 +1231,8 @@ void daload() {
 	int32_t indice = popOp();
 	int32_t* referencia;
 	referencia = (int32_t*)popOp();
-	pushOp(referencia[indice+1]);
-	pushOp(referencia[indice]);
+	pushOp(referencia[(2*indice)+1]);
+	pushOp(referencia[(2*indice)]);
 	atualizaPc();
 }
 
@@ -1757,18 +1757,17 @@ void iastore() {
 /// @return @c void
 /// @see atualizaPc popOp
 void lastore() {
-	static int16_t countPos = 0;
 	int32_t alta,baixa;
 	baixa = popOp();
 	alta = popOp();
 	int32_t indice = popOp();
 	int32_t* referencia;
 	referencia = (int32_t*) popOp();
-	referencia[countPos + indice] = baixa;
-	referencia[countPos + indice + 1] = alta;
-	countPos += 2;
+	referencia[2*indice] = baixa;
+	referencia[(2*indice) + 1] = alta;
 	atualizaPc();
 }
+
 ///
 /// Coloca um float em um array.
 ///
@@ -1793,20 +1792,18 @@ void fastore() {
 /// @return @c void
 /// @see atualizaPc popOp
 void dastore() {
-	static int16_t countPos = 0;
 	int32_t alta,baixa;
 
 	baixa = popOp();
 	alta = popOp();
 
 	int32_t indice = popOp();
-
 	int32_t* referencia;
 	referencia = (int32_t*) popOp();
 
-	referencia[countPos + indice] = baixa;
-	referencia[countPos + indice + 1] = alta;
-	countPos += 2;
+	referencia[(2*indice)] = baixa;
+	referencia[(2*indice) + 1] = alta;
+
 	atualizaPc();
 }
 ///
@@ -4436,6 +4433,7 @@ void invokevirtual() {
           temp += resultado;
           memcpy(&resultado_double, &temp, sizeof(int64_t));
           printf("%f\n", resultado_double);
+
       } else if(strcmp(tipoGlobal, "L") == 0) {
           resultado2 = popOp();
           int64_t long_num;
