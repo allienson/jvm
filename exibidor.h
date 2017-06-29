@@ -43,6 +43,7 @@ void imprimeExc(ClassFile*, ExceptionsAttribute*);
 double hexToDouble(uint32_t, uint32_t);
 long hexToLong(uint32_t, uint32_t);
 void printAccessFlag(uint16_t);
+void imprimeMajorVersion(uint16_t);
 void printTopo();
 void printBlank();
 void printBase();

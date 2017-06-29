@@ -1,7 +1,7 @@
 /*
  * Compile assim: javac int_cast.java -target 1.2 -source 1.2
  */
-public class int_cast{
+public class nt_cast{
 	public static void main(String args[]){
 		int a=254;
 		/*i2d*/

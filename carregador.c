@@ -21,6 +21,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define FALSE 0
 #define TRUE 1
@@ -65,6 +66,16 @@ int32_t carregaClasseParaMemoria(char* caminhoClasse) {
     exit(0);
   }
 
+  char* nomeClasse = retornaNomeClass(areaMetodos.arrayClasses[areaMetodos.numClasses - 1]);
+/*
+  if (!strcmp(nomeClasse, "java/lang/Object")){
+  	  if (!strcmp(nomeClasse, caminhoClasse)){
+	  	  printf("O nome do arquivo \".class\" nao condiz com o nome da classe!\n");
+	  	  printf("Nome da Classe: %s\n", retornaNomeClass(areaMetodos.arrayClasses[areaMetodos.numClasses - 1]));
+		  printf("Nome do arquivo: %s\n", caminhoDestino);
+		  exit(0);
+	}
+  }*/
   return areaMetodos.numClasses - 1;
 }
 

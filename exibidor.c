@@ -47,7 +47,8 @@ void printaClassFile(ClassFile* classFile) {
     printBase();
     printf("\t\tMagic:                 0x%08X\n", classFile->magic);
     printf("\t\tMinor Version:         %d\n", classFile->minorVersion);
-    printf("\t\tMajor Version:         %d\n", classFile->majorVersion);
+    printf("\t\tMajor Version:         ");
+    imprimeMajorVersion(classFile->majorVersion);
     printf("\t\tConstant Pool Count:   %d\n", classFile->constantPoolCount);
     printf("\t\tAccess Flags:          0x%04X\n", classFile->accessFlags);
     printf("\t\tThis Class:            ");
@@ -712,6 +713,50 @@ void imprimeExc(ClassFile* classFile, ExceptionsAttribute* excAtrb) {
     for (int k = 0; k < excAtrb->numberExceptions; k++) {
         printf("\t\t%d - %d\n", k, excAtrb->exceptionIndexTable[k]);
     }
+}
+
+///
+/// Recebe os bytes de minor version lidos
+/// do ClassFile e converte para a versao Java.
+///
+/// @param uint16_t 2bytes do minor version
+/// @return @c void
+void imprimeMajorVersion(uint16_t minor){
+
+  switch(minor){
+
+        case 45:
+          printf("45[1.1]\n");
+          break;
+        case 46:
+            printf("46[1.2]\n");
+            break;
+        case 47:
+            printf("47[1.3]\n");
+            break;
+        case 48:
+            printf("48[1.4]\n");
+            break;
+        case 49:
+            printf("49[1.5]\n");
+            break;
+        case 50:
+            printf("50[1.6]\n");
+            break;
+        case 51:
+            printf("51[1.7]\n");
+            break;
+        case 52:
+            printf("52[1.8]\n");
+            break;
+        case 53:
+            printf("53[1.9]\n");
+            break;
+        default:
+            printf("%u\n", minor);
+            break;
+    }
+
 }
 
 ///
