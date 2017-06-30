@@ -1,10 +1,6 @@
 ﻿ARQUIVO .class PARA TESTES
 --------------------------
 
-PROBLEMAS GERAIS
-----------------
-ldc2_w não apresenta o double ou long corretamente.
-
 ARQUIVOS DO LADEIRA
 -------------------
 testeLogArit
@@ -16,8 +12,8 @@ multi
 	EXIBIDOR - tbm nao roda pq da exit antes
 
 testeArray
-	EXECUÇÃO - !!PROBLEMA NA LEITURA DO CP!! e aí caga o resto
-	EXIBIDOR - cagado pq a leitura ta cagada
+	EXECUÇÃO - não roda pq nossos putstatic getstatic não estao feitos
+	EXIBIDOR - cagado pq nao chega ao exibidor
 
 testeMultArray
 	EXECUÇÃO - não roda, pq não temos multianewarray
@@ -42,7 +38,6 @@ double_logico
 
 float_aritmetica
 	EXECUÇÃO - funfando 100%
-
 	EXIBIDOR - funfando 100%
 
 float_cast
@@ -50,8 +45,8 @@ float_cast
 	EXIBIDOR - funfando 100%
 
 float_logico
-	EXECUÇÃO - caga a partir na instrucao 18 (era pra ser ifgt), talvez erro de leitura
-	EXIBIDOR - caga na exibicao a partir do Pc=18
+	EXECUÇÃO - treta por causa do getstatic e do putstatic (TRETA GRANDE)
+	EXIBIDOR - nao chega a executar
 
 int_aritmetica
 	EXECUÇÃO - funfando 100%
@@ -67,7 +62,7 @@ int_logico
 
 long_aritmetica
 	EXECUÇÃO - funfando 100%
-	EXIBIDOR - ta apresentando errado a partir de pc=12
+	EXIBIDOR - funfando 100%
 
 long_load
 	EXECUÇÃO - funfando 100%
@@ -107,7 +102,7 @@ testeObj
 	EXIBIDOR - msm coisa do anterior
 
 short_aritmetica
-	EXECUÇÃO - dá provlema no idiv:38e no irem:55
+	EXECUÇÃO - funfando 100%
 	EXIBIDOR - funfando 100%
 	
 short_cast

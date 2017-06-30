@@ -64,7 +64,7 @@ int main(int argc, char* argv[]) {
   empilhaMetodo(metodoMain, classeMain);
   executaFrameCorrente();
   exibeArrayClasses();
-  //free(caminhoArquivo);
+  free(caminhoArquivo);
   return 0;
 }
 

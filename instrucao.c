@@ -2380,7 +2380,7 @@ void dmul() {
 void idiv() {
 	int32_t valor1 = popOp();
 	int32_t valor2 = popOp();
-	pushOp((int32_t)(valor1 / valor2));
+	pushOp((int32_t)(valor2 / valor1));
 	atualizaPc();
 }
 
@@ -2501,7 +2501,7 @@ void irem() {
 	int32_t valor1 = popOp();
 	int32_t valor2 = popOp();
 
-	int32_t resultado = valor1 - ((valor1/valor2) * valor2);
+	int32_t resultado = valor2 - ((valor2/valor1) * valor1);
 
 	pushOp((int32_t) resultado);
 	atualizaPc();
@@ -4255,6 +4255,32 @@ void _return() {
 /// @return @c void
 /// @see atualizaPc
 void getstatic() {
+  
+	/*uint32_t indice = frameCorrente->code[frameCorrente->pc + 2];
+	int32_t indiceClasse = frameCorrente->constantPool[indice-1].info.Fieldref.classIndex;
+	char* nomeClasse = retornaNome(frameCorrente->classe, frameCorrente->constantPool[indiceClasse-1].info.Class.nameIndex);
+	uint16_t nomeTipoIndice = frameCorrente->constantPool[indice-1].info.Fieldref.nameAndTypeIndex;
+	char* nome = retornaNome(frameCorrente->classe, frameCorrente->constantPool[nomeTipoIndice-1].info.NameAndType.nameIndex);
+	char* tipo = retornaNome(frameCorrente->classe, frameCorrente->constantPool[nomeTipoIndice-1].info.NameAndType.descriptorIndex);
+	tipoGlobal = tipo;
+
+ 	int32_t indiceField = buscaCampo(nomeClasse, nome, tipo);
+ 	uint32_t indiceNome = frameCorrente->classe->fields[indiceField].nameIndex;
+
+
+ 	int32_t i;
+ 	for (i = 0; i < frameCorrente->classe->fields[indiceNome].attributesCount; ++i);
+ 	uint16_t valor = frameCorrente->classe->fields[indiceNome].attributes[i].constantValueIndex;
+
+	printf("%u\n", valor);
+	exit(0);
+
+
+ 	//pushOp(val);
+	atualizaPc();	
+*/
+
+
   frameCorrente->pilhaOp->depth += 1;
 	atualizaPc();
 }
@@ -4278,6 +4304,7 @@ void putstatic() {
 /// @return @c void
 /// @see retornaNome popOp buscaCampo pushOp atualizaPc
 void getfield() {
+	
 	uint32_t indice = frameCorrente->code[frameCorrente->pc + 2];
 	int32_t indiceClasse = frameCorrente->constantPool[indice-1].info.Fieldref.classIndex;
 	char* nomeClasse = retornaNome(frameCorrente->classe, frameCorrente->constantPool[indiceClasse-1].info.Class.nameIndex);
@@ -4303,10 +4330,10 @@ void getfield() {
 		atualizaPc();
  	} else {
 
-	 	int32_t i = 0;
-    while(obj->indiceCampos[i] != indiceNome) {
-      i++;
-    }
+		int32_t i = 0;
+	    while(obj->indiceCampos[i] != indiceNome) {
+	    	i++;
+	    }
 
 	 	uint32_t val = obj->campos[i];
 
