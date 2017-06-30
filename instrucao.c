@@ -3409,11 +3409,11 @@ void fcmpl() {
 	valor = popOp();
 	memcpy(&valorFloat2,&valor,sizeof(float));
 
-	if(valorFloat == valorFloat2) {
+	if(valorFloat2 == valorFloat) {
 		pushOp((int32_t)0);
-	} else if(valorFloat > valorFloat2) {
+	} else if(valorFloat2 > valorFloat) {
 		pushOp((int32_t)1);
-	} else if(valorFloat < valorFloat2) {
+	} else if(valorFloat2 < valorFloat) {
 		pushOp((int32_t)-1);
 	} else {
 		printf("NaN!!\n");
@@ -3443,11 +3443,11 @@ void fcmpg() {
 	valor = popOp();
 	memcpy(&valorFloat2,&valor,sizeof(float));
 
-	if(valorFloat == valorFloat2) {
+	if(valorFloat2 == valorFloat) {
 		pushOp((int32_t)0);
-	} else if(valorFloat > valorFloat2) {
+	} else if(valorFloat2 > valorFloat) {
 		pushOp((int32_t)1);
-	} else if(valorFloat < valorFloat2) {
+	} else if(valorFloat2 < valorFloat) {
 		pushOp((int32_t)-1);
 	} else {
 		printf("NaN!!\n");
