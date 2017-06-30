@@ -4929,7 +4929,9 @@ void instanceof() {
 /// @param Nenhum
 /// @return @c void
 void wide() {
-
+	printf("\nERRO\n");
+	printf("Instrucao \"wide\" nao implementada! \n");
+	exit(0);
 }
 
 ///
@@ -4943,7 +4945,9 @@ void wide() {
 /// @param Nenhum
 /// @return @c void
 void multianewarray() {
-
+	printf("\nERRO\n");
+	printf("Instrucao \"multianewarray\" nao implementada! \n");
+	exit(0);
 }
 
 ///

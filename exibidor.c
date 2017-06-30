@@ -51,10 +51,10 @@ void printaClassFile(ClassFile* classFile) {
     imprimeMajorVersion(classFile->majorVersion);
     printf("\t\tConstant Pool Count:   %d\n", classFile->constantPoolCount);
     printf("\t\tAccess Flags:          0x%04X\n", classFile->accessFlags);
-    printf("\t\tThis Class:            ");
+    printf("\t\tThis Class:            cp_info_#%d  ", classFile->thisClass);
     imprimeStringPool(classFile->constantPool, classFile->thisClass-1);
     printf("\n");
-    printf("\t\tSuper Class:           ");
+    printf("\t\tSuper Class:           cp_info_#%d  ", classFile->superClass);
     imprimeStringPool(classFile->constantPool, classFile->superClass-1);
     printf("\n");
     printf("\t\tInterfaces Count:      %d\n", classFile->interfacesCount);
@@ -205,7 +205,7 @@ void printaCpInfo(ClassFile* classFile) {
                 printf("\t\tLowBytes: 0x%08X", classFile->constantPool[i].info.Double.lowBytes);
                 printf("\n");
                 valorDouble = hexToDouble(classFile->constantPool[i].info.Double.highBytes, classFile->constantPool[i].info.Double.lowBytes);
-                printf("\t\tDouble: %.4g", valorDouble);
+                printf("\t\tDouble: %.4f", valorDouble);
                 printf("\n");
                 printf("\t[%d] (large numeric continued)", i+2);
                 printf("\n");
@@ -214,12 +214,12 @@ void printaCpInfo(ClassFile* classFile) {
             case CONSTANT_Long:
                 printf("\t[%d] CONSTANT_Long_Info", i+1);
                 printf("\n");
-                printf("\tHighBytes: 0x%08X", classFile->constantPool[i].info.Long.highBytes);
+                printf("\t\tHighBytes: 0x%08X", classFile->constantPool[i].info.Long.highBytes);
                 printf("\n");
-                printf("\tLowBytes: 0x%08X", classFile->constantPool[i].info.Long.lowBytes);
+                printf("\t\tLowBytes: 0x%08X", classFile->constantPool[i].info.Long.lowBytes);
                 printf("\n");
                 valorLong = hexToLong(classFile->constantPool[i].info.Long.highBytes, classFile->constantPool[i].info.Long.lowBytes);
-                printf("\tLong: %ld", valorLong);
+                printf("\t\tLong: %ld", valorLong);
                 printf("\n");
                 printf("\t[%d] (large numeric continued)", i+2);
                 printf("\n");
@@ -297,7 +297,7 @@ void printaFieldInfo(ClassFile* classFile) {
             }
         }
     } else {
-        printf("\t      !! Essa classe nao possui Campos !!");
+        printf("\t      !! Essa classe nao possui Campos !!\n");
     }
 }
 
@@ -318,15 +318,15 @@ void printaMethodInfo(ClassFile* classFile) {
         MethodInfo* cp = classFile->methods;
         for(int i = 0; i < methodsCount; cp++){
 
-            printf("\tname_index:        cp_info_#%d   ",cp->nameIndex);
+            printf("\tName Index:        cp_info_#%d   ",cp->nameIndex);
             imprimeStringPool(classFile->constantPool, cp->nameIndex - 1);
             printf("\n");
-            printf("\tdescriptor_index:  cp_info_#%d   ",cp->descriptorIndex);
+            printf("\tDescriptor Index:  cp_info_#%d   ",cp->descriptorIndex);
             imprimeStringPool(classFile->constantPool, cp->descriptorIndex - 1);
             printf("\n");
-            printf("\taccess_flag:       0x%0x   ",cp->accessFlags);
+            printf("\tAccess Flag:       0x%04X   ",cp->accessFlags);
             printAccessFlag(cp->accessFlags);
-            printf("\tattributes_count:   %04X\n",cp->attributesCount);
+            printf("\tAttributes Count:   %d\n",cp->attributesCount);
 
             imprimeCode(classFile, cp->cdAtrb);
 
@@ -352,7 +352,7 @@ void printaAttributeInfo(ClassFile* classFile) {
         AttributeInfo* attrInfo = classFile->attributes;
 
         for(int i = 0; i < classFile->attributesCount; attrInfo++){
-            printf("\tGeneric Info %c", 196);
+            printf("\tGeneric Info ");
             printSingleLine();
             printf("\n\n");
             printf("\tAttribute name index:  cp_info_#%d  ", attrInfo->attributeNameIndex);
@@ -471,7 +471,8 @@ long hexToLong(uint32_t highBytes, uint32_t lowBytes){
     long retorno;
     long negativo;
 
-    negativo = pow(-1, (highBytes >> 31));
+    highBytes &= 0x80000000;
+    negativo = pow(-1, highBytes);
     memcpy(&retorno, &lowBytes, sizeof(uint32_t));
 
     return retorno * negativo;
@@ -555,13 +556,13 @@ void imprimeCode(ClassFile* classFile, CodeAttribute* cdAtrb) {
     int bytesPreench, offsets;
     uint32_t defautV, low, high, npairs, temp;
 
-    printf("\n\tCode Info");
+    printf("\n\tCode Info ");
     printSingleLine();
     printf("\n");
-    printf("\tattribute_name_index:    cp_info_#%d   ",cdAtrb->attributeNameIndex);
+    printf("\tAttribute Name Index:    cp_info_#%d   ",cdAtrb->attributeNameIndex);
     imprimeStringPool(classFile->constantPool, cdAtrb->attributeNameIndex - 1);
     printf("\n");
-    printf("\tattribute_length:        %u\n   ",cdAtrb->attributeLength);
+    printf("\tAttribute Length:        %u\n   ",cdAtrb->attributeLength);
 
     printf("\tTamanho maximo do Stack: %d\n", cdAtrb->maxStack);
     printf("\tNumero maximo de variaveis locais: %d\n",cdAtrb->maxLocals);
@@ -650,7 +651,6 @@ void imprimeCode(ClassFile* classFile, CodeAttribute* cdAtrb) {
 
             }
             printf("\tdefault: %u (+%u)\n", defautV + posReferencia, defautV);
-
         } else if (opcode == WIDE) {
             printf("\n");
 
@@ -680,7 +680,40 @@ void imprimeCode(ClassFile* classFile, CodeAttribute* cdAtrb) {
                 printf("Arquivo .class invalido na instrucao wide");
                 exit(1);
             }
-        
+        } else if (opcode == LDC) {
+
+            int8_t index = cdAtrb->code[k];
+            uint32_t valor;
+            float valorFloat;
+            int valorInt;
+
+            
+            if (classFile->constantPool[index-1].tag == CONSTANT_Float) {
+                printf("%d  ", index);
+                valor = classFile->constantPool[index-1].info.Float.bytes;
+                memcpy(&valorFloat, &valor, sizeof(int32_t));
+                printf("%.4f\n", valorFloat);
+            } else if (classFile->constantPool[index-1].tag == CONSTANT_Integer) {
+                printf("%d  ", index);
+                valor = classFile->constantPool[index-1].info.Integer.bytes;
+                memcpy(&valorInt, &valor, sizeof(uint32_t));
+                printf("%d\n", valorInt);
+            } else if (classFile->constantPool[index-1].tag == CONSTANT_String) {
+                printf("%d  ", index);
+                imprimeStringPool(classFile->constantPool, index-1);
+            }
+            k++;
+            
+        } else if (opcode == LDC_W || opcode == LDC2_W) {
+
+            int16_t index = cdAtrb->code[k+1];
+            int32_t parteAlta = classFile->constantPool[index-1].info.Double.highBytes;
+            int32_t parteBaixa = classFile->constantPool[index-1].info.Double.lowBytes;
+
+            printf("%d  ", index);
+            printf("%.4f", hexToDouble(parteAlta, parteBaixa));
+            printf("\n");
+            k+=2;
         } else if (opcode == IINC){
             int numBytes = dec[opcode].bytes;
             for (int j = 0; j < numBytes; j++) {
@@ -701,8 +734,7 @@ void imprimeCode(ClassFile* classFile, CodeAttribute* cdAtrb) {
                     opcode == IF_ICMPEQ || opcode == IF_ICMPNE || opcode == IF_ICMPLT || opcode == IF_ICMPGE || 
                     opcode == IF_ICMPGT || opcode == IF_ICMPLE || opcode == IFNONNULL || opcode == IFNULL ||
                     opcode == GOTO) {
-                    
-                    int numBytes = dec[opcode].bytes;
+            
                     int8_t byteSigned;
                     
                     if(cdAtrb->code[k+1] != 0){
@@ -718,6 +750,37 @@ void imprimeCode(ClassFile* classFile, CodeAttribute* cdAtrb) {
                     
                     printf("\n");
                     k += 2;
+        } else  if (opcode == NEWARRAY) {
+                    
+                    switch(cdAtrb->code[k]){
+                        case 4:
+                            printf("4  (boolean)\n");
+                            break;
+                        case 5:
+                            printf("5  (char)\n");
+                            break;
+                        case 6:
+                            printf("6  (float)\n");
+                            break;
+                        case 7:
+                            printf("7  (double)\n");
+                            break;
+                        case 8:
+                            printf("8  (byte)\n");
+                            break;            
+                        case 9:
+                            printf("9  (short)\n");
+                            break;
+                        case 10:
+                            printf("10  (int)\n");
+                            break;
+                        case 11:
+                            printf("11  (long)\n");
+                            break;
+                        default:
+                            break;
+                    }
+                    k++;
         } else {
             int numBytes = dec[opcode].bytes;
             for (int j = 0; j < numBytes; j++) {
@@ -766,31 +829,31 @@ void imprimeMajorVersion(uint16_t minor){
   switch(minor){
 
         case 45:
-          printf("45[1.1]\n");
+          printf("45 [1.1]\n");
           break;
         case 46:
-            printf("46[1.2]\n");
+            printf("46 [1.2]\n");
             break;
         case 47:
-            printf("47[1.3]\n");
+            printf("47 [1.3]\n");
             break;
         case 48:
-            printf("48[1.4]\n");
+            printf("48 [1.4]\n");
             break;
         case 49:
-            printf("49[1.5]\n");
+            printf("49 [1.5]\n");
             break;
         case 50:
-            printf("50[1.6]\n");
+            printf("50 [1.6]\n");
             break;
         case 51:
-            printf("51[1.7]\n");
+            printf("51 [1.7]\n");
             break;
         case 52:
-            printf("52[1.8]\n");
+            printf("52 [1.8]\n");
             break;
         case 53:
-            printf("53[1.9]\n");
+            printf("53 [1.9]\n");
             break;
         default:
             printf("%u\n", minor);

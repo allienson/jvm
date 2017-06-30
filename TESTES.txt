@@ -1,0 +1,79 @@
+ARQUIVO .class PARA TESTES
+--------------------------
+
+ARQUIVOS DO LADEIRA
+-------------------
+testeLogArit
+	EXECUÇÃO - problema na parte de floats - comparacaoes <, >, <=, >= nao tao funfando, só funfa o ==
+	EXIBIDOR - funfando 100%
+
+multi
+	EXECUÇÃO - não roda, pq não temos multianewarray
+	EXIBIDOR - funfando 100%
+
+testeArray
+	EXECUÇÃO - !!PROBLEMA NA LEITURA DO CP!! e aí caga o resto
+	EXIBIDOR - cagado pq a leitura ta cagada
+
+*testeMultArray
+
+vetor
+	EXECUÇÃO - !!PROBLEMA NA LEITURA DO CP!! quando chega na instrucao 192 tá cagando, provavelmente 			ta lendo errado.
+	EXIBIDOR - cagado pq a leitura ta cagada, porém 80% funfante
+
+double_aritmetica
+	EXECUÇÃO - quando chega na instrucao 40 tá cagando, provavelmente o ddiv nao ta calculando direito
+			   continua cagado dai pra frente. 50% funfante.
+	EXIBIDOR - funfando 100%
+
+
+double_cast.class
+	EXECUÇÃO - funfando 100%
+	EXIBIDOR - funfando 100%
+
+double_logico
+	EXECUÇÃO - funfando 100%
+	EXIBIDOR - funfando 100%
+
+float_aritmetica
+	EXECUÇÃO - começa bem e ai caga na fdvi:38  e tbm no frem:55
+	EXIBIDOR - funfando 100%
+
+float_cast
+	EXECUÇÃO - funfando 100%
+	EXIBIDOR - funfando 100%
+
+float_logico
+int_aritmetica
+int_cast
+int_logico
+long_aritmetica
+long_load
+long_logico
+method_test
+objeto
+objeto_teste
+testeChaMetObj
+testeChaObj
+testeMetObj
+testeObj
+short_aritmetica
+short_cast
+short_load
+static_test
+testeStatic
+tableswitch
+CountWheat
+Fibonacci
+
+HarmonicSeries
+
+
+
+ARQUIVOS NOSSOS E OUTROS
+------------------------
+FibonacciRecursivo
+HelloWorld
+InterfaceTeste
+lisso
+teste

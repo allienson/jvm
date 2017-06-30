@@ -43,7 +43,9 @@
 #define TABLESWITCH 170
 #define LOOKUPSWITCH 171
 #define WIDE 196
-
+#define LDC 18
+#define LDC_W 19
+#define LDC2_W 20
 #define ILOAD 21
 #define FLOAD 23
 #define ALOAD 25
@@ -71,6 +73,7 @@
 #define IF_ACMPNE 166
 #define GOTO 167
 #define RET 169
+#define NEWARRAY 188
 #define IFNULL 198
 #define IFNONNULL 199
 
