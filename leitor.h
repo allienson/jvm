@@ -43,6 +43,8 @@
 #define TABLESWITCH 170
 #define LOOKUPSWITCH 171
 #define WIDE 196
+#define BIPUSH 16
+#define SIPUSH 16
 #define LDC 18
 #define LDC_W 19
 #define LDC2_W 20

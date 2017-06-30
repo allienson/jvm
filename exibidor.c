@@ -601,7 +601,7 @@ void imprimeCode(ClassFile* classFile, CodeAttribute* cdAtrb) {
                 k++;
             }
  
-            printf("  from  %u to %u\n", low, high);
+            printf("  %u to %u\n", low, high);
 
             offsets = 1 + high - low;
             for (int j = 0; j < offsets; j++) {
@@ -610,9 +610,9 @@ void imprimeCode(ClassFile* classFile, CodeAttribute* cdAtrb) {
                     temp = (temp << 4) + cdAtrb->code[k];
                     k++;
                 }
-                printf("\t%d: %u (+%u)\n", j, (posReferencia + temp), temp);
+                printf("\t\t%d: %u (+%u)\n", j, (posReferencia + temp), temp);
             }
-            printf("\tdefault: %u (+%u)\n", (defautV + posReferencia), defautV);
+            printf("\t\tdefault: %u (+%u)\n", (defautV + posReferencia), defautV);
         } else if (opcode == LOOKUPSWITCH) {
             posReferencia = k - 1;
             bytesPreench = (4 - (k % 4)) % 4;
@@ -701,18 +701,29 @@ void imprimeCode(ClassFile* classFile, CodeAttribute* cdAtrb) {
             } else if (classFile->constantPool[index-1].tag == CONSTANT_String) {
                 printf("%d  ", index);
                 imprimeStringPool(classFile->constantPool, index-1);
+                printf("\n");
             }
             k++;
-            
         } else if (opcode == LDC_W || opcode == LDC2_W) {
 
             int16_t index = cdAtrb->code[k+1];
-            int32_t parteAlta = classFile->constantPool[index-1].info.Double.highBytes;
-            int32_t parteBaixa = classFile->constantPool[index-1].info.Double.lowBytes;
-
-            printf("%d  ", index);
-            printf("%.4f", hexToDouble(parteAlta, parteBaixa));
-            printf("\n");
+            
+            if (classFile->constantPool[index-1].tag == CONSTANT_Long) {
+                uint32_t parteAlta = classFile->constantPool[index-1].info.Long.highBytes;
+                uint32_t parteBaixa = classFile->constantPool[index-1].info.Long.lowBytes;
+                long resultado = hexToLong(parteAlta, parteBaixa);
+                printf("%d  ", index);
+                printf("%ld", resultado);
+                printf("\n");
+                
+            } else if (classFile->constantPool[index-1].tag == CONSTANT_Double) {
+                uint32_t parteAlta = classFile->constantPool[index-1].info.Long.highBytes;
+                uint32_t parteBaixa = classFile->constantPool[index-1].info.Long.lowBytes;
+                double resultado = hexToDouble(parteAlta, parteBaixa);
+                printf("%d  ", index);
+                printf("%.4f", resultado);
+                printf("\n");
+            }
             k+=2;
         } else if (opcode == IINC){
             int numBytes = dec[opcode].bytes;
@@ -729,6 +740,19 @@ void imprimeCode(ClassFile* classFile, CodeAttribute* cdAtrb) {
                 k++;
             }
             printf("\n");
+        } else if (opcode == ILOAD  || opcode == FLOAD  || opcode == ALOAD  || opcode == LLOAD  ||
+                   opcode == DLOAD  || opcode == ISTORE || opcode == FSTORE || opcode == ASTORE ||
+                   opcode == LSTORE || opcode == DSTORE || opcode == BIPUSH || opcode == SIPUSH) {
+
+                    uint8_t byteUnsigned;
+                    
+                    if(cdAtrb->code[k] != 0){
+                        memcpy(&byteUnsigned, &cdAtrb->code[k], sizeof(uint8_t));
+                    
+                    }
+                    printf("%d ", byteUnsigned);                    
+                    printf("\n");
+                    k++;        
         } else  if (opcode == IFEQ || opcode == IFNE || opcode == IFLT || opcode == IFGE ||
                     opcode == IFGT || opcode == IFLE || opcode == IF_ACMPEQ || opcode == IF_ACMPNE || 
                     opcode == IF_ICMPEQ || opcode == IF_ICMPNE || opcode == IF_ICMPLT || opcode == IF_ICMPGE || 

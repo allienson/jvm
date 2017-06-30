@@ -4686,17 +4686,16 @@ void _new() {
 
 	indice = frameCorrente->code[2+(frameCorrente->pc)];
 	nomeClasse = retornaNome(frameCorrente->classe, frameCorrente->constantPool[indice-1].info.Class.nameIndex);
-
   aux = retornaIndiceDaClassePorNome(nomeClasse);
 
   if(aux == -1) {
-    printf("Nome da classe invalido (new)\n");
+    char opcao;
+    printf("\n\n--- ERRO ---\n\nNome da classe invalido, nao condiz com o nome do arquivo .class\n\n");
     exit(0);
-  }
-
-	classe = buscaClassPorIndice(aux);
+  } 
+  	classe = buscaClassPorIndice(aux);
 	objeto = criaObjeto(classe);
-
+	
 	if(objeto == NULL) {
 		printf("Objeto não foi corretamente alocado\n");
 	}

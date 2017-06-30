@@ -1,6 +1,10 @@
 ARQUIVO .class PARA TESTES
 --------------------------
 
+PROBLEMAS GERAIS
+----------------
+ldc2_w não apresenta o double ou long corretamente.
+
 ARQUIVOS DO LADEIRA
 -------------------
 testeLogArit
@@ -9,13 +13,15 @@ testeLogArit
 
 multi
 	EXECUÇÃO - não roda, pq não temos multianewarray
-	EXIBIDOR - funfando 100%
+	EXIBIDOR - tbm nao roda pq da exit antes
 
 testeArray
 	EXECUÇÃO - !!PROBLEMA NA LEITURA DO CP!! e aí caga o resto
 	EXIBIDOR - cagado pq a leitura ta cagada
 
-*testeMultArray
+testeMultArray
+	EXECUÇÃO - não roda, pq não temos multianewarray
+	EXIBIDOR - tbm nao roda pq da exit antes
 
 vetor
 	EXECUÇÃO - !!PROBLEMA NA LEITURA DO CP!! quando chega na instrucao 192 tá cagando, provavelmente 			ta lendo errado.
@@ -26,7 +32,6 @@ double_aritmetica
 			   continua cagado dai pra frente. 50% funfante.
 	EXIBIDOR - funfando 100%
 
-
 double_cast.class
 	EXECUÇÃO - funfando 100%
 	EXIBIDOR - funfando 100%
@@ -36,7 +41,7 @@ double_logico
 	EXIBIDOR - funfando 100%
 
 float_aritmetica
-	EXECUÇÃO - começa bem e ai caga na fdvi:38  e tbm no frem:55
+	EXECUÇÃO - começa bem e ai caga na fdiv:38  e tbm no frem:55
 	EXIBIDOR - funfando 100%
 
 float_cast
@@ -44,30 +49,98 @@ float_cast
 	EXIBIDOR - funfando 100%
 
 float_logico
+	EXECUÇÃO - caga a partir na instrucao 18 (era pra ser ifgt), talvez erro de leitura
+	EXIBIDOR - caga na exibicao a partir do Pc=18
+
 int_aritmetica
+	EXECUÇÃO - funfando 100%
+	EXIBIDOR - funfando 100%
+
 int_cast
+	EXECUÇÃO - funfando 100%
+	EXIBIDOR - funfando 100%
+
 int_logico
+	EXECUÇÃO - funfando 100%
+	EXIBIDOR - funfando 100%
+
 long_aritmetica
+	EXECUÇÃO - ta cagando desde o inicio
+	EXIBIDOR - ta apresentando errado a partir de pc=12
+
 long_load
+	EXECUÇÃO - funfando 100%
+	EXIBIDOR - funfando 100%
+
 long_logico
+	EXECUÇÃO - funfando 100%
+	EXIBIDOR - funfando 100%
+
 method_test
+	EXECUÇÃO - SEGFAULT na linha 272 do leitor.c
+	EXIBIDOR - nao aparece nada pq da segfault antes
+
 objeto
+	EXECUÇÃO - não vai rodar nunca pq ele usa putfield!!
+	EXIBIDOR - nao vai rodar nunca
+
 objeto_teste
+	EXECUÇÃO - não executa pq o nome da classe ta diferente do nome do arquivo, mas tem que ver !!!!!!
+	EXIBIDOR - nao exibe pelo que ta aqui em cima ^
+
 testeChaMetObj
+	EXECUÇÃO - não roda, pq não temos multianewarray
+	EXIBIDOR - tbm nao roda pq da exit antes
+
 testeChaObj
+	EXECUÇÃO - não executa pq o nome da classe ta diferente do nome do arquivo, mas tem que ver !!!!!!
+	EXIBIDOR - nao exibe pelo que ta aqui em cima ^
+
+
 testeMetObj
+	EXECUÇÃO - NÃO TEM MAIN NESSA CLASSE e ela usa multiarray tbm, ou seja, nunca funfará
+	EXIBIDOR - nunca funfa
+
 testeObj
+	EXECUÇÃO - msm coisa do anterior
+	EXIBIDOR - msm coisa do anterior
+
 short_aritmetica
+	EXECUÇÃO - dá provlema no idiv:38e no irem:55
+	EXIBIDOR - funfando 100%
+	
 short_cast
+	EXECUÇÃO - funfando 100%
+	EXIBIDOR - funfando 100%
+
 short_load
+	EXECUÇÃO - funfando 100%
+	EXIBIDOR - funfando 100%
+
 static_test
+	EXECUÇÃO - caga a execucao no invokevirtual, instrucao.c:4419 SEGFAULT
+	EXIBIDOR - nao chega a ser executatod
+
 testeStatic
+	EXECUÇÃO - caga a execucao no invokevirtual, instrucao.c:4419 SEGFAULT
+	EXIBIDOR - nao chega a ser executatod
+
 tableswitch
+	EXECUÇÃO - funfando 100%
+	EXIBIDOR - funfando 100%
+
 CountWheat
+	EXECUÇÃO - funfando 100%
+	EXIBIDOR - ta levemente errada, alguns lugares ele pula linha que nao devia
+			   funfando 90%
+
 Fibonacci
+	EXECUÇÃO - funfando 100%
+	EXIBIDOR - funfando 100%
 
 HarmonicSeries
-
+	EXECUÇÃO - ta calculando errado, provavelmente é problema no idiv
+	EXIBIDOR - funfando 100%
 
 
 ARQUIVOS NOSSOS E OUTROS

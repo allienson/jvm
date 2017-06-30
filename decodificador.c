@@ -538,8 +538,10 @@ void inicializaDecodificador(Decodificador decodificador[]) {
     strcpy(decodificador[169].instrucao, "ret");
     decodificador[169].bytes = 1;
 
+    strcpy(decodificador[170].instrucao, "tableswitch");
     decodificador[170].bytes = 14;
 
+    strcpy(decodificador[171].instrucao, "lookupswitch");
     decodificador[171].bytes = 10;
 
     strcpy(decodificador[172].instrucao, "ireturn");
