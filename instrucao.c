@@ -2285,9 +2285,9 @@ void lmul() {
 	parteAlta = popOp();
 
 	int64_t valorLong2 = parteAlta;
-	valorLong = (valorLong2 << 32) + parteBaixa;
+	valorLong2 = (valorLong2 << 32) + parteBaixa;
 
-	int64_t resultado = valorLong * valorLong2;
+	int64_t resultado = valorLong2 * valorLong;
 
 	parteAlta = resultado >> 32;
 	parteBaixa = resultado & 0xfffffff;
@@ -2408,7 +2408,7 @@ void _ldiv() {
 	int64_t valorLong2 = parteAlta;
 	valorLong2 = (valorLong2 << 32) + parteBaixa;
 
-	int64_t resultado = valorLong / valorLong2;
+	int64_t resultado = valorLong2 / valorLong;
 
 	parteAlta = resultado >> 32;
 	parteBaixa = resultado & 0xffffffff;
@@ -2531,8 +2531,7 @@ void lrem() {
 	int64_t valorLong2 = parteAlta;
 	valorLong2 = (valorLong2 << 32) + parteBaixa;
 
-	int64_t resultado = valorLong1 -((valorLong1/valorLong2) * valorLong2);
-
+	int64_t resultado = valorLong2%valorLong1;
 	parteAlta = resultado >> 32;
 	parteBaixa = resultado & 0xffffffff;
 
@@ -2788,26 +2787,27 @@ void ishr() {
 /// @return @c void
 /// @see popOp pushOp atualizaPc
 void lshr() {
+	int32_t valorShift = popOp();
+	int32_t parteAlta, parteBaixa;
+	int64_t resultado;
 
-  	int32_t valorShift = popOp();
-	int32_t parteBaixa, parteAlta;
-	int64_t valorLong;
+	valorShift &= 0x3f;
 
 	parteBaixa = popOp();
 	parteAlta = popOp();
-	valorLong = parteAlta;
-	valorLong = (valorLong << 32) + parteBaixa;
 
-	valorShift &= 0x3f;
-  	valorLong <<= valorShift;
+	resultado = parteAlta;
+	resultado = (resultado << 32) + parteBaixa;
 
-	parteAlta = valorLong >> 32;
-	parteBaixa = valorLong & 0xffffffff;
+	resultado >>= valorShift;
+
+	parteAlta = resultado >> 32;
+	parteBaixa = resultado & 0xffffffff;
+
 	pushOp(parteAlta);
 	pushOp(parteBaixa);
 	atualizaPc();
 }
-
 ///
 /// Desempilha dois valores, um inteiro que sera manipulado
 /// e um inteiro cujos 5bits menos significativos sao
