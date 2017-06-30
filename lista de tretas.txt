@@ -1,0 +1,217 @@
+LISTA DE TRETAS:
+
+
+VAZAMENTOS DE MEMORIA
+
+	carregador.c:
+		carregaClasseParaMemoria: 	calloc (linha 51)
+									malloc (linha 54)
+		retornaNomeClass:	malloc (linha 93)
+		retornaNome:	malloc (linha 134)
+	leitor.c:
+		leAttributeInfo:	malloc (linha 298)
+	instrucao.c
+		fconst_2:	malloc (linha 519)
+
+TESTES pontoclass:
+	aritmetica
+		- testeLogArit RODA OK
+
+	arrays
+		- multi NOPES
+		- testeArray NOPES
+			iastore: Address 0x0 is not stack'd, malloc'd or (recently) free'd
+				Process terminating with default action of signal 11 (SIGSEGV)
+				Access not within mapped region at address 0x0
+				at 0x804EDB7: iastore 
+
+		- testeMultArray NOPES
+		- vetor
+			quando roda com flag 1 da segfault, possivel conexão com a treta das ordens das instruções:
+				Conditional jump or move depends on uninitialised value(s)
+				at 0x8054FD4: imprimeStringPool 
+				by 0x8056047: imprimeCode 
+
+				Uninitialised value was created by a heap allocation
+				at 0x402D17C: malloc
+				by 0x8048F8C: leConstantPool
+			>>	[leitor.c linha 116] encerra a execução normal depois disso 
+
+			>>	sempre encerra a execução depois de um iconst_# (no caso do vetor)
+
+				Invalid read of size 1
+				at 0x8054FC7: imprimeStringPool
+				by 0x8056047: imprimeCode
+			>>	Address 0x42699a8 is 16 bytes before a block of size 5 alloc'd
+				at 0x402F0B8: calloc
+				by 0x804908D: leConstantPool
+			>>	[leitor.c linha 138 ] >> CONSTANT_UTF8
+
+			bastore: Address 0x426aa00 is 0 bytes inside a block of size 3 alloc'd
+			castore: Address 0x426aaac is 4 bytes inside a block of size 6 alloc'd
+			sastore: Address 0x426ab5c is 4 bytes inside a block of size 6 alloc'd
+			byte Array[] da problema:
+				baload: Address 0x426aa04 is 1 bytes after a block of size 3 alloc'd
+			char Array[] da problema no final:
+				caload: Address 0x426aab0 is 2 bytes after a block of size 6 alloc'd
+			short Array[] da problema no final:
+				saload: Address 0x426ab60 is 2 bytes after a block of size 6 alloc'd
+
+	Belote [não testei ainda]
+		- Belote
+		- Carta
+		- Jogador
+
+	double
+		- double_aritmetica
+			divisão (ddiv), mod (drem) e neg (dneg) de double ta errada.
+
+		- double_cast
+			long to double cast (instr. d2l() ) tretando (não tem decimais rs)
+
+		- double_logico RODA OK
+
+	float
+		- float_aritmetica
+			fdiv() -> divisão ta invertida: fazendo b/a em vez de a/b
+			frem() -> mod ta errado tmb, retornando 0
+
+		- float_cast
+			f2l() -> arredonda resultado 
+
+		- float_logico
+			testes de >, >=, < e <= não estão passando
+			possivel inversão com == e !=
+			double check:
+				fcmpl + ifle, fcmpl + iflt, fcmpg + ifgt, fcmpl + ifeq, fcmpl + ifne
+
+	int
+		- int_aritmetica
+			idiv ta fazendo b/a em vez de a/b
+			irem: calculo de mod ta estranho
+			double check: shift left e shift right --> possivelmente estão trocados
+
+		- int_cast
+			i2l: cast para long arredonda
+			double check: i2b() (possivelmente sinais invertidos)
+
+			Com o exibidor:
+			[logo após Tamanho do Código: 104, dentro do segundo code info do Method Info]
+			Invalid read of size 1
+			at 0x805502C: imprimeStringPool
+			by 0x80563F9: imprimeCode
+			Address 0x426a104 is 180 bytes inside a block of size 464 free'd
+			at 0x402E358: free
+			by 0x804C8C7: popFrame
+			Block was alloc'd at
+			at 0x402F0B8: calloc
+			by 0x804C7FF: pushFrame
+
+		- int_logico RODA OK
+
+	long
+		- long_aritmetica
+			lmul e ldiv dando problema
+			lrem ta bugado
+			lshr ta repetindo lshl
+
+		- long_cast SE RECUSA A COMPILAR, POSSO FAZER NADA NÉ
+
+		- long_load RODA OK
+
+		- long_logico RODA OK 
+
+	methods
+		- method_test
+			na impressão de instruções do exibidor (ele mostra até a impressão do dadd() ):
+				Conditional jump or move depends on uninitialised value(s)
+				at 0x8056417: imprimeCode
+				by 0x8054E21: printaMethodInfo
+				by 0x8053F5B: printaClassFile
+				by 0x80568DC: exibeArrayClasses
+				Uninitialised value was created by a stack allocation
+				at 0x805550F: imprimeCode
+
+	objects
+		- objeto
+			Não vai ler por não possuir um metodo main
+
+		- objeto_teste
+			não entende o new (reclama nome de classe inválido)
+
+		- testeChaMetObj NOPES
+
+		- testeChaObj
+			não entende o new (reclama nome de classe inválido)
+
+		- testeMetObj
+			de início de execução:
+			Conditional jump or move depends on uninitialised value(s)
+			at 0x804A2A0: salvaInstrucoes
+			by 0x804996D: leCode
+
+			Reclama de método main não encontrado.
+
+		- testeObj
+			Reclama de método main não encontrado.
+
+	short
+		- short_aritmetica
+			sdiv ta fazendo b/a em vez de a/b
+			srem ta bizarro tmb
+
+			exibidor tem problema logo antes de printar as instruções do segundo método:
+			Invalid read of size 1
+			at 0x805502C: imprimeStringPool
+			by 0x80563F9: imprimeCode
+			Address 0x42699dc is 12 bytes before a block of size 20 alloc'd
+			at 0x402F0B8: calloc
+			by 0x804908D: leConstantPool
+
+		- short_cast
+			mesmo problema logo antes da impressão de instruções:
+			Invalid read of size 1
+			at 0x805502C: imprimeStringPool
+			by 0x80563F9: imprimeCode
+			Address 0x426a118 is 376 bytes inside a block of size 464 free'd
+			at 0x402E358: free 
+			by 0x804C8C7: popFrame
+			Block was alloc'd at
+			at 0x402F0B8: calloc
+			by 0x804C7FF: pushFrame
+
+		- short_load
+			gente mesma merda do short_aritmetica só q entre as instruções 14 (iconst_2) e 15 (bipush)
+			Address 0x426968c is 12 bytes before a block of size 7 alloc'd
+
+	static
+		- static_test
+			super bug ativar! os ints estão aparecendo como chars lixo de mem
+			possivel problema com getstatic e putstatic
+			sei nem por onde começar a resolver amigos
+
+		- testeStatic
+			me diga pfvr q isso faz parte de coisa q a gente n implementouu
+
+			Conditional jump or move depends on uninitialised value(s)
+			at 0x8052852: invokevirtual 
+			Uninitialised value was created by a heap allocation
+			at 0x402D17C: malloc 
+			by 0x8048F8C: leConstantPool
+			Invalid read of size 1
+			at 0x403145A: strcmp
+			by 0x8052879: invokevirtual
+			Address 0x0 is not stack'd, malloc'd or (recently) free'd
+
+	switch
+		-tableSwitch
+			ioad_0 ta treta de Conditional jump or move depends on uninitialised value(s) no imprimeCode
+			Uninitialised value was created by a stack allocation
+
+	while
+		- CountWheat RODA OK*
+			tipo, da problema pq o irem da problema
+
+		- Fibonacci RODA OK
+
+		- Harmonica NOPES
