@@ -2436,7 +2436,7 @@ void fdiv() {
 	memcpy(&valorFloat, &valor, sizeof(int32_t));
 	memcpy(&valorFloat2, &valor2, sizeof(int32_t));
 
-	float resultado = valorFloat / valorFloat2;
+	float resultado = valorFloat2 / valorFloat;
 
 	int32_t valorPilha;
 	memcpy(&valorPilha, &resultado, sizeof(int32_t));
@@ -2559,8 +2559,7 @@ void frem() {
 	memcpy(&valorFloat, &valor1, sizeof(int32_t));
 	memcpy(&valorFloat2, &valor2, sizeof(int32_t));
 
-	float resultado = valorFloat - ((valorFloat/valorFloat2) * valorFloat2);
-
+	float resultado = fmod(valorFloat2,valorFloat);
 	int32_t retPilha;
 	memcpy(&retPilha, &resultado, sizeof(int32_t));
 
