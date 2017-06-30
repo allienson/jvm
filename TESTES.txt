@@ -127,8 +127,7 @@ tableswitch
 
 CountWheat
 	EXECUÇÃO - funfando 100%
-	EXIBIDOR - ta levemente errada, alguns lugares ele pula linha que nao devia
-			   funfando 90%
+	EXIBIDOR - funfando 100%
 
 Fibonacci
 	EXECUÇÃO - funfando 100%
