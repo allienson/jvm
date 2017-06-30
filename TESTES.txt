@@ -41,7 +41,8 @@ double_logico
 	EXIBIDOR - funfando 100%
 
 float_aritmetica
-	EXECUÇÃO - começa bem e ai caga na fdiv:38  e tbm no frem:55
+	EXECUÇÃO - funfando 100%
+
 	EXIBIDOR - funfando 100%
 
 float_cast
@@ -65,7 +66,7 @@ int_logico
 	EXIBIDOR - funfando 100%
 
 long_aritmetica
-	EXECUÇÃO - ta cagando desde o inicio
+	EXECUÇÃO - funfando 100%
 	EXIBIDOR - ta apresentando errado a partir de pc=12
 
 long_load
