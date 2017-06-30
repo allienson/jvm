@@ -1745,7 +1745,7 @@ void astore_3() {
 /// @see atualizaPc popOp
 void iastore() {
 	int32_t* ref;
-	int32_t indice,valor;
+	int32_t indice, valor;
 	valor = popOp();
 	indice = popOp();
 	ref = (int32_t*)popOp();
