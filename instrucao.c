@@ -2475,7 +2475,7 @@ void ddiv() {
 	double valor2;
 	memcpy(&valor2, &valorDouble2, sizeof(double));
 
-	double resultado = valor1 / valor2;
+	double resultado = valor2 / valor1;
 
 	int64_t valorPilha;
 	memcpy(&valorPilha, &resultado, sizeof(int64_t));
@@ -3022,8 +3022,8 @@ void iinc() {
 	int8_t indice = frameCorrente->code[frameCorrente->pc + 1];
 	int32_t valor = frameCorrente->fields[indice];
 	int8_t byte = frameCorrente->code[frameCorrente->pc + 2];
-	int32_t byteEstendido = byte & 0x000000FF;
-	frameCorrente->fields[indice] = (int32_t) (byteEstendido + valor);
+
+	frameCorrente->fields[indice] = byte + valor;
 	atualizaPc();
 }
 ///
@@ -3067,16 +3067,21 @@ void i2f() {
 /// @return @c void
 /// @see atualizaPc pushOp
 void i2d() {
-  char* tipo = "D";
-  tipoGlobal = tipo;
+  	
+  	char* tipo = "D";
+  	tipoGlobal = tipo;
 	int32_t retPilha = popOp();
+
 	double dVal = (double) retPilha;
+	
 	int64_t pilhaVal;
 	memcpy(&pilhaVal, &dVal, sizeof(int64_t));
+	
 	int32_t alta;
 	int32_t baixa;
 	alta = pilhaVal >> 32;
 	baixa = pilhaVal & 0xffffffff;
+	
 	pushOp(alta);
 	pushOp(baixa);
 	atualizaPc();

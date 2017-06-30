@@ -134,7 +134,7 @@ Fibonacci
 	EXIBIDOR - funfando 100%
 
 HarmonicSeries
-	EXECUÇÃO - ta calculando errado, provavelmente é problema no idiv
+	EXECUÇÃO - funfando 100%
 	EXIBIDOR - funfando 100%
 
 
