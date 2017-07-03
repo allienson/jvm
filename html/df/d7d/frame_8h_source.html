@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>JVM - SB Grupo 3: Código-Fonte de frame.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">JVM - SB Grupo 3
+   </div>
+   <div id="projectbrief">Java Virtual Machine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Página&#160;Principal</span></a></li>
+      <li><a href="../../pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="../../annotated.html"><span>Estruturas&#160;de&#160;Dados</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Arquivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Lista&#160;de&#160;Arquivos</span></a></li>
+      <li><a href="../../globals.html"><span>Globais</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('df/d7d/frame_8h_source.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">frame.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../df/d7d/frame_8h.html">Vá para a documentação deste arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef FRAME_H</span></div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define FRAME_H</span></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d6/d97/leitor_8h.html">leitor.h</a>&quot;</span></div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div><div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="../../dc/d34/struct_pilha_op.html">   26</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="../../dc/d34/struct_pilha_op.html">PilhaOp</a> {</div><div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="../../dc/d34/struct_pilha_op.html#ad3fdbfc30e2a1b62169ce905a3af6a39">   27</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="../../dc/d34/struct_pilha_op.html#ad3fdbfc30e2a1b62169ce905a3af6a39">depth</a>;</div><div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="../../dc/d34/struct_pilha_op.html#a66868e47a39d4f335823ae7de24947bf">   28</a></span>&#160;  int32_t* <a class="code" href="../../dc/d34/struct_pilha_op.html#a66868e47a39d4f335823ae7de24947bf">operandos</a>;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;} <a class="code" href="../../df/d7d/frame_8h.html#a2d17b34734bf257b279535e064833f3f">PilhaOp</a>;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="../../d5/d15/struct_frame.html">   31</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="../../d5/d15/struct_frame.html">Frame</a> {</div><div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="../../d5/d15/struct_frame.html#a0fb4b4dcac7ecbbecc2f62939c517aea">   32</a></span>&#160;    int32_t* <a class="code" href="../../d5/d15/struct_frame.html#a0fb4b4dcac7ecbbecc2f62939c517aea">fields</a>;</div><div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="../../d5/d15/struct_frame.html#a8067fdcfa9b9b35c39434ed4689b3aea">   33</a></span>&#160;    <a class="code" href="../../d8/d73/struct_cp_info.html">CpInfo</a>* <a class="code" href="../../d5/d15/struct_frame.html#a8067fdcfa9b9b35c39434ed4689b3aea">constantPool</a>;</div><div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="../../d5/d15/struct_frame.html#a3ce27d5278d61a0abaeca31956febc1f">   34</a></span>&#160;    <a class="code" href="../../dd/dc9/struct_class_file.html">ClassFile</a>* <a class="code" href="../../d5/d15/struct_frame.html#a3ce27d5278d61a0abaeca31956febc1f">classe</a>;</div><div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../d5/d15/struct_frame.html#a378c00e14ef1f63cbbfa4e984502b652">   35</a></span>&#160;    uint16_t <a class="code" href="../../d5/d15/struct_frame.html#a378c00e14ef1f63cbbfa4e984502b652">maxStack</a>;</div><div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="../../d5/d15/struct_frame.html#a5d933cb41bf8f544aecba4ef1723ab1a">   36</a></span>&#160;    uint16_t <a class="code" href="../../d5/d15/struct_frame.html#a5d933cb41bf8f544aecba4ef1723ab1a">maxLocals</a>;</div><div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="../../d5/d15/struct_frame.html#a1ed982d1a0902c22374fcde6a8938b69">   37</a></span>&#160;    uint32_t <a class="code" href="../../d5/d15/struct_frame.html#a1ed982d1a0902c22374fcde6a8938b69">codeLength</a>;</div><div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="../../d5/d15/struct_frame.html#a9de8be272246d00c7a0c2ddc899fe8f2">   38</a></span>&#160;    uint8_t* <a class="code" href="../../d5/d15/struct_frame.html#a9de8be272246d00c7a0c2ddc899fe8f2">code</a>;</div><div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../d5/d15/struct_frame.html#a91e50d2091184efb52b6d7c0c21fd4b2">   39</a></span>&#160;    uint32_t <a class="code" href="../../d5/d15/struct_frame.html#a91e50d2091184efb52b6d7c0c21fd4b2">pc</a>;</div><div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="../../d5/d15/struct_frame.html#addbe682d4328100186a4c03da7c2b9a2">   40</a></span>&#160;  <a class="code" href="../../dc/d34/struct_pilha_op.html">PilhaOp</a>* <a class="code" href="../../d5/d15/struct_frame.html#addbe682d4328100186a4c03da7c2b9a2">pilhaOp</a>;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;} <a class="code" href="../../df/d7d/frame_8h.html#a2a5c56d9766cd18277c4c9430518b326">Frame</a>;</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="../../d5/d03/struct_stack_frame.html">   43</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="../../d5/d03/struct_stack_frame.html">StackFrame</a> {</div><div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../d5/d03/struct_stack_frame.html#aee414b80c97dcb5e37632a64bbcbff1c">   44</a></span>&#160;    <a class="code" href="../../d5/d15/struct_frame.html">Frame</a>* <a class="code" href="../../d5/d03/struct_stack_frame.html#aee414b80c97dcb5e37632a64bbcbff1c">refFrame</a>;</div><div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="../../d5/d03/struct_stack_frame.html#a3cb6ca230d221991df6c9f554aa7a43b">   45</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="../../d5/d03/struct_stack_frame.html">StackFrame</a>* <a class="code" href="../../d5/d03/struct_stack_frame.html#a3cb6ca230d221991df6c9f554aa7a43b">next</a>;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;} <a class="code" href="../../df/d7d/frame_8h.html#a0b2bdc4691a7ecce810a6639f1aee20a">StackFrame</a>;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="../../d4/d06/struct_vector.html">   48</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="../../d4/d06/struct_vector.html">Vector</a> {</div><div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../d4/d06/struct_vector.html#a0f2af0912b4d39a569c01fc73c409b0f">   49</a></span>&#160;    int32_t <a class="code" href="../../d4/d06/struct_vector.html#a0f2af0912b4d39a569c01fc73c409b0f">referencia</a>;</div><div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="../../d4/d06/struct_vector.html#a7444f49069adbd72108bda57a0585476">   50</a></span>&#160;    int32_t <a class="code" href="../../d4/d06/struct_vector.html#a7444f49069adbd72108bda57a0585476">tamanho</a>;</div><div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="../../d4/d06/struct_vector.html#a7dfc8127c1b5681c6b4ccd3c036710e7">   51</a></span>&#160;    int8_t <a class="code" href="../../d4/d06/struct_vector.html#a7dfc8127c1b5681c6b4ccd3c036710e7">tipo</a>;</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;} <a class="code" href="../../df/d7d/frame_8h.html#a6ded2cf071c127e518317e3c451af3ef">Vector</a> ;</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div><div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="../../df/d7d/frame_8h.html#ac1c027226ea84b3fcf8eb5e5fbd99d77">   54</a></span>&#160;int32_t <a class="code" href="../../df/d7d/frame_8h.html#ac1c027226ea84b3fcf8eb5e5fbd99d77">retorno</a>;</div><div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../df/d7d/frame_8h.html#ae095c61cae78465ab2ae26cd68fb239e">   55</a></span>&#160;int32_t <a class="code" href="../../df/d7d/frame_8h.html#ae095c61cae78465ab2ae26cd68fb239e">retAlta</a>;</div><div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../df/d7d/frame_8h.html#ae2b60b499c926208b8f46565764dfd3e">   56</a></span>&#160;int32_t <a class="code" href="../../df/d7d/frame_8h.html#ae2b60b499c926208b8f46565764dfd3e">retBaixa</a>;</div><div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="../../df/d7d/frame_8h.html#a4b4d07f1b803132aeca7f2ee073ec3c8">   57</a></span>&#160;int8_t <a class="code" href="../../df/d7d/frame_8h.html#a4b4d07f1b803132aeca7f2ee073ec3c8">flagRet</a>;</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;int32_t <a class="code" href="../../df/d7d/frame_8h.html#a3670f378856724ca85ced056e6bfc5c4">popOp</a>();</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d7d/frame_8h.html#aaad5adf20f46c878f963035a8fb53a70">criaFrame</a>(<a class="code" href="../../dd/dc9/struct_class_file.html">ClassFile</a>*, <a class="code" href="../../db/daa/struct_code_attribute.html">CodeAttribute</a>*);</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d7d/frame_8h.html#afbeae238f4237be83cc60071a8a6384d">desalocaFrame</a>();</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d7d/frame_8h.html#a163ac593cc4380f51ce48a1072b1bf41">pushOp</a>(int32_t);</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d7d/frame_8h.html#a66a49a1024974e095ed46edaad769052">dumpStack</a>();</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d7d/frame_8h.html#a26b0bade701040dce261d302f608ed60">dumpFields</a>();</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d7d/frame_8h.html#a6c316e194f496f983e3b330020df4222">pushFrame</a>(<a class="code" href="../../dd/dc9/struct_class_file.html">ClassFile</a>*, <a class="code" href="../../db/daa/struct_code_attribute.html">CodeAttribute</a>*, <a class="code" href="../../d5/d03/struct_stack_frame.html">StackFrame</a>*);</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d7d/frame_8h.html#aca9cbfa46eaa4e3c07217b16d0c5212e">popFrame</a>();</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../df/d7d/frame_8h.html#a4a14b8e8d6925b6383b12597cb8a4dc1">checkaOverflowPilhaOp</a>();</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../df/d7d/frame_8h.html#a7ea50bc48f670ca5ef7573e4256c213c">checkaUnderflowPilhaOp</a>();</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="struct_frame_html_a378c00e14ef1f63cbbfa4e984502b652"><div class="ttname"><a href="../../d5/d15/struct_frame.html#a378c00e14ef1f63cbbfa4e984502b652">Frame::maxStack</a></div><div class="ttdeci">uint16_t maxStack</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00035">frame.h:35</a></div></div>
+<div class="ttc" id="struct_cp_info_html"><div class="ttname"><a href="../../d8/d73/struct_cp_info.html">CpInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d97/leitor_8h_source.html#l00083">leitor.h:83</a></div></div>
+<div class="ttc" id="struct_vector_html"><div class="ttname"><a href="../../d4/d06/struct_vector.html">Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00048">frame.h:48</a></div></div>
+<div class="ttc" id="frame_8h_html_a2d17b34734bf257b279535e064833f3f"><div class="ttname"><a href="../../df/d7d/frame_8h.html#a2d17b34734bf257b279535e064833f3f">PilhaOp</a></div><div class="ttdeci">struct PilhaOp PilhaOp</div></div>
+<div class="ttc" id="struct_pilha_op_html_ad3fdbfc30e2a1b62169ce905a3af6a39"><div class="ttname"><a href="../../dc/d34/struct_pilha_op.html#ad3fdbfc30e2a1b62169ce905a3af6a39">PilhaOp::depth</a></div><div class="ttdeci">int depth</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00027">frame.h:27</a></div></div>
+<div class="ttc" id="struct_frame_html"><div class="ttname"><a href="../../d5/d15/struct_frame.html">Frame</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00031">frame.h:31</a></div></div>
+<div class="ttc" id="struct_frame_html_a5d933cb41bf8f544aecba4ef1723ab1a"><div class="ttname"><a href="../../d5/d15/struct_frame.html#a5d933cb41bf8f544aecba4ef1723ab1a">Frame::maxLocals</a></div><div class="ttdeci">uint16_t maxLocals</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00036">frame.h:36</a></div></div>
+<div class="ttc" id="frame_8h_html_a7ea50bc48f670ca5ef7573e4256c213c"><div class="ttname"><a href="../../df/d7d/frame_8h.html#a7ea50bc48f670ca5ef7573e4256c213c">checkaUnderflowPilhaOp</a></div><div class="ttdeci">int checkaUnderflowPilhaOp()</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dbe/frame_8c_source.html#l00155">frame.c:155</a></div></div>
+<div class="ttc" id="struct_vector_html_a0f2af0912b4d39a569c01fc73c409b0f"><div class="ttname"><a href="../../d4/d06/struct_vector.html#a0f2af0912b4d39a569c01fc73c409b0f">Vector::referencia</a></div><div class="ttdeci">int32_t referencia</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00049">frame.h:49</a></div></div>
+<div class="ttc" id="frame_8h_html_aaad5adf20f46c878f963035a8fb53a70"><div class="ttname"><a href="../../df/d7d/frame_8h.html#aaad5adf20f46c878f963035a8fb53a70">criaFrame</a></div><div class="ttdeci">void criaFrame(ClassFile *, CodeAttribute *)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dbe/frame_8c_source.html#l00037">frame.c:37</a></div></div>
+<div class="ttc" id="frame_8h_html_aca9cbfa46eaa4e3c07217b16d0c5212e"><div class="ttname"><a href="../../df/d7d/frame_8h.html#aca9cbfa46eaa4e3c07217b16d0c5212e">popFrame</a></div><div class="ttdeci">void popFrame()</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dbe/frame_8c_source.html#l00079">frame.c:79</a></div></div>
+<div class="ttc" id="frame_8h_html_a4a14b8e8d6925b6383b12597cb8a4dc1"><div class="ttname"><a href="../../df/d7d/frame_8h.html#a4a14b8e8d6925b6383b12597cb8a4dc1">checkaOverflowPilhaOp</a></div><div class="ttdeci">int checkaOverflowPilhaOp()</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dbe/frame_8c_source.html#l00146">frame.c:146</a></div></div>
+<div class="ttc" id="struct_code_attribute_html"><div class="ttname"><a href="../../db/daa/struct_code_attribute.html">CodeAttribute</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d97/leitor_8h_source.html#l00162">leitor.h:162</a></div></div>
+<div class="ttc" id="struct_frame_html_a8067fdcfa9b9b35c39434ed4689b3aea"><div class="ttname"><a href="../../d5/d15/struct_frame.html#a8067fdcfa9b9b35c39434ed4689b3aea">Frame::constantPool</a></div><div class="ttdeci">CpInfo * constantPool</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00033">frame.h:33</a></div></div>
+<div class="ttc" id="struct_frame_html_a0fb4b4dcac7ecbbecc2f62939c517aea"><div class="ttname"><a href="../../d5/d15/struct_frame.html#a0fb4b4dcac7ecbbecc2f62939c517aea">Frame::fields</a></div><div class="ttdeci">int32_t * fields</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00032">frame.h:32</a></div></div>
+<div class="ttc" id="struct_pilha_op_html"><div class="ttname"><a href="../../dc/d34/struct_pilha_op.html">PilhaOp</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00026">frame.h:26</a></div></div>
+<div class="ttc" id="struct_class_file_html"><div class="ttname"><a href="../../dd/dc9/struct_class_file.html">ClassFile</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d97/leitor_8h_source.html#l00184">leitor.h:184</a></div></div>
+<div class="ttc" id="struct_stack_frame_html_aee414b80c97dcb5e37632a64bbcbff1c"><div class="ttname"><a href="../../d5/d03/struct_stack_frame.html#aee414b80c97dcb5e37632a64bbcbff1c">StackFrame::refFrame</a></div><div class="ttdeci">Frame * refFrame</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00044">frame.h:44</a></div></div>
+<div class="ttc" id="struct_frame_html_a9de8be272246d00c7a0c2ddc899fe8f2"><div class="ttname"><a href="../../d5/d15/struct_frame.html#a9de8be272246d00c7a0c2ddc899fe8f2">Frame::code</a></div><div class="ttdeci">uint8_t * code</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00038">frame.h:38</a></div></div>
+<div class="ttc" id="frame_8h_html_a163ac593cc4380f51ce48a1072b1bf41"><div class="ttname"><a href="../../df/d7d/frame_8h.html#a163ac593cc4380f51ce48a1072b1bf41">pushOp</a></div><div class="ttdeci">void pushOp(int32_t)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dbe/frame_8c_source.html#l00113">frame.c:113</a></div></div>
+<div class="ttc" id="frame_8h_html_ac1c027226ea84b3fcf8eb5e5fbd99d77"><div class="ttname"><a href="../../df/d7d/frame_8h.html#ac1c027226ea84b3fcf8eb5e5fbd99d77">retorno</a></div><div class="ttdeci">int32_t retorno</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00054">frame.h:54</a></div></div>
+<div class="ttc" id="frame_8h_html_ae2b60b499c926208b8f46565764dfd3e"><div class="ttname"><a href="../../df/d7d/frame_8h.html#ae2b60b499c926208b8f46565764dfd3e">retBaixa</a></div><div class="ttdeci">int32_t retBaixa</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00056">frame.h:56</a></div></div>
+<div class="ttc" id="frame_8h_html_a4b4d07f1b803132aeca7f2ee073ec3c8"><div class="ttname"><a href="../../df/d7d/frame_8h.html#a4b4d07f1b803132aeca7f2ee073ec3c8">flagRet</a></div><div class="ttdeci">int8_t flagRet</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00057">frame.h:57</a></div></div>
+<div class="ttc" id="struct_vector_html_a7444f49069adbd72108bda57a0585476"><div class="ttname"><a href="../../d4/d06/struct_vector.html#a7444f49069adbd72108bda57a0585476">Vector::tamanho</a></div><div class="ttdeci">int32_t tamanho</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00050">frame.h:50</a></div></div>
+<div class="ttc" id="struct_vector_html_a7dfc8127c1b5681c6b4ccd3c036710e7"><div class="ttname"><a href="../../d4/d06/struct_vector.html#a7dfc8127c1b5681c6b4ccd3c036710e7">Vector::tipo</a></div><div class="ttdeci">int8_t tipo</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00051">frame.h:51</a></div></div>
+<div class="ttc" id="struct_stack_frame_html_a3cb6ca230d221991df6c9f554aa7a43b"><div class="ttname"><a href="../../d5/d03/struct_stack_frame.html#a3cb6ca230d221991df6c9f554aa7a43b">StackFrame::next</a></div><div class="ttdeci">struct StackFrame * next</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00045">frame.h:45</a></div></div>
+<div class="ttc" id="frame_8h_html_a0b2bdc4691a7ecce810a6639f1aee20a"><div class="ttname"><a href="../../df/d7d/frame_8h.html#a0b2bdc4691a7ecce810a6639f1aee20a">StackFrame</a></div><div class="ttdeci">struct StackFrame StackFrame</div></div>
+<div class="ttc" id="leitor_8h_html"><div class="ttname"><a href="../../d6/d97/leitor_8h.html">leitor.h</a></div></div>
+<div class="ttc" id="frame_8h_html_a2a5c56d9766cd18277c4c9430518b326"><div class="ttname"><a href="../../df/d7d/frame_8h.html#a2a5c56d9766cd18277c4c9430518b326">Frame</a></div><div class="ttdeci">struct Frame Frame</div></div>
+<div class="ttc" id="frame_8h_html_ae095c61cae78465ab2ae26cd68fb239e"><div class="ttname"><a href="../../df/d7d/frame_8h.html#ae095c61cae78465ab2ae26cd68fb239e">retAlta</a></div><div class="ttdeci">int32_t retAlta</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00055">frame.h:55</a></div></div>
+<div class="ttc" id="struct_stack_frame_html"><div class="ttname"><a href="../../d5/d03/struct_stack_frame.html">StackFrame</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00043">frame.h:43</a></div></div>
+<div class="ttc" id="frame_8h_html_a66a49a1024974e095ed46edaad769052"><div class="ttname"><a href="../../df/d7d/frame_8h.html#a66a49a1024974e095ed46edaad769052">dumpStack</a></div><div class="ttdeci">void dumpStack()</div></div>
+<div class="ttc" id="frame_8h_html_a6c316e194f496f983e3b330020df4222"><div class="ttname"><a href="../../df/d7d/frame_8h.html#a6c316e194f496f983e3b330020df4222">pushFrame</a></div><div class="ttdeci">void pushFrame(ClassFile *, CodeAttribute *, StackFrame *)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dbe/frame_8c_source.html#l00056">frame.c:56</a></div></div>
+<div class="ttc" id="frame_8h_html_afbeae238f4237be83cc60071a8a6384d"><div class="ttname"><a href="../../df/d7d/frame_8h.html#afbeae238f4237be83cc60071a8a6384d">desalocaFrame</a></div><div class="ttdeci">void desalocaFrame()</div></div>
+<div class="ttc" id="frame_8h_html_a3670f378856724ca85ced056e6bfc5c4"><div class="ttname"><a href="../../df/d7d/frame_8h.html#a3670f378856724ca85ced056e6bfc5c4">popOp</a></div><div class="ttdeci">int32_t popOp()</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dbe/frame_8c_source.html#l00128">frame.c:128</a></div></div>
+<div class="ttc" id="struct_frame_html_addbe682d4328100186a4c03da7c2b9a2"><div class="ttname"><a href="../../d5/d15/struct_frame.html#addbe682d4328100186a4c03da7c2b9a2">Frame::pilhaOp</a></div><div class="ttdeci">PilhaOp * pilhaOp</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00040">frame.h:40</a></div></div>
+<div class="ttc" id="frame_8h_html_a26b0bade701040dce261d302f608ed60"><div class="ttname"><a href="../../df/d7d/frame_8h.html#a26b0bade701040dce261d302f608ed60">dumpFields</a></div><div class="ttdeci">void dumpFields()</div></div>
+<div class="ttc" id="struct_frame_html_a3ce27d5278d61a0abaeca31956febc1f"><div class="ttname"><a href="../../d5/d15/struct_frame.html#a3ce27d5278d61a0abaeca31956febc1f">Frame::classe</a></div><div class="ttdeci">ClassFile * classe</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00034">frame.h:34</a></div></div>
+<div class="ttc" id="struct_frame_html_a91e50d2091184efb52b6d7c0c21fd4b2"><div class="ttname"><a href="../../d5/d15/struct_frame.html#a91e50d2091184efb52b6d7c0c21fd4b2">Frame::pc</a></div><div class="ttdeci">uint32_t pc</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00039">frame.h:39</a></div></div>
+<div class="ttc" id="struct_pilha_op_html_a66868e47a39d4f335823ae7de24947bf"><div class="ttname"><a href="../../dc/d34/struct_pilha_op.html#a66868e47a39d4f335823ae7de24947bf">PilhaOp::operandos</a></div><div class="ttdeci">int32_t * operandos</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00028">frame.h:28</a></div></div>
+<div class="ttc" id="struct_frame_html_a1ed982d1a0902c22374fcde6a8938b69"><div class="ttname"><a href="../../d5/d15/struct_frame.html#a1ed982d1a0902c22374fcde6a8938b69">Frame::codeLength</a></div><div class="ttdeci">uint32_t codeLength</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d7d/frame_8h_source.html#l00037">frame.h:37</a></div></div>
+<div class="ttc" id="frame_8h_html_a6ded2cf071c127e518317e3c451af3ef"><div class="ttname"><a href="../../df/d7d/frame_8h.html#a6ded2cf071c127e518317e3c451af3ef">Vector</a></div><div class="ttdeci">struct Vector Vector</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../df/d7d/frame_8h.html">frame.h</a></li>
+    <li class="footer">Gerado por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
+  </ul>
+</div>
+</body>
+</html>

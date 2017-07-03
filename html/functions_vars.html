@@ -1,0 +1,451 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>JVM - SB Grupo 3: Campos de Dados - Variáveis</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">JVM - SB Grupo 3
+   </div>
+   <div id="projectbrief">Java Virtual Machine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;Principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Estruturas&#160;de&#160;Dados</span></a></li>
+      <li><a href="files.html"><span>Arquivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Estruturas&#160;de&#160;Dados</span></a></li>
+      <li><a href="classes.html"><span>Índice&#160;das&#160;Estruturas&#160;de&#160;Dados</span></a></li>
+      <li class="current"><a href="functions.html"><span>Campos&#160;de&#160;Dados</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow3" class="tabs2">
+    <ul class="tablist">
+      <li><a href="functions.html"><span>Todos</span></a></li>
+      <li class="current"><a href="functions_vars.html"><span>Variáveis</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow4" class="tabs3">
+    <ul class="tablist">
+      <li><a href="#index_a"><span>a</span></a></li>
+      <li><a href="#index_b"><span>b</span></a></li>
+      <li><a href="#index_c"><span>c</span></a></li>
+      <li><a href="#index_d"><span>d</span></a></li>
+      <li><a href="#index_e"><span>e</span></a></li>
+      <li><a href="#index_f"><span>f</span></a></li>
+      <li><a href="#index_h"><span>h</span></a></li>
+      <li><a href="#index_i"><span>i</span></a></li>
+      <li><a href="#index_l"><span>l</span></a></li>
+      <li><a href="#index_m"><span>m</span></a></li>
+      <li><a href="#index_n"><span>n</span></a></li>
+      <li><a href="#index_o"><span>o</span></a></li>
+      <li><a href="#index_p"><span>p</span></a></li>
+      <li><a href="#index_r"><span>r</span></a></li>
+      <li><a href="#index_s"><span>s</span></a></li>
+      <li><a href="#index_t"><span>t</span></a></li>
+      <li class="current"><a href="#index_u"><span>u</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('functions_vars.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="contents">
+&#160;
+
+<h3><a class="anchor" id="index_a"></a>- a -</h3><ul>
+<li>accessFlags
+: <a class="el" href="dd/dc9/struct_class_file.html#afbb2cd57bb6eb5baa34e83127e928c18">ClassFile</a>
+, <a class="el" href="d4/dd4/struct_field_info.html#a5fd94bd00a430098ff830c231d3f7a53">FieldInfo</a>
+, <a class="el" href="d7/d55/struct_method_info.html#a1075fd2ba433b27d9b04dec3a78de9f3">MethodInfo</a>
+</li>
+<li>arrayClasses
+: <a class="el" href="db/ddd/struct_area_metodos.html#a2f53ae03ffa9b13b9866efb46811c988">AreaMetodos</a>
+</li>
+<li>attributeLength
+: <a class="el" href="db/d84/struct_attribute_info.html#a1755dec7721e0e62a53c698831ba514d">AttributeInfo</a>
+, <a class="el" href="db/daa/struct_code_attribute.html#ad7847fdf04ce98313bf197308db2f3eb">CodeAttribute</a>
+, <a class="el" href="d0/dcc/struct_cv_info.html#a58d31f430ddf05c081616479997ebf34">CvInfo</a>
+, <a class="el" href="df/d04/struct_exceptions_attribute.html#ab2bca3da1eb560c5c08449106ff85c54">ExceptionsAttribute</a>
+</li>
+<li>attributeNameIndex
+: <a class="el" href="db/d84/struct_attribute_info.html#ac0d9d9ffa3214f362c4e06df78036d6e">AttributeInfo</a>
+, <a class="el" href="db/daa/struct_code_attribute.html#ad7ee24e03606191ad3f75e919e10d314">CodeAttribute</a>
+, <a class="el" href="d0/dcc/struct_cv_info.html#ab33f866a4dfccc3684b00cadde84aec4">CvInfo</a>
+, <a class="el" href="df/d04/struct_exceptions_attribute.html#a18fa6a96d9f0c1a55230e688d72b2a4c">ExceptionsAttribute</a>
+</li>
+<li>attributes
+: <a class="el" href="dd/dc9/struct_class_file.html#ad7db56de00dc682671cb8cfb837d92b7">ClassFile</a>
+, <a class="el" href="db/daa/struct_code_attribute.html#a99297a4945c876dd5615d84986043c21">CodeAttribute</a>
+, <a class="el" href="d4/dd4/struct_field_info.html#a44bc588a62523995db41f7186d6d4253">FieldInfo</a>
+</li>
+<li>attributesCount
+: <a class="el" href="dd/dc9/struct_class_file.html#ad88c9b8262fbd79d49ad2c163ad45716">ClassFile</a>
+, <a class="el" href="db/daa/struct_code_attribute.html#ae76ef93751db55059ac434e073178f83">CodeAttribute</a>
+, <a class="el" href="d4/dd4/struct_field_info.html#ad8eae2b3a0fccae8700ca53263983c6e">FieldInfo</a>
+, <a class="el" href="d7/d55/struct_method_info.html#a0980de52cac7b97181222b39b28e0fe0">MethodInfo</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_b"></a>- b -</h3><ul>
+<li>bytes
+: <a class="el" href="d8/d73/struct_cp_info.html#aff3858879ad5feb452a5fc0504e99c1b">CpInfo</a>
+, <a class="el" href="d6/d8d/struct_decodificador.html#a7081a89f9d4428ef33fb56f647363f72">Decodificador</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_c"></a>- c -</h3><ul>
+<li>campos
+: <a class="el" href="de/dd3/struct_objeto.html#a744a42e5e611e1d2d2f65842f4117f7b">Objeto</a>
+</li>
+<li>catchType
+: <a class="el" href="dc/de5/struct_exception_table.html#ac9dbcf3326262a17a88c1ed875d6459f">ExceptionTable</a>
+</li>
+<li>cdAtrb
+: <a class="el" href="d7/d55/struct_method_info.html#a6e5b903a4ae8fdf418b3955b93ded1c4">MethodInfo</a>
+</li>
+<li>Class
+: <a class="el" href="d8/d73/struct_cp_info.html#a198cb29d17d3d19a64f02efe6a6f966f">CpInfo</a>
+</li>
+<li>classe
+: <a class="el" href="d5/d15/struct_frame.html#a3ce27d5278d61a0abaeca31956febc1f">Frame</a>
+, <a class="el" href="de/dd3/struct_objeto.html#a5596a470c07ffff562f21911fc34fbf3">Objeto</a>
+</li>
+<li>classIndex
+: <a class="el" href="d8/d73/struct_cp_info.html#a75f3e96c3f2b5bb18c3d0caa02b589ca">CpInfo</a>
+</li>
+<li>code
+: <a class="el" href="db/daa/struct_code_attribute.html#a95d8e9c3e0b93220defcbc9852ec6c27">CodeAttribute</a>
+, <a class="el" href="d5/d15/struct_frame.html#a9de8be272246d00c7a0c2ddc899fe8f2">Frame</a>
+</li>
+<li>codeLength
+: <a class="el" href="db/daa/struct_code_attribute.html#a56ef08dd29653bdfd922f59dbf3ca619">CodeAttribute</a>
+, <a class="el" href="d5/d15/struct_frame.html#a1ed982d1a0902c22374fcde6a8938b69">Frame</a>
+</li>
+<li>constantPool
+: <a class="el" href="dd/dc9/struct_class_file.html#a209de5f28c80fb453b37a3f0b320ab9c">ClassFile</a>
+, <a class="el" href="d5/d15/struct_frame.html#a8067fdcfa9b9b35c39434ed4689b3aea">Frame</a>
+</li>
+<li>constantPoolCount
+: <a class="el" href="dd/dc9/struct_class_file.html#af185527e4689b1672655f608df4a3c62">ClassFile</a>
+</li>
+<li>constantValueIndex
+: <a class="el" href="d0/dcc/struct_cv_info.html#a44e05b3248c82f0c649a36cd66098e4c">CvInfo</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_d"></a>- d -</h3><ul>
+<li>depth
+: <a class="el" href="dc/d34/struct_pilha_op.html#ad3fdbfc30e2a1b62169ce905a3af6a39">PilhaOp</a>
+</li>
+<li>descriptorIndex
+: <a class="el" href="d8/d73/struct_cp_info.html#a191f64df1904c962d9f699f2e9fec7b0">CpInfo</a>
+, <a class="el" href="d4/dd4/struct_field_info.html#ab6cc30d06db3569171dd6fdcba7add29">FieldInfo</a>
+, <a class="el" href="d7/d55/struct_method_info.html#a4be51921e4147d189cc314b9b3a75161">MethodInfo</a>
+</li>
+<li>Double
+: <a class="el" href="d8/d73/struct_cp_info.html#a0e6265ea65e306efc9f4f5ea76b5c91c">CpInfo</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_e"></a>- e -</h3><ul>
+<li>endPc
+: <a class="el" href="dc/de5/struct_exception_table.html#a89792e3b2a4737f8f2441fed7ec15aac">ExceptionTable</a>
+</li>
+<li>excAtrb
+: <a class="el" href="d7/d55/struct_method_info.html#ae09864e7cbb1f6423209b89a1ecb70a8">MethodInfo</a>
+</li>
+<li>exceptionIndexTable
+: <a class="el" href="df/d04/struct_exceptions_attribute.html#a6e7edf18fe9cf9f9cae4e4aed16d0837">ExceptionsAttribute</a>
+</li>
+<li>exceptionTable
+: <a class="el" href="db/daa/struct_code_attribute.html#a59ef2cc9a1890d0fd0436278ef14c87a">CodeAttribute</a>
+</li>
+<li>exceptionTableLength
+: <a class="el" href="db/daa/struct_code_attribute.html#adcab31464c6fcea300f5fd171c536591">CodeAttribute</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_f"></a>- f -</h3><ul>
+<li>Fieldref
+: <a class="el" href="d8/d73/struct_cp_info.html#a9fd65fbc888e07e594eb9fe740bca5d6">CpInfo</a>
+</li>
+<li>fields
+: <a class="el" href="dd/dc9/struct_class_file.html#add171dc12613ad29ef94f4f18a50f06a">ClassFile</a>
+, <a class="el" href="d5/d15/struct_frame.html#a0fb4b4dcac7ecbbecc2f62939c517aea">Frame</a>
+</li>
+<li>fieldsCount
+: <a class="el" href="dd/dc9/struct_class_file.html#a87f4d2ede2eb9df54d69952df84226ca">ClassFile</a>
+</li>
+<li>Float
+: <a class="el" href="d8/d73/struct_cp_info.html#aa3ff2e1b209ebdd271bb63c7b0e9e831">CpInfo</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_h"></a>- h -</h3><ul>
+<li>highBytes
+: <a class="el" href="d8/d73/struct_cp_info.html#abf76d0c47da17a577a8a48f79094cce7">CpInfo</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
+<li>indiceCampos
+: <a class="el" href="de/dd3/struct_objeto.html#a7561a3d822608137d47d2babf2dd9048">Objeto</a>
+</li>
+<li>info
+: <a class="el" href="db/d84/struct_attribute_info.html#a29031abd0ae7fd3a55950616e5368dd2">AttributeInfo</a>
+, <a class="el" href="d8/d73/struct_cp_info.html#a67bf62f1bfb88277813bff0a1524a854">CpInfo</a>
+</li>
+<li>instrucao
+: <a class="el" href="d6/d8d/struct_decodificador.html#abd91e4ab4dc0ec38489f2c487132ccff">Decodificador</a>
+</li>
+<li>Integer
+: <a class="el" href="d8/d73/struct_cp_info.html#a9b5d6434dd5cf3962040f5a6d88e7525">CpInfo</a>
+</li>
+<li>InterfaceMethodref
+: <a class="el" href="d8/d73/struct_cp_info.html#a43f1ac70e4d86c838c644a73c911279d">CpInfo</a>
+</li>
+<li>interfaces
+: <a class="el" href="dd/dc9/struct_class_file.html#a86680de028c6df386edafa8e8436b92c">ClassFile</a>
+</li>
+<li>interfacesCount
+: <a class="el" href="dd/dc9/struct_class_file.html#adcd02751a38d5b17559fd3c5201b2c42">ClassFile</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_l"></a>- l -</h3><ul>
+<li>length
+: <a class="el" href="d8/d73/struct_cp_info.html#a8876751cacc7818d9748366a35ef85f7">CpInfo</a>
+</li>
+<li>Long
+: <a class="el" href="d8/d73/struct_cp_info.html#a910c4b5bfb7d3f2d136a34bdbdcd7a00">CpInfo</a>
+</li>
+<li>lowBytes
+: <a class="el" href="d8/d73/struct_cp_info.html#adc1acf10dac8926ec1f95dec233ce7ef">CpInfo</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_m"></a>- m -</h3><ul>
+<li>magic
+: <a class="el" href="dd/dc9/struct_class_file.html#a9d4d72751ff9250dd3305d5d853f7921">ClassFile</a>
+</li>
+<li>majorVersion
+: <a class="el" href="dd/dc9/struct_class_file.html#a3424e098e9ef6dbfbdbb9c708afaffe7">ClassFile</a>
+</li>
+<li>maxLocals
+: <a class="el" href="db/daa/struct_code_attribute.html#a8fe52af0bc8aa61d0dbeb8a3a9233731">CodeAttribute</a>
+, <a class="el" href="d5/d15/struct_frame.html#a5d933cb41bf8f544aecba4ef1723ab1a">Frame</a>
+</li>
+<li>maxStack
+: <a class="el" href="db/daa/struct_code_attribute.html#a909f0678f0621617233e76073a55976a">CodeAttribute</a>
+, <a class="el" href="d5/d15/struct_frame.html#a378c00e14ef1f63cbbfa4e984502b652">Frame</a>
+</li>
+<li>Methodref
+: <a class="el" href="d8/d73/struct_cp_info.html#a66dc9eccd00ceddf9395d73cf680b398">CpInfo</a>
+</li>
+<li>methods
+: <a class="el" href="dd/dc9/struct_class_file.html#a67e02d50e6807bb97d7d8f265deef9a0">ClassFile</a>
+</li>
+<li>methodsCount
+: <a class="el" href="dd/dc9/struct_class_file.html#a24d224be2ab473bac3506890c6ff6a4d">ClassFile</a>
+</li>
+<li>minorVersion
+: <a class="el" href="dd/dc9/struct_class_file.html#afb41e706bd0e19ed5a24cd0e99ecc4c1">ClassFile</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_n"></a>- n -</h3><ul>
+<li>NameAndType
+: <a class="el" href="d8/d73/struct_cp_info.html#a5a6ef04a5febd72e0202d0cf53de19d6">CpInfo</a>
+</li>
+<li>nameAndTypeIndex
+: <a class="el" href="d8/d73/struct_cp_info.html#a3b8ac741223fb96194b9a06ad278850f">CpInfo</a>
+</li>
+<li>nameIndex
+: <a class="el" href="d8/d73/struct_cp_info.html#a33528d25dc35e61040a6ad480d6f9959">CpInfo</a>
+, <a class="el" href="d4/dd4/struct_field_info.html#a88ea5c29063df8933d5277e846924b1e">FieldInfo</a>
+, <a class="el" href="d7/d55/struct_method_info.html#a946349e82f47156b63c58e57061d6891">MethodInfo</a>
+</li>
+<li>next
+: <a class="el" href="d5/d03/struct_stack_frame.html#a3cb6ca230d221991df6c9f554aa7a43b">StackFrame</a>
+</li>
+<li>numberExceptions
+: <a class="el" href="df/d04/struct_exceptions_attribute.html#ae877887aa7835d6a65b2a9dcf313e849">ExceptionsAttribute</a>
+</li>
+<li>numClasses
+: <a class="el" href="db/ddd/struct_area_metodos.html#a16f79347136c9dda54c97a62bd596887">AreaMetodos</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_o"></a>- o -</h3><ul>
+<li>operandos
+: <a class="el" href="dc/d34/struct_pilha_op.html#a66868e47a39d4f335823ae7de24947bf">PilhaOp</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_p"></a>- p -</h3><ul>
+<li>pc
+: <a class="el" href="d5/d15/struct_frame.html#a91e50d2091184efb52b6d7c0c21fd4b2">Frame</a>
+</li>
+<li>pilhaOp
+: <a class="el" href="d5/d15/struct_frame.html#addbe682d4328100186a4c03da7c2b9a2">Frame</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
+<li>referencia
+: <a class="el" href="d4/d06/struct_vector.html#a0f2af0912b4d39a569c01fc73c409b0f">Vector</a>
+</li>
+<li>refFrame
+: <a class="el" href="d5/d03/struct_stack_frame.html#aee414b80c97dcb5e37632a64bbcbff1c">StackFrame</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
+<li>startPc
+: <a class="el" href="dc/de5/struct_exception_table.html#a04ab9fcb6779181df0079a864f442e15">ExceptionTable</a>
+</li>
+<li>String
+: <a class="el" href="d8/d73/struct_cp_info.html#ac48615bcfbb835d4edd3242ed6e2a172">CpInfo</a>
+</li>
+<li>stringIndex
+: <a class="el" href="d8/d73/struct_cp_info.html#af3623a7e7a8ddca66051e5c8284f6787">CpInfo</a>
+</li>
+<li>superClass
+: <a class="el" href="dd/dc9/struct_class_file.html#a306c9da73620fa5ad94bbaa64a19afdd">ClassFile</a>
+</li>
+<li>superClasse
+: <a class="el" href="de/dd3/struct_objeto.html#aa7b097e2dea86e221a2c7fc1c85b6fe5">Objeto</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
+<li>tag
+: <a class="el" href="d8/d73/struct_cp_info.html#ac20d96c33f871bde2e903708a215a2dc">CpInfo</a>
+</li>
+<li>tamanho
+: <a class="el" href="d4/d06/struct_vector.html#a7444f49069adbd72108bda57a0585476">Vector</a>
+</li>
+<li>thisClass
+: <a class="el" href="dd/dc9/struct_class_file.html#abc02e661935c638b2f231cef576859f1">ClassFile</a>
+</li>
+<li>tipo
+: <a class="el" href="d4/d06/struct_vector.html#a7dfc8127c1b5681c6b4ccd3c036710e7">Vector</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_u"></a>- u -</h3><ul>
+<li>Utf8
+: <a class="el" href="d8/d73/struct_cp_info.html#a269d1c1505fdf90973102d733552db05">CpInfo</a>
+</li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Gerado por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
+  </ul>
+</div>
+</body>
+</html>

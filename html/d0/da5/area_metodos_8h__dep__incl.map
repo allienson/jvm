@@ -1,0 +1,8 @@
+<map id="areaMetodos.h" name="areaMetodos.h">
+<area shape="rect" id="node2" href="$d0/db7/carregador_8h.html" title="carregador.h" alt="" coords="128,80,223,107"/>
+<area shape="rect" id="node4" href="$da/d02/instrucao_8c.html" title="Define, interpreta e executa as instruções do programa sendo executado. " alt="" coords="5,229,92,256"/>
+<area shape="rect" id="node6" href="$d0/d29/main_8c.html" title="Arquivo principal que inicia a execucacao da JVM. " alt="" coords="145,229,206,256"/>
+<area shape="rect" id="node7" href="$d5/dd8/metodo_8c.html" title="Arquivo que carrega a area de metodos na memoria para inciar a execucao do programa Java..." alt="" coords="307,229,383,256"/>
+<area shape="rect" id="node3" href="$db/d53/carregador_8c.html" title="Carrega, inicializa e aloca um ClassFile e associa com a estrutura do AreaMetodos. " alt="" coords="237,155,332,181"/>
+<area shape="rect" id="node5" href="$db/d89/metodo_8h.html" title="metodo.h" alt="" coords="137,155,213,181"/>
+</map>

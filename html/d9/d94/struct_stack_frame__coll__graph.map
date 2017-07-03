@@ -1,0 +1,13 @@
+<map id="StackFrame" name="StackFrame">
+<area shape="rect" id="node2" href="$d5/d15/struct_frame.html" title="{Frame\n|+ fields\l+ maxStack\l+ maxLocals\l+ codeLength\l+ code\l+ pc\l|}" alt="" coords="197,1005,298,1156"/>
+<area shape="rect" id="node3" href="$d8/d73/struct_cp_info.html" title="{CpInfo\n|+ tag\l+ nameIndex\l+ Class\l+ classIndex\l+ nameAndTypeIndex\l+ Fieldref\l+ Methodref\l+ InterfaceMethodref\l+ stringIndex\l+ String\le 13 mais...\l|}" alt="" coords="5,417,156,641"/>
+<area shape="rect" id="node4" href="$dd/dc9/struct_class_file.html" title="{ClassFile\n|+ magic\l+ minorVersion\l+ majorVersion\l+ constantPoolCount\l+ accessFlags\l+ thisClass\l+ superClass\l+ interfacesCount\l+ interfaces\l+ fieldsCount\l+ methodsCount\l+ attributesCount\l|}" alt="" coords="175,704,320,943"/>
+<area shape="rect" id="node5" href="$db/d84/struct_attribute_info.html" title="{AttributeInfo\n|+ attributeNameIndex\l+ attributeLength\l+ info\l|}" alt="" coords="140,5,288,112"/>
+<area shape="rect" id="node10" href="$db/daa/struct_code_attribute.html" title="{CodeAttribute\n|+ attributeNameIndex\l+ attributeLength\l+ maxStack\l+ maxLocals\l+ codeLength\l+ code\l+ exceptionTableLength\l+ attributesCount\l|}" alt="" coords="252,175,413,355"/>
+<area shape="rect" id="node6" href="$d4/dd4/struct_field_info.html" title="{FieldInfo\n|+ accessFlags\l+ nameIndex\l+ descriptorIndex\l+ attributesCount\l|}" alt="" coords="523,469,646,590"/>
+<area shape="rect" id="node7" href="$d0/dcc/struct_cv_info.html" title="{CvInfo\n|+ attributeNameIndex\l+ attributeLength\l+ constantValueIndex\l|}" alt="" coords="617,211,766,318"/>
+<area shape="rect" id="node8" href="$d7/d55/struct_method_info.html" title="{MethodInfo\n|+ accessFlags\l+ nameIndex\l+ descriptorIndex\l+ attributesCount\l|}" alt="" coords="271,469,394,590"/>
+<area shape="rect" id="node9" href="$df/d04/struct_exceptions_attribute.html" title="{ExceptionsAttribute\n|+ attributeNameIndex\l+ attributeLength\l+ numberExceptions\l+ exceptionIndexTable\l|}" alt="" coords="438,204,593,325"/>
+<area shape="rect" id="node11" href="$dc/de5/struct_exception_table.html" title="{ExceptionTable\n|+ startPc\l+ endPc\l+ catchType\l|}" alt="" coords="311,5,423,112"/>
+<area shape="rect" id="node12" href="$dc/d34/struct_pilha_op.html" title="{PilhaOp\n|+ depth\l+ operandos\l|}" alt="" coords="344,777,439,869"/>
+</map>

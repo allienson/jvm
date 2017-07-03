@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>JVM - SB Grupo 3: Código-Fonte de main.c</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">JVM - SB Grupo 3
+   </div>
+   <div id="projectbrief">Java Virtual Machine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Página&#160;Principal</span></a></li>
+      <li><a href="../../pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="../../annotated.html"><span>Estruturas&#160;de&#160;Dados</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Arquivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Lista&#160;de&#160;Arquivos</span></a></li>
+      <li><a href="../../globals.html"><span>Globais</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('d0/d29/main_8c_source.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">main.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d0/d29/main_8c.html">Vá para a documentação deste arquivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d0/db7/carregador_8h.html">carregador.h</a>&quot;</span></div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../db/d89/metodo_8h.html">metodo.h</a>&quot;</span></div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d1/d0f/area_metodos_8h.html">areaMetodos.h</a>&quot;</span></div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dc/dbd/exibidor_8h.html">exibidor.h</a>&quot;</span></div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div><div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="../../d0/d29/main_8c.html#a7b786c529b0d8bfcde5f815492e84db9">   40</a></span>&#160;<span class="preprocessor">#define TAMANHO_ARQUIVO 100</span></div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div><div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="../../d0/d29/main_8c.html#a748d925b1fa9d6526aa5a94080aeaf19">   42</a></span>&#160;<a class="code" href="../../d7/d55/struct_method_info.html">MethodInfo</a>* <a class="code" href="../../d0/d29/main_8c.html#a748d925b1fa9d6526aa5a94080aeaf19">metodoMain</a>;</div><div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="../../d0/d29/main_8c.html#a5eb03fa1550ef172a859dba26a46d77a">   43</a></span>&#160;<a class="code" href="../../dd/dc9/struct_class_file.html">ClassFile</a>* <a class="code" href="../../d0/d29/main_8c.html#a5eb03fa1550ef172a859dba26a46d77a">classeMain</a>;</div><div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../d0/d29/main_8c.html#a69c926fdbe16a1cbc50de4a966d497a5">   44</a></span>&#160;<span class="keywordtype">char</span>* <a class="code" href="../../d0/d29/main_8c.html#a69c926fdbe16a1cbc50de4a966d497a5">caminhoArquivo</a>;</div><div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="../../d0/d29/main_8c.html#a674404696468f40cd7392da3d3c502d7">   45</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d0/d29/main_8c.html#a674404696468f40cd7392da3d3c502d7">exibeClassFile</a>;</div><div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../d0/d29/main_8c.html#a9155eabe23a466c61699fee30e015e89">   46</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d0/d29/main_8c.html#a9155eabe23a466c61699fee30e015e89">printaParaArquivo</a>;</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d0/d29/main_8c.html#a45b099240a0e5e7ffff39bfa8accaf25">leParamsEntrada</a>();</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d0/d29/main_8c.html#a6b2cbabf8682bcc1712ff9adf23cecc7">preparaMetodoMain</a>();</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d0/d29/main_8c.html#a4fb190a31887509a84011fe503d1583c">exibeArrayClasses</a>();</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div><div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../d0/d29/main_8c.html#a0ddf1224851353fc92bfbff6f499fa97">   59</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d0/d29/main_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[]) {</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <a class="code" href="../../d0/d29/main_8c.html#a45b099240a0e5e7ffff39bfa8accaf25">leParamsEntrada</a>(argc, argv);</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <a class="code" href="../../db/d53/carregador_8c.html#aa8226828a719a729baa6de54497dbd06">carregaClasseParaMemoria</a>(<span class="stringliteral">&quot;java/lang/Object&quot;</span>);</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="../../db/d53/carregador_8c.html#aa8226828a719a729baa6de54497dbd06">carregaClasseParaMemoria</a>(<a class="code" href="../../d0/d29/main_8c.html#a69c926fdbe16a1cbc50de4a966d497a5">caminhoArquivo</a>);</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <a class="code" href="../../d0/d29/main_8c.html#a6b2cbabf8682bcc1712ff9adf23cecc7">preparaMetodoMain</a>();</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <a class="code" href="../../d5/dd8/metodo_8c.html#abd0ddf4dcb0a8259896fe735c94e23b4">empilhaMetodo</a>(metodoMain, classeMain);</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <a class="code" href="../../d5/dd8/metodo_8c.html#ae6a6b8342dd5977b74379e5295614ea8">executaFrameCorrente</a>();</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <a class="code" href="../../d0/d29/main_8c.html#a4fb190a31887509a84011fe503d1583c">exibeArrayClasses</a>();</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  free(<a class="code" href="../../d0/d29/main_8c.html#a69c926fdbe16a1cbc50de4a966d497a5">caminhoArquivo</a>);</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordflow">return</span> 0;</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div><div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="../../d0/d29/main_8c.html#aac9775bae25ad3825c28d3b01e78033c">   77</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d0/d29/main_8c.html#a45b099240a0e5e7ffff39bfa8accaf25">leParamsEntrada</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[]) {</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <a class="code" href="../../d0/d29/main_8c.html#a69c926fdbe16a1cbc50de4a966d497a5">caminhoArquivo</a> = calloc(<a class="code" href="../../d0/d29/main_8c.html#a7b786c529b0d8bfcde5f815492e84db9">TAMANHO_ARQUIVO</a>, <span class="keyword">sizeof</span>(argv[1]));</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordflow">if</span> (argc &lt; 3) {</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    printf(<span class="stringliteral">&quot;\n\nInforme o caminho completo do arquivo \&quot;.class\&quot; que contem o metodo main:\n&quot;</span>);</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    scanf(<span class="stringliteral">&quot;%s&quot;</span>, <a class="code" href="../../d0/d29/main_8c.html#a69c926fdbe16a1cbc50de4a966d497a5">caminhoArquivo</a>);</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    getchar();</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="../../d0/d29/main_8c.html#a674404696468f40cd7392da3d3c502d7">exibeClassFile</a> = 1;</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    strcpy(<a class="code" href="../../d0/d29/main_8c.html#a69c926fdbe16a1cbc50de4a966d497a5">caminhoArquivo</a>, argv[1]);</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">if</span>(*argv[2] == <span class="charliteral">&#39;1&#39;</span>) {</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      <a class="code" href="../../d0/d29/main_8c.html#a674404696468f40cd7392da3d3c502d7">exibeClassFile</a> = 1;</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(*argv[2] == <span class="charliteral">&#39;2&#39;</span>) {</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      <a class="code" href="../../d0/d29/main_8c.html#a674404696468f40cd7392da3d3c502d7">exibeClassFile</a> = 1;</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      <a class="code" href="../../d0/d29/main_8c.html#a9155eabe23a466c61699fee30e015e89">printaParaArquivo</a> = 1;</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  }</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div><div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="../../d0/d29/main_8c.html#a6b2cbabf8682bcc1712ff9adf23cecc7">  101</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d0/d29/main_8c.html#a6b2cbabf8682bcc1712ff9adf23cecc7">preparaMetodoMain</a>() {</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  classeMain = <a class="code" href="../../db/d53/carregador_8c.html#a5791c228ebcf57d6eb24ba9618eae973">buscaClassPorIndice</a>(1);</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  metodoMain = <a class="code" href="../../d5/dd8/metodo_8c.html#a6aa5c3f94b9def67427ad40fb5205c5f">buscaMetodoMain</a>(classeMain);</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="keywordflow">if</span> (metodoMain == NULL) {</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    printf(<span class="stringliteral">&quot;\nO arquivo \&quot;.class\&quot; informado nao possui metodo Main!\n&quot;</span>);</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    printf(<span class="stringliteral">&quot;\nExecucao finalizada!\n&quot;</span>);</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    exit(0);</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  }</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div><div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="../../d0/d29/main_8c.html#a4fb190a31887509a84011fe503d1583c">  118</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d0/d29/main_8c.html#a4fb190a31887509a84011fe503d1583c">exibeArrayClasses</a>() {</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="../../d0/d29/main_8c.html#a674404696468f40cd7392da3d3c502d7">exibeClassFile</a>) {</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    FILE *saved;</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d0/d29/main_8c.html#a9155eabe23a466c61699fee30e015e89">printaParaArquivo</a>) {</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      saved = freopen(<span class="stringliteral">&quot;log.txt&quot;</span>, <span class="stringliteral">&quot;w+&quot;</span>, stdout);</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    }</div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; <a class="code" href="../../db/d53/carregador_8c.html#ac2492b2ee633ac35c62b2632b337c557">areaMetodos</a>.<a class="code" href="../../db/ddd/struct_area_metodos.html#a16f79347136c9dda54c97a62bd596887">numClasses</a>; i++) {</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      <a class="code" href="../../d7/d16/exibidor_8c.html#af66f78ede418a5d96fc683ff46166d15">printaClassFile</a>(<a class="code" href="../../db/d53/carregador_8c.html#ac2492b2ee633ac35c62b2632b337c557">areaMetodos</a>.<a class="code" href="../../db/ddd/struct_area_metodos.html#a2f53ae03ffa9b13b9866efb46811c988">arrayClasses</a>[i]);</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    }</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d0/d29/main_8c.html#a9155eabe23a466c61699fee30e015e89">printaParaArquivo</a>) {</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      fclose(saved);</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    }</div><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  }</div><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div><div class="ttc" id="main_8c_html_a9155eabe23a466c61699fee30e015e89"><div class="ttname"><a href="../../d0/d29/main_8c.html#a9155eabe23a466c61699fee30e015e89">printaParaArquivo</a></div><div class="ttdeci">int printaParaArquivo</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d29/main_8c_source.html#l00046">main.c:46</a></div></div>
+<div class="ttc" id="main_8c_html_a4fb190a31887509a84011fe503d1583c"><div class="ttname"><a href="../../d0/d29/main_8c.html#a4fb190a31887509a84011fe503d1583c">exibeArrayClasses</a></div><div class="ttdeci">void exibeArrayClasses()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d29/main_8c_source.html#l00118">main.c:118</a></div></div>
+<div class="ttc" id="main_8c_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="../../d0/d29/main_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d29/main_8c_source.html#l00059">main.c:59</a></div></div>
+<div class="ttc" id="metodo_8c_html_a6aa5c3f94b9def67427ad40fb5205c5f"><div class="ttname"><a href="../../d5/dd8/metodo_8c.html#a6aa5c3f94b9def67427ad40fb5205c5f">buscaMetodoMain</a></div><div class="ttdeci">MethodInfo * buscaMetodoMain(ClassFile *classFile)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dd8/metodo_8c_source.html#l00046">metodo.c:46</a></div></div>
+<div class="ttc" id="struct_area_metodos_html_a2f53ae03ffa9b13b9866efb46811c988"><div class="ttname"><a href="../../db/ddd/struct_area_metodos.html#a2f53ae03ffa9b13b9866efb46811c988">AreaMetodos::arrayClasses</a></div><div class="ttdeci">ClassFile ** arrayClasses</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/area_metodos_8h_source.html#l00030">areaMetodos.h:30</a></div></div>
+<div class="ttc" id="main_8c_html_a6b2cbabf8682bcc1712ff9adf23cecc7"><div class="ttname"><a href="../../d0/d29/main_8c.html#a6b2cbabf8682bcc1712ff9adf23cecc7">preparaMetodoMain</a></div><div class="ttdeci">void preparaMetodoMain()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d29/main_8c_source.html#l00101">main.c:101</a></div></div>
+<div class="ttc" id="exibidor_8h_html"><div class="ttname"><a href="../../dc/dbd/exibidor_8h.html">exibidor.h</a></div></div>
+<div class="ttc" id="carregador_8c_html_ac2492b2ee633ac35c62b2632b337c557"><div class="ttname"><a href="../../db/d53/carregador_8c.html#ac2492b2ee633ac35c62b2632b337c557">areaMetodos</a></div><div class="ttdeci">AreaMetodos areaMetodos</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d53/carregador_8c_source.html#l00029">carregador.c:29</a></div></div>
+<div class="ttc" id="exibidor_8c_html_af66f78ede418a5d96fc683ff46166d15"><div class="ttname"><a href="../../d7/d16/exibidor_8c.html#af66f78ede418a5d96fc683ff46166d15">printaClassFile</a></div><div class="ttdeci">void printaClassFile(ClassFile *classFile)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d16/exibidor_8c_source.html#l00040">exibidor.c:40</a></div></div>
+<div class="ttc" id="carregador_8c_html_aa8226828a719a729baa6de54497dbd06"><div class="ttname"><a href="../../db/d53/carregador_8c.html#aa8226828a719a729baa6de54497dbd06">carregaClasseParaMemoria</a></div><div class="ttdeci">int32_t carregaClasseParaMemoria(char *caminhoClasse)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d53/carregador_8c_source.html#l00039">carregador.c:39</a></div></div>
+<div class="ttc" id="carregador_8c_html_a5791c228ebcf57d6eb24ba9618eae973"><div class="ttname"><a href="../../db/d53/carregador_8c.html#a5791c228ebcf57d6eb24ba9618eae973">buscaClassPorIndice</a></div><div class="ttdeci">ClassFile * buscaClassPorIndice(int indice)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d53/carregador_8c_source.html#l00111">carregador.c:111</a></div></div>
+<div class="ttc" id="struct_area_metodos_html_a16f79347136c9dda54c97a62bd596887"><div class="ttname"><a href="../../db/ddd/struct_area_metodos.html#a16f79347136c9dda54c97a62bd596887">AreaMetodos::numClasses</a></div><div class="ttdeci">int numClasses</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d0f/area_metodos_8h_source.html#l00031">areaMetodos.h:31</a></div></div>
+<div class="ttc" id="metodo_8c_html_abd0ddf4dcb0a8259896fe735c94e23b4"><div class="ttname"><a href="../../d5/dd8/metodo_8c.html#abd0ddf4dcb0a8259896fe735c94e23b4">empilhaMetodo</a></div><div class="ttdeci">void empilhaMetodo(MethodInfo *metodo, ClassFile *classe)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dd8/metodo_8c_source.html#l00071">metodo.c:71</a></div></div>
+<div class="ttc" id="struct_class_file_html"><div class="ttname"><a href="../../dd/dc9/struct_class_file.html">ClassFile</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d97/leitor_8h_source.html#l00184">leitor.h:184</a></div></div>
+<div class="ttc" id="area_metodos_8h_html"><div class="ttname"><a href="../../d1/d0f/area_metodos_8h.html">areaMetodos.h</a></div><div class="ttdoc">Define as estruturas Area de Metodos e Objeto. </div></div>
+<div class="ttc" id="metodo_8c_html_ae6a6b8342dd5977b74379e5295614ea8"><div class="ttname"><a href="../../d5/dd8/metodo_8c.html#ae6a6b8342dd5977b74379e5295614ea8">executaFrameCorrente</a></div><div class="ttdeci">void executaFrameCorrente()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dd8/metodo_8c_source.html#l00082">metodo.c:82</a></div></div>
+<div class="ttc" id="metodo_8h_html"><div class="ttname"><a href="../../db/d89/metodo_8h.html">metodo.h</a></div></div>
+<div class="ttc" id="main_8c_html_a748d925b1fa9d6526aa5a94080aeaf19"><div class="ttname"><a href="../../d0/d29/main_8c.html#a748d925b1fa9d6526aa5a94080aeaf19">metodoMain</a></div><div class="ttdeci">MethodInfo * metodoMain</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d29/main_8c_source.html#l00042">main.c:42</a></div></div>
+<div class="ttc" id="struct_method_info_html"><div class="ttname"><a href="../../d7/d55/struct_method_info.html">MethodInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d97/leitor_8h_source.html#l00175">leitor.h:175</a></div></div>
+<div class="ttc" id="main_8c_html_a69c926fdbe16a1cbc50de4a966d497a5"><div class="ttname"><a href="../../d0/d29/main_8c.html#a69c926fdbe16a1cbc50de4a966d497a5">caminhoArquivo</a></div><div class="ttdeci">char * caminhoArquivo</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d29/main_8c_source.html#l00044">main.c:44</a></div></div>
+<div class="ttc" id="main_8c_html_a674404696468f40cd7392da3d3c502d7"><div class="ttname"><a href="../../d0/d29/main_8c.html#a674404696468f40cd7392da3d3c502d7">exibeClassFile</a></div><div class="ttdeci">int exibeClassFile</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d29/main_8c_source.html#l00045">main.c:45</a></div></div>
+<div class="ttc" id="main_8c_html_a5eb03fa1550ef172a859dba26a46d77a"><div class="ttname"><a href="../../d0/d29/main_8c.html#a5eb03fa1550ef172a859dba26a46d77a">classeMain</a></div><div class="ttdeci">ClassFile * classeMain</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d29/main_8c_source.html#l00043">main.c:43</a></div></div>
+<div class="ttc" id="carregador_8h_html"><div class="ttname"><a href="../../d0/db7/carregador_8h.html">carregador.h</a></div></div>
+<div class="ttc" id="main_8c_html_a45b099240a0e5e7ffff39bfa8accaf25"><div class="ttname"><a href="../../d0/d29/main_8c.html#a45b099240a0e5e7ffff39bfa8accaf25">leParamsEntrada</a></div><div class="ttdeci">void leParamsEntrada()</div></div>
+<div class="ttc" id="main_8c_html_a7b786c529b0d8bfcde5f815492e84db9"><div class="ttname"><a href="../../d0/d29/main_8c.html#a7b786c529b0d8bfcde5f815492e84db9">TAMANHO_ARQUIVO</a></div><div class="ttdeci">#define TAMANHO_ARQUIVO</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d29/main_8c_source.html#l00040">main.c:40</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../d0/d29/main_8c.html">main.c</a></li>
+    <li class="footer">Gerado por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
+  </ul>
+</div>
+</body>
+</html>

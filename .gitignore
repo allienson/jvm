@@ -1,23 +1,2 @@
 
-*.cppcheck
-
-*.o
-
-\.DS_Store
-
-*.gcno
-
-*.gcov
-
-JVM
-
-*.gcda
-
-*.exe
-log.txt
-
-*.js
-
-html/
-
-xml/
+docs/

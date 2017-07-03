@@ -2587,13 +2587,16 @@ void _drem() {
 	double valorDouble1;
 	memcpy(&valorDouble1, &valorDouble, sizeof(double));
 
+	parteBaixa = popOp();
+	parteAlta = popOp();
+
 	valorDouble = parteAlta;
 	valorDouble = (valorDouble << 32) + parteBaixa;
 
 	double valorDouble2;
 	memcpy(&valorDouble2, &valorDouble, sizeof(double));
 
-	double resultado = valorDouble - ((valorDouble/valorDouble2) * valorDouble2);
+	double resultado = fmod(valorDouble2, valorDouble1);
 
 	int64_t valorPilha;
 	memcpy(&valorPilha, &resultado, sizeof(int64_t));
@@ -2685,7 +2688,11 @@ void dneg() {
 	int64_t valorDouble = parteAlta;
 	valorDouble = (valorDouble << 32) + parteBaixa;
 
-	valorDouble = -valorDouble;
+	if (valorDouble > 0){
+		valorDouble |= 0x8000000000000000;
+	} else {
+		valorDouble &= 0x7fffffffffffffff;
+	}
 
 	parteAlta = valorDouble >> 32;
 	parteBaixa = valorDouble & 0xffffffff;

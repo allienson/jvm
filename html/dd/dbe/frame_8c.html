@@ -1,0 +1,435 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>JVM - SB Grupo 3: Referência do Arquivo frame.c</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">JVM - SB Grupo 3
+   </div>
+   <div id="projectbrief">Java Virtual Machine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Página&#160;Principal</span></a></li>
+      <li><a href="../../pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="../../annotated.html"><span>Estruturas&#160;de&#160;Dados</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Arquivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../files.html"><span>Lista&#160;de&#160;Arquivos</span></a></li>
+      <li><a href="../../globals.html"><span>Globais</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('dd/dbe/frame_8c.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funções</a> &#124;
+<a href="#var-members">Variáveis</a>  </div>
+  <div class="headertitle">
+<div class="title">Referência do Arquivo frame.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gerenciamento e alocação de memória das frames do programa executado.  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="../../df/d7d/frame_8h_source.html">frame.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Gráfico de dependência de inclusões para frame.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/da1/frame_8c__incl.png" border="0" usemap="#frame_8c" alt=""/></div>
+<map name="frame_8c" id="frame_8c">
+<area shape="rect" id="node2" href="../../df/d7d/frame_8h.html" title="frame.h" alt="" coords="57,80,123,107"/>
+<area shape="rect" id="node5" href="../../d6/d97/leitor_8h.html" title="leitor.h" alt="" coords="146,155,207,181"/>
+<area shape="rect" id="node7" href="../../d3/d78/decodificador_8h.html" title="decodificador.h" alt="" coords="215,229,325,256"/>
+</map>
+</div>
+</div>
+<p><a href="../../dd/dbe/frame_8c_source.html">Vá para o código-fonte deste arquivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a043120e5dc10c5874fafd5b92506dd54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbe/frame_8c.html#a043120e5dc10c5874fafd5b92506dd54">criaFrame</a> (<a class="el" href="../../dd/dc9/struct_class_file.html">ClassFile</a> *classe, <a class="el" href="../../db/daa/struct_code_attribute.html">CodeAttribute</a> *codeAttribute)</td></tr>
+<tr class="separator:a043120e5dc10c5874fafd5b92506dd54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71c5d25687de0a2568a6cf7c62dfef26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbe/frame_8c.html#a71c5d25687de0a2568a6cf7c62dfef26">pushFrame</a> (<a class="el" href="../../dd/dc9/struct_class_file.html">ClassFile</a> *classe, <a class="el" href="../../db/daa/struct_code_attribute.html">CodeAttribute</a> *codeAttribute, <a class="el" href="../../d5/d03/struct_stack_frame.html">StackFrame</a> *stackFrame)</td></tr>
+<tr class="separator:a71c5d25687de0a2568a6cf7c62dfef26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca9cbfa46eaa4e3c07217b16d0c5212e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbe/frame_8c.html#aca9cbfa46eaa4e3c07217b16d0c5212e">popFrame</a> ()</td></tr>
+<tr class="separator:aca9cbfa46eaa4e3c07217b16d0c5212e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50993c39467516396b64a90eb81af0ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbe/frame_8c.html#a50993c39467516396b64a90eb81af0ba">pushOp</a> (int32_t valor)</td></tr>
+<tr class="separator:a50993c39467516396b64a90eb81af0ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3670f378856724ca85ced056e6bfc5c4"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbe/frame_8c.html#a3670f378856724ca85ced056e6bfc5c4">popOp</a> ()</td></tr>
+<tr class="separator:a3670f378856724ca85ced056e6bfc5c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a14b8e8d6925b6383b12597cb8a4dc1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbe/frame_8c.html#a4a14b8e8d6925b6383b12597cb8a4dc1">checkaOverflowPilhaOp</a> ()</td></tr>
+<tr class="separator:a4a14b8e8d6925b6383b12597cb8a4dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ea50bc48f670ca5ef7573e4256c213c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbe/frame_8c.html#a7ea50bc48f670ca5ef7573e4256c213c">checkaUnderflowPilhaOp</a> ()</td></tr>
+<tr class="separator:a7ea50bc48f670ca5ef7573e4256c213c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variáveis</h2></td></tr>
+<tr class="memitem:a352d20cc1b440fd3e25d463b5e2efdb4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d8d/struct_decodificador.html">Decodificador</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbe/frame_8c.html#a352d20cc1b440fd3e25d463b5e2efdb4">dec</a> [<a class="el" href="../../d6/d97/leitor_8h.html#a4d34398b879119909a61e7f5d80d7f9a">NUM_INSTRUCAO</a>]</td></tr>
+<tr class="separator:a352d20cc1b440fd3e25d463b5e2efdb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad62b45c5a0a8993d540ec7b83ef02ee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d15/struct_frame.html">Frame</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbe/frame_8c.html#aad62b45c5a0a8993d540ec7b83ef02ee">frameCorrente</a></td></tr>
+<tr class="separator:aad62b45c5a0a8993d540ec7b83ef02ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41b21f484ed1e3efce18dcb9a07ae865"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dbe/frame_8c.html#a41b21f484ed1e3efce18dcb9a07ae865">qtdArrays</a></td></tr>
+<tr class="separator:a41b21f484ed1e3efce18dcb9a07ae865"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
+<div class="textblock"><p>Gerenciamento e alocação de memória das frames do programa executado. </p>
+<dl class="section author"><dt>Autores</dt><dd>Allisson Barros 12/0055619<br />
+Daniel Luz 13/0007714<br />
+Luiz Fernando Vieira 13/0013757<br />
+Mariana Pannunzio 12/0018276<br />
+Mateus Denucci 12/0053080<br />
+ </dd></dl>
+<dl class="section date"><dt>Data</dt><dd>28/06/2017</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright © 2017 GrupoSB. All rights reserved. </dd></dl>
+
+<p>Definição no arquivo <a class="el" href="../../dd/dbe/frame_8c_source.html">frame.c</a>.</p>
+</div><h2 class="groupheader">Funções</h2>
+<a class="anchor" id="a4a14b8e8d6925b6383b12597cb8a4dc1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int checkaOverflowPilhaOp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Confere se o tamanho da pilha excedeu o tamanho maximo (max stack)</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Nao</td><td>possui parametros. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd><code>int</code> Resultado de uma comparacao (0 ou 1) </dd></dl>
+
+<p>Definição na linha <a class="el" href="../../dd/dbe/frame_8c_source.html#l00146">146</a> do arquivo <a class="el" href="../../dd/dbe/frame_8c_source.html">frame.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7ea50bc48f670ca5ef7573e4256c213c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int checkaUnderflowPilhaOp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Confere se a profundidade da pilha esta negativa.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Nao</td><td>possui parametros. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd><code>int</code> Resultado de uma comparacao (0 ou 1) </dd></dl>
+
+<p>Definição na linha <a class="el" href="../../dd/dbe/frame_8c_source.html#l00155">155</a> do arquivo <a class="el" href="../../dd/dbe/frame_8c_source.html">frame.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a043120e5dc10c5874fafd5b92506dd54"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void criaFrame </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../dd/dc9/struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>classe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../db/daa/struct_code_attribute.html">CodeAttribute</a> *&#160;</td>
+          <td class="paramname"><em>codeAttribute</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Cria um frame e coloca ele na pilha de frames.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ClassFile*</td><td>Ponteiro para a estrutura <a class="el" href="../../dd/dc9/struct_class_file.html">ClassFile</a>. </td></tr>
+    <tr><td class="paramname">CodeAttribute*</td><td>Ponteiro para a estrutura <a class="el" href="../../db/daa/struct_code_attribute.html">CodeAttribute</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd><code>void</code> </dd></dl>
+<dl class="section see"><dt>Veja também</dt><dd><a class="el" href="../../dd/dbe/frame_8c.html#a71c5d25687de0a2568a6cf7c62dfef26">pushFrame</a> </dd></dl>
+
+<p>Definição na linha <a class="el" href="../../dd/dbe/frame_8c_source.html#l00037">37</a> do arquivo <a class="el" href="../../dd/dbe/frame_8c_source.html">frame.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aca9cbfa46eaa4e3c07217b16d0c5212e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void popFrame </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Retira um frame da pilha de frames e atualiza o topo da pilha.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Nao</td><td>possui parametros </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd><code>void</code> </dd></dl>
+<dl class="section see"><dt>Veja também</dt><dd><a class="el" href="../../dd/dbe/frame_8c.html#a50993c39467516396b64a90eb81af0ba">pushOp</a> </dd></dl>
+
+<p>Definição na linha <a class="el" href="../../dd/dbe/frame_8c_source.html#l00079">79</a> do arquivo <a class="el" href="../../dd/dbe/frame_8c_source.html">frame.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3670f378856724ca85ced056e6bfc5c4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t popOp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Desempilha um valor na pilha de operandos.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Nao</td><td>possui parametros. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd><code>int32_t</code> Retorna o valor desempilhado da pilha de operandos. </dd></dl>
+
+<p>Definição na linha <a class="el" href="../../dd/dbe/frame_8c_source.html#l00128">128</a> do arquivo <a class="el" href="../../dd/dbe/frame_8c_source.html">frame.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a71c5d25687de0a2568a6cf7c62dfef26"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pushFrame </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../dd/dc9/struct_class_file.html">ClassFile</a> *&#160;</td>
+          <td class="paramname"><em>classe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../db/daa/struct_code_attribute.html">CodeAttribute</a> *&#160;</td>
+          <td class="paramname"><em>codeAttribute</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d5/d03/struct_stack_frame.html">StackFrame</a> *&#160;</td>
+          <td class="paramname"><em>stackFrame</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Coloca o frame passado por parametro na pilha de frames e atualiza o topo da pilha.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ClassFile*</td><td>Ponteiro para a estrutura <a class="el" href="../../dd/dc9/struct_class_file.html">ClassFile</a>. </td></tr>
+    <tr><td class="paramname">CodeAttribute*</td><td>Ponteiro para a estrutura <a class="el" href="../../db/daa/struct_code_attribute.html">CodeAttribute</a>. </td></tr>
+    <tr><td class="paramname">StackFrame*</td><td>Ponteiro para a estrutura <a class="el" href="../../d5/d03/struct_stack_frame.html">StackFrame</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd><code>void</code> </dd></dl>
+
+<p>Definição na linha <a class="el" href="../../dd/dbe/frame_8c_source.html#l00056">56</a> do arquivo <a class="el" href="../../dd/dbe/frame_8c_source.html">frame.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a50993c39467516396b64a90eb81af0ba"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pushOp </td>
+          <td>(</td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>valor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Empilha um valor na pilha de operandos.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">int32_t</td><td>Valor a ser inserido na pilha de operandos. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd><code>void</code> </dd></dl>
+
+<p>Definição na linha <a class="el" href="../../dd/dbe/frame_8c_source.html#l00113">113</a> do arquivo <a class="el" href="../../dd/dbe/frame_8c_source.html">frame.c</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Variáveis</h2>
+<a class="anchor" id="a352d20cc1b440fd3e25d463b5e2efdb4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d8d/struct_decodificador.html">Decodificador</a> dec[<a class="el" href="../../d6/d97/leitor_8h.html#a4d34398b879119909a61e7f5d80d7f9a">NUM_INSTRUCAO</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definição na linha <a class="el" href="../../dd/dbe/frame_8c_source.html#l00022">22</a> do arquivo <a class="el" href="../../dd/dbe/frame_8c_source.html">frame.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aad62b45c5a0a8993d540ec7b83ef02ee"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/d15/struct_frame.html">Frame</a>* frameCorrente</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definição na linha <a class="el" href="../../dd/dbe/frame_8c_source.html#l00024">24</a> do arquivo <a class="el" href="../../dd/dbe/frame_8c_source.html">frame.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a41b21f484ed1e3efce18dcb9a07ae865"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t qtdArrays</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definição na linha <a class="el" href="../../dd/dbe/frame_8c_source.html#l00026">26</a> do arquivo <a class="el" href="../../dd/dbe/frame_8c_source.html">frame.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dd/dbe/frame_8c.html">frame.c</a></li>
+    <li class="footer">Gerado por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
+  </ul>
+</div>
+</body>
+</html>

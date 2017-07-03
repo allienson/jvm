@@ -1,0 +1,26 @@
+var annotated_dup =
+[
+    [ "carregador", "d2/de4/namespacecarregador.html", "d2/de4/namespacecarregador" ],
+    [ "decodificador", "d5/de2/namespacedecodificador.html", "d5/de2/namespacedecodificador" ],
+    [ "exibidor", "de/d16/namespaceexibidor.html", "de/d16/namespaceexibidor" ],
+    [ "frame", "d4/dbf/namespaceframe.html", "d4/dbf/namespaceframe" ],
+    [ "instrucao", "d5/de7/namespaceinstrucao.html", "d5/de7/namespaceinstrucao" ],
+    [ "leitor", "d2/d00/namespaceleitor.html", "d2/d00/namespaceleitor" ],
+    [ "metodo", "d4/d1f/namespacemetodo.html", "d4/d1f/namespacemetodo" ],
+    [ "AreaMetodos", "db/ddd/struct_area_metodos.html", "db/ddd/struct_area_metodos" ],
+    [ "AttributeInfo", "db/d84/struct_attribute_info.html", "db/d84/struct_attribute_info" ],
+    [ "ClassFile", "dd/dc9/struct_class_file.html", "dd/dc9/struct_class_file" ],
+    [ "CodeAttribute", "db/daa/struct_code_attribute.html", "db/daa/struct_code_attribute" ],
+    [ "CpInfo", "d8/d73/struct_cp_info.html", "d8/d73/struct_cp_info" ],
+    [ "CvInfo", "d0/dcc/struct_cv_info.html", "d0/dcc/struct_cv_info" ],
+    [ "Decodificador", "d6/d8d/struct_decodificador.html", "d6/d8d/struct_decodificador" ],
+    [ "ExceptionsAttribute", "df/d04/struct_exceptions_attribute.html", "df/d04/struct_exceptions_attribute" ],
+    [ "ExceptionTable", "dc/de5/struct_exception_table.html", "dc/de5/struct_exception_table" ],
+    [ "FieldInfo", "d4/dd4/struct_field_info.html", "d4/dd4/struct_field_info" ],
+    [ "Frame", "d5/d15/struct_frame.html", "d5/d15/struct_frame" ],
+    [ "MethodInfo", "d7/d55/struct_method_info.html", "d7/d55/struct_method_info" ],
+    [ "Objeto", "de/dd3/struct_objeto.html", "de/dd3/struct_objeto" ],
+    [ "PilhaOp", "dc/d34/struct_pilha_op.html", "dc/d34/struct_pilha_op" ],
+    [ "StackFrame", "d5/d03/struct_stack_frame.html", "d5/d03/struct_stack_frame" ],
+    [ "Vector", "d4/d06/struct_vector.html", "d4/d06/struct_vector" ]
+];

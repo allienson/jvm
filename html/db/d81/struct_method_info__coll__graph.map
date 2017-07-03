@@ -1,0 +1,6 @@
+<map id="MethodInfo" name="MethodInfo">
+<area shape="rect" id="node2" href="$df/d04/struct_exceptions_attribute.html" title="{ExceptionsAttribute\n|+ attributeNameIndex\l+ attributeLength\l+ numberExceptions\l+ exceptionIndexTable\l|}" alt="" coords="5,204,160,325"/>
+<area shape="rect" id="node3" href="$db/daa/struct_code_attribute.html" title="{CodeAttribute\n|+ attributeNameIndex\l+ attributeLength\l+ maxStack\l+ maxLocals\l+ codeLength\l+ code\l+ exceptionTableLength\l+ attributesCount\l|}" alt="" coords="185,175,346,355"/>
+<area shape="rect" id="node4" href="$db/d84/struct_attribute_info.html" title="{AttributeInfo\n|+ attributeNameIndex\l+ attributeLength\l+ info\l|}" alt="" coords="114,5,262,112"/>
+<area shape="rect" id="node5" href="$dc/de5/struct_exception_table.html" title="{ExceptionTable\n|+ startPc\l+ endPc\l+ catchType\l|}" alt="" coords="285,5,397,112"/>
+</map>

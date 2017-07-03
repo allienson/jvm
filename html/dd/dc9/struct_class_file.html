@@ -1,0 +1,411 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>JVM - SB Grupo 3: Referência da Estrutura ClassFile</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">JVM - SB Grupo 3
+   </div>
+   <div id="projectbrief">Java Virtual Machine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "../../search",false,'Busca');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="../../index.html"><span>Página&#160;Principal</span></a></li>
+      <li><a href="../../pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="../../namespaces.html"><span>Namespaces</span></a></li>
+      <li class="current"><a href="../../annotated.html"><span>Estruturas&#160;de&#160;Dados</span></a></li>
+      <li><a href="../../files.html"><span>Arquivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="../../search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="../../search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="../../annotated.html"><span>Estruturas&#160;de&#160;Dados</span></a></li>
+      <li><a href="../../classes.html"><span>Índice&#160;das&#160;Estruturas&#160;de&#160;Dados</span></a></li>
+      <li><a href="../../functions.html"><span>Campos&#160;de&#160;Dados</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('dd/dc9/struct_class_file.html','../../');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Campos de Dados</a>  </div>
+  <div class="headertitle">
+<div class="title">Referência da Estrutura ClassFile</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="../../d6/d97/leitor_8h_source.html">leitor.h</a>&gt;</code></p>
+<div class="dynheader">
+Diagrama de colaboração para ClassFile:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../de/d29/struct_class_file__coll__graph.png" border="0" usemap="#_class_file_coll__map" alt="Collaboration graph"/></div>
+<map name="_class_file_coll__map" id="_class_file_coll__map">
+<area shape="rect" id="node2" href="../../db/d84/struct_attribute_info.html" title="{AttributeInfo\n|+ attributeNameIndex\l+ attributeLength\l+ info\l|}" alt="" coords="5,5,153,112"/>
+<area shape="rect" id="node8" href="../../db/daa/struct_code_attribute.html" title="{CodeAttribute\n|+ attributeNameIndex\l+ attributeLength\l+ maxStack\l+ maxLocals\l+ codeLength\l+ code\l+ exceptionTableLength\l+ attributesCount\l|}" alt="" coords="117,175,279,355"/>
+<area shape="rect" id="node3" href="../../d8/d73/struct_cp_info.html" title="{CpInfo\n|+ tag\l+ nameIndex\l+ Class\l+ classIndex\l+ nameAndTypeIndex\l+ Fieldref\l+ Methodref\l+ InterfaceMethodref\l+ stringIndex\l+ String\le 13 mais...\l|}" alt="" coords="299,417,449,641"/>
+<area shape="rect" id="node4" href="../../d4/dd4/struct_field_info.html" title="{FieldInfo\n|+ accessFlags\l+ nameIndex\l+ descriptorIndex\l+ attributesCount\l|}" alt="" coords="491,469,614,590"/>
+<area shape="rect" id="node5" href="../../d0/dcc/struct_cv_info.html" title="{CvInfo\n|+ attributeNameIndex\l+ attributeLength\l+ constantValueIndex\l|}" alt="" coords="482,211,631,318"/>
+<area shape="rect" id="node6" href="../../d7/d55/struct_method_info.html" title="{MethodInfo\n|+ accessFlags\l+ nameIndex\l+ descriptorIndex\l+ attributesCount\l|}" alt="" coords="151,469,274,590"/>
+<area shape="rect" id="node7" href="../../df/d04/struct_exceptions_attribute.html" title="{ExceptionsAttribute\n|+ attributeNameIndex\l+ attributeLength\l+ numberExceptions\l+ exceptionIndexTable\l|}" alt="" coords="303,204,458,325"/>
+<area shape="rect" id="node9" href="../../dc/de5/struct_exception_table.html" title="{ExceptionTable\n|+ startPc\l+ endPc\l+ catchType\l|}" alt="" coords="177,5,289,112"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Campos de Dados</h2></td></tr>
+<tr class="memitem:a9d4d72751ff9250dd3305d5d853f7921"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc9/struct_class_file.html#a9d4d72751ff9250dd3305d5d853f7921">magic</a></td></tr>
+<tr class="separator:a9d4d72751ff9250dd3305d5d853f7921"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb41e706bd0e19ed5a24cd0e99ecc4c1"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc9/struct_class_file.html#afb41e706bd0e19ed5a24cd0e99ecc4c1">minorVersion</a></td></tr>
+<tr class="separator:afb41e706bd0e19ed5a24cd0e99ecc4c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3424e098e9ef6dbfbdbb9c708afaffe7"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc9/struct_class_file.html#a3424e098e9ef6dbfbdbb9c708afaffe7">majorVersion</a></td></tr>
+<tr class="separator:a3424e098e9ef6dbfbdbb9c708afaffe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af185527e4689b1672655f608df4a3c62"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc9/struct_class_file.html#af185527e4689b1672655f608df4a3c62">constantPoolCount</a></td></tr>
+<tr class="separator:af185527e4689b1672655f608df4a3c62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a209de5f28c80fb453b37a3f0b320ab9c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d73/struct_cp_info.html">CpInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc9/struct_class_file.html#a209de5f28c80fb453b37a3f0b320ab9c">constantPool</a></td></tr>
+<tr class="separator:a209de5f28c80fb453b37a3f0b320ab9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbb2cd57bb6eb5baa34e83127e928c18"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc9/struct_class_file.html#afbb2cd57bb6eb5baa34e83127e928c18">accessFlags</a></td></tr>
+<tr class="separator:afbb2cd57bb6eb5baa34e83127e928c18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc02e661935c638b2f231cef576859f1"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc9/struct_class_file.html#abc02e661935c638b2f231cef576859f1">thisClass</a></td></tr>
+<tr class="separator:abc02e661935c638b2f231cef576859f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a306c9da73620fa5ad94bbaa64a19afdd"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc9/struct_class_file.html#a306c9da73620fa5ad94bbaa64a19afdd">superClass</a></td></tr>
+<tr class="separator:a306c9da73620fa5ad94bbaa64a19afdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcd02751a38d5b17559fd3c5201b2c42"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc9/struct_class_file.html#adcd02751a38d5b17559fd3c5201b2c42">interfacesCount</a></td></tr>
+<tr class="separator:adcd02751a38d5b17559fd3c5201b2c42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86680de028c6df386edafa8e8436b92c"><td class="memItemLeft" align="right" valign="top">uint16_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc9/struct_class_file.html#a86680de028c6df386edafa8e8436b92c">interfaces</a></td></tr>
+<tr class="separator:a86680de028c6df386edafa8e8436b92c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87f4d2ede2eb9df54d69952df84226ca"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc9/struct_class_file.html#a87f4d2ede2eb9df54d69952df84226ca">fieldsCount</a></td></tr>
+<tr class="separator:a87f4d2ede2eb9df54d69952df84226ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add171dc12613ad29ef94f4f18a50f06a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/dd4/struct_field_info.html">FieldInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc9/struct_class_file.html#add171dc12613ad29ef94f4f18a50f06a">fields</a></td></tr>
+<tr class="separator:add171dc12613ad29ef94f4f18a50f06a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24d224be2ab473bac3506890c6ff6a4d"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc9/struct_class_file.html#a24d224be2ab473bac3506890c6ff6a4d">methodsCount</a></td></tr>
+<tr class="separator:a24d224be2ab473bac3506890c6ff6a4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67e02d50e6807bb97d7d8f265deef9a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d55/struct_method_info.html">MethodInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc9/struct_class_file.html#a67e02d50e6807bb97d7d8f265deef9a0">methods</a></td></tr>
+<tr class="separator:a67e02d50e6807bb97d7d8f265deef9a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad88c9b8262fbd79d49ad2c163ad45716"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc9/struct_class_file.html#ad88c9b8262fbd79d49ad2c163ad45716">attributesCount</a></td></tr>
+<tr class="separator:ad88c9b8262fbd79d49ad2c163ad45716"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7db56de00dc682671cb8cfb837d92b7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d84/struct_attribute_info.html">AttributeInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dc9/struct_class_file.html#ad7db56de00dc682671cb8cfb837d92b7">attributes</a></td></tr>
+<tr class="separator:ad7db56de00dc682671cb8cfb837d92b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrição Detalhada</h2>
+<div class="textblock">
+<p>Definição na linha <a class="el" href="../../d6/d97/leitor_8h_source.html#l00184">184</a> do arquivo <a class="el" href="../../d6/d97/leitor_8h_source.html">leitor.h</a>.</p>
+</div><h2 class="groupheader">Campos</h2>
+<a class="anchor" id="afbb2cd57bb6eb5baa34e83127e928c18"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ClassFile::accessFlags</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definição na linha <a class="el" href="../../d6/d97/leitor_8h_source.html#l00190">190</a> do arquivo <a class="el" href="../../d6/d97/leitor_8h_source.html">leitor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad7db56de00dc682671cb8cfb837d92b7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../db/d84/struct_attribute_info.html">AttributeInfo</a>* ClassFile::attributes</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definição na linha <a class="el" href="../../d6/d97/leitor_8h_source.html#l00200">200</a> do arquivo <a class="el" href="../../d6/d97/leitor_8h_source.html">leitor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad88c9b8262fbd79d49ad2c163ad45716"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ClassFile::attributesCount</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definição na linha <a class="el" href="../../d6/d97/leitor_8h_source.html#l00199">199</a> do arquivo <a class="el" href="../../d6/d97/leitor_8h_source.html">leitor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a209de5f28c80fb453b37a3f0b320ab9c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d8/d73/struct_cp_info.html">CpInfo</a>* ClassFile::constantPool</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definição na linha <a class="el" href="../../d6/d97/leitor_8h_source.html#l00189">189</a> do arquivo <a class="el" href="../../d6/d97/leitor_8h_source.html">leitor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af185527e4689b1672655f608df4a3c62"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ClassFile::constantPoolCount</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definição na linha <a class="el" href="../../d6/d97/leitor_8h_source.html#l00188">188</a> do arquivo <a class="el" href="../../d6/d97/leitor_8h_source.html">leitor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="add171dc12613ad29ef94f4f18a50f06a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/dd4/struct_field_info.html">FieldInfo</a>* ClassFile::fields</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definição na linha <a class="el" href="../../d6/d97/leitor_8h_source.html#l00196">196</a> do arquivo <a class="el" href="../../d6/d97/leitor_8h_source.html">leitor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a87f4d2ede2eb9df54d69952df84226ca"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ClassFile::fieldsCount</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definição na linha <a class="el" href="../../d6/d97/leitor_8h_source.html#l00195">195</a> do arquivo <a class="el" href="../../d6/d97/leitor_8h_source.html">leitor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a86680de028c6df386edafa8e8436b92c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t* ClassFile::interfaces</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definição na linha <a class="el" href="../../d6/d97/leitor_8h_source.html#l00194">194</a> do arquivo <a class="el" href="../../d6/d97/leitor_8h_source.html">leitor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adcd02751a38d5b17559fd3c5201b2c42"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ClassFile::interfacesCount</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definição na linha <a class="el" href="../../d6/d97/leitor_8h_source.html#l00193">193</a> do arquivo <a class="el" href="../../d6/d97/leitor_8h_source.html">leitor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9d4d72751ff9250dd3305d5d853f7921"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t ClassFile::magic</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definição na linha <a class="el" href="../../d6/d97/leitor_8h_source.html#l00185">185</a> do arquivo <a class="el" href="../../d6/d97/leitor_8h_source.html">leitor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3424e098e9ef6dbfbdbb9c708afaffe7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ClassFile::majorVersion</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definição na linha <a class="el" href="../../d6/d97/leitor_8h_source.html#l00187">187</a> do arquivo <a class="el" href="../../d6/d97/leitor_8h_source.html">leitor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a67e02d50e6807bb97d7d8f265deef9a0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d7/d55/struct_method_info.html">MethodInfo</a>* ClassFile::methods</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definição na linha <a class="el" href="../../d6/d97/leitor_8h_source.html#l00198">198</a> do arquivo <a class="el" href="../../d6/d97/leitor_8h_source.html">leitor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a24d224be2ab473bac3506890c6ff6a4d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ClassFile::methodsCount</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definição na linha <a class="el" href="../../d6/d97/leitor_8h_source.html#l00197">197</a> do arquivo <a class="el" href="../../d6/d97/leitor_8h_source.html">leitor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afb41e706bd0e19ed5a24cd0e99ecc4c1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ClassFile::minorVersion</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definição na linha <a class="el" href="../../d6/d97/leitor_8h_source.html#l00186">186</a> do arquivo <a class="el" href="../../d6/d97/leitor_8h_source.html">leitor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a306c9da73620fa5ad94bbaa64a19afdd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ClassFile::superClass</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definição na linha <a class="el" href="../../d6/d97/leitor_8h_source.html#l00192">192</a> do arquivo <a class="el" href="../../d6/d97/leitor_8h_source.html">leitor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abc02e661935c638b2f231cef576859f1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ClassFile::thisClass</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definição na linha <a class="el" href="../../d6/d97/leitor_8h_source.html#l00191">191</a> do arquivo <a class="el" href="../../d6/d97/leitor_8h_source.html">leitor.h</a>.</p>
+
+</div>
+</div>
+<hr/>A documentação para esta estrutura foi gerada a partir do seguinte arquivo:<ul>
+<li><a class="el" href="../../d6/d97/leitor_8h_source.html">leitor.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dd/dc9/struct_class_file.html">ClassFile</a></li>
+    <li class="footer">Gerado por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
+  </ul>
+</div>
+</body>
+</html>
